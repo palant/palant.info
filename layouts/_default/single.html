@@ -12,7 +12,7 @@
         <div id="main" role="main">
           <article role="article" itemscope itemtype="http://schema.org/Article">
             <h1 itemprop="name">{{ .Title }}</h1>
-            {{ partial "article.html" . }}
+            {{ partial "article.html" (dict "scope" . "kind" "page") }}
           </article>
 
           {{ if eq .Section "articles" }}
@@ -24,6 +24,34 @@
               <a href="{{ .Permalink }}" id="paginator-r" rel="next">{{ .Title }} &#8594;</a>
               {{ end }}
             </p>
+
+            <section id="comments-head">
+              <h3>Comments</h3>
+
+              {{ with .Resources.Match "comment_*" }}
+                <ol class="comments-list" itemscope itemtype="http://schema.org/UserComments">
+                  {{ range sort . ".Name" }}
+                  <li>
+                    <article class="comments" itemprop="comment">
+                      <h4>
+                        <span itemprop="creator">
+                          {{- with .Params.authorUrl -}}<a rel="nofollow" href="{{.}}">{{- end -}}
+                          {{ .Params.author }}
+                          {{- with .Params.authorUrl -}}</a>{{- end -}}
+                        </span>
+                        <span class="comment-anchor" itemprop="url"><a href="#{{.Params.anchor}}" id="{{.Params.anchor}}">#</a></span>
+                      </h4>
+                      <div itemprop="commentText">
+                        {{ .Content }}
+                      </div>
+                    </article>
+                  </li>
+                  {{ end }}
+                </ol>
+              {{ else }}
+                <p>There are currently no comments on this article.</p>
+              {{ end }}
+            </section>
           {{ end }}
         </div>
 

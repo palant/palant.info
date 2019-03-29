@@ -14,7 +14,7 @@
               <h1 itemprop="name">
                 <a href="{{.RelPermalink}}" itemprop="url">{{.Title}}</a>
               </h1>
-              {{ partial "article.html" . }}
+              {{ partial "article.html" (dict "scope" . "kind" "home") }}
             </article>
           {{end}}
 

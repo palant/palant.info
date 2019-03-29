@@ -1,19 +1,26 @@
-{{ if eq .Section "articles" }}
-<p><strong>Posted</strong> on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by <a href="/about/">{{ .Site.Author.name }}</a></p>
-{{ end }}
-<div itemprop="articleBody">
-  {{ .Content }}
-</div>
+{{ $kind := .kind }}
+{{ with .scope }}
+  {{ if eq .Section "articles" }}
+  <p><strong>Posted</strong> on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by <a href="/about/">{{ .Site.Author.name }}</a></p>
+  {{ end }}
+  <div itemprop="articleBody">
+    {{ .Content }}
+  </div>
 
-{{ with .Params.categories }}
   <p>
-    <strong>Categories:</strong><span itemprop="keywords">
-    {{ range . }}
-      {{ $name := . }}
-      {{ with $.Site.GetPage (printf "/categories/%s" ($name | urlize))}}
-        <a rel="tag" href="{{ .Permalink }}">{{ $name }}</a>
+    {{ with .Params.categories }}
+      <strong>Categories:</strong><span itemprop="keywords">
+      {{ range . }}
+        {{ $name := . }}
+        {{ with $.scope.Site.GetPage (printf "/categories/%s" ($name | urlize))}}
+          <a rel="tag" href="{{ .Permalink }}">{{ $name }}</a>
+        {{ end }}
       {{ end }}
+      </span>
     {{ end }}
-    </span>
+
+    {{ if eq $kind "home" }}
+      <span class="comments_invite"><a href="{{.RelPermalink}}#Comment">Comment</a> [{{ len (.Resources.Match "comment_*") }}]</span>
+    {{ end }}
    </p>
 {{ end }}
