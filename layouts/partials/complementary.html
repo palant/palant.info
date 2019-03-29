@@ -1,8 +1,8 @@
 <div role="complementary">
-  <!--<form role="search" method="get" action="https://palant.de/">
+  <form id="search" role="search" action="#">
     <h4><label for="search-textbox">Search</label></h4>
-    <p><input id="search-textbox" type="search" name="q"><input type="submit" value="Go"></p>
-  </form>-->
+    <p><input id="search-textbox" type="search"><input type="submit" value="Go"></p>
+  </form>
 
   {{ with .Scratch.Get "rss" -}}
     <p><a type="application/rss+xml" title="RSS feed" href="{{ .Permalink }}"><img src="/images/rss.svg" width="16" height="16"> RSS feed</a></p>
@@ -16,3 +16,6 @@
     <li><a rel="external" href="http://stackoverflow.com/users/785541/wladimir-palant?tab=answers">My Stack Overflow answers</a></li>
   </ul>
 </div>
+
+<script src="/js/lunr.js" async></script>
+<script src="/js/lunr-init.js" async></script>

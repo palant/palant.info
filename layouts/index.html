@@ -8,7 +8,7 @@
 
     <div class="wrapper">
       <div class="container">
-        <div role="main">
+        <div id="main" role="main">
           {{range (.Paginate (where .Pages "Section" "articles") 5).Pages }}
             <article role="article" itemscope itemtype="http://schema.org/Article">
               <h1 itemprop="name">

@@ -17,6 +17,12 @@ permalinks:
   articles: /:year/:month/:day/:slug/
   projects: /:year/:month/:day/:slug/
 
+outputs:
+  home:
+    - HTML
+    - JSON
+    - RSS
+
 menu:
   main:
     - Name: Home
