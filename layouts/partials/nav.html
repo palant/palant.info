@@ -1,0 +1,15 @@
+<header role="banner">
+  <hgroup>
+    <h1><a rel="home" href="/">{{.Site.Title}}</a></h1>
+    <h3>{{.Site.Params.subtitle}}</h3>
+  </hgroup>
+</header>
+
+<nav role="navigation">
+  <h1>Navigation</h1>
+  <ul class="section_list" role="menubar">
+    {{range .Site.Menus.main}}
+      <li {{if eq $.Page.URL .URL}}class="active"{{end}} role="menuitem"><a href="{{.URL}}">{{.Name}}</a></li>
+    {{end}}
+  </ul>
+</nav>

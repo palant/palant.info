@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" prefix="og: http://ogp.me/ns#">
+
+  {{ partial "head.html" . }}
+
+  <body id="articles-page">
+
+    {{ partial "nav.html" . }}
+
+    <div class="wrapper">
+      <div class="container">
+        <div role="main">
+          <article role="article" itemscope itemtype="http://schema.org/Article">
+            <h1 itemprop="name">{{ .Title }}</h1>
+            {{ partial "article.html" . }}
+          </article>
+
+          {{ if eq .Section "articles" }}
+            <p id="paginator">
+              {{ with .PrevInSection }}
+              <a href="{{ .Permalink }}" id="paginator-l" rel="prev">&#8592; {{ .Title }}</a>
+              {{ end }}
+              {{ with .NextInSection }}
+              <a href="{{ .Permalink }}" id="paginator-r" rel="next">{{ .Title }} &#8594;</a>
+              {{ end }}
+            </p>
+          {{ end }}
+        </div>
+
+        {{ partial "complementary.html" . }}
+      </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+  </body>
+</html>

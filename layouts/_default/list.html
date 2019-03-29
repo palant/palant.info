@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" prefix="og: http://ogp.me/ns#">
+
+  {{ partial "head.html" . }}
+
+  <body id="articles-page">
+
+    {{ partial "nav.html" . }}
+
+    <div class="wrapper">
+      <div class="container">
+        <div role="main">
+          <h1>{{ .Title }}</h1>
+          <ul id="article-list">
+            {{range .Paginator.Pages}}
+              <li role="article" itemscope itemtype="http://schema.org/Article">
+                <h4 itemprop="name">
+                  <a href="{{.RelPermalink}}" itemprop="url">{{.Title}}</a>
+                </h4>
+                <div itemprop="description">
+                  {{ safeHTML .Summary }}
+                </div>
+                {{ if .Truncated }}
+                  <div>
+                    <a href="{{ .RelPermalink }}">Read More…</a>
+                  </div>
+                {{ end }}
+                <p class="footnote">
+                  Posted on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by <span itemprop="author"><a rel="author" href="/about/">{{ .Site.Author.name }}</a></span>
+                </p>
+              </li>
+            {{end}}
+          </ul>
+
+          {{ template "_internal/pagination.html" . }}
+        </div>
+
+        {{ partial "complementary.html" . }}
+
+      </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+  </body>
+</html>

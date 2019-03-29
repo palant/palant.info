@@ -1,0 +1,6 @@
+{{ $image := $.Page.Resources.GetMatch (.Get 0)}}
+{{ if .Get 2 }}
+<img src="{{ $image.RelPermalink }}" alt="{{ .Get 1 }}" width="{{ .Get 2 }}" height="{{ div (mul $image.Height (int (.Get 2))) $image.Width }}" />
+{{ else }}
+<img src="{{ $image.RelPermalink }}" alt="{{ .Get 1 }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
+{{ end }}

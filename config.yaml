@@ -1,0 +1,30 @@
+baseURL: https://palant.de/
+languageCode: en-us
+copyright: This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+title: "Wladimir Palant's notes"
+params:
+  subtitle: Musings about extensions, security and some more
+  AuthorTwitter: "@WPalant"
+author:
+  name: Wladimir Palant
+
+taxonomies:
+  category: categories
+
+enableRobotsTXT: true
+
+permalinks:
+  articles: /:year/:month/:day/:slug/
+  projects: /:year/:month/:day/:slug/
+
+menu:
+  main:
+    - Name: Home
+      URL: /
+      Weight: 1
+    - Name: Articles
+      URL: /articles/
+      Weight: 2
+    - Name: Projects
+      URL: /projects/
+      Weight: 3
