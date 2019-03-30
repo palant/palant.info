@@ -28,7 +28,7 @@
             <section id="comments-head">
               <h3>Comments</h3>
 
-              {{ with .Resources.Match "comment_*" }}
+              {{ with .Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*" }}
                 <ol class="comments-list" itemscope itemtype="http://schema.org/UserComments">
                   {{ range sort . ".Name" }}
                   <li>
@@ -39,11 +39,19 @@
                           {{ .Params.author }}
                           {{- with .Params.authorUrl -}}</a>{{- end -}}
                         </span>
-                        <span class="comment-anchor" itemprop="url"><a href="#{{.Params.anchor}}" id="{{.Params.anchor}}">#</a></span>
+                        <span class="comment-anchor" itemprop="url"><a href="#c{{.Params.id}}" id="c{{.Params.id}}">#</a></span>
                       </h4>
                       <p class="footnote"><time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time></p>
                       <div itemprop="commentText">
                         {{ .Content }}
+                        {{ with $.Resources.Match (printf "comment_%s_reply_*" .Params.id) }}
+                          {{ range sort . ".Name" }}
+                            <div class="comment_reply">
+                              <p class="comment_reply_header">Reply from {{ .Params.author }}:</p>
+                              {{ .Content }}
+                            </div>
+                          {{ end }}
+                        {{ end }}
                       </div>
                     </article>
                   </li>
