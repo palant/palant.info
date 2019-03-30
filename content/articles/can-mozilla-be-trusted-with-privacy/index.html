@@ -1,0 +1,13 @@
+{"title": "Can Mozilla be trusted with privacy?", "date": "2014-12-19 17:10:05", "description": "", "categories": ["mozilla"], "slug": "can-mozilla-be-trusted-with-privacy"}
+
+	<p>A year ago I would have certainly answered the question in the title with &#8220;yes.&#8221; After all, who else if not Mozilla? Mozilla has been living the <a href="https://blog.mozilla.org/privacy/2011/01/12/mozillas-privacy-data-operating-principles/">privacy principles</a> which we took for the Adblock Plus project and called our own. &#8220;Limited data&#8221; is particularly something that is very hard to implement and defend against the argument of making informed decisions.</p>
+
+	<p>But maybe I&#8217;ve simply been a Mozilla contributor way too long and don&#8217;t see the obvious signs any more. My colleague Felix Dahlke brought my attention to the fact that Mozilla is using Google Analytics and Optimizely (trusted third parties?) on most of their web properties. I cannot really find a good argument why Mozilla couldn&#8217;t process this data in-house, insufficient resources certainly isn&#8217;t it.</p>
+
+	<p>And then there is Firefox Health Report and Telemetry. Maybe I should have been following the discussions, but I simply accepted the prompt when Firefox asked me&nbsp;&mdash; my assumption was that it&#8217;s anonymous data collection and cannot be used to track behavior of individual users. The more surprised I was to read <a href="http://robertovitillo.com/2014/12/19/clientid-in-telemetry-submissions/">this blog post</a> explaining how useful unique client IDs are to analyze data. Mind you, not the slightest sign of concern about the privacy invasion here.</p>
+
+	<p>Maybe somebody else actually cared? I opened the bug but the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064333#c23">only statement on privacy</a> is far from being conclusive&nbsp;&mdash; yes, you can opt out and the user ID will be removed then. However, if you don&#8217;t opt out (e.g. because you trust Mozilla) then you will continue sending data that can be connected to a single user (and ultimately you). And then there is <a href="https://groups.google.com/forum/#!topic/mozilla.dev.planning/6q4kvRTAcow">this old discussion</a> about the privacy aspects of Firefox Health Reporting, a long and fruitless one it seems.</p>
+
+	<p>Am I missing something? Should I be disabling all feedback functionality in Firefox and recommend that everybody else do the same?</p>
+
+	<p><strong>Side-note</strong>: Am I the only one who is annoyed by the many Mozilla bugs lately which are created without a description and provide zero context information? Are there so many decisions being made behind closed doors or are people simply too lazy to add a link?</p>

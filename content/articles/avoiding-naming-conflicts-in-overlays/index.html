@@ -1,0 +1,45 @@
+{"title": "Avoiding naming conflicts in overlays", "date": "2009-02-16 22:12:29", "description": "", "categories": ["mozilla", "xul"], "slug": "avoiding-naming-conflicts-in-overlays"}
+
+	<p><span class="caps">XUL</span> overlays are a great mechanism for extending existing functionality. However, there is a catch&nbsp;&mdash; any scripts loaded by an overlay are sharing the namespace with the scripts loaded by the original page <strong>and</strong> the scripts loaded by other overlays (typically from other extensions). So if extension Foo defines a global variable myGreatVar and extension Bar chooses to define a global variable myGreatVar as well, bad things will happen&nbsp;&mdash; both extensions will end up accessing the same variable and usually both extensions will behave erratically because of that. Same happens with functions, if two scripts define the same global function the second function definition will override the first. The situation is worst for constants&nbsp;&mdash; a constant cannot be redeclared meaning that one of the extensions will cause an error message.</p>
+
+	<p>Now this problem isn&#8217;t a new one and Mark Ziesemer wrote a <a href="http://blogger.ziesemer.com/2007/10/respecting-javascript-global-namespace.html">nice article suggesting namespaces as a solution</a> a while ago. This blog article even made it into <span class="caps">AMO</span>&#8217;s text block answers. Unfortunately, I think that these fake namespaces are an awkward and unnatural construct in JavaScript. You will have to spell out your namespace all the time and you will have to force your code into an object oriented writing style (which may or may not be desired). And of course you are still polluting the global namespace, and be it only for the namespace variable.</p>
+
+	<p>Instead you could make sure that all your variables and functions are declared inside a function. Those variables will be local to that function and not visible outside of it, so conflicts will be impossible. You can wrap all your code in a closure and let it execute when the &#8220;load&#8221; event is triggered:</p>
+
+<pre><code>window.addEventListener(&quot;load&quot;, function()
+{
+  const INCREMENT = 1;
+  var myVariable = 8;
+</code>
+<code>  function increaseMyVariable()
+  {
+    myVariable += INCREMENT;
+    alert(myVariable);
+  }
+</code>
+<code>  document.getElementById(&quot;extension.foo.myButton&quot;)
+                .addEventListener(&quot;command&quot;, increaseMyVariable, false);
+}, false);
+</code></pre>
+
+	<p>The only disadvantage of that approach: your functions won&#8217;t be visible to your <span class="caps">XUL</span> elements either, so inline events handlers in <span class="caps">XUL</span> won&#8217;t be possible. <a href="https://developer.mozilla.org/En/DOM/Element.addEventListener">addEventListener</a> will have to be used instead.</p>
+
+	<p>But what if you have much code that you would like to split up into multiple files? A closure cannot be shared between different files. But Firefox lets you create an independent namespace using <a href="https://developer.mozilla.org/en/Components.utils.Sandbox">Components.utils.Sandbox</a> constructor (yes, that&#8217;s a misuse of a feature but I am not aware of another feature that would be more suitable). Once that namespace is created you can load scripts into it using <a href="https://developer.mozilla.org/en/mozIJSSubScriptLoader">mozIJSSubScriptLoader</a>:</p>
+
+<pre><code>window.addEventListener(&quot;load&quot;, function()
+{
+  var namespace = new Components.utils.Sandbox();
+</code>
+<code>  // Define global variables &quot;window&quot; and &quot;document&quot; for the new namespace
+  namespace.window = window;
+  namespace.document = document;
+</code>
+<code>  // Load scripts into the namespace
+  var subscriptLoader = Components.classes[&quot;@mozilla.org/moz/jssubscript-loader;1&quot;]
+                      .getService(Components.interfaces.mozIJSSubScriptLoader);
+  subscriptLoader.loadSubScript(&quot;chrome://.../general.js&quot;, namespace);
+  subscriptLoader.loadSubScript(&quot;chrome://.../utils.js&quot;, namespace);
+}, false);
+</code></pre>
+
+	<p>Here the disadvantage is that a sandbox is really an empty namespace, by default it doesn&#8217;t have variables like &#8220;window&#8221;, &#8220;document&#8221;, neither does it have the usual functions like alert() or XMLHttpRequest constructor. You can work around by setting the necessary variables on the sandbox before loading the scripts as in the example above. However, function setTimeout() for example generally doesn&#8217;t work from a sandbox and has to be replaced by <a href="https://developer.mozilla.org/en/nsITimer">nsITimer</a>.</p>

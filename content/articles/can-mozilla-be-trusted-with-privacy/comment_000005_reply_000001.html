@@ -1,0 +1,5 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>1) Sure, telemetry doesn&#8217;t collect the IP address directly. However, getting the IP address isn&#8217;t really avoidable as long as the IP protocol is being used for communication. Of course, one could make sure that the IP address isn&#8217;t being stored in web server logs, but <span class="caps">AFAIK</span> Mozilla doesn&#8217;t have any such policy.</p>
+
+	<p>2) Sorry but I don&#8217;t really get that. Hardware/OS configuration is part of each data packet &#8211; you don&#8217;t need to reconstruct all submissions for a user to see correlations (again, crash reporter does exactly that). And the &#8220;time since last report&#8221; field allows estimating how common that particular configuration really is.</p>

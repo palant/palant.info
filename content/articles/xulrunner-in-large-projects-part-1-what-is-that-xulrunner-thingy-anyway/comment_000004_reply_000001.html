@@ -1,0 +1,5 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>I&#8217;m basically meaning &#8220;a project that requires continuous effort from more than two people&#8221; &#8211; that should be the area where you are certain to start hitting non-trivial issues.</p>
+
+	<p>JavaScript code modules run in their own context, not the context of any single window. Usually you would still keep a little code in the overlay to work with the current window &#8211; but it would mostly call utility functions in a module (and pass the window or document as parameter if necessary).</p>

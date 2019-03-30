@@ -1,0 +1,34 @@
+{"publishDate": "2007-05-02 21:00:04", "author": "Anon", "authorUrl": "", "id": "000003"}
+
+	<p>Paste the following into a text editor and then save as .reg then double click to apply.</p>
+
+	<p>Windows Registry Editor Version 5.00</p>
+
+	<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\SO\MISC\MIME_SNIFFING\DISABLE]<br />
+&#8220;CheckedValue&#8221;=dword:00000003</p>
+
+	<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\SO\MISC\MIME_SNIFFING\ENABLE]<br />
+&#8220;CheckedValue&#8221;=dword:00000000</p>
+
+	<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0]<br />
+&#8220;2100&#8221;=dword:00000001</p>
+
+	<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1]<br />
+&#8220;2100&#8221;=dword:00000001</p>
+
+	<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2]<br />
+&#8220;2100&#8221;=dword:00000001</p>
+
+	<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3]<br />
+&#8220;2100&#8221;=dword:00000001</p>
+
+	<p>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4]<br />
+&#8220;2100&#8221;=dword:00000001</p>
+
+	<p>This should disable all internet zones from the sniffing behaviour.</p>
+
+	<p>Note: this could break stuff that I am not aware of and I do not accept any responsability for any consequences. Use at your own risk! Also probably only works in Win2000/XP.</p>
+
+
+
+

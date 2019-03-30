@@ -1,0 +1,21 @@
+{"title": "Enforcing HTTPS connections on websites", "date": "2014-03-30 09:46:11", "description": "", "categories": ["security", "gecko"], "slug": "enforcing-https-connections-on-websites"}
+
+	<p>TL;DR: I created a new extension called <a href="https://addons.mozilla.org/addon/enforce-encryption/">Enforce Encryption</a>. See extension description for a simple explanation of how it works and why using encrypted connections is important.</p>
+
+	<p><hr></p>
+
+	<p>I realized that <a href="https://stackoverflow.com/">Stack Overflow</a> is one of the few websites that I use with authentication and yet over plain unencrypted <span class="caps">HTTP</span> connections. So, what if I just change <code>http://</code> into <code>https://</code> in the address bar? Surprisingly, this worked, even though Stack Overflow doesn&#8217;t support <span class="caps">HTTPS</span> officially (way too many links lead back to <span class="caps">HTTP</span>).</p>
+
+	<p>So, if I want to use Stack Overflow over <span class="caps">HTTPS</span> now, how do I do it? All my history items lead to unencrypted pages. But even if I clean out my history, I regularly get to Stack Overflow pages via search or links. Switching to <span class="caps">HTTPS</span> manually every time is just unrealistic. That&#8217;s something where <a href="http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security"><span class="caps">HTTP</span> Strict Transport Security</a> could help, if it were active for that site all links and history entries would be changed into <span class="caps">HTTPS</span> automatically.</p>
+
+	<p>Now Strict Transport Security is something that the website itself needs to enable. I briefly considered manipulating a response from Stack Overflow to include the necessary header. However, a search on <a href="http://mxr.mozilla.org/mozilla-central/"><span class="caps">MXR</span></a>  revealed that <code>nsISiteSecurityService</code> is responsible for handling Strict Transport Security in Firefox (starting with Firefox 26, before that the service was going under a different name). Now all I had to do was running a fairly simple line of JavaScript code from the Error Console and Strict Transport Security was enabled for Stack Overflow.</p>
+
+	<p>Only problem now: that approach doesn&#8217;t scale. There are other websites that should be using Strict Transport Security, e.g. google.com. If you simply type it into your address bar then the first request will go over plain <span class="caps">HTTP</span> and redirect to <span class="caps">HTTPS</span> then&nbsp;&mdash; this initial unencrypted request enables attacks like <span class="caps">SSL</span> stripping. A simpler way to check whether Strict Transport Security is enabled and enabling it if necessary would be nice.</p>
+
+	<p><a href="https://www.eff.org/https-everywhere"><span class="caps">HTTPS</span> Everywhere extension</a> sounds like it would work by utilizing Strict Transport Security but apparently it doesn&#8217;t. There is another extension called <a href="https://addons.mozilla.org/addon/force-tls/">Force-<span class="caps">TLS</span></a> which actually allows managing all aspects of Strict Transport Security but it does that via its own preferences dialog in the charming style of Mozilla Suite&#8217;s Cookie Manager from year 2004. Better UI concepts have been developed since then and this setting is something I would expect in the Page Info dialog.</p>
+
+	<p>So I simply wrote my own extension called <a href="https://addons.mozilla.org/addon/enforce-encryption/">Enforce Encryption</a> (not reviewed by Mozilla yet, that should take a few weeks). It is very minimalistic, in the current version it is merely a hundred lines of code. All it does is adding a checkbox to the Security tab of the Page Info dialog to enable or disable Strict Transport Security. It isn&#8217;t quite as flexible as Force-<span class="caps">TLS</span>, yet it should cover most use cases and be much easier to use. Enjoy!</p>
+
+	<p><a href="enforceencryption.png">{{< img "enforceencryption.png" "Enforce Encryption screenshot" 200 >}}</a></p>
+
+	<p>For reference, the source code is <a href="https://github.com/palant/enforceencryption/">available on GitHub</a>.</p>

@@ -1,0 +1,22 @@
+{"title": "Please don't use externally hosted JavaScript libraries", "date": "2014-06-30 07:57:54", "description": "", "categories": ["security"], "slug": "please-don-t-use-externally-hosted-javascript-libraries"}
+
+	<p>A few days ago I outlined that the Reuters website <a href="/2014/06/27/third-party-javascript-more-critical-than-ever">relies on 40 external parties with its security</a>. What particularly struck me was the use of external code hosting services, e.g. loading the jQuery library directly from the <a href="http://jquery.com/">jQuery website</a> and <span class="caps">GSAP</span> library from <a href="http://www.cdnjs.com/">cdnjs</a>. It seems that in this particular case Reuters isn&#8217;t the one to blame&nbsp;&mdash; they don&#8217;t seem to include these scripts directly, it&#8217;s rather some of the other scripts they are using that are doing this.</p>
+
+	<p>Why would one use externally hosted libraries as opposed to just uploading them to your own server? I can imagine three possible reasons:</p>
+
+	<ul>
+		<li>Simplicity: No need to upload the script, you simply add a <code>&lt;script&gt;</code> tag to your page and forget about it. Not that uploading the scripts to your webspace is an effort worth mentioning, especially compared to the effort actually developing the website.</li>
+		<li>Performance: External code hosting typically uses a content distribution network with the claim to provide superior performance by being closer to the clients. However, whether there is really a performance advantage when using persistent connections (that&#8217;s the typical scenario these days) is doubtful to say the least.</li>
+		<li>Scalability: your server no longer needs to serve the static files and has more reserves for something else. No longer much of an argument given modern websites, serving static files typically produces negligible <span class="caps">CPU</span> load compared to the page using these files.</li>
+	</ul>
+
+	<p>On the other side there are clear disadvantages:</p>
+
+	<ul>
+		<li>Lack of control: Decisions like whether the particular version of the JavaScript library you are relying on is still hosted are no longer yours to make. Worst-case scenario is that it is removed from <span class="caps">CDN</span> and you only notice because your website is broken.</li>
+		<li>Stability: With externally hosted code your website won&#8217;t just be down when your webserver is down, it will also be down whenever that external code hosting is down. And there will always be users who can reach your website but not your code hosting for some reasons&nbsp;&mdash; these will be able to visit your website but it will appear broken.</li>
+		<li>Privacy: You are hopefully respecting the privacy of your users when they visit your website and don&#8217;t collect unnecessary data. But what about the code hosting service and their content delivery network? You now have two more parties that can collect data of your site visitors, do you have any idea what they are doing with that data?</li>
+		<li>Security: You are betting the security of your website on the security of the external code hosting and their content delivery network. If either of them is compromised, they can do anything to your website. As mentioned in the <a href="/2014/06/27/third-party-javascript-more-critical-than-ever">previous blog post</a>, you could suddenly discover propaganda messages on your website, or it could start distributing malware to your visitors.</li>
+	</ul>
+
+	<p>It&#8217;s especially the last two points that make externally hosted JavaScript libraries a risk not worth taking in my opinion. The advantages are really minor and definitely not worth giving external parties control over your website.</p>

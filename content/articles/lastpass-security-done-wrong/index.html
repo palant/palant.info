@@ -1,0 +1,32 @@
+{"title": "LastPass: Security done wrong", "date": "2017-03-23 16:37:56", "description": "", "categories": ["security", "lastpass"], "slug": "lastpass-security-done-wrong"}
+
+<p><em>Disclaimer</em>: I am the author of Easy Passwords which is also a password manager and could be considered LastPass competitor in the widest sense.</p>
+
+<p>Six month ago I wrote a <a href="https://security.stackexchange.com/a/137307/4778">detailed analysis of LastPass security architecture</a>. In particular, I wrote:</p>
+
+<blockquote>
+	<p>So much for the general architecture, it has its weak spots but all in all it is pretty solid and your passwords are unlikely to be compromised at this level. However, as described in <a href="/2016/09/16/more-last-pass-security-vulnerabilities">my blog post</a> the browser integration turned out to be a massive weakness. The LastPass extension on your computer works with decrypted data, so it needs to be extra careful &#8211; and at the moment it isn&#8217;t.</p>
+</blockquote>
+
+<p>I went on to point out Auto Fill functionality and internal messaging as the main weak spots of the Last Pass browser extensions. And what do I read in the news today? Google reporter Tavis Ormandy found two security vulnerabilities in LastPass. In which areas? Well, <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1188">Auto Fill</a> and <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1209">internal messaging</a> of course.</p>
+
+<p>Now I could congratulate myself on a successful analysis of course, but predicting these reports wasn&#8217;t really a big feat. See, I checked out LastPass after reports about two security vulnerabilities have been published last August. I looked into what those vulnerabilities were and how they have been resolved. And I promptly <a href="https://palant.de/2016/09/16/more-last-pass-security-vulnerabilities">found that the issues haven&#8217;t been resolved completely</a>. Six months later Tavis Ormandy appears to have done the same and&#8230; well, you can still find ways to exploit the same old issues.</p>
+
+<p>Altogether it looks like LastPass is a lot better at PR than they are at security. Yes, that&#8217;s harsh but this is what I&#8217;ve seen so far. In particular, security vulnerabilities have been addressed punctually, only the exact scenario reported has been tested by the developers. This time LastPass has driven it to an extreme by fixing a critical bug in their Chrome extension and announcing the fix even though <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1217">the exact same exploit was working against their Firefox extension as well</a>. But also with the bugs I reported previously nobody seemed to have an interest in going through the code base looking for other instances of the same issue, let alone taking obvious measures to harden the code against similar attacks or reconsidering the overall approach.</p>
+
+<p>In addition to that, LastPass is very insistently downplaying the impact of the vulnerabilities. For example, an issue where I couldn&#8217;t provide an exploit (hey, I&#8217;m not even a user of the product, I don&#8217;t know it too well) was deemed not a vulnerability&nbsp;&mdash; Tavis Ormandy has now demonstrated that it is exploitable after all. On other occasions LastPass only admitted what the proof of concept exploit was doing, e.g. removing passwords in case of the vulnerability published by Tavis Ormandy in August last year. The LastPass developers should have known however that the messaging interface he hijacked could do far more than that.</p>
+
+<p>This might be the reason why this time Tavis Ormandy shows how you can run arbitrary applications through LastPass, it&#8217;s hard to deny that the issue is really, really bad. So this time their announcement says:</p>
+
+<blockquote>
+	<p><ul>
+	<li>Our investigation to date has not indicated that any sensitive user data was lost or compromised</li>
+	<li>No site credential passwords need to be changed</li><br />
+</ul></p>
+</blockquote>
+
+<p>Sure it didn&#8217;t&nbsp;&mdash; because compromising clients this way doesn&#8217;t require access to LastPass servers. So even if black hats found this vulnerability years ago and are abusing it on a large scale, LastPass wouldn&#8217;t be likely to know. This should really have been:</p>
+
+<blockquote>
+	<p>We messed up and we don&#8217;t know whether your passwords are compromised as a result. You should probably change them now, just to be sure.</p>
+</blockquote>

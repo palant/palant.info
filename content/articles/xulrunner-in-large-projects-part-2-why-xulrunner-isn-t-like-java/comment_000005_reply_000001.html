@@ -1,0 +1,9 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Interesting &#8211; I never heard about the -install-app flag before, probably a sign of it being very popular :). It is somewhat useless without a working mechanism to deploy/update <span class="caps">XULR</span>unner (other than on Linux).</p>
+
+	<p>Upstreaming patches is always very problematic, that&#8217;s probably what my next article is going to talk about. I doubt that Flock had more problems there than anybody else. Anyway, I mentioned building a browser from a technical point of view &#8211; not a political one.</p>
+
+	<p>Sure, js-ctypes are only a partial solution, they won&#8217;t eliminate the necessity to write platform-dependent code &#8211; yet they make accessing OS libraries a lot easier. Particularly applications that only need to access a few OS functions will profit, both because C++ code becomes unnecessary and because the application no longer needs to be compiled on all platforms.</p>
+
+	<p>PyXPCOM is unfortunately something that is rather complex yet not necessary for Firefox. And you are right of course &#8211; Mozilla doesn&#8217;t act as a platform vendor here.</p>

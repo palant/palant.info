@@ -1,0 +1,12 @@
+{"publishDate": "2009-05-30 15:07:41", "author": "Spade", "authorUrl": "", "id": "000029"}
+
+	<p>@ Zo (and others),</p>
+
+	<p>I&#8217;m on Mac OS X, and I too had first used Flash settings to deny sites from writing out Flash cookies, then (after discovering how useless that was) I locked the &#8220;~/Library/Preferences/Macromedia/Flash Player&#8221; folder to forcibly prevent changes.</p>
+
+	<p>However, I kept running into sites where Flash video wouldn&#8217;t play in any browser. As Wladimir has (repeatedly!) pointed out here, simply preventing Flash from being able set its cookies (regardless of how you do it) breaks functionality on too many sites.</p>
+
+	<p>So instead, taking a cue from the reply to #7 above, I wrote a bash script containing the line &#8220;rm -rf ~/Library/Preferences/Macromedia/Flash\ Player&#8221; (without the quotes), and set it to run every five minutes using the excellent open-source Lingon program (http://tuppis.com/lingon/).</p>
+
+	<p>This accomplishes the same thing under OS X that Wladimir&#8217;s scheduled script accomplishes under Windows (except that mine deletes just the Flash Player folder, rather than the entire Macromedia folder). Since doing this, I no longer have trouble with Flash video sites.</p>
+

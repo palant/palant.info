@@ -1,0 +1,131 @@
+{"title": "Five wrong reasons to use eval() in an extension", "date": "2009-02-06 12:35:45", "description": "", "categories": ["security", "xul"], "slug": "five-wrong-reasons-to-use-eval-in-an-extension"}
+
+	<p>One of the most overused JavaScript features is the <code>eval()</code> function. I have seen it used in very many extensions but only a few actually had a good reason to use it. So I want to go through all the <strong>wrong</strong> reasons one would use <code>eval()</code>.</p>
+
+	<h4>1. Processing <span class="caps">JSON</span> data</h4>
+
+	<p>The <span class="caps">JSON</span> format got popular for storing data lately. Its most convenient feature: it is so easy to parse! I mean, all you have to do is to write <code>data = eval(json)</code> and you are done.</p>
+
+	<p>What&#8217;s the catch? Right, <code>json</code> variable might contain something like <code>{foo: &quot;bar&quot; + alert(Components.classes)}</code> and then you will end up running JavaScript code, something that you didn&#8217;t intend. So this way of parsing <span class="caps">JSON</span> data is absolutely unsuitable for data coming from untrusted sources. And guess what: if you are a Firefox extension, data coming from <strong>any</strong> web server is untrusted. Even if it is &#8220;your&#8221; web server, it might be hacked or the data might have been manipulated on its way to the user (especially for unencrypted connections), and you really don&#8217;t want to put users at risk when something like that happens.</p>
+
+	<p>But there is more: even the data that your extension wrote itself (e.g. extension state saved on browser shutdown) cannot be always considered trusted. Often it will write out data that it received from the web in one way or other. If there is a bug in the way <span class="caps">JSON</span> is written and that data breaks out of JavaScript strings you will unintentionally run JavaScript code when you &#8220;parse&#8221; that <span class="caps">JSON</span>. This means that it is always better to use <a href="https://developer.mozilla.org/en/JSON">methods dedicated to processing <span class="caps">JSON</span></a> that will no longer run JavaScript when receiving invalid data.</p>
+
+	<h4>2. Using object properties when property name is determined dynamically</h4>
+
+	<p>What if your code needs to access <code>obj.fooN</code> where &#8220;N&#8221; is the value of the variable <code>n</code>? Meaning that the name of the property you have to access is not known in advance but has to be determined dynamically. Extensions will sometimes do things like <code>eval(&quot;obj.foo&quot; + n)</code> to solve this problem. Here the extension would need to verify that the value of <code>n</code> cannot contain anything malicious&nbsp;&mdash; but how?</p>
+
+	<p>Fortunately, that question doesn&#8217;t need to be answered. There is a better way, one only has to remember that all objects in JavaScript are associative arrays. In other words, <code>obj.foo</code> and <code>obj[&quot;foo&quot;]</code> are exactly the same thing, each property is at the same type an array member. So to solve the problem above you simply need to write <code>obj[&quot;foo&quot; + n]</code> and that operation will always access a property, never do anything else.</p>
+
+	<p>But what about methods? Methods in JavaScript are properties as well, only difference is that their value is a function. You can use the method <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Function/call">Function.call()</a> to call that function with the correct value of the <code>this</code> pointer:</p>
+
+<pre><code>var method = obj[&quot;foo&quot; + n];
+method.call(obj, param1, param2);
+</code></pre>
+
+	<p>Or in a more compressed way:</p>
+
+<pre><code>obj[&quot;foo&quot; + n](param1, param2);
+</code></pre>
+
+	<p>Same approach can even be applied to global variables and functions. Those are all properties of the &#8220;global object&#8221; which can usually be referenced by the name <code>window</code>. So <code>window.foo</code> or <code>window[&quot;foo&quot;]</code> will give you the value of the global variable <code>foo</code>.</p>
+
+	<h4>3. Telling functions what they should do when they are done</h4>
+
+	<p>One pattern that I would occasionally see is calling a function like this:</p>
+
+<pre><code>foo(&quot;window.close()&quot;);
+</code></pre>
+
+	<p>On other occasions the same function would be called with different JavaScript code as parameter. And when the function is done it would call <code>eval()</code> on its parameter to run the specified action.</p>
+
+	<p>Obviously, there are no security issues here, so what&#8217;s wrong with that approach? Actually, several things:</p>
+
+	<ul>
+		<li>This code will not be compiled until <code>eval()</code> is called. That means that while the JavaScript interpreter will report syntax errors for the rest of the code immediately when the script is loaded, syntax errors in the function parameter will be reported late and might go unnoticed simply because you never tested the code path that will run that code.</li>
+		<li>Another consequence is that for errors in that code the JavaScript interpreter cannot report the correct source file and line number, it simply doesn&#8217;t know where that code came from. Debugging such errors is no fun.</li>
+		<li>Finally, passing parameters between <code>foo()</code> and the executed code is non-trivial and requires ugly workarounds.</li>
+	</ul>
+
+	<p>Fortunately, all these problems go away if you <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide/Working_with_Closures">use closures</a>. Here is a rewritten an slightly extended version of the code above:</p>
+
+<pre><code>foo(function(error)
+{
+  alert(error);
+  window.close();
+});
+</code></pre>
+
+	<p>And the function <code>foo()</code> would look like this:</p>
+
+<pre><code>function foo(callback)
+{
+  ...
+  callback(&quot;Full success&quot;);
+}
+</code></pre>
+
+	<h4>4. Triggering inline event handlers in <span class="caps">HTML</span> or <span class="caps">XUL</span></h4>
+
+	<p>Let&#8217;s assume we have a button like this:</p>
+
+<pre><code>&lt;button id=&quot;button&quot; oncommand=&quot;doSomething();&quot;/&gt;
+</code></pre>
+
+	<p>Then why not do <code>eval(document.getElementById(&quot;button&quot;).getAttribute(&quot;oncommand&quot;))</code> to trigger that event handler? Typically, extensions will do this to trigger event handlers on elements that aren&#8217;t their own. However, generating a &#8220;command&#8221; event is much easier and will work regardless of how the event handler is defined:</p>
+
+<pre><code>document.getElementById(&quot;button&quot;).doCommand();
+</code></pre>
+
+	<p>The method <code>doCommand()</code> is available for all <span class="caps">XUL</span> elements. As to other events, it is better to generate a real event object using <a href="https://developer.mozilla.org/en/DOM/document.createEvent">document.createEvent()</a> &mdash; because the event handler might expect one. For example:</p>
+
+<pre><code>var event = document.createEvent(&quot;MouseEvents&quot;);
+event.initMouseEvent(&quot;click&quot;, true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+document.getElementById(&quot;button&quot;).dispatchEvent();
+</code></pre>
+
+	<p>But what if you defined your own custom attribute &#8220;onfooaction&#8221; that isn&#8217;t associated with any real event? Even in that situation using <code>eval()</code> isn&#8217;t the best choice because then the code will execute in the context of the function calling <code>eval()</code>. So if the event handler is using the global variable <code>foo</code> but your function calling that event handler has a local variable <code>foo</code>&nbsp;&mdash; the event handler will inadvertently access the local variable. And of course you cannot pass parameters to the event handler then. A better solution would be creating a function for the event handler:</p>
+
+<pre><code>var handler = new Function(&quot;param1&quot;, &quot;param2&quot;, document.getElementById(&quot;button&quot;).getAttribute(&quot;onfooaction&quot;));
+handler(&quot;foo&quot;, &quot;bar&quot;);
+</code></pre>
+
+	<p>In this scenario the event handler will get &#8220;foo&#8221; as parameter <code>param1</code> and &#8220;bar&#8221; as parameter <code>param2</code> (this is how the usual inline event handlers get the <code>event</code> parameter).</p>
+
+	<h4>5. Rewriting browser&#8217;s functions</h4>
+
+	<p>Occasionally I see code that goes like this:</p>
+
+<pre><code>gBrowser.foo = eval(gBrowser.foo.toString().replace(&quot;foo&quot;, &quot;bar&quot;));
+</code></pre>
+
+	<p>I recommend a public spanking for everybody who is rewriting browser&#8217;s functions  like this. It is only slightly better than the extensions that simply replace browser&#8217;s functions by their own. The assumption in both cases is that the code of the function being rewritten never changes&nbsp;&mdash; but what if it does? In the best-case scenario the extension will simply stop working, not much damage done. But it could just as easily break the browser. Or, if the browser function changed to fix a security issue, the extension could reintroduce that issue.</p>
+
+	<p>In other words&nbsp;&mdash; don&#8217;t do this. In most cases the idea is not to change the way the browser function works but to insert additional code before/after it runs. Fortunately, there is a less dangerous way to achieve just this, you simply wrap the original function in your own, <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide/Working_with_Closures">using closures again</a>:</p>
+
+<pre><code>var origFoo = gBrowser.foo;
+gBrowser.foo = function(param1, param2)
+{
+  if (param1 == &quot;top secret&quot;)
+    doSomethingBeforeFoo();
+  var result = origFoo.apply(this, arguments);
+  if (result == null)
+    doSomethingAfterFoo();
+  return result;
+}
+</code></pre>
+
+	<p>Note how <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Function/apply">Function.apply()</a> is used to call the original function will all parameters you got. Even if that function receives only two parameters now this might change in a future browser version. Your extension might now know what to do with the new parameters but it should still pass them to the original function to avoid breaking it.</p>
+
+	<h4>What about the valid uses of eval()?</h4>
+
+	<p>I don&#8217;t think there are all that many valid uses for the <code>eval()</code> function. Some extensions allow users to enter JavaScript code that will be evaluated. Here <code>eval()</code> is justified though it might still be better create a function using <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Function#Syntax">Function() constructor</a> and pass any variables that script might need explicitly as function parameters.</p>
+
+	<p>Another possible use of <code>eval()</code> is declaring constants conditionally:</p>
+
+<pre><code>if (typeof MY_CONSTANT == &quot;undefined&quot;)
+  eval(&quot;const MY_CONSTANT = &#39;foo&#39;&quot;);
+</code></pre>
+
+	<p>That way if another script decides to declare the same constant you won&#8217;t get a syntax error. I still consider this approach a hack however: if you are afraid of clashing with unknown scripts running in same namespace you should make sure that your constants (as well as global variables) have unique names that other scripts won&#8217;t use. And as to your own scripts, making sure that the script containing constant declarations isn&#8217;t loaded more than once shouldn&#8217;t be too hard.</p>
+
+	<p>Finally, there are those obfuscated or &#8220;packed&#8221; scripts that make heavy use of <code>eval()</code> to generate their code at runtime. While I see the value of &#8220;compressing&#8221; scripts on the web, doing the same in extensions makes very little sense. Extensions are downloaded only once so saving two seconds of download time won&#8217;t help anybody. On the other hand, the &#8220;packed&#8221; script will cause delays every time it needs to be loaded which might be pretty often.</p>

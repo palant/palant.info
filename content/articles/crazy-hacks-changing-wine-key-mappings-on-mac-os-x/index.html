@@ -1,0 +1,38 @@
+{"title": "Crazy hacks: Changing Wine key mappings on Mac OS X", "date": "2014-02-14 19:07:09", "description": "", "categories": ["wine", "os-x"], "slug": "crazy-hacks-changing-wine-key-mappings-on-mac-os-x"}
+
+	<p>One of the biggest quirks of using a Mac is its keyboard&nbsp;&mdash; in addition to the usual Control (⌃) and Alt a.k.a. Option (⌥) keys you also have the Command (⌘) key. Unlike on Windows or Linux, the Control key is rarely used at all, the only really important shortcut key being Control-Tab. Instead, most shortcut keys use Command as modifier. So as a Mac user you quickly learn to press Command for pretty much any key combination.</p>
+
+	<p>This works well as long as you stick to native OS X applications. As soon as you run Windows applications via Wine however you get into trouble: in order to map Mac keys to Windows keys Wine associates the Control key with Control. Consequently, in Wine you have to for example press Control-C to copy text instead of Command-C. You also have to remember that all other shortcut keys use Control instead of Command which is very annoying.</p>
+
+	<p>Given that the best key mapping is a matter of taste, one would expect Wine to be configurable as far as key mappings go. Yet pretty much everything you find on that topic tells you to change Xorg key mappings. This works if you are on Linux or using an old Wine version that requires Xorg. However, current Wine versions have a Mac Driver that allows them to run on OS X natively, without the awkward detour through Xorg. And other than these outdated advises I could only find a <a href="http://apple.stackexchange.com/q/108214/66895">question on apple.stackexchange.org</a> &mdash; unanswered of course (I answered it in the meantime).</p>
+
+	<p>Given the lack of documentation, studying the source code is the only option. The important function here is <a href="http://source.winehq.org/source/dlls/winemac.drv/keyboard.c?v=wine-1.7.12#L580">macdrv_compute_keyboard_layout()</a> that does various things trying to guess the best keyboard mapping&nbsp;&mdash; yet none of the steps appear to be configurable (yes, I filed a <a href="http://bugs.winehq.org/show_bug.cgi?id=35351">change request</a>). There is also a hardcoded mapping table called <a href="http://source.winehq.org/source/dlls/winemac.drv/keyboard.c?v=wine-1.7.12#L181">default_map</a> that is uses as a fallback and that&#8217;s exactly what is being used for the modifier keys. This means, in order change the mapping of modifier keys one has to modify that table in the compiled binary (that would be <code>/Applications/Wine.app/Contents/Resources/lib/wine/winemac.drv.so</code> on my computer).</p>
+
+	<p><b>Warning</b>: Perform the following steps at your own risk and keep a backup of the original file. Note that you will have to redo this procedure whenever Wine is updated.</p>
+
+	<p>The mapping for the two Command keys is defined by the following lines:</p>
+
+<pre>
+{ VK_RMENU,                 0x38 | 0x100,   TRUE },     /* kVK_RightCommand */
+{ VK_LMENU,                 0x38,           TRUE },     /* kVK_Command */
+</pre>
+
+	<p>For the binary representation of these lines one has to keep in mind that <code>WORD</code> (type of the first two fields) is a two byte integer whereas <code>BOOL</code> (type of the last field) is a four byte integer. You will also need to consult the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd375731%2528v%3Dvs.85%2529.aspx">list of Windows virtual key codes</a> (<code>VK_RMENU</code> has the value <code>A5</code> and <code>VK_LMENU</code> the value <code>A4</code>). The second field is a <a href="http://msdn.microsoft.com/en-us/library/aa299374%2528v%3Dvs.60%2529.aspx">key scan code</a> defining the physical key being pressed. So the compiled binary should contain the following byte sequences:</p>
+
+<pre>
+A5 00 38 01 01 00 00 00
+A4 00 38 00 01 00 00 00
+</pre>
+
+	<p>Any hex editor should be able to open the binary and find these bytes, in my case they were located at hexadecimal offset <code>62770</code>. In order to change the mapping to <code>VK_RCONTROL</code> and <code>VK_LCONTROL</code> one could change these bytes to:</p>
+
+<pre>
+A3 00 1d 01 01 00 00 00
+A2 00 1d 00 01 00 00 00
+</pre>
+
+	<p>Now whenever you press the Command key it will be interpreted as Control by the Windows application rather than Alt. But you will no longer have anything mapping to Alt. One option would be to change the mapping of the Control key but I prefer to keep it mapped to Control in order for Control-Tab to work in Windows applications. The other option is to map the Option key to Alt, normally it is unmapped.</p>
+
+	<p>All unmapped keys are represented by eight zeroes so you will have to find the corresponding entry by position relative to other keys&nbsp;&mdash; three and six entries behind the left Command key for the left and right Option key respectively. You can put the original values for the Command keys there. This will work for combinations like Alt-F4 yet menu shortcuts like Alt-F won&#8217;t work&nbsp;&mdash; on OS X most combinations involving letters and the Option key are used to enter special characters. Still, you can press Alt to enter the menu and cursor keys to navigate which is a lot more than you can usually do with OS X menus.</p>
+
+	<p>Of course, there are more options&nbsp;&mdash; e.g. you could leave the left Command key mapped to Alt. Choose your poison, and in time Wine developers will hopefully make this post obsolete.</p>

@@ -1,0 +1,14 @@
+{"title": "AMO getting serious about add-on security", "date": "2009-11-14 14:36:54", "description": "", "categories": ["xul", "security"], "slug": "amo-getting-serious-about-add-on-security"}
+
+	<p>Good news: <span class="caps">AMO</span> is finally getting serious about improving security of add-ons. Several bugs that I filed almost a year ago and didn&#8217;t have time to follow up on have suddenly seen some movement, even to the point of setting a two weeks deadline to resolve the security issues (thanks, Jorge). Sure, this approach won&#8217;t make you new friends and one add-on author preferred to remove his add-ons rather than fix them. But it is really overdue to start enforcing policies.</p>
+
+	<p>One particularly sore point are <span class="caps">RSS</span> feed reader extensions, every time I look into one I find security issues. In my understanding, an extension that regularly deals with untrusted content from the web should implement two security mechanisms:</p>
+
+	<ul>
+		<li>Input sanitizing: remove any potentially dangerous content from the <span class="caps">RSS</span> feeds, particularly make sure no active content (JavaScript, Flash etc.) is allowed. Blacklist approaches like &#8220;allow everything but <span class="caps">SCRIPT</span> and <span class="caps">OBJECT</span> tags&#8221; aren&#8217;t worth anything because with something as powerful as <span class="caps">HTML</span> they are always easy to circumvent. It has to be a whitelist approach, there should be a list of tags and attributes that are allowed and everything else would be removed. Fortunately, nobody needs to implement this from scratch, Firefox already has <a href="https://developer.mozilla.org/en/nsIScriptableUnescapeHTML#parseFragment%28%29">the code necessary</a> built-in and uses it for feed display rather successfully.</li>
+		<li>Just in case that the input sanitizer fails the feed reader should display the feed content in unprivileged context and establish a security boundary between it and browser&#8217;s chrome. I&#8217;ve <a href="/2009/01/28/displaying-web-content-in-an-extension-without-security-issues">written about this before</a>.</li>
+	</ul>
+
+	<p>With these two mechanisms the extension would be very unlikely to expose a security hole due to a developer mistake. Sadly, I&#8217;ve yet to see an <span class="caps">RSS</span> feed reader that would implement both, most didn&#8217;t even implement one properly. I hope this will change now.</p>
+
+	<p><strong>Update</strong> (2009-11-20): Ouch, for Sage this comes <a href="http://www.net-security.org/secworld.php?id=8527">too late</a>. I filed a bug on this vulnerability in June 2008. So much on &#8220;We will be rewriting the sanitizer to use the Gecko parser&#8221; (the famous last words).</p>

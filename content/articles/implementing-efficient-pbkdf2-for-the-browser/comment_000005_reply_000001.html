@@ -1,0 +1,11 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Well, everybody agreeing is just the regular filter bubble :). I obviously disagree. Deterministic password generation can be bad if implemented incorrectly (which is sadly the usual case), but with proper crypto to back it up the disadvantage compared to your encrypted password storage is purely theoretical.</p>
+
+	<p>As to plaintext metadata, it&#8217;s not really a disadvantage as long as that data is on your computer &#8211; you have your regular browsing history there as well. In fact, being able to print it is actually a huge advantage &#8211; not sure about you but I am very concerned about losing my data in a hard drive crash, and with data as important as my passwords I&#8217;m not even inclined to trust backups (no, I don&#8217;t have the time to verify integrity of my backups on a regular basis, just like most people). So having that piece of paper around and knowing that I can easily restore all my passwords as long as I have it is quite a relief.</p>
+
+	<p>As to sync functionality, there is an important reason why the metadata is going to be synced without encryption &#8211; I&#8217;m sure that you want sync to always work in background, not just when you unlocked Easy Passwords with your master password. If encryption were required, the extension wouldn&#8217;t be able to perform a sync as long as it doesn&#8217;t know your master password.</p>
+
+	<p>And it isn&#8217;t such a huge privacy issue as it would seem. The data isn&#8217;t being uploaded to some server I own. The sync functionality will rather use your Dropbox or Google Drive account. So the only parties being able to access it will be you (isn&#8217;t it nice to verify what Easy Passwords stores there?) and the provider. And I assume that you already trust either Dropbox or Google with data that is much more private than that list of websites and account names.</p>
+
+	<p>Side-note: mind entering a valid email address or leaving it out completely when commenting? If you enter an email address the blog will try to notify you about my response and I get a bounce back.</p>

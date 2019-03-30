@@ -1,0 +1,13 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>I didn&#8217;t just read the announcement, I also studied the comments and all other available information. There isn&#8217;t a whole lot of it.</p>
+
+	<p>Yes, the announcement was formulated very awkwardly &#8211; it started with well-known upcoming changes (signing and e10s) only to drop the bomb towards the end of it. It&#8217;s not surprising that everybody is ignoring the first part of the announcement, these topics have been discussed many times before. However, the way it was presented, deprecating <span class="caps">XUL</span>/XPCOM and introducing WebExtensions is very much related, with the latter being the preferred option in the new <span class="caps">XUL</span>-free world.</p>
+
+	<p>Why the cross-browser portability (or an illusion of such) is suddenly more important than continuance is exactly my question here. Experience shows that extension frameworks take years to become usable. This was the case for the <span class="caps">SDK</span> and it was the same with Chrome&#8217;s extension <span class="caps">API</span>s. I might understand the decision to start over if Chrome&#8217;s <span class="caps">API</span>s were an architectural masterpiece &#8211; but they are not, <span class="caps">IMHO</span> they are inferior to the Add-on <span class="caps">SDK</span>.</p>
+
+	<p>Note that Adblock Plus exists for both Firefox and Chrome &#8211; and yet we are horrified at the prospect of using the Chrome version in Firefox. Supporting Chrome always required hacks and tradeoffs, much of the functionality simply couldn&#8217;t be ported at all. Adblock Plus for Firefox was always the extension where we could do things properly and provide the best user experience.</p>
+
+	<p>Note that all Firefox add-ons I worked on are restartless, not based on the <span class="caps">SDK</span> however. That&#8217;s what you mean by &#8220;blank bootstrap.js file&#8221; apparently. My understanding is that these add-ons are deprecated as well now &#8211; add-ons are no longer supposed to access browser internals, only via high-level <span class="caps">SDK</span> modules or WebExtensions. Everything else would still mean that add-ons depend on browser&#8217;s implementation details, so interdependencies between browser and add-on development won&#8217;t be resolved.</p>
+
+	<p>I don&#8217;t mind having WebExtensions around, there is certainly a use case for it. But &#8211; no, I think that the announcement definitely goes in the direction that WebExtensions are to become the preferred and in the long term the only framework for developing extensions.</p>

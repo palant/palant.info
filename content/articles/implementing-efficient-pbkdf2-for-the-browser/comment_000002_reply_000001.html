@@ -1,0 +1,3 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Good random numbers are very important when generating encryption keys, this is irrelevant for Easy Passwords. The only weak spot I can think of here are potential buffer overflows and similar edge conditions. But even if you take away the fact that the data is largely supplied by the user himself, we aren&#8217;t running native code here &#8211; it&#8217;s JavaScript. You can compromise the memory of a single asm.js script but all you can potentially achieve that way is generating a broken password for the manipulated input. Easy Passwords currently spins up a new worker for each password generated, so no other operations can be affected.</p>

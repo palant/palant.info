@@ -1,0 +1,258 @@
+{"title": "Security considerations for password generators", "date": "2016-04-20 12:42:30", "description": "Generating unique passwords deterministically from a single master password is a compelling concept, but there are fall traps to consider.", "categories": ["security"], "slug": "security-considerations-for-password-generators"}
+
+<p>When I started writing <a href="/2016/04/19/introducing-easy-passwords-the-new-best-way-to-juggle-all-those-passwords">my very own password generation extension</a> I didn&#8217;t know much about the security aspects. In theory, any hash function should do in order to derive the password because hash functions cannot be reversed, right? Then I started reading and discovered that one is supposed to use <a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a>. And not just that, you had to use a large number of iterations. But why?</p>
+
+<h4>Primary threat scenario: Giving away your master password</h4>
+
+<p>That&#8217;s the major threat with password generators: some website manages to deduce your master password from the password you used there. And once they have the master password they know all your other passwords as well. But how can this happen if hash functions cannot be reversed? Problem is, one can still guess your master password. They will try “password” as master password first&nbsp;&mdash; nope, this produces a different password for their site. Then they will try “password1” and get a match. Ok, now they know that your master password is most likely “password1” (it could still be something else but that&#8217;s quite unlikely).</p>
+
+<p>Of course, a number of conditions have to be met for this scenario. First, a website where you have an account should be malicious&nbsp;&mdash; or simply leak its users database which isn&#8217;t too unlikely. Second, they need to know the algorithm you used to generate your password. However, in my case everybody knows now that I&#8217;m using <a href="https://addons.mozilla.org/addon/easy-passwords/">Easy Passwords</a>, no need to guess. And even for you it&#8217;s generally better if you <a href="https://en.wikipedia.org/wiki/Security_through_obscurity">don&#8217;t assume that they won&#8217;t figure out</a>. And third, your master password has to be guessable within “finite” time. Problem is, if people start <a href="http://www.tomshardware.com/reviews/password-recovery-gpu%2C2945-6.html">guessing passwords with <span class="caps">GPU</span>s</a> most passwords fall way too quickly.</p>
+
+<p>So, how does one address this issue? First, the master password clearly needs to be a strong one. But choosing the right hashing algorithm is also important. PBKDF2 makes guessing hard because it is computationally expensive&nbsp;&mdash; depending on the number of iterations generating a single password might take a second. A legitimate user won&#8217;t notice this delay, somebody who wants to test millions of guesses however will run out of time pretty quickly.</p>
+
+<p>There are more algorithms, e.g. <a href="https://en.wikipedia.org/wiki/PBKDF2#Alternatives_to_PBKDF2">bcrypt and scrypt are even better</a>. However, none of them found its way into Firefox so far. Since Easy Passwords is using the native (fast) PBKDF2 implementation in Firefox it can use a very high number of iterations without creating noticeable delays for the users. That makes guessing master passwords impractical on current hardware as long as the master password isn&#8217;t completely trivial.</p>
+
+<p>To be precise, Easy Passwords is using PBKDF2-<span class="caps">HMAC</span>-SHA1 with 262,144 iterations. I can already hear some people exclaiming: “SHA1??? Old and busted!” Luckily, all the attacks against SHA1 and even MD5 are all about producing <a href="http://security.stackexchange.com/a/31846">hash collisions which are completely irrelevant for password generation</a>. Still, I would have preferred using SHA256, yet Firefox doesn&#8217;t support PBKDF2 with SHA256 yet. So it&#8217;s either SHA1 or a JavaScript-based implementation which will require a significantly reduced iteration count and result in a less secure solution.</p>
+
+<p>Finally, it&#8217;s a good measure to use a random salt when hashing passwords&nbsp;&mdash; different salts would result in different generated passwords. A truly random salt would usually be unknown to potential attackers and make guessing master passwords impossible. However, that salt would also make recreating passwords on a different device complicated, one would need to back up the salt from the original device and transfer it to the new one. So for Easy Passwords I chose a compromise: the salt isn&#8217;t really random, instead the user-defined password name is used as salt. While an attacker will normally be able to guess the password&#8217;s name, it still makes his job significantly more complicated.</p>
+
+<h4 id="overview">What about other password generators?</h4>
+
+<p>In order to check my assumptions I looked into what the other password generators were doing. I found more than twenty password generator extensions for Firefox, and most of them apparently didn&#8217;t think much about hashing functions. You have to keep in mind that none of them gained significant traction, most likely due to usability issues. The results outlined in the table below should be correct but I didn&#8217;t spend much time figuring out how these extensions work. For a few of them I noticed issues beyond their choice of a hashing algorithm, for others I might have missed these issues.</p>
+
+<table>
+		<tr>
+			<th>Extension</th>
+			<th>User&nbsp;count</th>
+			<th>Hashing algorithm</th>
+			<th>Security</th>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/passwordmaker/">PasswordMaker</a> </td>
+			<td style="text-align:right;">3056 </td>
+			<td> SHA256/SHA1/MD4/MD5/RIPEMD160, optionally with <span class="caps">HMAC</span> </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/password-hasher/">Password Hasher</a> </td>
+			<td style="text-align:right;">2491 </td>
+			<td> SHA1 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/pwdhash/">PwdHash</a> </td>
+			<td style="text-align:right;">2325 </td>
+			<td> <span class="caps">HMAC</span>+MD5 </td>
+			<td style="color:red;">Very weak<sup class="footnote" id="fnrev20079683095ba2932d940e5-1"><a href="#fn20079683095ba2932d940e5-1">1</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/hash-password-generator/">Hash Password Generator</a> </td>
+			<td style="text-align:right;">291 </td>
+			<td> Custom (same as Magic Password Generator) </td>
+			<td style="color:red;">Very weak</td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/password-maker-x/">Password Maker X</a> </td>
+			<td style="text-align:right;">276 </td>
+			<td> SHA256/SHA1/MD4/MD5/RIPEMD160, optionally with <span class="caps">HMAC</span> </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/masterpassword-firefox/">masterpassword for Firefox</a> </td>
+			<td style="text-align:right;">155 </td>
+			<td> scrypt, cost parameter 32768, user-defined salt </td>
+			<td style="color:orange;">Medium<sup class="footnote" id="fnrev20079683095ba2932d940e5-2"><a href="#fn20079683095ba2932d940e5-2">2</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/upassword/">uPassword</a> </td>
+			<td style="text-align:right;">115 </td>
+			<td> SHA1 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/vpass-password-generator/">vPass Password Generator</a> </td>
+			<td style="text-align:right;">88 </td>
+			<td> <a href="https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm"><span class="caps">TEA</span></a>, 10 iterations </td>
+			<td style="color:red;">Weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/passwordgen-for-firefox-1/">Passwordgen For Firefox 1</a> </td>
+			<td style="text-align:right;">77 </td>
+			<td> SHA256 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/recall-my-password/">Recall my password</a> </td>
+			<td style="text-align:right;">64 </td>
+			<td> SHA512 </td>
+			<td style="color:red;"> Very weak<sup class="footnote" id="fnrev20079683095ba2932d940e5-3"><a href="#fn20079683095ba2932d940e5-3">3</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/phashword/">Phashword</a> </td>
+			<td style="text-align:right;">57 </td>
+			<td> SHA1 </td>
+			<td style="color:red;"> Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/passera/">Passera</a> </td>
+			<td style="text-align:right;">52 </td>
+			<td> SHA512 </td>
+			<td style="color:red;"> Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/my-password/">My Password</a> </td>
+			<td style="text-align:right;">51 </td>
+			<td> MD5 </td>
+			<td style="color:red;"> Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/hashpass-firefox/">HashPass Firefox</a> </td>
+			<td style="text-align:right;">48 </td>
+			<td> MD5/SHA1/SHA256/SHA512 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/unipass/">UniPass</a> </td>
+			<td style="text-align:right;">33 </td>
+			<td> SHA256, 4,096 iterations </td>
+			<td style="color:red;">Weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/rndphrase/">RndPhrase</a> </td>
+			<td style="text-align:right;">29 </td>
+			<td> <a href="https://en.wikipedia.org/wiki/CubeHash">CubeHash</a> </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/domain-password-generator/">Domain Password Generator</a> </td>
+			<td style="text-align:right;">29 </td>
+			<td> SHA1 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/passwordprotect/">PasswordProtect</a> </td>
+			<td style="text-align:right;">28 </td>
+			<td> SHA1, 10,000 iterations </td>
+			<td style="color:red;">Weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/pswgen-toolbar/">PswGen Toolbar v2.0</a> </td>
+			<td style="text-align:right;">24 </td>
+			<td> SHA512 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/uniquepasswordbuilder-addon/">UniquePasswordBuilder Addon</a> </td>
+			<td style="text-align:right;">13 </td>
+			<td> scrypt, cost factor 1024 by default </td>
+			<td style="color:green;">Strong<sup class="footnote" id="fnrev20079683095ba2932d940e5-4"><a href="#fn20079683095ba2932d940e5-4">4</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/extrasafe/">Extrasafe</a> </td>
+			<td style="text-align:right;">12 </td>
+			<td> SHA3 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/hash0/">hash0</a> </td>
+			<td style="text-align:right;">9 </td>
+			<td> PBKDF2+HMAC+SHA256, 100,000 iterations, random salt </td>
+			<td style="color:green;">Very strong<sup class="footnote" id="fnrev20079683095ba2932d940e5-5"><a href="#fn20079683095ba2932d940e5-5">5</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/strong-password-generator/">MS Password Generator</a> </td>
+			<td style="text-align:right;">9 </td>
+			<td> SHA1 </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/vault/">Vault</a> </td>
+			<td style="text-align:right;">9 </td>
+			<td> PBKDF2+HMAC+SHA1, 8 iterations, fixed salt </td>
+			<td style="color:red;">Weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/bpasswd2/">BPasswd2</a> </td>
+			<td style="text-align:right;">8 </td>
+			<td> bcrypt, 64 iterations by default, user-defined salt </td>
+			<td style="color:red;">Weak<sup class="footnote" id="fnrev20079683095ba2932d940e5-6"><a href="#fn20079683095ba2932d940e5-6">6</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/sebres-pwd-hasher/">Persistent &quot;Magic&quot; Password Generator</a> </td>
+			<td style="text-align:right;">8 </td>
+			<td> <a href="https://en.wikipedia.org/wiki/MurmurHash">MurmurHash</a> </td>
+			<td style="color:red;">Very weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/bpasswd/">BPasswd</a> </td>
+			<td style="text-align:right;">7 </td>
+			<td> bcrypt, 64 iterations </td>
+			<td style="color:red;">Weak </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/cctoo/"><span class="caps">CCTOO</span></a> </td>
+			<td style="text-align:right;">4 </td>
+			<td> scrypt, cost factor 16384, user-defined salt </td>
+			<td style="color:green;">Very strong<sup class="footnote" id="fnrev20079683095ba2932d940e5-7"><a href="#fn20079683095ba2932d940e5-7">7</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://addons.mozilla.org/addon/secpassgen/">SecPassGen</a> </td>
+			<td style="text-align:right;">2 </td>
+			<td> PBKDF2+HMAC+SHA1, 10,000 iterations by default </td>
+			<td style="color:red;">Weak<sup class="footnote" id="fnrev20079683095ba2932d940e5-8"><a href="#fn20079683095ba2932d940e5-8">8</a></sup> </td>
+		</tr>
+		<tr>
+			<td> <a href="https://github.com/arantius/magic-password-generator">Magic Password Generator</a> </td>
+			<td style="text-align:right;">? </td>
+			<td>Custom</td>
+			<td style="color:red;">Very weak</td>
+		</tr>
+</table>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-1"><sup>1</sup> The very weak hash function isn&#8217;t even the worst issue with PwdHash. It also requires you to enter the master password into a field on the web page. The half-hearted attempts to prevent the website from stealing that password are easily circumvented.</p>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-2"><sup>2</sup> Security rating for masterpassword downgraded because (assuming that I understand the approach correctly) scrypt isn&#8217;t being applied correctly. The initial scrypt hash calculation only depends on the username and master password. The resulting key is combined with the site name via <span class="caps">SHA</span>-256 hashing then. This means that a website only needs to break the <span class="caps">SHA</span>-256 hashing and deduce the intermediate key&nbsp;&mdash; as long as the username doesn&#8217;t change this key can be used to generate passwords for other websites. This makes breaking scrypt unnecessary, security rating is still “medium” however because the intermediate key shouldn&#8217;t be as guessable as the master password itself.</p>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-3"><sup>3</sup> Recall my password is quite remarkable as it manages to sent the user to the author&#8217;s website in order to generate a password for no good reason (unless the author is actually interested in stealing some of the passwords of course). Not only is it completely unnecessary, the website also has an obvious <span class="caps">XSS</span> vulnerability.</p>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-4"><sup>4</sup> Security rating for UniquePasswordBuilder downgraded because of low default cost factor which it mistakenly labels as “rounds.” Users can select cost factor 16384 manually which is very recommendable.</p>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-5"><sup>5</sup> hash0 actually went as far as paying for a <a href="https://defuse.ca/audits/hash0.htm">security audit</a>. Most of the conclusions just reinforced what I already came up with by myself, others were new (e.g. the pointer to <code>window.crypto.getRandomValues()</code> which I didn&#8217;t know before).</p>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-6"><sup>6</sup> BPasswd2 allows changing the number of iterations, anything up to 2<sup>100</sup> goes (the Sun will die sooner than this calculation completes). However, the default is merely 2<sup>6</sup> iterations which is a weak protection, and the extension neither indicates that changing the default is required nor does it give useful hints towards choosing a better value.</p>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-7"><sup>7</sup> The security rating for <span class="caps">CCTOO</span> only applies when it is used with a password, not drawn gestures. From the look of it, the latter won&#8217;t have enough entropy and can be guess despite the good hashing function.</p>
+
+<p class="footnote" id="fn20079683095ba2932d940e5-8"><sup>8</sup> Security rating for SecPassGen downgraded because the master password is stored in Firefox preferences as clear text.</p>
+
+<h4>Additional threats: Shoulder surfing &amp; Co.</h4>
+
+<p>Websites aren&#8217;t the only threat however, one classic being somebody looking over your shoulder and noting your password. Easy Passwords addresses this by never showing your passwords: it&#8217;s either filling in automatically or copying to clipboard so that you can paste it into the password field yourself. In both scenarios the password never become visible.</p>
+
+<p>And what if you leave your computer unattended? Easy Password remembers your master password once it has been entered, this is an important usability feature. The security concerns are addressed by “forgetting” the master password again after a given time, 10 minutes by default. And, of course, the master password is never saved to disk.</p>
+
+<h4>Usability vs. security: Validating master password</h4>
+
+<p>There is one more usability feature in Easy Password with the potential to compromise security. When you mistype your master password Easy Passwords will notify you about it. That&#8217;s important because otherwise wrong passwords will get generated and you won&#8217;t know why. But how does one validate the master password without storing it?</p>
+
+<p>My initial idea was storing a <span class="caps">SHA</span> hash of the master password. Then I realized that it opens the primary threat scenario again: somebody who can get their hands on this <span class="caps">SHA</span> hash (e.g. by walking past your computer when it is unattended) can use it to guess your master password. Only store a few characters of the <span class="caps">SHA</span> hash? Better but it will still allow an attacker who has both this <span class="caps">SHA</span> hash and a generated password to throw away a large number of guesses without having to spend time on calculating the expensive PBKDF2 hash. Wait, why treat this hash differently from other passwords at all?</p>
+
+<p>And that&#8217;s the solution I went with. When the master password is set initially it is used to generate a new password with a random salt, using the usual PBKDF2 algorithm. Then this salt and the first two characters of the password are stored. The two characters are sufficient to recognize typos in most cases. They are not sufficient to guess the master password however. And they won&#8217;t even provide a shortcut when guessing based on a known generated password&nbsp;&mdash; checking the master password hash is just as expensive as checking the generated password itself.</p>
+
+<h4>Encrypting legacy passwords</h4>
+
+<p>One requirement for Easy Passwords was dealing with “legacy passwords,” meaning existing passwords that cannot be changed for some reason. Instead of generating, these passwords would have to be stored securely. Luckily, there is a very straightforward solution: the PBKDF2 algorithm can be used to generate an encryption key. The password is then encrypted with <span class="caps">AES</span>-256.</p>
+
+<p>My understanding is that <span class="caps">AES</span>-encrypted data currently cannot be decrypted without knowing the encryption key. And the encryption key is derived using the same algorithm as Easy Passwords uses for generating passwords, so the security of stored passwords is identical to that of generated ones. The only drawback of such legacy passwords currently seems to be a more complicated backup approach, also moving the password from one device to another is no longer trivial.</p>
+
+<h4>Phishing &amp; Co.</h4>
+
+<p>Password generators will generally protect you nicely against <a href="https://en.wikipedia.org/wiki/Phishing">phishing</a>: a phishing website can look exactly like the original, a password generator will still produce a different password for it. But what about malicious scripts injected into a legitimate site? These will still be able to steal your password. On the bright side, they will only compromise your password for a single website.</p>
+
+<p>Question is, how do malicious scripts get to run there in the first place? One option are <a href="https://en.wikipedia.org/wiki/Cross-site_scripting"><span class="caps">XSS</span> vulnerabilities</a>, not much can be done about those. But there are also plenty of websites showing password fields on pages that are transmitted unencrypted (plain <span class="caps">HTTP</span>, not <span class="caps">HTTPS</span>). These can then be manipulated by an attacker who is in the same network as you. The idea is that Easy Passwords could warn in such cases in future. It should be possible to disable this warning for websites that absolutely don&#8217;t support <span class="caps">HTTPS</span>, but for others it will hopefully be helpful. Oh, and did I recommend using <a href="https://addons.mozilla.org/addon/enforce-encryption/">Enforce Encryption extension</a> already?</p>
+
+<p>Finally, there is the worst-case scenario: your computer could be infected with a keylogger. This is really bad because it could intercept your master password. Then again, it could also intercept all the individual passwords as you log into the respective websites, it will merely take a bit longer. I think that there is only one effective solution here: just don&#8217;t get infected.</p>
+
+<h4>Other threats?</h4>
+
+<p>There are probably more threats to consider that I didn&#8217;t think of. It might also be that I made a mistake in my conclusions somewhere. So feel free to post your own thoughts in the comments.</p>

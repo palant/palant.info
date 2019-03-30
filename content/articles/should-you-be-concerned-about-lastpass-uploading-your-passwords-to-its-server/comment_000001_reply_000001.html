@@ -1,0 +1,7 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Unfortunately, I don&#8217;t have time to check all password managers, there are simply too many. I looked at Bitwarden briefly a few months ago, and my conclusions were:</p>
+
+<p>On a first glance, I&#8217;ve certainly seen worse codebases, but it isn&#8217;t flawless either. Custom <span class="caps">URL</span> query parsing, domain checks via substring search on the host name without validating position &#8211; a security-conscious codebase usually doesn&#8217;t do that. Whether there are actual security issues I cannot tell, that would require far more effort given the size of their codebase. And they are only running a Vulnerability Disclosure Program that won&#8217;t pay for the findings.</p>
+
+<p>In fact, there is one place that looks like a tiny and completely unnecessary security issue. Verifying that it actually is one would take too much time however, not worth it.</p>

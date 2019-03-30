@@ -1,0 +1,68 @@
+{"title": "Solution to a problem nobody has: Changing Total Commander application icon", "date": "2014-02-13 10:56:21", "description": "", "categories": ["wine", "os-x"], "slug": "solution-to-a-problem-nobody-has-changing-total-commander-application-icon"}
+
+	<p>Maybe you are like me and tend to drag along your favorite Windows applications even though you switched away to a different operating system a while ago. Well, maybe not&#8230; Still, I couldn&#8217;t find any file manager for Linux or OS X that would work as well as Total Commander. So I keep running it via <a href="http://www.winehq.org/">Wine</a> and it works surprisingly well.</p>
+
+	<p>Having the standard application icon display on OS X is somewhat awkward however: with 32&#215;32 pixels it is simply too small, one would need a significantly larger icon for it to fit nicely into the OS X user interface. Wine doesn&#8217;t allow configuring the icon however, the <a href="https://source.winehq.org/source/dlls/winemac.drv/image.c?v=wine-1.7.12#L281">source code</a> shows that it will read the icon from the application resource unconditionally. Well, not really a problem&nbsp;&mdash; changing resources in Windows applications is fairly easy.</p>
+
+	<p>All you need a new high-resolution icon in .ICO format (I liked <a href="http://arrioch.deviantart.com/art/App-Icons-WIP-178569816">the one by arrioch</a>) and <a href="http://www.angusj.com/resourcehacker/">Resource Hacker</a>. Open <span class="caps">TOTALCMD</span>.EXE with Resource Hacker, select the resource in the <span class="caps">MAINICON</span> icon group, right-click it and choose &#8220;Replace Resource&#8221;&nbsp;&mdash; select the new icon, save file (did you back up the original version?), done.</p>
+
+	<p>Now you can run your modified version. Isn&#8217;t it beautiful? Wait, what&#8217;s this message: &#8220;The <span class="caps">TOTALCMD</span> executable is corrupted, possible <span class="caps">VIRUS</span>! Totalcmd will close.&#8221;? Where did Total Commander go? A search quickly tells you that this is a security mechanism and cannot be disabled. Not a very useful security mechanism of course, we have year 2014 and viruses infecting executables are almost extinct. Still, <a href="http://technet.microsoft.com/en-us/sysinternals/bb896645.aspx">Process Monitor</a> confirms that Total Commander reads in its entire executable from disk and probably builds a hash sum to verify that it hasn&#8217;t been change.</p>
+
+	<p>But what if one could make sure that the executable that is being read is the original Total Commander executable? After going through a few options I settled with the most simple one: have a launcher executable that will start the modified Total Commander executable and immediately replace it with the original one. Normally that wouldn&#8217;t work due to Windows locking the files. But my operating system isn&#8217;t Windows, it&#8217;s a Unix merely pretending to be Windows. So if the launcher runs a Unix command then that command will be able to replace files regardless of locks. Assuming that <span class="caps">TOTALCMD</span>.EXE is the original binary and TOTALCMD2.EXE the modified one, here is some code:</p>
+
+<pre><code>#include &lt;windows.h&gt;
+</code>
+<code>DWORD Run(LPWSTR command, BOOL wait)
+{
+  STARTUPINFOW si;
+  PROCESS_INFORMATION pi;
+  ZeroMemory(&amp;si, sizeof(si));
+  si.cb = sizeof(si);
+  ZeroMemory(&amp;pi, sizeof(pi));
+  si.dwFlags = STARTF_USESHOWWINDOW;
+  si.wShowWindow = SW_MAXIMIZE;
+</code>
+<code>  CreateProcessW(NULL, command, NULL, NULL, TRUE, 0, NULL, NULL, &amp;si, &amp;pi);
+  DWORD processId = GetProcessId(pi.hProcess);
+</code>
+<code>  if (wait)
+  {
+    WaitForSingleObject(pi.hProcess, INFINITE);
+</code>
+<code>    // For some reason, just waiting for the process to terminate isn&#39;t enough
+    Sleep(500);
+  }
+</code>
+<code>  CloseHandle(pi.hProcess);
+  CloseHandle(pi.hThread);
+  return processId;
+}
+</code>
+<code>int CALLBACK WinMain(
+  _In_  HINSTANCE hInstance,
+  _In_  HINSTANCE hPrevInstance,
+  _In_  LPSTR lpCmdLine,
+  _In_  int nCmdShow
+)
+{
+  // Change current directory to the directory of our executable
+  WCHAR path[MAX_PATH];
+  GetModuleFileNameW(NULL, path, MAX_PATH);
+  int pos = lstrlenW(path);
+  while (pos &gt;= 0 &amp;&amp; path[pos] != L&#39;\\&#39;)
+    pos--;
+  if (pos &gt;= 0)
+    path[pos] = 0;
+  SetCurrentDirectoryW(path);
+</code>
+<code>  Run(L&quot;/bin/sh -c \&quot;cp TOTALCMD2.EXE TOTALCMDTMP.EXE\&quot;&quot;, TRUE);
+  DWORD processId = Run(L&quot;TOTALCMDTMP.EXE&quot;, FALSE);
+</code>
+<code>  // Use debugging API to suspend the process while we are replacing the file
+  DebugActiveProcess(processId);
+  Run(L&quot;/bin/sh -c \&quot;cp TOTALCMD.EXE TOTALCMDTMP.EXE\&quot;&quot;, TRUE);
+  DebugActiveProcessStop(processId);
+}
+</code></pre>
+
+	<p>You have to compile this code on Windows or use a cross-compiler like MinGW (I did the former so I don&#8217;t really know whether you will hit any issues using a cross-compiler). Surprisingly, it actually works&nbsp;&mdash; you get Total Commander with a better icon yet the security check will still see the original binary and won&#8217;t complain.</p>

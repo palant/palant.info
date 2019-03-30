@@ -1,0 +1,13 @@
+{"publishDate": "2010-07-05 02:29:39", "author": "FlockFan", "authorUrl": "", "id": "000005"}
+
+	<p>Many of the bullet points have already been solved at least part way; .xulapp files that consist of the application in a zip file is known to exist and documented at https://developer.mozilla.org/en/XUL_Application_Packaging  Installing and removal uses &#8212;install-app and related command line arguments, and finding the version depends on /etc/gre.d.</p>
+
+	<p>Actually, writing a browser is one of the worst possible things you could be using <span class="caps">XULR</span>unner for &#8211; that puts you in direct competition with your platform vendor, and you need good relations with them to get your patches upstream.  Ask Flock about it sometime.</p>
+
+	<p>Js-ctypes isn&#8217;t the silver bullet it&#8217;s heralded to be; you still need to know what platform you are running on, since the Windows <span class="caps">API</span>s will not be available on a Mac.  Since there are no useful built-in bindings just yet, you will also need to write everything yourself.  It might make sense to write a wrapper shared library with C-style exports and tie that into js-ctypes, though &#8211; but at that point you might as well have written a <span class="caps">XPCOM</span> component, which has the benefit of being able to use the rest of the platform as appropriate.</p>
+
+	<p>At this point, using <span class="caps">XULR</span>unner for anything but toy projects is probably a bad idea &#8211; the platform vendor does not want to be one, and has just thrown their policy on <span class="caps">API</span> stability right out the window.  It seems that the options for embedding support &#8211; a different, but closely related topic &#8211; do not even consider binary compatibility at all.  Also see the persistent second-class treatment of PyXPCOM despite the fact that somebody had a vested interest in maintaining it &#8211; followed right by the various efforts to make <span class="caps">API</span>s tie right into the <span class="caps">JSAPI</span> instead of improving <span class="caps">XPIDL</span>.</p>
+
+
+
+

@@ -1,0 +1,32 @@
+{"title": "Fake \"hg rebase\" implementation", "date": "2008-10-24 09:13:21", "description": "", "categories": ["adblock-plus", "mozilla"], "slug": "fake-hg-rebase-implementation"}
+
+	<p>After doing two merges in Mercurial when I couldn&#8217;t push my changes due to totally unrelated changes in the remote repository, I noticed that <a href="https://developer.mozilla.org/en/Mercurial_FAQ#How_do_I_deal_with_.22abort.3a_push_creates_new_remote_heads!.22.3f">mq works great</a> but having a <a href="https://developer.mozilla.org/en/Mercurial/Desired_Features#hg_rebase">fully automated solution</a> instead of running several commands manually would be desirable. So I whipped up a short script that basically does what &#8220;hg rebase&#8221; would do:</p>
+
+	<pre>
+#!/bin/perl
+
+my $revisions = `hg outgoing --template '{rev}\n'`;
+my $first = 0;
+my $last = 0;
+while ($revisions =~ /^(\d+)$/gm)
+{
+  $first = $1 unless $first;
+  $last = $1;
+}
+die &quot;No outgoing changes\n&quot; unless $first;
+
+system(&quot;hg qimport -r $first:$last&quot;) &amp;&amp; exit(1);
+system(&quot;hg qpop -a&quot;) &amp;&amp; exit(1);
+system(&quot;hg pull&quot;) &amp;&amp; exit(1);
+system(&quot;hg update&quot;) &amp;&amp; exit(1);
+system(&quot;hg qpush -a&quot;) &amp;&amp; exit(1);
+
+my $patches = `hg qseries`;
+$patches =~ s/\r//g;
+$patches = &quot;-r &quot; . join(&quot; -r &quot;, split(/\n/, $patches));
+system(&quot;hg qdelete $patches&quot;) &amp;&amp; exit(1);
+</pre>
+
+	<p>I saved it as &#8220;hgrebase&#8221; in the &#8220;\mozilla-build\msys\bin&#8221; directory so now I only need to type &#8220;hgrebase&#8221; on the command line. Hope this will be helpful to some (it surely will be to me).</p>
+
+	<p><strong>Update</strong>: As Pascal points out below, there is already a qrebase extension doing mostly the same thing. And Mercurial 1.1 will have this feature built in anyway. So apparently there are other options.</p>

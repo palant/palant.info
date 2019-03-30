@@ -1,0 +1,122 @@
+{"title": "Modularization in a restartless extension", "date": "2012-07-12 15:21:57", "description": "", "categories": ["gecko"], "slug": "modularization-in-a-restartless-extension"}
+
+	<p>A simple restartless extension can probably keep all its code in the <code>bootstrap.js</code> file. However, it gets crowded there very soon. Plus there is some code that is really only boilerplate and should probably kept separate from your actual code.</p>
+
+	<p>This sounds like a job for <a href="https://developer.mozilla.org/en/JavaScript_code_modules/Using">JavaScript code modules</a>. It is mostly a matter of taste (I prefer <a href="http://www.commonjs.org/specs/modules/1.0/">CommonJS module syntax</a>) but there is one really big disadvantage of JavaScript code modules: they have to be <a href="https://developer.mozilla.org/en/Components.utils.unload">unloaded explicitly</a> when your extension is shut down. Which means that you either have to keep a list of modules to unload in your <code>bootstrap.js</code> file or add cleanup code each time you load a module. I find neither approach very compelling.</p>
+
+	<h4>Custom module loading</h4>
+
+	<p>Fortunately, a custom module loader is simple. This is the most trivial implementation for the CommonJS <code>require()</code> function:</p>
+
+<pre><code>Components.utils.import(&quot;resource://gre/modules/Services.jsm&quot;);
+var addonData = null;  // Set this in startup()
+var scopes = {};
+function require(module)
+{
+  if (!(module in scopes))
+  {
+    let url = addonData.resourceURI.spec + &quot;lib/&quot; + module + &quot;.js&quot;;
+    scopes[module] = {
+      require: require,
+      exports: {}
+    };
+    Services.scriptloader.loadSubScript(url, scopes[module]);
+  }
+  return scopes[module].exports;
+}
+</code></pre>
+
+	<p>This function keeps the scope for each module in a variable. If the scope isn&#8217;t there yet (module not loaded yet) then it will create a new scope, add itself and <code>exports</code> as global variables into that scope and load the module file into it. The module <span class="caps">URL</span> is being constructed using the information that the extension gets in its <code>startup()</code> function (here the modules are expected to be placed in the <code>lib/</code> subdirectory of the extension). And when the extension is disabled or uninstalled <code>bootstrap.js</code> will be unloaded and all the module scopes referenced here will be garbage collected automatically.</p>
+
+	<p>There is one important detail to note: the module scope in the example above is a plain object. This means however that the global variables from <code>bootstrap.js</code> will be accessible to the module, something that is often undesirable. You can prevent this by using a <a href="https://developer.mozilla.org/en/Components.utils.Sandbox">sandbox</a> instead of an object:</p>
+
+<pre><code>let principal = Components.classes[&quot;@mozilla.org/systemprincipal;1&quot;]
+                          .getService(Components.interfaces.nsIPrincipal);
+scopes[module] = Components.utils.Sandbox(systemPrincipal, {
+  sandboxName: url,
+  sandboxPrototype: {
+    require: require,
+    exports: {}
+  },
+  wantXrays: false
+});
+</code></pre>
+
+	<p>This will give the module an isolated scope&nbsp;&mdash; but also an own memory compartment. Mozilla developers work hard on making compartments and communication across compartments cheap but at the moment having multiple compartments in your extension can still increase the memory use significantly (at least that&#8217;s what I saw with Adblock Plus). Also, you will no longer be able to check the memory use of the extension on <code>about:memory</code> easily: instead of looking up one compartment you will have to add up multiple. So each approach has its advantages and disadvantages.</p>
+
+	<h4>Injecting additional variables into module scopes</h4>
+
+	<p>One advantage of a custom module loader is that you can predefine more variables than just <code>require</code> and <code>exports</code>&nbsp;&mdash; you can add anything to the scopes that you like. So I add the variables <code>Cc</code> and <code>Ci</code> to all modules, otherwise all of them would have to define these variables explicitly:</p>
+
+<pre><code>scopes[module] = {
+  require: require,
+  exports: {},
+  Cc: Components.classes,
+  Ci: Components.interfaces
+};
+</code></pre>
+
+	<h4>Accessing modules from user interface code</h4>
+
+	<p>All your modules get the <code>require()</code> function injected into their scope automatically. But what if you have some code that isn&#8217;t a module? For example, your extension opens a dialog window and it has to access one of the modules. That&#8217;s where a custom module loader has a disadvantage compared to the built-in code modules. My solution was using an observer message that could be sent whenever some external code needed access to a module. So <code>bootstrap.js</code> would have the following code:</p>
+
+<pre><code>Components.utils.import(&quot;resource://gre/modules/XPCOMUtils.jsm&quot;);
+</code>
+<code>var RequireObserver =
+{
+  observe: function(subject, topic, data)
+  {
+    if (topic == &quot;myextension-require&quot;)
+    {
+      subject.wrappedJSObject.exports = require(data);
+    }
+  },
+</code>
+<code>  QueryInterface: XPCOMUtils.generateQI([
+    &quot;nsISupportsWeakReference&quot;,
+    &quot;nsIObserver&quot;
+  ])
+};
+</code></pre>
+
+	<p>That observer needs to be registered in the <code>startup()</code> function:</p>
+
+<pre><code>Components.utils.import(&quot;resource://gre/modules/Services.jsm&quot;);
+Services.obs.addObserver(RequireObserver, &quot;myextension-require&quot;, true);
+</code></pre>
+
+	<p>And removed in the <code>shutdown()</code> function:</p>
+
+<pre><code>Services.obs.removeObserver(RequireObserver, &quot;myextension-require&quot;);
+</code></pre>
+
+	<p>This observer makes sure that user interface code can use the following <code>require()</code> function which has the same effect as the <code>require()</code> function in a module:</p>
+
+<pre><code>Components.utils.import(&quot;resource://gre/modules/Services.jsm&quot;);
+function require(module)
+{
+  let result = {};
+  result.wrappedJSObject = result;
+  Services.obs.notifyObservers(result, &quot;myextension-require&quot;, module);
+  return result.exports;
+}
+</code></pre>
+
+	<h4>Dealing with memory leaks</h4>
+
+	<p>I mentioned above that module scopes will be garbage collected automatically when the extension is shut down. This assumes however that there are no external references left. For example, if your module <code>foo</code> has a function <code>bar()</code> that you register as an event listener in the browser window and forget to remove when the extension is shut down&nbsp;&mdash; this will prevent function <code>bar()</code> from being garbage collected. The function in turn will prevent the module scope from being garbage collected, and the module scope holds a reference to the <code>require()</code> function which holds a reference to the <code>bootstrap.js</code> scope which holds a reference to the <code>scopes</code> variable. Oops, a single leftover event listener prevents your entire extension from being garbage collected.</p>
+
+	<p>The good news is that you will notice that: your extension is disabled but going to <code>about:memory?verbose</code> still shows a compartment belonging to it even after minimizing memory use. This means that there is a memory leak and you can hunt it down. However, in one case I simply couldn&#8217;t do anything about the leak: the only way to remove the external reference was for the user to reload all his web pages. Is it really unavoidable to leak <em>everything</em> in this scenario?</p>
+
+	<p>In fact, it isn&#8217;t. You can avoid it by destroying the references between modules. You have their scopes, if you remove all global variables from them it should usually be sufficient to prevent everything other than that one module from leaking. You can run the following code when <code>shutdown()</code> is called:</p>
+
+<pre><code>for (let key in scopes)
+{
+  let scope = scopes[key];
+  for (let v in scope)
+    scope[v] = null;
+}
+scopes = null;
+</code></pre>
+
+	<p>Now you still have a memory leak but at least its impact is limited.</p>

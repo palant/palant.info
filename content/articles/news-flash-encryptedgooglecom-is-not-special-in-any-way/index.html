@@ -1,0 +1,15 @@
+{"title": "News flash: encrypted.google.com is not special in any way", "date": "2018-01-13 19:01:15", "description": "", "categories": ["security"], "slug": "news-flash-encryptedgooglecom-is-not-special-in-any-way"}
+
+<p>Once upon a time, Google dared to experiment with <span class="caps">HTTPS</span> encryption for their search instead of allowing all search data to go unencrypted through the wire. For this experiment, they created a new subdomain: encrypted.google.com was the address where your could get some extra privacy. What some people apparently didn&#8217;t notice: the experiment was successful, and Google rolled out <span class="caps">HTTPS</span> encryption to all of their domains. I don&#8217;t know why encrypted.google.com is still around, but there doesn&#8217;t seem to be anything special about it any more. Which doesn&#8217;t stop some people from imagining that there is.</p>
+
+<h4>Myth #1: Your data is extra private, thanks to the extra encryption</h4>
+
+<p>The “encrypted” in “encrypted.google.com” refers to <span class="caps">HTTPS</span> encryption. You get it on any Google domain, and pretty much every other search engine switched to <span class="caps">HTTPS</span>-only as well. There is no indication that Google experiments with any other kind of encryption on this domain.</p>
+
+<h4>Myth #2: encrypted.google.com doesn&#8217;t send your search query to websites you click on</h4>
+
+<p>That myth seems to be based on <a href="https://www.quora.com/Whats-the-difference-between-https-encypted-google-com-and-https-www-google-com">this answer by a Google employee</a> noting differences in referrer handling. And maybe in 2013 it was even accurate. But these days anybody running a website will confirm that they don&#8217;t see your search query, no matter what Google domain you are on. Until recently the reason was Google&#8217;s Instant Search feature, the search terms simply weren&#8217;t part of the address. Now Instant Search is gone, but Google uses <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy">Referrer Policy</a> to prevent giving away your search terms to other websites.</p>
+
+<h4>Actual differences?</h4>
+
+<p>I did notice a few actual differences on that domain. For example, encrypted.google.com won&#8217;t redirect me to google.de because of my geographical location&nbsp;&mdash; but it will still show me results that are specific to Germany, same as google.de. It also doesn&#8217;t provide links to some other Google apps such as Maps. Not really a reason to prefer it over regular Google domains, but maybe somebody knows about more substantial differences and can list those in the comments.</p>

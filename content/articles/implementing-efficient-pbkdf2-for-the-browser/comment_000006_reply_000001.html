@@ -1,0 +1,5 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Syncing isn&#8217;t merely a download&amp;replace operation. What if you have two devices and are adding passwords on both of them? It would be quite a pity if the upload from one device kicked out the password you added on another. So a sync using means download, then merge, then upload. And possibly even a retry if another device uploaded changes in between.</p>
+
+	<p>With some effort this could probably be done with encrypted data as well, but that encrypted data would have to be structured in order to allow merging. It would need some serious security evaluation to make sure that this structure doesn&#8217;t allow any conclusions about the data. What&#8217;s worse, it would considerably increase the number of decryption operations that the extension needs to perform &#8211; meaning that key derivation might become too slow for a responsive UI and you would need to reduce the number of rounds. All in all seems completely unjustified given the potential risks.</p>

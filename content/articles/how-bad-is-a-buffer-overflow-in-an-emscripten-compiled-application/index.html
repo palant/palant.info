@@ -1,0 +1,31 @@
+{"title": "How bad is a buffer overflow in an Emscripten-compiled application?", "date": "2017-04-23 08:57:34", "description": "", "categories": ["security", "adblock-plus"], "slug": "how-bad-is-a-buffer-overflow-in-an-emscripten-compiled-application"}
+
+	<p><a href="http://kripken.github.io/emscripten-site/">Emscripten</a> allows compiling C++ code to JavaScript. It is an interesting approach allowing porting large applications (games) and libraries (crypto) to the web relatively easily. It also promises better performance and memory usage for some scenarios (something we are currently looking into for Adblock Plus core). These beneficial effects largely stem from the fact that the &#8220;memory&#8221; Emscripten-compiled applications work with is a large uniform <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">typed array</a>. The side-effect is that buffer overflows, use-after-free bugs and similar memory corruption mistakes are introduced to JavaScript that was previously safe from them. But are these really security-relevant?</p>
+
+	<p>Worst-case scenario are obviously memory corruption bugs that can be misused in order to execute arbitrary code. At the first glance, this don&#8217;t seem to be possible here&nbsp;&mdash; even with Emscripten the code is still running inside the JavaScript sandbox and cannot escape. In particular, it can only corrupt data but not change any code because code is kept separately from the array serving as &#8220;memory&#8221; to the application. Then again, native applications usually cannot modify code either due to protection mechanisms of modern processors. So memory corruption bugs are typically abused by manipulating function pointers such as those found on the stack.</p>
+
+	<p>Now Emscripten isn&#8217;t working with return pointers on the stack. I could identify one obvious place where function pointers are found: <a href="https://en.wikipedia.org/wiki/Virtual_method_table">virtual method tables</a>. Consider the following interface for example:</p>
+
+<pre>class Database {
+  virtual User* LookupUser(char* userName) = 0;
+  virtual bool DropTable(char* tableName) = 0;
+  ...
+};</pre>
+
+	<p>Note how both methods are declared with the <code>virtual</code> keyword. In C++ this means that the methods should not be resolved at compile time but rather looked up when the application is running. Typically, that&#8217;s because there isn&#8217;t a single <code>Database</code> class but rather multiple possible implementations for the <code>Database</code> interface, and it isn&#8217;t known in advance which one will be used (polymorphism). In practice this means that each subclass of the <code>Database</code> interface will have a virtual method table with pointers to its implementations of <code>LookupUser</code> and <code>DropTable</code> methods. And that&#8217;s the memory area an attacker would try to modify. If the virtual method table can be changed in such a way that the pointer to <code>LookupUser</code> is pointing to <code>DropTable</code> instead, in the next step the attacker might make the application try to look up user <code>&quot;users&quot;</code> and the application will inadvertently remove the entire table.</p>
+
+	<p>There are some limitations here coming from the fact that function pointers in Emscripten aren&#8217;t actual pointers (remember, code isn&#8217;t stored in memory so you cannot point to it). Instead, they are indexes in the function table that contains all functions with the same signature. Emscripten will only resolve the function pointer against a fixed function table, so the attacker can only replace a function pointer by a pointer to another function with the same signature. Note that the signature of the two methods above is identical as far as Emscripten is concerned: both have an int-like return value (as opposed to void, float or double), both have an int-like value as the first parameter (the implicit <code>this</code> pointer) and another int-like value as the second parameter (a string pointer). Given that most types end up as an int-like values, you cannot really rely on this limitation to protect your application.</p>
+
+	<p>But the data corruption alone can already cause significant security issues. Consider for example the following memory layout:</p>
+
+<pre>char incomingMessage[256];
+bool isAdmin = false;</pre>
+
+	<p>If the application fails to check the size of incoming messages properly, the data will overflow into the following <code>isAdmin</code> field and the application might allow operations that aren&#8217;t safe. It is even possible that in some scenarios confidential data will leak, e.g. with this memory layout:</p>
+
+<pre>char response[256];
+char sessionToken[32];</pre>
+
+	<p>If you are working with zero-terminated strings, you should be really sure that the <code>response</code> field will always contain the terminating zero character. For example, if you are using some moral equivalent of the <a href="https://msdn.microsoft.com/en-us/library/2ts7cx93.aspx">_snprintf function in Microsoft Visual C++</a> you should always check the function return value in order to verify that the buffer is large enough, because this function will not write the terminating zero when confronted with too much data. If the application fails to check for this scenario, an attacker might trick it into producing an overly large response, meaning that the secret <code>sessionToken</code> field will be sent along with the response due to missing terminator character.</p>
+
+	<p>These are the problematic scenarios I could think of, there might be more. Now all this might be irrelevant for your typical online game, if you are only concerned about are cheaters then you likely have bigger worries&nbsp;&mdash; cheaters have much easier ways to mess with code that runs on their end. A website on the other hand, which might be handling data from a third-party site (typically received via <span class="caps">URL</span> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage">window.postMessage()</a>), is better be more careful. And browser extensions are clearly endangered if they are processing website data via Emscripten-compiled code.</p>

@@ -1,0 +1,27 @@
+{"title": "Emulating Window.openDialog with JavaScript arguments in an XPCOM component", "date": "2008-07-02 11:27:50", "description": "", "categories": ["mozilla", "xul"], "slug": "emulating-windowopendialog-with-javascript-arguments-in-an-xpcom-component"}
+
+	<p>Opening a <span class="caps">XUL</span> dialog from JavaScript is usually easy, you use <a href="http://developer.mozilla.org/en/docs/DOM:window.openDialog">Window.openDialog</a> method that is almost the same as Window.open but also accepts some parameters that the dialog will be able to access via Window.arguments collection. But what if your JavaScript code runs inside an <span class="caps">XPCOM</span> component doesn&#8217;t have a window? Still not very hard, you use <a href="http://developer.mozilla.org/en/docs/nsIWindowWatcher#openWindow.28.29">nsIWindowWatcher.openWindow</a> method then. The tricky part here is passing parameters to the dialog however. I had to resort to hacks here in the past, and other people seem to have issues with that as well, so I thought I would share the solution.</p>
+
+	<p>You have to pass the parameters as nsIArray (nsISupportsArray if you want to stay compatible with Gecko 1.8), that&#8217;s how far you get with the available documentation. However, nsIArray stores its entries as nsISupports. If you simply add the JavaScript values to the array, the dialog will get its arguments wrapped as nsISupports. Fortunately, <span class="caps">XPC</span>onnect can automatically wrap JavaScript values into nsIVariant, and those will also be unwrapped automatically.</p>
+
+	<p>Problem is with telling <span class="caps">XPC</span>onnect that you want these values wrapped as nsIVariant rather than nsISupports. And that&#8217;s what <a href="http://www.xulplanet.com/references/xpcomref/ifaces/nsIWritableVariant.html#method_setFromVariant">nsIWritableVariant.setFromVariant</a> method is good for&nbsp;&mdash; it accepts nsIVariant as parameter so <span class="caps">XPC</span>onnect will do the wrapping. If you take it all together you get:</p>
+
+<pre><code>function openDialog(parentWindow, url, windowName, features)
+{
+    var array = Components.classes[&quot;@mozilla.org/array;1&quot;]
+                          .createInstance(Components.interfaces.nsIMutableArray);
+    for (var i = 4; i &lt; arguments.length; i++)
+    {
+        var variant = Components.classes[&quot;@mozilla.org/variant;1&quot;]
+                                .createInstance(Components.interfaces.nsIWritableVariant);
+        variant.setFromVariant(arguments[i]);
+        array.appendElement(variant, false);
+    }
+</code>
+<code>    var watcher = Components.classes[&quot;@mozilla.org/embedcomp/window-watcher;1&quot;]
+                            .getService(Components.interfaces.nsIWindowWatcher);
+    return watcher.openWindow(parentWindow, url, windowName, features, array);
+}
+</code></pre>
+
+	<p>That function works the same as Window.openDialog but accepts the parent window as first parameter (can be null).</p>

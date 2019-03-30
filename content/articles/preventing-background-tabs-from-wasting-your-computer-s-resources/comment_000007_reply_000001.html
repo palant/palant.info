@@ -1,0 +1,5 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Yes, setTimeout/setInterval calls are completely suspended &#8211; they will only fire once you go back to that tab. Also, animations via @mozRequestAnimationFrame@ are suspended. As to meta refresh &#8211; not sure, probably not, this needs to be checked. Everything else currently stays active and would need additional code (with videos I mean both plugin-based and HTML5).</p>
+
+	<p>A background tab is one that isn&#8217;t visible inside its window. I don&#8217;t know a good way to determine whether a window is visible so invisible windows aren&#8217;t being handled.</p>

@@ -1,0 +1,119 @@
+{"title": "Proxies breaking up SSL connections? Yes, all the time...", "date": "2014-05-27 15:45:09", "description": "", "categories": ["security"], "slug": "proxies-breaking-up-ssl-connection-yes-all-the-time"}
+
+	<p>Some months ago I was wondering why <a href="https://adblockplus.org/blog/weird-ssl-misconfigurations">some Firefox installations appear to not support strong encryption</a>. After analyzing the <span class="caps">SSL</span> handshakes on one of the filter download servers used by Adblock Plus, I am now mostly confident that the reason is proxy servers essentially conducting Man-in-the-Middle (MitM) attacks. Normally, a proxy server can only forward <span class="caps">SSL</span> data to its destination, it can neither modify nor read the data due to encryption. MitM proxies however pose as the destination server which allows them to manipulate the data in any way they like. For that they have to encrypt the communication with a certificate that is valid for the destination server, usually this happens by installing a new root certificate on the client&#8217;s computer.</p>
+
+	<p>I used <a href="http://www.rtfm.com/ssldump/">ssldump</a> to record 3294 <span class="caps">SSL</span> handshakes. Not a terribly large sample, yet it already contained lots of entries where the client&#8217;s <span class="caps">SSL</span> support didn&#8217;t match the user agent from the web server logs:</p>
+
+	<ul>
+		<li>Seven corporate proxies seem to be breaking up <span class="caps">SSL</span> connections of the company employees.</li>
+		<li>A program to provide schools with Internet access apparently routes all traffic through a MitM proxy.</li>
+		<li>A university proxy snoops in the <span class="caps">SSL</span> traffic.</li>
+		<li>A government agency has to check all outgoing data, even when encrypted.</li>
+		<li>An <span class="caps">ISP</span> seems to route all customer traffic through a MitM proxy (not sure how they pulled it off but it&#8217;s China so everything is possible).</li>
+		<li>Lots of people use Google AppEngine as a MitM proxy, maybe without even knowing that.</li>
+		<li>Six users seem to be running MitM proxies on their computer, either intentionally or due to a malware infection.</li>
+		<li>Three requests associated with Android devices are strange: either the <span class="caps">SSL</span> support of these devices is very outdated despite Android 4.2/4.3 (even SSLv3 used in one case) or a local MitM proxy is running there.</li>
+	</ul>
+
+	<p>If that sample is representative in any way, it would mean that roughly 0.5% of the internet users are behind a proxy server that will intercept their encrypted data. Why is that a problem?</p>
+
+	<ul>
+		<li>0.5% might not sound like much but if you apply that to the general Internet population then we are talking about millions of people. That&#8217;s millions of people who might be wrongly assuming that the lock icon next to the website address is protecting them.</li>
+		<li>These proxies create a single point of failure: an attacker doesn&#8217;t need to tediously infect computers one by one if he can simply control the proxy server and intercept all data there.</li>
+		<li>While all browsers updated their <span class="caps">SSL</span> support a while ago to mitigate issues like the <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security#BEAST_attack"><span class="caps">BEAST</span> attack</a>, proxy servers didn&#8217;t. Only one of the proxy servers I found used <span class="caps">TLS</span> 1.1, the rest of them used <span class="caps">TLS</span> 1.0 and one (a corporate proxy protecting a large network) even SSLv3.</li>
+		<li>As a webmaster, you cannot just look at the browser versions of your visitors to decide what your webserver needs to support. For example, <a href="https://community.qualys.com/blogs/securitylabs/2013/08/05/configuring-apache-nginx-and-openssl-for-forward-secrecy">Security Labs recommends disabling SSLv3 support</a> but it turns out that you might lock out more users than just those using Internet Explorer 6.</li>
+	</ul>
+
+	<p>For reference, how did I recognize the browsers in the ssldump output? This turned out to be pretty simple, each browser has its very distinct list of supported ciphers that it sends to the server. Conveniently, that&#8217;s the very first packet that ssldump will record for a connection. For Firefox 29 it looks like this:</p>
+
+<pre><code>     ClientHello
+        Version 3.3 
+        cipher suites
+        Unknown value 0xc02b
+        Unknown value 0xc02f
+        Unknown value 0xc00a
+        Unknown value 0xc009
+        Unknown value 0xc013
+        Unknown value 0xc014
+        Unknown value 0xc012
+        Unknown value 0xc007
+        Unknown value 0xc011
+        TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+        TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+        Unknown value 0x45
+        TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+        TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+        Unknown value 0x88
+        TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA
+        TLS_RSA_WITH_AES_128_CBC_SHA
+        Unknown value 0x41
+        TLS_RSA_WITH_AES_256_CBC_SHA
+        Unknown value 0x84
+        TLS_RSA_WITH_3DES_EDE_CBC_SHA
+        TLS_RSA_WITH_RC4_128_SHA
+        TLS_RSA_WITH_RC4_128_MD5
+</code></pre>
+
+	<p>Chrome 35 sends a different list:</p>
+
+<pre><code>      ClientHello
+        Version 3.3 
+        cipher suites
+        Unknown value 0xcc14
+        Unknown value 0xcc13
+        Unknown value 0xc02b
+        Unknown value 0xc02f
+        Unknown value 0x9e
+        Unknown value 0xc00a
+        Unknown value 0xc009
+        Unknown value 0xc013
+        Unknown value 0xc014
+        Unknown value 0xc007
+        Unknown value 0xc011
+        TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+        TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+        TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+        Unknown value 0x9c
+        TLS_RSA_WITH_AES_128_CBC_SHA
+        TLS_RSA_WITH_AES_256_CBC_SHA
+        TLS_RSA_WITH_3DES_EDE_CBC_SHA
+        TLS_RSA_WITH_RC4_128_SHA
+        TLS_RSA_WITH_RC4_128_MD5
+</code></pre>
+
+	<p>Depending on the Firefox or Chrome version you might get a different list, the <span class="caps">SSL</span> support in the browsers evolved. In fact, even the Chromium-based Opera and YandexBrowser tweak the <span class="caps">SSL</span> support and send a distinctly different list. Note &#8220;Version 3.3&#8221; above, this means <span class="caps">TLS</span> 1.2 support (&#8220;Version 3.0&#8221; is SSLv3 and &#8220;Version 3.1&#8221; stands for <span class="caps">TLS</span> 1.0). For comparison, here is the output for one of the proxies:</p>
+
+<pre><code>SSLv2 compatible client hello
+  Version 3.1 
+  cipher suites
+  TLS_DHE_RSA_WITH_AES_256_CBC_SHA  
+  TLS_DHE_DSS_WITH_AES_256_CBC_SHA  
+  TLS_RSA_WITH_AES_256_CBC_SHA  
+  TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA  
+  TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA  
+  TLS_RSA_WITH_3DES_EDE_CBC_SHA  
+  SSL2_CK_3DES  
+  TLS_DHE_RSA_WITH_AES_128_CBC_SHA  
+  TLS_DHE_DSS_WITH_AES_128_CBC_SHA  
+  TLS_RSA_WITH_AES_128_CBC_SHA  
+  TLS_RSA_WITH_IDEA_CBC_SHA  
+  SSL2_CK_IDEA  
+  SSL2_CK_RC2  
+  TLS_RSA_WITH_RC4_128_SHA  
+  TLS_RSA_WITH_RC4_128_MD5  
+  SSL2_CK_RC4  
+  TLS_DHE_RSA_WITH_DES_CBC_SHA  
+  TLS_DHE_DSS_WITH_DES_CBC_SHA  
+  TLS_RSA_WITH_DES_CBC_SHA  
+  SSL2_CK_DES  
+  TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA  
+  TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA  
+  TLS_RSA_EXPORT_WITH_DES40_CBC_SHA  
+  TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5  
+  SSL2_CK_RC2_EXPORT40  
+  TLS_RSA_EXPORT_WITH_RC4_40_MD5  
+  SSL2_CK_RC4_EXPORT40  
+  Unknown value 0xff
+</code></pre>
+
+	<p>This particular proxy is still compatible to SSLv2 which is no longer considered secure. In fact, Mozilla disabled SSLv2 support staring with Firefox 8 which was released in November 2011. Other browser vendors did it years ago as well.</p>

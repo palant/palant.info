@@ -1,0 +1,231 @@
+{"title": "Third-party JavaScript - more critical than ever", "date": "2014-06-27 12:03:41", "description": "", "categories": ["security"], "slug": "third-party-javascript-more-critical-than-ever"}
+
+	<p>The Syrian Electronic Army made the news several times lately by hacking popular news websites and making them display their propaganda messages. As with many similar hacks lately, the remarkable part was that the website wasn&#8217;t compromised directly. Instead a third-party service provider was hacked that the website used: Codero was used to <a href="http://krebsonsecurity.com/2014/05/complexity-as-the-enemy-of-security/">compromise <span class="caps">RSA</span> Conference website</a>, and Taboola to <a href="http://digiday.com/publishers/reuters-taboola-hack-exposes-publishers-third-party-plug-in-addicton/">compromise Reuters website</a>.</p>
+
+	<p>Why was it possible for Codero and Taboola widgets to completely take over the websites using them? That&#8217;s because these widgets were added to the webpage as third-party scripts which means that they got the same level of access to the webpage as its own scripts. They could alter text, spy on the user, steal login credentials, trick the user into installing malware and more. Of course, normally they wouldn&#8217;t do anything like this (ok, maybe spying) but the websites using these widgets made a bet on these scripts always behaving themselves&nbsp;&mdash; and lost.</p>
+
+	<p>The article on the Reuters compromise talks about 40 third parties that each Reuters web page trust this way. I found this statement hard to believe so I disabled Adblock Plus and opened a <a href="http://www.reuters.com/article/2014/06/27/us-glencore-taxavoidance-denial-idUSKBN0F209A20140627">random Reuters article</a>. I then copied the list of scripts from the list of blockable items in Adblock Plus, 134 entries not counting the scripts loaded by third-party frames! No wonder that page takes a while to load. A quick glance at the list immediately identifies most entries as not belonging to Reuters. What I&#8217;ve got there:</p>
+
+	<table>
+		<tr>
+			<td>adnxs.com</td>
+			<td>AdNexus Media</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>cdn.taboola.com, connect.facebook.net, edge.quantserve.com, images.intellitxt.com, js.moatads.com, platform.linkedin.com, s2.reutersmedia.net</td>
+			<td>Akamai</td>
+			<td>Content Delivery Network</td>
+		</tr>
+		<tr>
+			<td>nexus.ensighten.com, ping.crowdscience.com, config.parsely.com</td>
+			<td>Amazon <span class="caps">AWS</span></td>
+			<td>Cloud Computing</td>
+		</tr>
+		<tr>
+			<td>cdn.teads.tv, static.parsely.com</td>
+			<td>Amazon CloudFront</td>
+			<td>Content Delivery Network</td>
+		</tr>
+		<tr>
+			<td>revsci.net</td>
+			<td>Audience Science</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>bizographics.com</td>
+			<td>Bizo</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>cdn.linksmart.com, widget.perfectmarket.com</td>
+			<td><span class="caps">CDN</span>etworks</td>
+			<td>Content Delivery Network</td>
+		</tr>
+		<tr>
+			<td>cdnjs.cloudflare.com</td>
+			<td>cdnjs</td>
+			<td>code hosting</td>
+		</tr>
+		<tr>
+			<td>cloudflare.com</td>
+			<td>CloudFlare</td>
+			<td>Content Delivery Network</td>
+		</tr>
+		<tr>
+			<td>content.ad</td>
+			<td>Content.ad</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>criteo.com</td>
+			<td>Criteo</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>ensighten.com</td>
+			<td>ensighten</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>facebook.net</td>
+			<td>Facebook</td>
+			<td>widget</td>
+		</tr>
+		<tr>
+			<td>cdn.krxd.net</td>
+			<td>Fastly</td>
+			<td>Content Delivery Network</td>
+		</tr>
+		<tr>
+			<td>krxd.net</td>
+			<td>Krux</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>doubleclick.net, googlesyndication.com</td>
+			<td>Google Adsense</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>google-analytics.com, gstatic.com</td>
+			<td>Google Analytics</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>google.com</td>
+			<td>Google Loader</td>
+			<td>code hosting</td>
+		</tr>
+		<tr>
+			<td>apis.google.com</td>
+			<td>Google Plus</td>
+			<td>widget</td>
+		</tr>
+		<tr>
+			<td>googletagmanager.com</td>
+			<td>Google Tag Manager</td>
+			<td>widget</td>
+		</tr>
+		<tr>
+			<td>gscontxt.net</td>
+			<td>Grapeshot</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>jquery.com</td>
+			<td>jQuery</td>
+			<td>code hosting</td>
+		</tr>
+		<tr>
+			<td>static.crowdscience.com</td>
+			<td>LimeLightNetworks</td>
+			<td style="vertical-align:middle; white-space: pre;">Content Delivery Network</td>
+		</tr>
+		<tr>
+			<td>linkedin.com</td>
+			<td>LinkedIn</td>
+			<td>widget</td>
+		</tr>
+		<tr>
+			<td>linksmart.com, link-smart.com</td>
+			<td>LinkSmart</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>crwdcntrl.net</td>
+			<td>Lotame</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>moatads.com</td>
+			<td>Moat Analytics</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>bluekai.com</td>
+			<td>Oracle BlueKai</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>pagefair.com</td>
+			<td>PageFair</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>parsely.com</td>
+			<td>Parse.ly</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>perfectmarket.com</td>
+			<td>PerfectMarket</td>
+			<td>widget</td>
+		</tr>
+		<tr>
+			<td>quantserve.com</td>
+			<td>QuantCast</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>rubiconproject.com</td>
+			<td>Rubicon Project</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>scorecardresearch.com</td>
+			<td>ScorecardResearch</td>
+			<td>tracking</td>
+		</tr>
+		<tr>
+			<td>taboola.com</td>
+			<td>Taboola</td>
+			<td>widget</td>
+		</tr>
+		<tr>
+			<td>teads.tv</td>
+			<td>Teads</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>twitter.com</td>
+			<td>Twitter</td>
+			<td>widget</td>
+		</tr>
+		<tr>
+			<td>platform.twitter.com, tags.crwdcntrl.net, www.bkrtx.com</td>
+			<td>Verizon EdgeCast</td>
+			<td>Content Delivery Network</td>
+		</tr>
+		<tr>
+			<td>intellitxt.com</td>
+			<td>Vibrant Media</td>
+			<td>ads</td>
+		</tr>
+		<tr>
+			<td>crowdscience.com</td>
+			<td>YuMe</td>
+			<td>ads</td>
+		</tr>
+	</table>
+
+	<p>Hard to believe but that&#8217;s exactly 40 entries (35 if you don&#8217;t count various Google and Amazon services separately):</p>
+
+	<ul>
+		<li>12 ad networks</li>
+		<li>10 tracking and analytics services</li>
+		<li>7 widgets (mostly social networks)</li>
+		<li>7 content delivery networks</li>
+		<li>3 code hosting services (externally hosted JavaScript libraries)</li>
+		<li>1 cloud computing platform</li>
+	</ul>
+
+	<p>And there I was seven years ago thinking that <a href="https://adblockplus.org/blog/anatomy-of-ads">dilbert.com was bad</a>&#8230;</p>
+
+	<p>Note that I might have misclassified one thing or another, particularly the distinction between ad networks and tracking services is often fluent. I also might have overlooked some other content delivery network involved. Why did I even put the content delivery networks on that list but not hosting providers for example? The important difference here is the scope: most high traffic services on the web use one out of a handful content delivery networks. This puts content delivery networks into a position where they can (and do) track users across most websites, a position that is comparable to Google&#8217;s. Also, a compromised content delivery network would become a disaster for countless websites, even if these don&#8217;t use the content delivery network directly.</p>
+
+	<p>Altogether that&#8217;s 40 parties that can track each visitor to the Reuters website, 40 parties that this website has to trust and 40 parties that a hacker can choose from to compromise it. Finding one weak link shouldn&#8217;t be hard then. So that&#8217;s where we are now, six years after my <a href="https://adblockplus.org/blog/third-party-javascript-yes-it-is-a-security-risk">first article on this topic</a> &#8211; most websites can be compromised with comparably little effort due to numerous dependencies on external parties. And too often it isn&#8217;t merely a nasty message, instead the websites start infecting their visitors with malware.</p>
+
+	<p>How do you protect yourself? My favorite solution is naturally <a href="https://adblockplus.org/">Adblock Plus</a>. With the default settings it already blocks half of the scripts on the Reuters website. You can go further by enabling the privacy protection feature on the first-run page (will add EasyPrivacy filter list, can also be done <a href="https://easylist.adblockplus.org/en/#easyprivacy">here</a>) &#8211; this will leave you with &#8220;merely&#8221; 46 scripts (around 10 third parties), without any functionality loss whatsoever.</p>
+
+	<p>The most radical solution is blocking third-party scripts altogether via <code>*$script,third-party</code> filter as I <a href="https://adblockplus.org/blog/third-party-javascript-yes-it-is-a-security-risk">suggested six years ago</a>. Unfortunately, this is only something for experienced Adblock Plus users who are willing to tweak their filters regularly to make websites work again. The main problem here are content delivery networks that use a different domain name to deliver essential website content. So you would have to regularly add exception rules like <code>@@||reutersmedia.net^$script,domain=reuters.com</code> for these cases.</p>

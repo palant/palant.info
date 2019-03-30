@@ -1,0 +1,37 @@
+{"title": "Getting published Docker container ports to work with IPv6", "date": "2018-01-05 09:24:51", "description": "", "categories": ["docker"], "slug": "getting-published-docker-container-ports-to-work-with-ipv6"}
+
+<p>This server was overdue for a migration to new hardware, and I used this opportunity to make its setup reproducible by basing it on Docker containers. This allowed me to test things locally, setting everything up on the real server was only a matter of one hour then. Some issues I didn&#8217;t recognize locally however, most importantly Docker&#8217;s weird IPv6 support. Everything worked just fine when the server was accessed via IPv4, accessing it via an IPv6 address caused connections to hang however. I hit this issue with Docker 1.13.1 originally, updating to Docker 17.12 didn&#8217;t change anything. Figuring this out took me quite a while, so I want to sum up my findings here.</p>
+
+<p>First, it is important to know that Docker currently has two entirely different mechanisms implementing published ports. The default is the userland proxy, which is an application listening to a port and forwarding any incoming traffic to the respective container. The downside of this solution is: the proxy needs to open a new connection to the container, which means that the container will no longer see the remote address of the real client but merely the proxy&#8217;s address. This might be acceptable for some applications, but if your web server runs inside a container for example it needs to log real remote addresses.</p>
+
+<p>So you will often see recommendations to <a href="https://stackoverflow.com/a/44414882/785541">disable userland proxy</a>, which <a href="https://github.com/moby/moby/issues/14856">was even supposed to become the default setting</a> (didn&#8217;t happen yet because of stability issues). In this mode, Docker (at least on Linux) uses iptables to forward incoming traffic to the container, the way a router would do it. You will still see published ports being held open on the host by <code>dockerd</code> but that&#8217;s merely a fake meant to prevent other applications from listening on the same port. In reality, the traffic destined for the published ports should never reach <code>dockerd</code>. Except that for IPv6 traffic it does, because Docker only sets up forwarding rules in iptables for IPv4 traffic.</p>
+
+<p>You can see IPv4 rules created by Docker if you run <code>iptables -nL</code>, running <code>ip6tables -nL</code> on the other hand will show no rules for IPv6 traffic. My understanding is that this isn&#8217;t due to implementation complexity, adding the same set of rules for IPv4 and IPv6 would be rather trivial. The official reason for handling IPv6 traffic differently is rather that IPv6 addresses aren&#8217;t supposed to be used behind a <span class="caps">NAT</span>. So instead of routing all traffic through the host&#8217;s external IP address, one is supposed to give containers public IPv6 addresses and direct the traffic to those directly. Needless to say that this inconsistency between IPv4 and IPv6 complicates the setup quite significantly when we are talking about a single host running multiple containers, not to mention potentially exposing container internals to the outside world. The <a href="https://docs.docker.com/engine/userguide/networking/default_network/ipv6/">official documentation</a> is also hopelessly useless and merely confuses matters.</p>
+
+<p>Luckily, community members have stepped in an devised a <a href="https://github.com/robbertkl/docker-ipv6nat">solution that would just make published ports work with IPv6</a>. First of all, you need to make sure that IPv6 is enabled on the network used by your containers. If you are using the default network, you would do it like this in <code>docker-compose.yml</code>:</p>
+
+<pre><code>version: &quot;2.1&quot;
+
+networks:
+  default:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+        - subnet: fd00:dead:beef::/48</code></pre>
+
+<p>And then you need to add <code>ipv6nat</code> as a privileged container that will take care of setting up the IPv6 forwarding rules:</p>
+
+<pre><code>services:
+  ipv6nat:
+    container_name: ipv6nat
+    restart: always
+    image: robbertkl/ipv6nat
+    privileged: true
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /lib/modules:/lib/modules:ro</code></pre>
+
+<p>There you go, it just works. Except that there is one more catch: don&#8217;t test your IPv6 setup on the <code>::1</code> address, it won&#8217;t work. The container will see a request coming from <code>::1</code> and will try sending a reply to it &#8211; meaning that it will send a reply to itself rather than the host. Using your external IPv6 address for testing will do.</p>

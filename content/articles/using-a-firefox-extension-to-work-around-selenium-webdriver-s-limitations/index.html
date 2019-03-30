@@ -1,0 +1,55 @@
+{"title": "Using a Firefox extension to work around Selenium WebDriver's limitations", "date": "2014-08-29 07:38:47", "description": "", "categories": ["mozilla"], "slug": "using-a-firefox-extension-to-work-around-selenium-webdriver-s-limitations"}
+
+	<p>My <a href="/2011/11/28/google-yandex-search-link-fix">Google search link fix extension</a> had a bunch of regressions lately and I realized that testing its impact on the search pages manually isn&#8217;t working&nbsp;&mdash; these pages are more complicated than it looks like, and there are lots of configuration options affecting them. So I decided looking into <a href="http://docs.seleniumhq.org/projects/webdriver/">Selenium WebDriver</a> in order to write integration tests that would automate Firefox. All in all, writing the tests is fairly simple once you get used to the rather arcane <span class="caps">API</span>. However, the functionality seems to be geared towards very old browsers (think IE6) and some features are nowhere to be found.</p>
+
+	<p>One issue: there is no way to focus an element without clicking it. Clicking isn&#8217;t always an option, since it might trigger a link for example. That issue turned out to be solved fairly easily:</p>
+
+<pre><code>driver.execute_script(&quot;arguments[0].focus()&quot;, element)
+</code></pre>
+
+	<p>The ability to pass elements as parameters to <code>WebDriver.execute_script</code> is very useful, so it is surprising that it doesn&#8217;t seem to be documented properly anywhere.</p>
+
+	<p>But what about working with tabs or middle-clicking links? It seems that tabbed browsing wasn&#8217;t invented yet back when that <span class="caps">API</span> was designed, so it only has a concept of windows&nbsp;&mdash; not very useful. So WebDriver will only let you work with the currently selected tab, inactive tabs are off limits. And <code>WebDriver.execute_script</code> isn&#8217;t any help here either, it won&#8217;t let you run privileged code.</p>
+
+	<p>After briefly considering using <code>send_keys</code> functionality to open Web Console on <code>about:config</code> and typing code into it (yes, it looks like that would actually work), I decided to go with a less crazy solution: install an additional extension to implement the necessary functionality. So if a test wants the element to be middle-clicked it can trigger a custom event:</p>
+
+<pre><code>driver.execute_script(&#39;&#39;&#39;
+  var event = document.createEvent(&quot;Events&quot;);
+  event.initEvent(&quot;testhelper_middleclick&quot;, true, false);
+  arguments[0].dispatchEvent(event);
+&#39;&#39;&#39;, element)
+</code></pre>
+
+	<p>And the extension listens to that event:</p>
+
+<pre><code>window.gBrowser.addEventListener(&quot;testhelper_middleclick&quot;, function(event)
+{
+  let utils = event.target.ownerDocument.defaultView
+                   .QueryInterface(Ci.nsIInterfaceRequestor)
+                   .getInterface(Ci.nsIDOMWindowUtils);
+  let rect = event.target.getBoundingClientRect();
+  utils.sendMouseEvent(&quot;mousedown&quot;, rect.left + 1, rect.top + 1, 1, 1, 0);
+  utils.sendMouseEvent(&quot;mouseup&quot;, rect.left + 1, rect.top + 1, 1, 1, 0);
+}, false, true);
+</code></pre>
+
+	<p>This works nicely, but what if you want to get data back? For example, I want to know which <span class="caps">URL</span>s were requested at the top level&nbsp;&mdash; in particular, whether there was a redirect before the final <span class="caps">URL</span>. Selenium only allows you to get notified of <span class="caps">URL</span> changes that were initiated by Selenium itself (not very helpful) or poll <code>driver.current_url</code> (doesn&#8217;t work). The solution is to have the extension register a progress listener and write all <span class="caps">URL</span>s seen to the Browser Console:</p>
+
+<pre><code>window.gBrowser.addTabsProgressListener({
+  onStateChange: function(browser, webProgress, request, flags, status)
+  {
+    if (!(flags &amp; Ci.nsIWebProgressListener.STATE_IS_WINDOW))
+      return;
+    if (!(flags &amp; Ci.nsIWebProgressListener.STATE_START) &amp;&amp; !(flags &amp; Ci.nsIWebProgressListener.STATE_REDIRECTING))
+      return;
+    if (request instanceof Ci.nsIChannel)
+      Cu.reportError(&quot;[testhelper] Loading: &quot; + request.URI.spec);
+  }
+});
+</code></pre>
+
+	<p>You can use <code>driver.get_log(&quot;browser&quot;)</code> to retrieve the full list of console messages. Each message also has a timestamp which allows for example only extracting the <span class="caps">URL</span>s seen after the previous check.</p>
+
+	<p>Side-note: I first considered using <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mozmill">MozMill</a> for this. However, it is geared very much towards Firefox development and much of the Selenium functionality would have to be reimplemented (locating installed Firefox instance, default Firefox preferences for a test profile, dismissing alerts on web pages and so on).</p>
+
+	<p><strong>Edit (2014-09-08)</strong>: Another gotcha manifested itself only after a while&nbsp;&mdash; Firefox 32 has been released and the Selenium WebDriver extension is no longer compatible! Turns out, it relies on <a href="/2011/07/12/binary-xpcom-components-are-dead-js-ctypes-is-the-way-to-go">binary <span class="caps">XPCOM</span> components</a> for some reason so the compatibility info has to be adjusted on each Firefox release. No WebDriver update so far, editing <code>install.rdf</code> manually in the <code>webdriver.xpi</code> file works however. These <span class="caps">XPCOM</span> components no longer work of course, but then again&nbsp;&mdash; they weren&#8217;t compatible with OS X in the first place, no idea what they are good for.</p>

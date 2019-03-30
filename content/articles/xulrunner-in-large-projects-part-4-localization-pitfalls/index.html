@@ -1,0 +1,49 @@
+{"title": "XULRunner in large projects, part 4: Localization pitfalls", "date": "2010-07-17 00:41:50", "description": "", "categories": ["mozilla", "xul"], "slug": "xulrunner-in-large-projects-part-4-localization-pitfalls"}
+
+	<p>I am back from the <a href="https://wiki.mozilla.org/Summit2010">Mozilla Summit</a> and somewhat managed to process all the new information I got there. But instead of posting yet another summit summary or more summit photos (what, you didn&#8217;t know how great this summit was?) I have a far more boring topic for today: localization of <span class="caps">XULR</span>unner-based applications.</p>
+
+	<p>I mean, what is there to say about localization? It is really very simple. Some magic in the chrome:// protocol makes sure that whenever a file in the <code>locale</code> &#8220;subdirectory&#8221; is accessed one of the available locales is selected and the file is loaded from there. This automatic selection mechanism works very well and will select the locale that is closest to the value of the <code>general.useragent.locale</code> preference.</p>
+
+	<h4>File formats</h4>
+
+	<p>A typical locale contains files of two types. The <span class="caps">DTD</span> file format is part of the <span class="caps">XML</span> specification and can be used with any <span class="caps">XML</span> file (which includes <span class="caps">XUL</span> and <span class="caps">XHTML</span> files). The idea is to associate <span class="caps">XML</span> entities in <span class="caps">DTD</span> files with localized strings, the <span class="caps">XUL</span> document only references the entities then. This is a rather unorthodox use of <span class="caps">DTD</span> files but the approach clearly has the advantage of not requiring any special handling, the browser simply processes an <span class="caps">XML</span> file as it would usually do it. The downside however is that the <span class="caps">DTD</span> format requires a significant amount of boilerplate and leaves much room for mistakes. And any mistake in a <span class="caps">DTD</span> file (missing entity definition, syntax error, invalid character, <a href="http://en.wikipedia.org/wiki/Byte_order_mark#UTF-8">Byte Order Mark</a>) results in a fatal error&nbsp;&mdash; the entire <span class="caps">XUL</span> file is rejected with a parsing error. The other issue is that including multiple <span class="caps">DTD</span> files into a <span class="caps">XUL</span> file is complicated and rather counterintuitive.</p>
+
+	<p>Of course, localized data isn&#8217;t only used in <span class="caps">XUL</span> and <span class="caps">XHTML</span>, JavaScript code often needs some localized strings as well. There is no good way to access <span class="caps">DTD</span> files from JavaScript however, the properties file format is used instead. This is a minimalistic format originating from Java which simply lists key/value pairs. It can be accessed either via <a href="https://developer.mozilla.org/en/XUL/stringbundle">scriptbundle tag</a> or <a href="https://developer.mozilla.org/en/nsIStringBundle">nsIScriptBundle interface</a>. Unfortunately, the method names are different depending on which one you use which certainly doesn&#8217;t help code consistency/readability. On the bright side, syntax errors are impossible by definition and the only problem you could run into is a missing string&nbsp;&mdash; retrieving that string will throw an exception.</p>
+
+	<h4>Ensuring working localizations</h4>
+
+	<p>So at the moment the historically grown localization landscape in <span class="caps">XULR</span>unner is somewhat inconsistent. But this inconsistency is merely a minor annoyance and something that <a href="https://wiki.mozilla.org/L20n">L20N efforts</a> will hopefully make go away soon. Fatal errors due to localization errors however are significantly more problematic and were haunting TomTom <span class="caps">HOME</span> for example quite regularly during the early phases of the project. Turns out that you cannot really trust localizers to deliver <span class="caps">DTD</span> files that use the correct encoding, have no <span class="caps">BOM</span> and are free of syntax errors. Given that localized application versions typically get less testing these mistakes would sometimes go unnoticed. And it simply cannot always be guaranteed to have translations of all strings in all locales, particularly not in the middle of a development cycle. But it would be nice to always have usable localized builds.</p>
+
+	<p>So, what you need for working localizations:</p>
+
+	<ul>
+		<li>Validation: Ensure that the localization files use <span class="caps">UTF</span>-8 encoding without <span class="caps">BOM</span> and check syntax (makes sense even for properties files&nbsp;&mdash; any &#8220;trash&#8221; that will be ignored by the browser indicates an issue). Ideally the tools used by localizers to create the translated files already ensure valid format, otherwise scripts will need to be used for this job.</li>
+		<li>Completeness: Locales have to be compared against the base locale to find missing or unnecessary strings. Ideally, the scripts used here will also add missing strings from the base locale to prevent errors in the build (arguably, this fallback behavior should be implemented in <span class="caps">XULR</span>unner, yet it isn&#8217;t).</li>
+	</ul>
+
+	<p>Mozilla apparently has a set of scripts called <a href="https://developer.mozilla.org/en/L10n_Checks">l10n-checks</a> to do this job. Unfortunately, I am not familiar with it and cannot say whether it is a complete solution for the problems above. Documentation doesn&#8217;t really make it clear either. For TomTom <span class="caps">HOME</span> I had to write custom scripts and Songbird also uses its custom solution from what I can tell (I didn&#8217;t look too closely though).</p>
+
+	<h4>Getting good localizations</h4>
+
+	<p>But wait, a working localization doesn&#8217;t necessarily mean a good localization&nbsp;&mdash; it might contain pretty crappy translations. And finding good translators is only one step towards good localization. Some of the other steps are:</p>
+
+	<ul>
+		<li>Find a good translation environment for translators to use. Mozilla uses <a href="http://code.google.com/p/narro/">narro</a> and <a href="https://wiki.mozilla.org/Verbatim">Verbatim</a>, I don&#8217;t know much about the merits of either unfortunately.</li>
+		<li>Make sure to provide translators with some context about the strings they are translating. This means first of all having developers choose meaningful string IDs that describe the function of a string rather than its value. And it also means adding comments to explain how a string is used if it isn&#8217;t obvious.</li>
+		<li>If the space for a particular string is limited this should be communicated to translators. Remember that English is a very compact language, translations will often be significantly longer. Oh, and no&nbsp;&mdash; telling translators about the size constrains doesn&#8217;t mean that testers no longer need to check whether any localized strings are cut off or make the layout look bad.</li>
+		<li>Avoid inserting numbers or words dynamically into a sentence, use different static variants of the same sentence if possible. Building together a sentence dynamically might work well in English but will usually get very complicated in other languages (at least if you want to get a result that sounds somewhat correct). L20n is meant to address this issue though I have my doubts here.</li>
+	</ul>
+
+	<h4><span class="caps">XULR</span>unner locales</h4>
+
+	<p>Once you&#8217;ve done your homework and got great localizations for your application you might notice an issue: some strings are not localized, e.g. labels of default alert dialog buttons, the entire add-on manager or error console UI, some error messages. Yes, these strings are not part of your application, they are part of <span class="caps">XULR</span>unner. The good news: <span class="caps">XULR</span>unner locales are <a href="http://hg.mozilla.org/l10n-central/">all there</a>, you can get them. The bad news: <span class="caps">XULR</span>unner locales aren&#8217;t exactly small, around 150 kB (compressed) or more. If you played with the idea of putting all the available locales of your application into one installation package this is quite a setback&nbsp;&mdash; already including 20 <span class="caps">XULR</span>unner locales will increase the download size by 3 MB.</p>
+
+	<p>So, what are the options:</p>
+
+	<ul>
+		<li>Do not offer installation packages with multiple locales, that&#8217;s what Firefox does. The disadvantage: the user has to decide on a language before download and cannot change his mind afterwards.</li>
+		<li>Download additional locales automatically when the user selects a different locale. I am not aware of any application that chose this approach, probably because even building all the required <span class="caps">XULR</span>unner locales is rather complicated.</li>
+		<li>Discover that there are only few places where <span class="caps">XULR</span>unner strings &#8220;shine through&#8221; and replace these by your own UI. That&#8217;s the approach that TomTom <span class="caps">HOME</span> followed pretty consistently (which was a pain for developers) and Songbird less consistently (which is probably a pain for users).</li>
+	</ul>
+
+	<p>Do you know a perfect solution? I don&#8217;t.</p>

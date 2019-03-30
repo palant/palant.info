@@ -1,0 +1,25 @@
+{"title": "Selecting countries on a map in Firefox 3.5", "date": "2009-06-20 10:18:03", "description": "", "categories": ["mozilla", "off-topic"], "slug": "selecting-countries-on-a-map-in-firefox-35"}
+
+	<p>Since everybody is talking about Firefox 3.5 demos these days I though that I would dig up one that I created myself in November. It allows selecting areas of complex shape on an image&nbsp;&mdash; e.g. countries on a map. This idea didn&#8217;t end up being used for anything but somebody else might find it useful.</p>
+
+	<p>Ten years ago I already had to solve this problem. How do you present the user with a map and let him choose a country? Back then I ended up using Win32 <span class="caps">API</span> and two bitmaps&nbsp;&mdash; one to display to the user and a second invisible bitmap to let the application translate clicks into actual countries by checking the color corresponding to the click position. The visible bitmap was static meaning that it wasn&#8217;t possible to show the selected country on the map. But that wasn&#8217;t necessary anyway back then. And now I had to solve the same problem, this time for the Mozilla platform.</p>
+
+	<p style="text-align:center;"><a href="/trash/map_select.xhtml">View the demo in Firefox 3.5<br />
+</a></p>
+
+	<p>My idea was: wouldn&#8217;t it be possible to use only one image and apply <a href="https://developer.mozilla.org/En/Applying_SVG_effects_to_HTML_content">some transformations</a> to it? I would like to encode each country with a different color on the image and transform these colors as necessary. Turns out, this is possible with the <a href="http://www.w3.org/TR/SVG/filters.html#feComponentTransferElement">feComponentTransfer <span class="caps">SVG</span> filter</a>, particularly by using discrete translation functions. Let&#8217;s give an example:</p>
+
+<pre><code>&lt;feComponentTransfer&gt;
+  &lt;feFuncR type=&quot;discrete&quot; tableValues=&quot;1 0.75 0.5 0&quot;/&gt;
+  &lt;feFuncG type=&quot;discrete&quot; tableValues=&quot;1 0 1 0&quot;/&gt;
+  &lt;feFuncB type=&quot;discrete&quot; tableValues=&quot;0 1 0 1&quot;/&gt;
+&lt;/feComponentTransfer&gt;
+</code></pre>
+
+	<p>feFuncR defines the translation for the red color channel. Since I put four values in there, the entire red color space will be divided into four equal parts. Red values from 0 to 63 will be translated into 255. Red values from 64 to 127 will be translated into 191. And so on, the value in the table defines the color value after transformation (using 0 for &#8220;no red&#8221;, 1 for &#8220;maximal red value&#8221; and values in between for all red color gradations).</p>
+
+	<p>Similarly, feFuncG and feFuncB define the translations for the green and blue colors. If you use different shades of gray you will hit the same column for all color channels and you will get exactly the color back that is encoded in this column. E.g. #000000 will be translated into #FFFF00 (corresponds with 1,1,0 in the first column), #404040 will be translated into #BF00FF (corresponds with 0.75,0,1 in the second column) and so on. That&#8217;s what I use in my demo&nbsp;&mdash; all countries are encoded with different shades of gray, each hitting one of the 64 columns in the translation table. And the best of it: tableValues attributes can be changed dynamically which allows me to change the color assigned to each country at will. In this demo I assign the color #006666 (0,0.4,0.4) to countries that are not selected and #66CC66 (0.4,0.8,0.4) to countries that are selected.</p>
+
+	<p>But how to determine which map the user clicked on to select? Here I use a hidden canvas element that I <a href="https://developer.mozilla.org/En/Canvas_tutorial/Using_images#drawImage">copy the original image into</a>. When the user clicks somewhere on the map I <a href="https://developer.mozilla.org/En/HTML/Canvas/Pixel_manipulation_with_canvas#Getting_the_pixel_data_for_a_context">get the pixel with the same position</a> from the canvas. From its color I can determine which column in tableValues attribute to change.</p>
+
+	<p>If you want to see the untransformed grayscale image, simply right-click the map <a href="/trash/map_select.xhtml">in the demo</a> and choose &#8220;View image&#8221;. Or view the demo in a browser that doesn&#8217;t support <span class="caps">SVG</span> filters for <span class="caps">HTML</span> elements (any browser but Firefox 3.5 right now).</p>

@@ -1,0 +1,20 @@
+{"title": "The ticking time bomb: Fake ad blockers in Chrome Web Store", "date": "2018-04-18 19:25:18", "description": "", "categories": ["security", "google"], "slug": "the-ticking-time-bomb-fake-ad-blockers-in-chrome-web-store"}
+
+<p>People searching for a Google Chrome ad blocking extension have to choose from dozens of similarly named extensions. Only few of these are legitimate, most are forks of open source ad blockers trying to attract users with misleading extension names and descriptions. What are these up to? Thanks to Andrey Meshkov we <a href="https://blog.adguard.com/en/over-20-000-000-of-chrome-users-are-victims-of-fake-ad-blockers/">now know</a> what many people already suspected: these extensions are malicious. He found obfuscated code hidden carefully within a manipulated jQuery library that accepted commands from a remote server.</p>
+
+<p>As it happens, I checked out some fake ad blockers only in February. Quite remarkably, all of these turned up clean: the differences to their respective open source counterparts were all minor, mostly limited to renaming and adding Google Analytics tracking. One of these was the uBlock Plus extension which now showed up on Andrey&#8217;s list of malicious extensions and has been taken down by Google. So at some point in the past two months this extension was updated in order to add malicious code.</p>
+
+<p>And that appears to be the point here: somebody creates these extensions and carefully measures user counts. Once the user count gets high enough the extension gets an “update” that attempts to monetize the user base by spying on them. At least stealing browsing history was the malicious functionality that Andrey could see, additional code could be pushed out by the server at will. That&#8217;s what I suspected all along but this is the first time there is actual proof.</p>
+
+<p>Chrome Web Store has traditionally been very permissive as far as the uploaded content goes. Even taking down extensions infringing trademarks took forever, extensions with misleading names and descriptions on the other hand were always considered “fine.” You have to consider that updating extensions on Chrome Web Store is a fully automatic process, there is no human review like with Mozilla or Opera. So nobody stops you from turning an originally harmless extension bad.</p>
+
+<p>On the bright side, I doubt that Andrey&#8217;s assumption of 20 million compromised Chrome users is correct. There are strong indicators that the user numbers of these fake ad blockers have been inflated by bots, simply because the user count is a contributing factor to the search ranking. I assume that this is also the main reason behind the Google Analytics tracking: whoever is behind these extensions, they know exactly that their Chrome Web Store user numbers are bogus.</p>
+
+<p>For reference, the real ad blocking extensions are:</p>
+
+<ul>
+	<li><a href="https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb">Adblock Plus</a></li>
+	<li><a href="https://chrome.google.com/webstore/detail/adblock/gighmmpiobklfepjocnamgkkbiglidom">AdBlock</a></li>
+	<li><a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a></li>
+	<li><a href="https://chrome.google.com/webstore/detail/adguard-adblocker/bgnkhhnnamicmpeenaelnjfhikgbkllg">AdGuard AdBlocker</a></li>
+</ul>

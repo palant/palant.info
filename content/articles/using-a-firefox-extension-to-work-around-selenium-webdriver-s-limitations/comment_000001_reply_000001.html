@@ -1,0 +1,3 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Yes, I&#8217;ve seen the advise to close &#8220;windows&#8221; in order to close tabs. Not sure about other implementations but Selenium&#8217;s Firefox WebDriver doesn&#8217;t work this way. It will always return a single window regardless of how many tabs it contains. I&#8217;ve actually checked the source code of their Firefox extension to verify that it simply enumerates all windows of type <code>navigator:browser</code>, it doesn&#8217;t look at the tabs at all.</p>

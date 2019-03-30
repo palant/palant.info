@@ -1,0 +1,21 @@
+{"title": "Maximizing password manager attack surface: Learning from Kaspersky", "date": "2018-11-30 20:15:16", "description": "Kaspersky Password Manager uses a unique approach to maximize the attack surface. A quick introduction.", "categories": ["security"], "slug": "maximizing-password-manager-attack-surface-leaning-from-kaspersky"}
+
+<p>I looked at a number of password manager browser extensions already, and most of them have <a href="/2018/08/29/password-managers-please-make-sure-autofill-is-secure">some obvious issues</a>. Kaspersky Password Manager manages to stand out in the crowd however, the approach taken here is rather unique. You know how browser extensions are rather tough to exploit, with all that sandboxed JavaScript and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_security_policy">restrictive default content security policy</a>? Clearly, all that is meant for weaklings who don&#8217;t know how to write secure code, not the pros working at Kaspersky.</p>
+
+<p>Kaspersky developers don&#8217;t like JavaScript, so they hand over control to their beloved C++ code as soon as possible. No stupid sandboxing, code is running with the privileges of the logged in user. No memory safety, dealing with buffer overflows is up to the developers. How they managed to do it? Browser extensions have that escape hatch called <a href="https://developer.chrome.com/extensions/nativeMessaging">native messaging</a> which allows connecting to an executable running on the user&#8217;s system. And that executable is what contains most of the logic in case of the Kaspersky Password Manager, with the browser extension being merely a dumb shell.</p>
+
+<p>The extension uses website events to communicate with itself. As in: code running in the same scope (content script) uses events instead of direct calls. While seemingly pointless, this approach has a crucial advantage: it allows websites to mess with the communication and essentially make calls into the password manager&#8217;s executable. Because, if this communication channel weren&#8217;t open to websites, how could the developers possibly prove that they are capable of securing their application?</p>
+
+<p>Now I&#8217;m pretty bad at reverse engineering binary code. But I managed to identify large chunks of custom-written code that can be triggered by websites more or less directly:</p>
+
+<ul>
+	<li><span class="caps">JSON</span> parser</li>
+	<li><span class="caps">HTML</span> parser</li>
+	<li>Neuronal network</li>
+</ul>
+
+<p>While the <span class="caps">JSON</span> parser is required by the native messaging protocol, you are probably wondering what the other two chunks are doing in the executable. After all, the browser already has a perfectly capable <span class="caps">HTML</span> parser. But why rely on it? Analyzing page structure to recognize login forms would have been too easy in the browser. Instead, the browser extension serializes the page back to <span class="caps">HTML</span> (with some additional attributes, e.g. to point out whether a particular field is visible) and sends it to the executable. The executable parses it, makes the neuronal network analyze the result and tells the extension which fields need to be filled with what values.</p>
+
+<p>Doesn&#8217;t sound like proper attack surface maximization because serialized <span class="caps">HTML</span> code will always be well-formed? No problem, the <span class="caps">HTML</span> parser has its limitations. For example, it doesn&#8217;t know <a href="https://en.wikipedia.org/wiki/Processing_Instruction"><span class="caps">XML</span> processing instructions</a> and will treat them like regular tags. And <code>document.createProcessingInstruction(&quot;foo&quot;, &quot;&gt;&lt;script/src=x&gt;&quot;)</code> is serialized as <code>&lt;?foo &gt;&lt;script/src=x&gt;?&gt;</code>, so now the <span class="caps">HTML</span> parser will be processing <span class="caps">HTML</span> code that is no longer well-formed.</p>
+
+<p>This was your quick overview, hope you learned a thing or two about maximizing the attack surface. Of course, you should only do that if you are a real pro and aren&#8217;t afraid of hardening your application against attacks!</p>

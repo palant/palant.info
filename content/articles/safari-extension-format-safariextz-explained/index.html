@@ -1,0 +1,75 @@
+{"title": "Safari extension format (.safariextz) explained", "date": "2016-08-17 16:48:26", "description": "", "categories": ["add-ons", "os-x"], "slug": "safari-extension-format-safariextz-explained"}
+
+	<p>As extension formats go, Apple clearly chose the most obscure and least documented one for their Safari browser. It&#8217;s based on the <span class="caps">XAR</span> (eXtensible ARchiver) format which is a <a href="https://code.google.com/archive/p/xar/">dead project</a> with <a href="https://code.google.com/archive/p/xar/wikis/xarformat.wiki">barely existing and outdated format documentation</a> (note how it suggests setting <code>XAR_HEADER_VERSION</code> to zero even though current header version is one). But Apple went further and added signing support to the format without documenting it. Why bother if everybody can use Safari to create an extension package? And so for a long time your best choice to automate the build process was <a href="https://mackyle.github.io/xar/howtosign.html">a complicated list of instructions</a> relying on a patched version of the xar command line tool. A year ago somebody apparently added a <a href="https://github.com/robertknight/xar-js">much more convenient xar-js library</a> to the list but I didn&#8217;t find out until I started writing this blog post.</p>
+
+	<p>Yesterday I was transitioning our build process from M2Crypto which has neither Python 3 support nor useful documentation to PyCrypto which has both. While at it, I had to spend an awful lot of time reimplementing step 3 of that complicated list of instructions, namely creating a valid signature. It wasn&#8217;t working no matter what I tried, and I ended up understanding the format a lot better than I ever wished for. As it turned out, this step was relying on a broken <span class="caps">RSA</span> signing implementation as offered by the deprecated <code>openssl rsautl</code> command and M2Crypto, but which PyCrypto chose not to implement for obvious reasons. I solved the problem, but in the process I realized that the format is simpler than the unsupported command line tool with its quirks and bugs. And so I <a href="https://github.com/adblockplus/buildtools/commit/b2ab71dd3fe85fd1be9c2b9188ed46a63892f0f6">created our own <span class="caps">XAR</span> generator</a> which no longer relied on that command line tool (not quite general-purpose code unfortunately).</p>
+
+	<p>So, what does a <span class="caps">XAR</span> file look like? It starts with a minimalistic binary header (all values in big-endian byte order):</p>
+
+<pre>4 bytes    magic number (0x78617221)
+2 bytes    header size (28)
+2 bytes    header version (1)
+8 bytes    compressed ToC length
+8 bytes    uncompressed ToC length
+4 bytes    checksum algorithm (1 = SHA-1)
+</pre>
+
+	<p>It is followed up by a deflate-compressed <span class="caps">XML</span> blob called Table of Contents (ToC), its size is listed in the header. This contains all the necessary metadata, including positions of the checksum, signature and the compressed file contents as archive offsets counting from the end of the ToC data. Here is what the ToC typically looks like:</p>
+
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;xar&gt;
+ &lt;toc&gt;
+  &lt;creation-time&gt;2016-08-17T12:34:56Z&lt;/creation-time&gt;
+  &lt;checksum style=&quot;sha1&quot;&gt;
+   &lt;offset&gt;0&lt;/offset&gt;
+   &lt;size&gt;20&lt;/size&gt;
+  &lt;/checksum&gt;
+  &lt;file id=&quot;1&quot;&gt;
+   &lt;name&gt;myextension.safariextension&lt;/name&gt;
+   &lt;type&gt;directory&lt;/type&gt;
+   &lt;mode&gt;0755&lt;/mode&gt;
+   &lt;file id=&quot;2&quot;&gt;
+    &lt;name&gt;Info.plist&lt;/name&gt;
+    &lt;type&gt;file&lt;/type&gt;
+    &lt;mode&gt;0644&lt;/mode&gt;
+    &lt;data&gt;
+     &lt;length&gt;1234&lt;/length&gt;
+     &lt;offset&gt;20&lt;/offset&gt;
+     &lt;size&gt;321&lt;/size&gt;
+     &lt;encoding style=&quot;application/x-gzip&quot;/&gt;
+     &lt;extracted-checksum style=&quot;sha1&quot;&gt;1234567890abcdef1234567890abcdef12345678&lt;/extracted-checksum&gt;
+     &lt;archived-checksum style=&quot;sha1&quot;&gt;87654321fedcba0987654321fedcba0987654321&lt;/archived-checksum&gt;
+    &lt;/data&gt;
+   &lt;/file&gt;
+  &lt;/file&gt;
+ &lt;/toc&gt;
+&lt;/xar&gt;
+</pre>
+
+	<p>The fields are pretty self-explaining. The first 20 bytes after the ToC are a <span class="caps">SHA</span>-1 checksum of the compressed ToC contents. What follows at offset 20 are 321 bytes representing the contents of the file <code>myextension.safariextension/Info.plist</code>. These are deflate-compressed again, the uncompressed size of the file is 1234 bytes. Note that while you can have any number of files directly inside the <code>&lt;toc&gt;</code> tag, in practice Safari extensions always have only one directory named <code>anything.safariextension</code>  at the top level. All other files go inside that directory (meaning inside the corresponding <code>&lt;file&gt;</code> tag).</p>
+
+	<p>This simple picture gets somewhat more complicated once you add signatures to it. You get two more tags inside the <code>&lt;toc&gt;</code> tag:</p>
+
+<pre>&lt;signature-creation-time&gt;493130096.0&lt;/signature-creation-time&gt;
+&lt;signature style=&quot;RSA&quot;&gt;
+ &lt;offset&gt;20&lt;/offset&gt;
+ &lt;size&gt;256&lt;/size&gt;
+ &lt;KeyInfo xmlns=&quot;http://www.w3.org/2000/09/xmldsig#&quot;&gt;
+  &lt;X509Data&gt;
+   &lt;X509Certificate&gt;MIIFZDCCBEygAw...&lt;/X509Certificate&gt;
+   &lt;X509Certificate&gt;MIIFZDCCBEygAw...&lt;/X509Certificate&gt;
+   &lt;X509Certificate&gt;MIIFZDCCBEygAw...&lt;/X509Certificate&gt;
+  &lt;/X509Data&gt;
+ &lt;/KeyInfo&gt;
+&lt;/signature&gt;
+</pre>
+
+	<p>Apparently, Apple developers weren&#8217;t happy with the <span class="caps">ISO</span> time format and went with a numeric timestamp for the <code>&lt;signature-creation-time&gt;</code> tag. It represents the number of seconds since <code>2001-01-01T00:00:00.000Z</code> so if you&#8217;ve got a Unix timestamp you need to subtract <code>978307200</code> from it.</p>
+
+	<p>I guess that the signature can be located anywhere in the file, the existing tools seem to always put it at offset 20 however, right after the checksum. Note that 256 bytes as signature size isn&#8217;t a constant but rather dependent on the key size (2048 bits here). Finally, you have to include the base64-encoded data of the entire certificate chain, this typically means three certificates: your own Apple developer certificate, Apple Worldwide Developer Relations Certification Authority and Apple Root CA.</p>
+
+	<p>Like with the checksum, you are signing the compressed ToC data. It&#8217;s a standard <span class="caps">PKCS</span> #1 v1.5 signature that any crypto tool can produce (important: hashing algorithm should be <span class="caps">SHA</span>-1 here as well). While I didn&#8217;t test OpenSSL, there the <code>openssl dgst -sign</code> command should do the right thing. That&#8217;s the last piece of information necessary to produce a valid Safari extension build.</p>
+
+	<p>One question remains: with <span class="caps">SHA</span>-1 being retired for <span class="caps">SSL</span> certificates right now, when is Apple going to adjust their extension format? At least they are currently in good company: both Firefox and Chrome are still betting on <span class="caps">SHA</span>-1 for extension signing as well. <span class="caps">SHA</span>-1 collision attacks are quickly becoming practicable which makes it a very questionable choice for signing to say the least.</p>
+
+	<p>And a side-note: I really don&#8217;t see what the designers of the <span class="caps">XAR</span> format were thinking when they put the ToC at the beginning of the archive. In order to generate the ToC you need to compress all the files first since you have to know their offsets. But you cannot write the compressed file data to the archive because the ToC has to be written first and you don&#8217;t know in advance how large it turns out to be. The <span class="caps">XAR</span> command line tool solves this by creating lots of temporary files which is both awkward and slow. All this could have been avoided by putting the ToC to the very end of the file, after the actual content. As a bonus point, it would also allow adding files to the archive without having to create it from scratch.</p>

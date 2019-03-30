@@ -1,0 +1,21 @@
+{"title": "Faster extension development cycle: install changes automatically", "date": "2012-01-13 15:33:24", "description": "", "categories": ["gecko"], "slug": "faster-extension-development-cycle-install-changes-automatically"}
+
+	<p>The usual extension development cycle is less than optimal: change something, create a new extension build, install it in the browser (gonna love warnings), restart the browser, finally test it. I don&#8217;t like repeating this cycle all the time and so in the past years I&#8217;ve been using a test environment in which most extension files are loaded directly from my source code checkout (thanks to a manipulated <code>chrome.manifest</code> file). With this test environment many changes could be tested by simply reopening the extension window, for others you would restart the browser.</p>
+
+	<p>Unfortunately, this approach is less useful when working on restartless extensions&nbsp;&mdash; it requires me to restart the browser where updating the extension without a browser restart should be sufficient. And it completely broke down when I started testing Adblock Plus on an Android phone. My development machine and the browser where I test the extension are physically separated now. Add to this that getting Firefox Mobile to install an extension from the development machine is a rather complicated affair, and the result is that most of my &#8220;development&#8221; suddenly has nothing to do with writing code.</p>
+
+	<p>So I created a <a href="https://addons.mozilla.org/addon/autoinstaller/">simple extension</a> called Extension Auto-Installer that would listen for <span class="caps">HTTP</span> connections on a port. It would take the <span class="caps">POST</span> data of the incoming requests and install it as an extension. And if the extension isn&#8217;t restartless then it will also restart the browser automatically. Which means that installing an extension to a browser running Extension Auto-Installer can be done from the command line with a tool like <code>wget</code>:</p>
+
+<pre><code>wget --post-file=extension.xpi http://localhost:8888/
+</code></pre>
+
+	<p>Instead of <code>localhost</code> it can also be the IP address of the phone running Firefox Mobile. To simplify things even further I integrated this functionality into the build tools used for my extensions so that I can write:</p>
+
+<pre><code>build.py autoinstall 8888
+</code></pre>
+
+	<p>It will create an extension package and send it to port 8888 on <code>localhost</code> automatically. I guess that I can get rid of the old <code>build.py testenv</code> command soon, I merely need to make Adblock Plus a restartless extension (all of my other extensions already are).</p>
+
+	<p>Now this extension is quite a security hole of course. I made sure that it doesn&#8217;t do anything by default and that it doesn&#8217;t use a predefined port, the user rather chooses a port himself. I&#8217;ve also added some warnings to the description. Already after uploading the extension it occurred to me that I can add a configuration option to define whether connections should be limited to loopback (defaulting to &#8220;yes&#8221;). Well, I was too focused on debugging mobile phones, probably in the next release&#8230;</p>
+
+	<p><strong>Edit</strong>: Fixed the security issues in version 1.1 &#8211; there is now a whitelist for IP addresses that are allowed to install extensions. By default only 127.0.0.1 is on that list.</p>

@@ -1,0 +1,12 @@
+{"publishDate": "2011-05-22 18:48:40", "author": "pfg", "authorUrl": "", "id": "000010"}
+
+	<p>Fabrice has added support for Opera and ie9, and an easy way to upload &#8220;C&#8221; source programs. <br />
+==&gt; We can easily compare the performance of each browser :<br />
+1- paste some C program in the clipboard aera
+   (just use #include &lt;tcclib.h&gt; instead of usual ones)<br />
+2- type &#8220;cat /dev/clipboard &gt;toto.c;tcc -run toto.c&#8221;<br />
+3- measure start time &#8211; end time </p>
+
+	<p>On a mandelbrot test :<br />
+-ie9 is 10% slower than firefox,<br />
+-both are very slow (probably due to the lack of &#8220;fpu&#8221;).</p>

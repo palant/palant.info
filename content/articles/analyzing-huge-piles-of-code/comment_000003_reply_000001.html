@@ -1,0 +1,4 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>I doubt you want to make that regexp more strict about what it considers to be a link. But it would probably help to limit the number of detected &#8220;links&#8221; ;)<br />
+Or at least use hash tables to detect duplicates. And use nsIIOService.newURI() to resolve relative links rather than insert a link element into the document only to remove it immediately (not exactly a cheap operation).</p>

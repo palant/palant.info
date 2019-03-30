@@ -1,0 +1,31 @@
+{"title": "Why \"Save Page As HTML, complete\" sucks", "date": "2007-03-14 23:20:36", "description": "", "categories": ["gecko"], "slug": "why-save-page-as-html-complete-sucks"}
+
+	<p>I read a forum question from an Opera user who was upset because Opera 9.10 now saves web pages &#8220;like IE and Firefox&#8221; &#8211; meaning saving them with all the included files. His problem was easily solved with a configuration change but it got me thinking. Generally this doesn&#8217;t seem to be such a bad idea, it allows you to open a saved web page and it will look exactly the same. So I tried to understand why this user was so upset and why I almost never use this feature myself. It seems there are three things.</p>
+
+	<h4>Non-obvious result</h4>
+
+	<p>It doesn&#8217;t just create the file the user told it to create but also a directory for the auxiliary files. It isn&#8217;t obvious to the user that this will happen and that he has to remove the directory as well when he chooses to remove the saved page. Even if he knows it, it still means some effort locating the directory which is annoying. Yes, if you happen to use Windows Explorer it will remove this directory automatically but this is a hack and a very non-obvious action again.</p>
+
+	<p>Solution: save everything into one file. I first thought of using the data: urls to embed all data inside the same <span class="caps">HTML</span> file. This would have the advantage of sticking to the <span class="caps">HTML</span> format, also nothing other than the web page saving code would need to be changed. However, I noticed disadvantages as well: this file wouldn&#8217;t be usable in Internet Explorer (it still doesn&#8217;t support data: URLs). Most importantly however, if the same image is used multiple times on the page it will have to be stored multiple times, no way to specify &#8220;this image uses the same <span class="caps">URL</span> as image XYZ&#8221; in <span class="caps">HTML</span>. That last one is a showstopper so that supporting Microsoft&#8217;s <span class="caps">MTHML</span> format is probably still the more realistic alternative even though it means much more effort.</p>
+
+	<h4>Reproductive defects</h4>
+
+	<p>The saved image of the web page isn&#8217;t perfect. While the <span class="caps">HTML</span> code is serialized from the <span class="caps">DOM</span> tree and is a perfect copy of what is currently displayed in the browser, JavaScript and <span class="caps">CSS</span> are not taken care of. So <span class="caps">CSS</span> might still contain relative URLs and JavaScript&#8230; well, ideally you would save JavaScript&#8217;s current state as well. Because the web page might have code like this:</p>
+
+	<pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+  document.write('&lt;img src=&quot;image.gif&quot;&gt;');
+&lt;/script&gt;
+</pre>
+
+	<p>If you save this page and open it again, what will you see? Right, <strong>two</strong> images&nbsp;&mdash; one that already was on the web page when it was saved and a second that was created by this code when the saved page was opened. You can get even more images by saving again.</p>
+
+	<p>Solution: when saving remove all <span class="caps">CSS</span> and JavaScript that was in the web page originally and replace it by a correct representation of the current web page state. Meaning that you would have a big style block at the beginning of the page defining all the styles that are relevant for the document (with all the relative URLs corrected of course). And you would have a block of JavaScript that would execute on page load to restore all the JavaScript functions, variables, event handlers etc. Don&#8217;t take me too seriously on this one, I know all too well that nobody will go through the hurdles of implementing it especially since there are several major issues: restoring JavaScript properties on <span class="caps">DOM</span> objects that don&#8217;t have an ID, references from JavaScript to <span class="caps">DOM</span> objects that are not in any document or are in the document of a different window, user actions during page load when the JavaScript event handlers are not yet in place.</p>
+
+	<h4>Saving more than necessary</h4>
+
+	<p>There have been complaints that even though Adblock Plus blocks the ads the saved page will still have them. The problem is that web page saving doesn&#8217;t respect content policies and will download files even if they are blocked. That is especially concerning for web bugs that have been blocked because of privacy concerns. Previously I was thinking that this is the way it should be, after all &#8220;<span class="caps">HTML</span>, complete&#8221; mode is supposed to create a copy of the original web page. But now I am tending to filing a bug on this issue.</p>
+
+	<p>Solution: only download files that haven&#8217;t been blocked. The implementation here shouldn&#8217;t be difficult for a change, images and objects already implement the imageBlockingStatus property that indicates whether the image has been blocked by a content policy.</p>
+
+	<p>PS: If everything goes well this post should appear on Planet Mozilla. Yay, that&#8217;s exciting! :)</p>

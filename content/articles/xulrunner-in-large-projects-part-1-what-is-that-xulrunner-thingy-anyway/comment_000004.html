@@ -1,0 +1,15 @@
+{"publishDate": "2010-07-04 21:24:54", "author": "pc1oad1etter", "authorUrl": "", "id": "000004"}
+
+	<p>Wladimir,</p>
+
+	<p>re: your title, &#8220;<span class="caps">XUL</span>runner in large projects&#8221; &#8211; do you pretty much mean, anything that is larger than what an extension would be well-suited for?  We have a (large) xulrunner application, and one of the challenges that I am facing now is how to be (re-)organize the code.  We have broken many of the discrete parts into separate extensions, that we then bundle together, but I have been re-thinking how to use shared code, shared libraries among my various extensions.</p>
+
+	<p>We used subscriptloader for this, but I have been trying to re-implement code in code modules, having read that it would load the script only once.  However, I have also learned that there are limitations with doing this, as some of the native, window/DOM-related functions are inaccessible (or perhaps, just a pain to access, via xpcom functions).</p>
+
+	<p>That may be too narrow of a topic for you to address, but if you do have any suggestions, I would love to hear it.  Again, I&#8217;m not just asking &#8220;where do I put my JavaScript in the application folder to make it work &#8212; I&#8217;m asking how to best modularize/organize the code that would be especially beneficial for a large xulrunner application.  This blog post got me thinking more about this: http://www.softwareishard.com/blog/planet-mozilla/firefox-extensions-global-namespace-pollution/.</p>
+
+	<p>Thanks again!</p>
+
+
+
+

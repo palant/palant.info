@@ -1,0 +1,15 @@
+{"publishDate": "2017-12-20 23:16:33", "author": "Azaki", "authorUrl": "", "id": "000013"}
+
+	<p>&gt; Yes, building a whole new extension system takes lots of time. If you want to <br />
+&gt; have a comparison, take a look at how long it took to roll out Electrolysis <br />
+&gt; safely – that project took seven (!) years.</p>
+
+	<p>I couldn&#8217;t reply to this comment directly so I&#8217;m just posting normally, but that is extremely disingenuous; you <strong>must</strong> know that the reason it took seven years isn&#8217;t simply because &#8220;multiprocess is hard&#8221;, but precisely because of the maintainability burden imposed by <span class="caps">XUL</span>/XPCOM addons which make it pragmatically impossible to make non-trivial changes to the engine in any reasonable timeframe.</p>
+
+	<p>You implied in your blog post that you understood &#8220;Mozilla’s motivation&#8221;, which is why I&#8217;m assuming that you&#8217;re aware of this, so I&#8217;m not sure why you would use this kind of example. In fact, the e10s delays completely explain <strong>why</strong> the WebExtensions transition was &#8220;rushed&#8221; as you say; because it was simply the lesser of two evils. Either you ship it now and make around 80-90% of the userbase happy immediately (those who use no addons or only need the more simple extensions which were available on day one), or you continue to have a browser that is slow, unresponsive, and buggy for <strong>all</strong> users.</p>
+
+	<p>Speaking of which, that is another issue I have with your post, you mention the buggy nature of WebExt (which I&#8217;ve experienced, so I know what you mean), but you fail to mention that the old system had it&#8217;s own massive cost in terms of bugs not just in the <span class="caps">API</span> itself, but in all of the workarounds and wrappers in the codebase that were added to maintain compatibility with legacy addons over the years. This left users vulnerable to bugs and performance issues even if they didn&#8217;t use <strong>any</strong> addons at all!</p>
+
+	<p>As you&#8217;re aware, there is no separation between addons and the core in the old system, legacy addons are to Firefox as kernel modules are to the Linux kernel, which makes it easy to break Firefox&#8217;s core functionality, or even that of other addons. I hang out in the Firefox <span class="caps">IRC</span> channels, so I&#8217;m well aware of how some people&#8217;s workflow has been disrupted by 57, but meanwhile, nearly all of Firefox&#8217;s marketshare loss over the years can be laid squarely at the feet of <span class="caps">XUL</span>/XPCOM and the maintenance burden it creates, so I can&#8217;t say I&#8217;m sad to see it go given that it was essentially like a boulder tied to the feet of Firefox developers swimming in the middle of the ocean.</p>
+
+

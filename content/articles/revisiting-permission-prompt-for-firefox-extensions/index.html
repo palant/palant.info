@@ -1,0 +1,32 @@
+{"title": "Revisiting permission prompt for Firefox extensions", "date": "2017-08-05 13:33:28", "description": "", "categories": ["mozilla", "security"], "slug": "revisiting-permission-prompt-for-firefox-extensions"}
+
+	<p>Almost exactly a year ago I wrote a <a href="https://palant.de/2016/07/02/why-mozilla-shouldn-t-copy-chrome-s-permission-prompt-for-extensions">blog post</a> explaining how permission prompts are a particularly problematic area for a functioning extension ecosystem. While at this point it was already clear that Firefox would show <em>some</em> kind of permission prompt, I hoped that Mozilla would put more thought into it than Chrome did. Unfortunately, this didn&#8217;t quite happen. In fact, as I now experienced, the permission prompt in Firefox turned out significantly worse than the one in Chrome.</p>
+
+	<p>Two days ago I released a new version of my <a href="https://addons.mozilla.org/addon/google-search-link-fix/">Google search link fix</a> extension. I finally got to turning that &#8220;run on all websites&#8221; permission into a list of specific domains, with all of 193 Google domains. And the backlash came immediately, in form of this review (translated from Russian):</p>
+
+	<blockquote>
+		<p>&#8220;Google search link fix has been updated. You must approve new permissions before the updated version will install. Choosing &#8220;Cancel&#8221; you will maintain your current add-on version. It requires your permission to:</p>
+		<p>	<ul>
+		<li>Access your data for sites in the yandex.com domain<br />
+• Access your data for sites in the yandex.com.tr domain<br />
+• Access your data for sites in the yandex.by domain<br />
+• Access your data in 197 other domains&#8221;</li>
+	</ul></p>
+		<p>Developers, re-read the name of your extension.</p>
+	</blockquote>
+
+	<p>This prompt doesn&#8217;t show up on the stable Firefox release yet, but Firefox Nightly indeed shows it:</p>
+
+	<p>{{< img "permission-prompt-firefox.png" "Permissions prompt on update in Firefox" 359 >}}</p>
+
+	<p>I guess that I must consider myself lucky for having implemented this change so early. A few months later I would have received lots of comments like that, as all users would have seen this prompt. As I explained in my previous blog post, permission prompts on update are particularly disruptive and should be avoided if somehow possible. However, Firefox is currently displaying them <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1373434">even if the extension&#8217;s permissions got reduced</a> like in this case.</p>
+
+	<p>The other issue is the way the information is presented. I didn&#8217;t expect the order to matter so I put Google domains last. But that&#8217;s confusing to users if only three domains are being displayed, with Google Search being the primary target for this extension. Worse yet, with no way of listing the remaining domains users suspect that something malicious is going on.</p>
+
+	<p>It seems that the use case &#8220;run on various search pages&#8221; is common enough that Chrome developers chose to special-case it. The permission prompt displayed by Chrome is way more straightforward:</p>
+
+	<p>{{< img "permission-prompt-chrome.png" "Permissions prompt on update in Chrome" 278 >}}</p>
+
+	<p>This also leaves me hoping that Chrome won&#8217;t display a permission prompt just because a future update added a new Google domain. Still questionable whether I want to add support for more search engines in future, but it probably won&#8217;t confuse users all too much.</p>
+
+	<p>As to Firefox, I&#8217;m considering re-adding <code>https://*</code> permission while I can still do it (meaning: most users won&#8217;t see the permission prompt on update). Otherwise future updates might turn out quite disastrous.</p>

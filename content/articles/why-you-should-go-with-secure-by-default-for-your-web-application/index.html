@@ -1,0 +1,93 @@
+{"title": "Why you should go with \"secure by default\" for your web application", "date": "2016-03-02 17:38:48", "description": "", "categories": ["security"], "slug": "why-you-should-go-with-secure-by-default-for-your-web-application"}
+
+	<p>You probably heard about it, web applications are notoriously insecure. By now, most web developers seem to be aware of the security issues, yet vulnerabilities are more common than ever. Some people say, it&#8217;s simply because developers tend to make mistakes. Other people say (and I agree) that wrong tools are being used which allow developers to make mistakes.</p>
+
+	<h4>Case study #1: <span class="caps">SQL</span> injection</h4>
+
+	<p>Yes, <a href="https://en.wikipedia.org/wiki/SQL_injection"><span class="caps">SQL</span> injection</a> still isn&#8217;t dead. Every now and then some web application makes the news with an <span class="caps">SQL</span> injection vulnerability, some dynamically composed <span class="caps">SQL</span> query which goes like:</p>
+
+<pre><code>db.query(&#39;SELECT * FROM table WHERE date &gt; &#39; + request[&#39;date&#39;])
+</code></pre>
+
+	<p>You can bet on some self-proclaimed expert declaring in the comments: &#8220;That programmer is a noob! How could he forget to escape the variable?&#8221; But of course he could because he is merely a human. Code reviews help but occasionally such mistakes slip through review as well. But it&#8217;s not just that, maybe <code>request[&#39;date&#39;]</code> was indeed safe at some point, e.g. validation code elsewhere made sure it is a number. But then somebody decided to allow more values for it and nobody thought about adapting the code here.</p>
+
+	<p>So, are we stuck forever with <span class="caps">SQL</span> injection vulnerabilities? As long as we rely on manual escaping we likely will be, it is just too error-prone. Instead, we can establish a policy to use <a href="https://en.wikipedia.org/wiki/Prepared_statement">prepared statements</a> consistently throughout the codebase. <span class="caps">SQL</span> queries should never be composed dynamically, parameters should be inserted via placeholders instead:</p>
+
+<pre><code>db.execute(&#39;SELECT * FROM table WHERE date &gt; ?&#39;, request[&#39;date&#39;])
+</code></pre>
+
+	<p>Here, <code>request[&#39;date&#39;]</code> is being passed in as parameter for the query, the database engine will take care of inserting and escaping it properly all by itself. We don&#8217;t need to do anything, so there is nothing we could forget!</p>
+
+	<h4>Case study #2: Shell injection</h4>
+
+	<p><a href="https://en.wikipedia.org/wiki/Code_injection#Shell_injection">Shell injection</a> is very similar to <span class="caps">SQL</span> injection, it is also an issue that only exists because people keep using the wrong tools. Consider the following code:</p>
+
+<pre><code>exec(&#39;/usr/bin/gzip file -&#39; + request[&#39;quality&#39;])
+</code></pre>
+
+	<p>This code expects <code>request[&#39;quality&#39;]</code> to be a number, but what if it is something like <code>0; rm -rf /</code>? &#8220;Noob programmer, why did he forget to validate the parameter?&#8221; The answer is the same, human beings tend to forget things.</p>
+
+	<p>But the disaster here should be avoidable. All programming languages allow calling an application without going through the shell and specify the list of parameters explicitly:</p>
+
+<pre><code>exec([&#39;/usr/bin/gzip&#39;, &#39;file&#39;, &#39;-&#39; + request[&#39;quality&#39;]])
+</code></pre>
+
+	<p>What changed? Now <code>&#39;-&#39; + request[&#39;quality&#39;]</code> is always a single parameter to the application, no matter what its value is. Allowing the user to pass in a random parameter to the application is still bad but usually it won&#8217;t cause any real harm.</p>
+
+	<p>But of course the side-effect is that all the nice stuff implemented by the shell won&#8217;t be available. Yes, you have to specify the full path to the application&nbsp;&mdash; there is no shell to locate it for you. Yes, you have to do variable expansion yourself. Yes, you have to route streams from one application to another &#8220;manually.&#8221; No, it&#8217;s not that hard and you don&#8217;t need the shell for that. On the bright side, your application won&#8217;t break when confronted with some unusual shell.</p>
+
+	<h4>Case study #3: Cross-Site Scripting</h4>
+
+	<p>Bored? Sorry about that but we are coming to the interesting part now. Getting rid of <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" title="XSS">Cross-Site Scripting</a> is much harder, simply because there are so many different ways to write vulnerable code, some of which are <a href="/2015/08/30/why-you-probably-want-to-disable-jqueryparsehtml-even-though-you-don-t-call-it">not entirely obvious</a>. But the classic scenario is still the following:</p>
+
+<pre><code>&lt;div&gt;Your search for {{request.search}} produced no results.&lt;/div&gt;
+</code></pre>
+
+	<p>You can probably guess by now that I&#8217;m not going to advice quickly escaping that variable before somebody notices. If the web application isn&#8217;t something entirely trivial there will always be some variable left unescaped. Luckily, there is a better solution: modern template frameworks are capable of escaping automatically! For example, Django templates <a href="https://code.djangoproject.com/wiki/AutoEscaping">escape by default</a>, same goes for Ruby on Rails 3.0. Jinja2 <a href="http://jinja.pocoo.org/docs/dev/api/#autoescaping">supports autoescaping</a> as well, sadly not by default however.</p>
+
+	<p>When using any of these template engines the code above will be perfectly safe, escaping will be performed automatically. Even better, they will automatically prevent double-escaping:</p>
+
+<pre><code>{% macro greeting(name) %}
+&lt;div&gt;Hey, {{name}}&lt;/div&gt;
+{% endmacro %}
+{{greeting(name) + postfix}}
+</code></pre>
+
+	<p>In this example only the <code>name</code> and <code>postfix</code> variables will be escaped. The result of the macro on the other hand will be automatically marked as safe and won&#8217;t be escaped.</p>
+
+	<p>Hey, but what about JavaScript code? The templates won&#8217;t help you with inserting into JavaScript code and that&#8217;s why you just shouldn&#8217;t do it. I&#8217;m serious, <strong>don&#8217;t do it</strong>! When inserting into JavaScript code there is simply too much that can go wrong. For example, is <span class="caps">JSON</span> safe?</p>
+
+<pre><code>&lt;script&gt;
+{% autoescape false %}
+var data = {{data|json}};
+{% endautoescape %}
+&lt;/script&gt;
+</code></pre>
+
+	<p>What if some value in your data is <code>&quot;&lt;/script&gt;&lt;script&gt;alert(/xss/)&lt;/script&gt;&quot;</code>? It simply closed your <code>script</code> tag and created one of its own&nbsp;&mdash; all that while staying perfectly valid <span class="caps">JSON</span> code. The correct approach would take advantage of autoescaping:</p>
+
+<pre><code>&lt;div id=&quot;my_data&quot; hidden&gt;{{data|json}}&lt;/div&gt;
+&lt;script&gt;
+var data = JSON.parse(document.getElementById(&quot;my_data&quot;).textContent);
+&lt;/script&gt;
+</code></pre>
+
+	<p>Not only is this code safe now, the new JavaScript code is static and can be moved into a separate file. And this in turn allows you to enable <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP">Content Security Policy</a> and disable all inline scripts. Huge win for security!</p>
+
+	<p>Want another example? Inline event handlers are something where escaping is notoriously hard to get right (see also &#8220;More complicated <span class="caps">XSS</span>&#8221; <a href="/2010/12/11/finding-security-issues-in-a-website-or-how-to-get-paid-by-google">here</a>).</p>
+
+<pre><code>&lt;a href=&quot;#&quot; onclick=&quot;goTo(&#39;{{request.url}}&#39;)&quot;&gt;
+</code></pre>
+
+	<p>It&#8217;s an attribute so autoescaping should do? No, it&#8217;s an attribute containing JavaScript code, so one would have to apply JavaScript-specific escapes before <span class="caps">HTML</span> escapes (yes, you have to do both and in that exact order). Rather than going down that rabbit hole, one can just use a regular attribute:</p>
+
+<pre><code>&lt;a href=&quot;#&quot; data-url=&quot;{{request.url}}&quot; onclick=&quot;goTo(this.getAttribute(&#39;data-url&#39;))&quot;&gt;
+</code></pre>
+
+	<p>That&#8217;s it, now nothing can go wrong any more. And again, since your inline event handler is static code now, that&#8217;s a good opportunity to move it into a separate JavaScript file. Did I mention Content Security Policy already?</p>
+
+	<h4>Conclusions</h4>
+
+	<p>I could go on, e.g. about using secure <span class="caps">DOM</span> methods rather than <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#Security_considerations">innerHTML</a> or about <a href="/2009/02/06/five-wrong-reasons-to-use-eval-in-an-extension">banning eval()</a>. Way too often security issues in web applications are addressed by adding more checks and hoping that adding these won&#8217;t be forgotten anywhere. I consider this the wrong approach, there should be <em>fewer</em> checks. Instead, you should stick to tools that will enforce security by default. You shouldn&#8217;t have to do more work in order to make things secure, it should rather take extra effort to build a security vulnerability.</p>
+
+	<p>There is an additional benefit here. How does one tell that the web application is free of obvious <span class="caps">XSS</span> issues? Without autoescaping you would have to go through every single variable inserted into a template and verify that all of them are escaped properly. Autoescaping makes this tedious task unnecessary, all you need to check are the (hopefully few) cases where autoescaping has been explicitly disabled. Then you have to verify that no variables are being inserted into JavaScript code and you are already done.</p>

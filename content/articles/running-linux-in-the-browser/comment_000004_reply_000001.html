@@ -1,0 +1,3 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Yes, I&#8217;ve seen that as well. I checked with JavaScript Deobfuscator, apparently it is having trouble using XMLHttpRequest to get binary data. It is currently trying to use <code>mozResponseArrayBuffer</code> (Firefox 4, older version of the standard?) or <code>response</code> (WebKit and V8, per standard) XMLHttpRequest property. Nightly builds no longer have <code>mozResponseArrayBuffer</code> but they have <code>mozResponse</code> rather than <code>response</code> (also <code>mozResponseType</code> rather than <code>responseType</code>), this is the usual approach for experimental implementations. A trivial change to the script should do.</p>

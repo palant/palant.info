@@ -1,0 +1,10 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>a) You have to extend both gBrowser.foo and window.doSomething. When gBrowser.foo is entered you set a flag variable to false, when window.doSomething is entered you change it to true. doSomethingAfterFoo is only called if that flag variable is true.<br />
+b) I don&#8217;t think you want a clairvoyance module &#8211; you rather want to call doSomethingBeforeFoo when gBrowser.foo calls window.doSomething (but not if it is called from somewhere else). So again you extend both functions. When gBrowser.foo is entered you set a flag variable to true, when it is exited you set it to false. When window.doSomething is entered and the flag variable is true you run doSomethingBeforeFoo.<br />
+c) By extending gBrowser.foo in the same way as in b) and then extending doSomethingAnnoying to return if the flag variable is true. But think twice whether you really want to do it and whether you will break something by doing that.<br />
+d) Again extend gBrowser.foo in the same way as in b) and extend doSomething &#8211; if flag variable is set and arguments[0] is &#8220;red&#8221;, change arguments[0] to &#8220;green&#8221;. Here again, please think twice before doing that.</p>
+
+	<p>About maxVersion: extensions are typically compatible with 3.0.*, so this won&#8217;t catch security fixes that happen in minor releases.</p>
+
+	<p>&#8220;On the other hand enables eval patching the extension author to patch bugs (including security related) before they are fixed in the original code&#8221; &#8211; patching bugs this way is a really bad idea. File a bug in Bugzilla, provide a patch. If it is really an obvious bug and safe to fix that fix will be distributed with a minor release. And if you are doing something wrong you will get feedback &#8211; better than &#8220;patching&#8221; without asking anybody and breaking browser functionality.</p>

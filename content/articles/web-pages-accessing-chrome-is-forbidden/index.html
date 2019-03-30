@@ -1,0 +1,27 @@
+{"title": "Web pages accessing chrome:// is forbidden", "date": "2008-04-13 20:30:34", "description": "", "categories": ["gecko"], "slug": "web-pages-accessing-chrome-is-forbidden"}
+
+	<p>I didn&#8217;t believe that this would still be fixed in Firefox 3 but <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=292789">bug 292789</a> has landed. The timing could be better, having such a big change go in shortly before a release is certainly less than optimal&nbsp;&mdash; yet still, I think that we are much better off now than we were before.</p>
+
+	<p>Until now any web page could load scripts or images from the chrome:// protocol&nbsp;&mdash; files that are meant to be used by the browser itself. So as a web page you can write:</p>
+
+<pre><code>&lt;script src=&quot;chrome://browser/content/browser.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+	<p>And that will load the script actually in use by the Firefox browser. I have seen many bogus vulnerability reports about this feature but it isn&#8217;t an issue in itself: just because you can include a browser&#8217;s script in your web page, it will not execute with browser&#8217;s privileges. The effect will be exactly the same when you take this file from some Firefox installation and upload it to your website, the script will have the same privileges that your site has. The files available via chrome:// protocol are exactly the same in each Firefox installation, and by reading them you don&#8217;t gain any information you couldn&#8217;t get by other means.</p>
+
+	<p>Well, almost no information. Thing is, extensions will add new files that will also be available via chrome:// protocol. So a web page could use this code:</p>
+
+<pre><code>&lt;img src=&quot;chrome://adblockplus/skin/adblockplus.png&quot;&gt;
+</code></pre>
+
+	<p>And that image would only load if Adblock Plus is installed. As <a href="http://jeremiahgrossman.blogspot.com/2006/08/i-know-what-youve-got-firefox.html">some people noticed</a>, this is a nifty way to detect which extensions a site&#8217;s visitor has installed. And, obviously, when I browse the web I don&#8217;t want everybody to know what I use, in particular because that would allow targeted attacks at vulnerabilities in extensions. I designed <a href="">a workaround</a> &#8211; but it is used only by Adblock Plus and a bunch of other extensions.</p>
+
+	<p>Nice to see that Firefox fixes this issue now. In the new world, only chrome://browser/ and chrome://toolkit/ are accessible from the web (these are the files we <strong>want</strong> to be accessible). Everything else (including extensions) is hidden however. If for some reason an extension needs its files to be accessible from the web, it can specify the flag <code>contentaccessible=yes</code> in chrome.manifest&nbsp;&mdash; but that should be a rare exception.</p>
+
+	<p>There is a catch however. Firefox 2 does not understand the flag <code>contentaccessible=yes</code> and will ignore the entire line. If your extension should be backwards compatible, something like this will work for both Firefox 2 and Firefox 3:</p>
+
+<pre><code>content mypackage location/
+content mypackage location/ contentaccessible=yes
+</code></pre>
+
+	<p>I expected to use this for Adblock Plus (temporarily at least) because of the &#8220;object tabs&#8221; feature, but surprisingly it wasn&#8217;t broken. Good for me.</p>

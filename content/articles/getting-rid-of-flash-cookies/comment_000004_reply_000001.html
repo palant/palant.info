@@ -1,0 +1,3 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>I think I can live with these problems (though I don&#8217;t really expect any). Problem is, simulating session cookies isn&#8217;t possible &#8211; because session cookies are never written out to disk in the first place. Closest thing would be removing Flash cookies when Firefox is shut down. Unfortunately, you cannot really tie script execution to that event. I guess one could change the cron job to check first whether browser is running and only remove the directory if it is not &#8211; but I rarely have the browser closed long enough.</p>

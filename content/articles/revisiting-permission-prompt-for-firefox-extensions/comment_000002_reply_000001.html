@@ -1,0 +1,7 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>The good news is: most people have never seen that prompt because permission prompts on update aren&#8217;t enabled in stable Firefox yet. So right now is my last chance to change it back to &#8220;all websites&#8221; and I&#8217;ve taken it.</p>
+
+	<p>As to misleading users who care, these users aren&#8217;t helped by the message stating that my extension requires access to 200 domains, most of which they cannot see. Nor is it helpful if they see the same message whenever Google decides to set up one more domain. I don&#8217;t like requesting access to all websites any more than you do, but the current Firefox implementation is simply broken for this use case.</p>
+
+	<p>I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1387695" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1387695</a> on implementing things in the same way Chrome did. Once this is done, the permission prompt should list merely three domains, so that users can actually understand what&#8217;s happening. More importantly, no permission prompt will appear on update if merely yet another Google domain has been added. And if <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1373434" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1373434</a> is fixed as well, I&#8217;ll happily remove requesting access to all websites again.</p>

@@ -1,0 +1,66 @@
+{"title": "Using WebExtensions APIs in a \"classic\" extension", "date": "2015-10-15 10:41:16", "description": "", "categories": ["gecko", "mozilla"], "slug": "using-webextensions-apis-in-a-classic-extension"}
+
+	<p>So <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions">WebExtensions</a> are the great new way to build Firefox extensions, and soon everybody creating a new extension should be using that over everything else. But what about all the people who already have extensions? How can one be expected to migrate a large extension to WebExtensions and still keep it working? Chances are that you will first spend tons of time rewriting your code, and then even more time responding to complains of your users because that rewrite introduced bugs and unintended changes.</p>
+
+	<p>I don&#8217;t want to see myself in that hell, a gradual migration is almost always a better idea. So I looked into ways to use WebExtensions <span class="caps">API</span>s from my existing, &#8220;classic&#8221; extension. And &#8211; yes, it works. However, at this point the approach still makes many assumptions and uses internal <span class="caps">API</span>s, so the code example below is merely a proof-of-concept and should be used with caution.</p>
+
+	<p>The good news, WebExtensions are currently implemented as a subset of bootstrapped extensions with a <a href="http://mxr.mozilla.org/mozilla-central/source/toolkit/mozapps/extensions/internal/WebExtensionBootstrap.js">very simplistic bootstrap.js</a>. Yay, it is merely creating an <code>Extension</code> instance &#8211; I can do that as well! Ok, it&#8217;s not quite as simple, and the final code (here based on Add-on <span class="caps">SDK</span> but can be done similarly from any extension) looks like this:</p>
+
+<pre><code>
+let self = require(&quot;sdk/self&quot;);
+let unload = require(&quot;sdk/system/unload&quot;);
+let {Ci, Cu} = require(&quot;chrome&quot;);
+</code>
+<code>let {Services} = Cu.import(&quot;resource://gre/modules/Services.jsm&quot;, {});
+let {Extension, ExtensionPage, Management} = Cu.import(&quot;resource://gre/modules/Extension.jsm&quot;, {});
+let global = this;
+</code>
+<code>function resolveURI(uri)
+{
+  if (typeof uri == &quot;string&quot;)
+    uri = Services.io.newURI(uri, null, null);
+  if (uri.scheme == &quot;resource&quot;)
+  {
+    let protoHandler = Services.io.getProtocolHandler(&quot;resource&quot;)
+                                  .QueryInterface(Ci.nsIResProtocolHandler);
+    return resolveURI(protoHandler.resolveURI(uri));
+  }
+  else
+    return uri;
+}
+</code>
+<code>let extension = new Extension({
+  id: self.id,
+  version: self.version,
+  resourceURI: resolveURI(self.data.url(&quot;&quot;))
+});
+extension.startup().then(function()
+{
+  let context = new ExtensionPage(extension, {type: &quot;background&quot;, contentWindow: global});
+  let chrome = Management.generateAPIs(extension, context);
+  chrome.tabs.query({active: true}, function(tabs)
+  {
+    chrome.tabs.executeScript(tabs[0].id, {
+      code: &quot;chrome.runtime.sendMessage(window.location.href)&quot;
+    });
+    chrome.runtime.onMessage.addListener(function(message)
+    {
+      console.error(message);
+    })
+  });
+}).catch(function(e)
+{
+  console.error(e);
+});
+unload.when(() =&gt; extension.shutdown());
+</code></pre>
+
+	<p>This code will inject a content script into the current tab to retrieve its <span class="caps">URL</span> and print it to console (assuming that you have something loaded in the current tab that you are allowed to access and not <code>about:addons</code> for example, otherwise it will throw an obscure exception). Yes, it&#8217;s a very complicated way of doing it but I wanted to make sure that the messaging really works. But there clearly more details here worth explaining:</p>
+
+	<ul>
+		<li>The parameter passed to the <code>Extension</code> parameter is fake <a href="https://developer.mozilla.org/en-US/Add-ons/Bootstrapped_extensions#Bootstrap_data">boostrap data</a>. The interesting part here is <code>resourceURI</code> &#8211; that&#8217;s where WebExtensions will consider the root of your extension to be, e.g. they will load <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json">manifest.json</a> from that directory (make sure to declare <code>&quot;tabs&quot;</code> and <code>&quot;&lt;all_urls&gt;&quot;</code> permissions there). Content script <span class="caps">URL</span>s will also be resolved relative to it, so using the <code>data/</code> directory makes sense for <span class="caps">SDK</span>-based extensions.</li>
+		<li>At the moment, <code>resourceURI</code> parameter has to be an <code>nsIURI</code> instance and it has to use the <code>file:</code> or <code>jar:</code> scheme, that&#8217;s why I have that relatively complicated <code>resolveURI()</code> function there.</li>
+		<li><code>ExtensionPage</code> and <code>Management</code> aren&#8217;t actually exported by the module I&#8217;m importing there, these are internal <span class="caps">API</span> and will likely change in future (in fact, I doubt that the <code>Extension</code> class is really stable at this point).</li>
+	</ul>
+
+	<p>I filed a bunch of bugs to make this simpler and more reliable, these are tracked under <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1215035">bug 1215035</a>. The biggest issue now is backwards compatibility, somehow browser developers tend to forget that extensions cannot support only the latest nightly build. At the very least, the current and previous stable releases of Firefox are supported, often the latest <span class="caps">ESR</span> release as well. The first <span class="caps">ESR</span> release with WebExtensions support is expected to come out mid-April 2016, and somehow I don&#8217;t have the impression that Mozilla would let us wait until then with the WebExtensions adoption (it&#8217;s not really a good idea either because bugs about incomplete or faulty <span class="caps">API</span>s need to be filed <span class="caps">ASAP</span>).</p>

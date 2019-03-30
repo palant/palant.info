@@ -1,0 +1,9 @@
+{"publishDate": "2009-03-12 06:11:41", "author": "Ainkami", "authorUrl": "", "id": "000022"}
+
+	<p>You might want to backup your settings.sol file to keep your Flash preferences before wiping Flash cache. <br />
+Put this into a .bat file:<br />
+@echo off<br />
+xcopy /y &#8220;<span><span class="caps">APPDATA</span></span>\Macromedia\Flash Player\macromedia.com\support\flashplayer\sys\settings.sol&#8221; &#8220;<span><span class="caps">TEMP</span></span>\&#8221;<br />
+rd /s /q &#8220;<span><span class="caps">APPDATA</span></span>\Macromedia\Flash Player\&#8221;<br />
+xcopy /y &#8220;<span><span class="caps">TEMP</span></span>\settings.sol&#8221; &#8220;<span><span class="caps">APPDATA</span></span>\Macromedia\Flash Player\macromedia.com\support\flashplayer\sys\&#8221; </p>
+

@@ -1,0 +1,11 @@
+{"title": "Different ways to force garbage collection", "date": "2008-11-20 11:49:10", "description": "", "categories": ["gecko"], "slug": "different-ways-to-force-garbage-collection"}
+
+	<p>Yesterday I reported a Gecko bug where reproducing required the garbage collector to run. In the following discussion this useful snippet of code appeared:</p>
+
+	<pre>window.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
+      .getInterface(Components.interfaces.nsIDOMWindowUtils)
+      .garbageCollect();</pre>
+
+	<p>So if you are suspecting that some issue you are observing is dependent on the garbage collector you can use this to force garbage collector to run. I shared that code at work and promptly got a question: what&#8217;s the difference to <a href="https://developer.mozilla.org/En/Components.utils.forceGC">Components.utils.forceGC()</a>? There we go, yesterday I didn&#8217;t even know that there was a way to force garbage collection, and today I already know two!</p>
+
+	<p>As to the difference, existing documentation is remarkably reluctant to tell us. I confirmed my guess by looking at the code: <code>Components.utils.forceGC()</code> only triggers the garbage collection mechanism inside the JavaScript engine. That one isn&#8217;t aware of <span class="caps">XPCOM</span> and will not collect <span class="caps">XPCOM</span> objects. <code>nsIDOMWindowUtils.garbageCollect()</code> however goes one step further by triggering the cycle collector, meaning that it will collect both JavaScript and <span class="caps">XPCOM</span> objects. And it triggers the cycle collector twice to make sure that it really gets everything. Now it would be nice to see that information on <span class="caps">MDC</span> but what would be the right place?</p>

@@ -1,0 +1,15 @@
+{"title": "Easy Passwords moving forward - filling in user names", "date": "2016-09-05 09:58:56", "description": "", "categories": ["security", "pfp"], "slug": "easy-passwords-moving-forward-filling-in-user-names"}
+
+<p>My colleague Dave Barker is pushing me towards making Easy Passwords a full-featured LastPass alternative. Given the LastPass security vulnerabilities that were <a href="https://labs.detectify.com/2016/07/27/how-i-made-lastpass-give-me-all-your-passwords/">published</a> <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=884">recently</a> and the ones I am about to publish myself soon I cannot really blame him. Getting there will take a while but we&#8217;ve reached an important milestone on the way: with Easy Passwords 1.1.0 user names will now be filled in automatically as well, so for most login forms you won&#8217;t need to type anything at all any more. Implementing this feature in a user-friendly way was more complicated than it sounds, if you are interested you can see the iteration process we went through in the <a href="https://github.com/palant/easypasswords/issues/22">corresponding issue</a>.</p>
+
+<p>Now that this is out of the way the next steps are:</p>
+
+<ul>
+	<li><a href="https://github.com/palant/easypasswords/issues/36">Make it easier to create a new password for the same user name</a></li>
+	<li><a href="https://github.com/palant/easypasswords/issues/24">Add sync functionality</a></li>
+	<li><a href="https://github.com/palant/easypasswords/issues/33">Allow storing password notes</a></li>
+	<li><a href="https://github.com/palant/easypasswords/issues/25">Show passwords as QR codes</a> (poor man&#8217;s mobile solution)</li>
+	<li><a href="https://github.com/palant/easypasswords/issues/11">Optionally show actual password text on the passwords overview page</a></li>
+</ul>
+
+<p>Currently, Easy Passwords supports desktop browsers only (Firefox, Chrome, Opera, in future most likely Edge as well). Ideally, it would work with mobile browsers as well but mobile browsers aren&#8217;t exactly famous for being extensible, with Firefox on Android being the only exception. One idea is wrapping up something similar to the <a href="https://palant.github.io/easypasswords/online.html">online version of Easy Passwords</a> as an Android extension, albeit with sync functionality so that the right password could be selected from the list instead of replicating all of its parameters. It would still require typing the website name manually (not secure against phishing pages) and copying password to clipboard (not very convenient) however. Also, as I don&#8217;t need this functionality personally I&#8217;m not very likely to spend time developing it, so anybody is welcome to volunteer.</p>

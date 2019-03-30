@@ -1,0 +1,39 @@
+{"title": "\"Unloading\" frame scripts in restartless extensions", "date": "2014-11-19 07:51:23", "description": "", "categories": ["add-ons", "gecko"], "slug": "unloading-frame-scripts-in-restartless-extensions"}
+
+	<p>The big news is: e10s is coming to desktop Firefox after all, and it was even enabled in the nightly builds already. And while most of the times the add-ons continue working without any changes, this doesn&#8217;t always work correctly. Plus, using the compatibility shims faking a single-process environment might not be the most efficient approach. So reason enough for add-on authors to look into the dreaded and underdocumented <a href="https://developer.mozilla.org/en-US/Firefox/Multiprocess_Firefox/The_message_manager">message manager</a> and start working with frame scripts again.</p>
+
+	<p>I tried porting a simple add-on to this <span class="caps">API</span>. The good news: the <span class="caps">API</span> hasn&#8217;t changed since Firefox 17, so the changes will be backwards-compatible. And the bad news? Well, there are several.</p>
+
+	<ul>
+		<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1051238">Bug 1051238</a> means that frame scripts are cached&nbsp;&mdash; so when a restartless add-on updates the old frame script code will still be used. You can work around that by randomizing the <span class="caps">URL</span> of your frame script (e.g. add <code>&quot;?&quot; + Math.random()</code> to it).</li>
+		<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=673569">Bug 673569</a> means that all frame scripts run in the same shared scope prior to Firefox 29, so you should make sure there are no conflicting global variables. This can be worked around by wrapping your frame script in an anonymous function.</li>
+		<li>Duplicating the same script for each tab (originally there was only a single instance of that code) makes me wonder about the memory usage here. Sadly, I don&#8217;t see a way to figure that out. I assume that <code>about:memory</code> shows frame scripts under the <code>outOfProcessTabChildGlobal</code> entry. But due to the shared scope there is no way to see individual frame scripts there.</li>
+		<li>Finally, you cannot unload frame scripts if your restartless extension is uninstalled or disabled. <code>messageManager.removeDelayedFrameScript()</code> will merely make sure that the frame script won&#8217;t be injected into any new tabs. But what about tabs that are already open?</li>
+	</ul>
+
+	<p>Interestingly, it seems that Mark Finkle was the only one to <a href="http://starkravingfinkle.org/blog/2011/03/cloud-printer-print-from-firefox-mobile/">ask himself that question</a> so far. The solution is: if you cannot unload the frame script, you should at least make sure it doesn&#8217;t have any effect. So when the extension unloads it should send a <code>&quot;myaddon@example.com:disable&quot;</code> message to the frame scripts and the frame scripts should stop doing anything.</p>
+
+	<p>So far so good. But isn&#8217;t there a race condition? Consider the following scenario:</p>
+
+	<ul>
+		<li>An update is triggered for a restartless extension.</li>
+		<li>The old version is disabled and broadcasts &#8220;disable&#8221; message to the frame scripts.</li>
+		<li>The new version is installed and starts its frame scripts.</li>
+		<li>The &#8220;disable&#8221; message arrives and disabled all frame scripts (including the ones belonging to the new extension version).</li>
+	</ul>
+
+	<p>The feedback I got from Dave Townsend says that this race condition doesn&#8217;t actually happen and that <code>loadFrameScript</code> and <code>broadcastAsyncMessage</code> are guaranteed to affect frame scripts in the order called. It would be nice to see this documented somewhere, until then it is an implementation detail that cannot be relied on. The work-around I found here: since the frame script <span class="caps">URL</span> is randomized anyway (due to bug 1051238), I can send it along with the &#8220;disable&#8221; message:</p>
+
+<pre><code>messageManager.broadcastAsyncMessage(&quot;myaddon@example.com:disable&quot;, frameScriptURL);
+</code></pre>
+
+	<p>The frame script then processes the message only if the <span class="caps">URL</span> matches its own <span class="caps">URL</span>:</p>
+
+<pre><code>addMessageListener(&quot;myaddon@example.com:disable&quot;, function(message)
+{
+  if (message.data == Components.stack.filename)
+  {
+    ...
+  }
+});
+</code></pre>

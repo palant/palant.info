@@ -1,0 +1,41 @@
+{"title": "Enforce Encryption", "date": "2014-03-31 20:39:20", "description": "", "categories": [], "slug": "enforce-encryption"}
+
+	<p><a href="https://addons.mozilla.org/addon/enforce-encryption/" class="installLink">Install page</a></p>
+
+	<p><a href="enforceencryption.png">{{< img "enforceencryption.png" "Enforce Encryption screenshot" 200 >}}</a></p>
+
+	<h4>How to use Enforce Encryption</h4>
+
+	<ul>
+		<li>Go to the encrypted (<span class="caps">HTTPS</span>) version of the webpage.</li>
+		<li>Right-click somewhere on the page and choose &#8220;Page Info&#8221; from the menu.</li>
+		<li>Switch to the &#8220;Security&#8221; tab.</li>
+		<li>If it says &#8220;No&#8221; next to &#8220;Enforce encrypted connection?&#8221; click &#8220;Start enforcing&#8221;.</li>
+	</ul>
+
+	<p>The setting applies to all pages of a site, the browser will always send you to the encrypted version automatically. You can also click &#8220;Stop enforcing&#8221; to allow unencrypted connections for this site again.</p>
+
+	<h4>Why you should care about encrypting connections</h4>
+
+	<p>If you use an unencrypted connection then everybody can listen in and see or manipulate all data that is being transmitted. They can learn what you like reading, they can impersonate you on the services you are using and they can inject their content into the webpages you are viewing. That content might be a fake news article, advertising or even malicious code intended to infect your computer.</p>
+
+	<p>How do people listen in? They can do this for example by being in the same public wireless hotspot as you, or by being an employee of your Internet provider, or by working for a government agency like the <span class="caps">NSA</span>. If you use encrypted connections then you make spying on you or messing with you a lot harder.</p>
+
+	<h4>How Enforce Encryption helps</h4>
+
+	<p>Many websites support both encrypted and unencrypted connections. If you are lucky, your password will be sent over an encrypted connection but other than that you have to switch to <span class="caps">HTTPS</span> manually. However, remembering this is very tedious, e.g. when you get to the website via a search engine or an old history entry.</p>
+
+	<p>There are other websites that will always redirect you to an encrypted version of their website. However, before they can redirect you your browser will contact the website over an unencrypted connection &#8211; and that&#8217;s a chance for an attacker to manipulate the request and to keep you on an unencrypted connection (<span class="caps">SSL</span> Stripping). And if you don&#8217;t pay attention you&#8217;ve lost.</p>
+
+	<p>Firefox has a built-in mechanism that can solve both issues by making sure that you always visit a website over an encrypted connection. However, this mechanism requires the website to opt in via the Strict Transport Security header &#8211; and so far many websites still don&#8217;t do it. The Enforce Encryption extension makes this setting accessible via the Page Info dialog, this way you can enforce encrypted connections even for websites that didn&#8217;t opt in.</p>
+
+	<h4>Known limitations</h4>
+
+	<ul>
+		<li>Clicking &#8220;Stop enforcing&#8221; won&#8217;t produce the expected results for websites that opt into Strict Transport Security &#8211; the enforcement will be active again after you reload the page. These websites can also make Strict Transport Security expire after an arbitrary time (can be as short as 1 second), regardless of what you do with this extension.</li>
+		<li>A website can determine that all of its subdomains should be opted into Strict Transport Security. Clicking &#8220;Stop enforcing&#8221; on a subdomain won&#8217;t do anything.</li>
+	</ul>
+
+	<h4>Source code / Contributing</h4>
+
+	<p>The extension source code is available under <a href="https://github.com/palant/enforceencryption">https://github.com/palant/enforceencryption</a>.</p>

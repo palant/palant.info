@@ -1,0 +1,69 @@
+{"title": "Keybase: \"Our browser extension subverts our encryption, but why should we care?\"", "date": "2018-09-06 08:50:14", "description": "The Keybase browser extension subverts the app's end-to-end encryption. Keybase considers that \"an acceptable risk\" and not worth fixing.", "categories": ["security"], "slug": "keybase-our-browser-extension-subverts-our-encryption-but-why-should-we-care"}
+
+<p>Two days ago I decided to take a look at Keybase. Keybase does crypto, is open source and offers security bug bounties for relevant findings&nbsp;&mdash; just the perfect investigation subject for me. It didn&#8217;t take long for me to realize that their browser extension is deeply flawed, so I reported the issue to them via their bug bounty program. The response was rather&#8230; remarkable. It can be summed up as: “Yes, we know. But why should we care?” Turns out, this is a common response, see update at the bottom.</p>
+
+<h4>What is Keybase?</h4>
+
+<p>The self-description of Keybase emphasizes its secure end-to-end encryption (emphasis in original):</p>
+
+<blockquote>
+	<p>Imagine a <b>Slack</b> for the whole world, except <b>end-to-end encrypted</b> across all your devices. Or a <b>Team Dropbox</b> where the server can&#8217;t leak your files or be hacked.</p>
+</blockquote>
+
+<p>So the app allows you to exchange messages or files with other people, with the encryption happening on sender&#8217;s computer in such a way that decryption is only possible by the designated recipient. This app is available for both desktop and mobile platforms. And for desktop you get a bonus: you can install the Keybase browser extension. It will add a “Keybase Chat” button to people&#8217;s profiles on Facebook, Twitter, GitHub, Reddit or Hacker News. This button allows you to connect to people easily.</p>
+
+<p style="text-align: center;">{{< img "keybase_chat.png" "Keybase chat button on Github" 320 >}}</p>
+
+<p>Clicking the button will open a chat window and allow you to enter a message directly in the browser. Only after that initial message is sent the conversation will be transferred to the Keybase app.</p>
+
+<h4>So what&#8217;s the issue?</h4>
+
+<p>The issue here is a very common one, merely a week ago I listed it as #6 in <a href="/2018/08/29/password-managers-please-make-sure-autofill-is-secure">this article</a>. The extension injects its user interface (the button and the chat window) into third-party websites, yet it fails to isolate it from these websites. So the first consequence is: the Keybase message you enter on Facebook is by no means private. Facebook&#8217;s JavaScript code can read it out as you type it in, so much for end-to-end encryption. This is quite contrary to the promise Keybase still makes on their Mozilla Add-ons and Chrome Web Store installation pages.</p>
+
+<p style="text-align: center;">{{< img "keybase_install.png" "Keybase promises on the install page" 428 >}}</p>
+
+<p>Don&#8217;t believe that Facebook would intentionally spy on you? Maybe not, but by now it is pretty common to protocol all of user&#8217;s actions, for “site optimization” purposes&nbsp;&mdash; this includes anything entered into text fields of course. But in my opinion, that&#8217;s not even the worst issue.</p>
+
+<p>A website could do more than passively spying on you. It could just as well instrument the Keybase user interface in order to send messages in your name, while also making this user interface invisible so that you don&#8217;t notice anything. Why would Facebook want to do something like that? Not necessary them, rather anybody who discovered a <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">Cross-Site Scripting (<span class="caps">XSS</span>) vulnerability</a> in one of the websites that Keybase integrates with. So if hundreds of people complain about you sending them spam messages via Keybase, it might be somebody exploiting the Keybase extension on your computer via an <span class="caps">XSS</span> vulnerability in Reddit. Have fun explaining how you didn&#8217;t do it, even though the messages were safely encrypted on your computer.</p>
+
+<h4>What does Keybase think about this?</h4>
+
+<p>According to Keybase, “this is all clearly described on the <a href="https://keybase.io/docs/extension">install page</a> and is known.” In fact, close to the bottom of that page you find the following:</p>
+
+<blockquote>
+	<p><b>What if my browser is compromised?</b><br />
+<br />
+The Keybase extension uses a compose box inside your browser. If you fear your browser or the social network site&#8217;s JavaScript has been compromised &#8212; say by another extension or even the social network acting fishy &#8212; then just compose the message inside the Keybase app directly. Or send a quick hello note through the extension and save the jucier private details for inside the app.</p>
+</blockquote>
+
+<p>To me, this is thoroughly confusing. First of all, “browser is compromised” to me sounds more like malware. Trouble is, malware affecting the browser will affect the Keybase app just as well, so the advise makes no sense. But let&#8217;s say that it really is “the social network acting fishy,” how are you supposed to know? And is Facebook spying on you “fishy” or just its usual self?</p>
+
+<p>It&#8217;s not that this issue is unavoidable. Avoiding it is fairly easy, by isolating all of the extension&#8217;s user interface in an <code>&lt;iframe&gt;</code> element. This would prevent both the website and other extensions from accessing it. Disaster averted, nothing to see here. But according to Keybase:</p>
+
+<blockquote>
+	<p>there were technical reasons why iframes didn&#8217;t work, though I forget the details</p>
+</blockquote>
+
+<p>I translate this as: “Using iframes required a slightly more complicated approach, so we couldn&#8217;t figure it out.” Also:</p>
+
+<blockquote>
+	<p>It&#8217;s such a minor feature for us, it&#8217;s not worth a fix.</p>
+</blockquote>
+
+<p>I translate this as: “We will keep pushing this extension because it gets users to promote our app for free. But we don&#8217;t care enough to make it secure.”</p>
+
+<h4>And now?</h4>
+
+<p>The only advise I can give you: uninstall the Keybase browser extension <span class="caps">ASAP</span>. As to the app itself, it <em>might</em> be secure. But as <a href="/2018/07/11/ftapi-secutransfer-the-secure-alternative-to-emails-not-quite">experience shows</a>, the claim “end-to-end encryption” doesn&#8217;t automatically translate into a secure implementation. Initially, I planned to take a closer look at the crypto in Keybase, to see whether I can find weaknesses in their implementation. But that&#8217;s off the table now.</p>
+
+<p><b>Update</b> (2018-09-10): After I wrote this, EdOverflow pointed out that he <a href="https://edoverflow.com/2018/logic-flaws-in-wot-services/">made a similar experience with Keybase in the past</a>. He could demonstrate that the domain ownership validation approach used by Keybase is flawed, yet Keybase wasn&#8217;t really interested in fixing this issue. Why they don&#8217;t require their <code>keybase.txt</code> file to be always located within the <code>.well-known/</code> directory is beyond me, it solves the security issue here without any obvious downsides.</p>
+
+<p>And then I also found <a href="https://hackerone.com/reports/232432">this older vulnerability report on HackerOne</a> about the Keybase extension opening up <span class="caps">XSS</span> issues on websites. The reporter recommended staying clear of <code>innerHTML</code> and using safe <span class="caps">DOM</span> methods instead, something that I have also been preaching for years. The response he received sounded very familiar:</p>
+
+<blockquote>
+	<p>There was some reason our extension developer decided against that approach, though he agrees it&#8217;s better in theory.</p>
+</blockquote>
+
+<p>In other words: “We don&#8217;t know how to do it, but we&#8217;ll claim that we have a good reason instead of asking for help.”</p>
+
+<p><b>Update</b> (2018-11-07): I now requested explicitly that Keybase makes my report on HackerOne public, and they promptly rejected. I&#8217;m not sure which part of my report they consider a secret, given that they consider it a known and documented issue. Maybe it&#8217;s merely our conversation that they don&#8217;t want to be public?</p>
