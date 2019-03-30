@@ -1,6 +1,6 @@
 {{ $scratch := newScratch -}}
 {{ $scratch.Add "index" slice -}}
 {{ range .Site.RegularPages -}}
-  {{ $scratch.Add "index" (dict "uri" .RelPermalink "title" .Title "description" .Description "categories" .Params.categories "content" .Plain "summary" .Summary) -}}
+  {{ $scratch.Add "index" (dict "uri" .RelPermalink "title" .Title "description" .Description "categories" .Params.categories "content" (.Plain | htmlUnescape) "summary" (.Summary | htmlUnescape)) -}}
 {{ end -}}
 {{ $scratch.Get "index" | jsonify -}}
