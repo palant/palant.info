@@ -80,7 +80,7 @@
         target.appendChild(par);
 
         var par = document.createElement("p");
-        par.textContent = doc.summary;
+        par.textContent = truncateToEndOfSentence(doc.content, 70);
         target.appendChild(par);
       }
     }
@@ -92,5 +92,32 @@
       par.appendChild(text);
       target.appendChild(par);
     }
+  }
+
+  function truncateToEndOfSentence(text, minWords)
+  {
+    var match;
+    var result = "";
+    var wordCount = 0;
+    var regexp = /(\S+)(\s*)/g;
+    while (match = regexp.exec(text))
+    {
+      wordCount++;
+      if (wordCount <= 70)
+        result += match[0];
+      else
+      {
+        var char1 = match[1][match[1].length - 1];
+        var char2 = match[2][0];
+        if (/[.?!"]/.test(char1) || char2 == "\n")
+        {
+          result += match[1];
+          break;
+        }
+        else
+          result += match[0];
+      }
+    }
+    return result;
   }
 })();
