@@ -1,4 +1,13 @@
-{"title": "Hidden cost of (not) using Venkman", "date": "2009-03-12 18:12:13", "description": "", "categories": ["mozilla", "off-topic"], "slug": "hidden-cost-of-not-using-venkman"}
+{
+  "title": "Hidden cost of (not) using Venkman",
+  "date": "2009-03-12 18:12:13",
+  "description": "",
+  "categories": [
+    "mozilla",
+    "off-topic"
+  ],
+  "slug": "hidden-cost-of-not-using-venkman"
+}
 
 	<p>I came across a Venkman &#8220;feature&#8221; that was so unexpected that I even <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478406">filed a JavaScript engine bug</a> on it. Only after Gijs Kruitbosch asked me to test with a clean profile I realized that the JavaScript performance issue I was seeing wasn&#8217;t inherent to Firefox but rather something the <a href="https://addons.mozilla.org/addon/216">Venkman extension</a> was responsible for. That&#8217;s right, Venkman is degrading JavaScript performance just by being installed, even if you don&#8217;t use it. I had Venkman installed &#8220;just in case&#8221; and this was a big surprise to me.</p>
 

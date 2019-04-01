@@ -1,4 +1,12 @@
-{"title": "Using a Firefox extension to work around Selenium WebDriver's limitations", "date": "2014-08-29 07:38:47", "description": "", "categories": ["mozilla"], "slug": "using-a-firefox-extension-to-work-around-selenium-webdriver-s-limitations"}
+{
+  "title": "Using a Firefox extension to work around Selenium WebDriver's limitations",
+  "date": "2014-08-29 07:38:47",
+  "description": "",
+  "categories": [
+    "mozilla"
+  ],
+  "slug": "using-a-firefox-extension-to-work-around-selenium-webdriver-s-limitations"
+}
 
 	<p>My <a href="/2011/11/28/google-yandex-search-link-fix">Google search link fix extension</a> had a bunch of regressions lately and I realized that testing its impact on the search pages manually isn&#8217;t working&nbsp;&mdash; these pages are more complicated than it looks like, and there are lots of configuration options affecting them. So I decided looking into <a href="http://docs.seleniumhq.org/projects/webdriver/">Selenium WebDriver</a> in order to write integration tests that would automate Firefox. All in all, writing the tests is fairly simple once you get used to the rather arcane <span class="caps">API</span>. However, the functionality seems to be geared towards very old browsers (think IE6) and some features are nowhere to be found.</p>
 

@@ -1,4 +1,12 @@
-{"title": "Proxies breaking up SSL connections? Yes, all the time...", "date": "2014-05-27 15:45:09", "description": "", "categories": ["security"], "slug": "proxies-breaking-up-ssl-connection-yes-all-the-time"}
+{
+  "title": "Proxies breaking up SSL connections? Yes, all the time...",
+  "date": "2014-05-27 15:45:09",
+  "description": "",
+  "categories": [
+    "security"
+  ],
+  "slug": "proxies-breaking-up-ssl-connection-yes-all-the-time"
+}
 
 	<p>Some months ago I was wondering why <a href="https://adblockplus.org/blog/weird-ssl-misconfigurations">some Firefox installations appear to not support strong encryption</a>. After analyzing the <span class="caps">SSL</span> handshakes on one of the filter download servers used by Adblock Plus, I am now mostly confident that the reason is proxy servers essentially conducting Man-in-the-Middle (MitM) attacks. Normally, a proxy server can only forward <span class="caps">SSL</span> data to its destination, it can neither modify nor read the data due to encryption. MitM proxies however pose as the destination server which allows them to manipulate the data in any way they like. For that they have to encrypt the communication with a certificate that is valid for the destination server, usually this happens by installing a new root certificate on the client&#8217;s computer.</p>
 

@@ -1,4 +1,12 @@
-{"title": "Getting published Docker container ports to work with IPv6", "date": "2018-01-05 09:24:51", "description": "", "categories": ["docker"], "slug": "getting-published-docker-container-ports-to-work-with-ipv6"}
+{
+  "title": "Getting published Docker container ports to work with IPv6",
+  "date": "2018-01-05 09:24:51",
+  "description": "",
+  "categories": [
+    "docker"
+  ],
+  "slug": "getting-published-docker-container-ports-to-work-with-ipv6"
+}
 
 <p>This server was overdue for a migration to new hardware, and I used this opportunity to make its setup reproducible by basing it on Docker containers. This allowed me to test things locally, setting everything up on the real server was only a matter of one hour then. Some issues I didn&#8217;t recognize locally however, most importantly Docker&#8217;s weird IPv6 support. Everything worked just fine when the server was accessed via IPv4, accessing it via an IPv6 address caused connections to hang however. I hit this issue with Docker 1.13.1 originally, updating to Docker 17.12 didn&#8217;t change anything. Figuring this out took me quite a while, so I want to sum up my findings here.</p>
 

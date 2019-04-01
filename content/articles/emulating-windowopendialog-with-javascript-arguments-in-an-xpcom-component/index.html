@@ -1,4 +1,13 @@
-{"title": "Emulating Window.openDialog with JavaScript arguments in an XPCOM component", "date": "2008-07-02 11:27:50", "description": "", "categories": ["mozilla", "xul"], "slug": "emulating-windowopendialog-with-javascript-arguments-in-an-xpcom-component"}
+{
+  "title": "Emulating Window.openDialog with JavaScript arguments in an XPCOM component",
+  "date": "2008-07-02 11:27:50",
+  "description": "",
+  "categories": [
+    "mozilla",
+    "xul"
+  ],
+  "slug": "emulating-windowopendialog-with-javascript-arguments-in-an-xpcom-component"
+}
 
 	<p>Opening a <span class="caps">XUL</span> dialog from JavaScript is usually easy, you use <a href="http://developer.mozilla.org/en/docs/DOM:window.openDialog">Window.openDialog</a> method that is almost the same as Window.open but also accepts some parameters that the dialog will be able to access via Window.arguments collection. But what if your JavaScript code runs inside an <span class="caps">XPCOM</span> component doesn&#8217;t have a window? Still not very hard, you use <a href="http://developer.mozilla.org/en/docs/nsIWindowWatcher#openWindow.28.29">nsIWindowWatcher.openWindow</a> method then. The tricky part here is passing parameters to the dialog however. I had to resort to hacks here in the past, and other people seem to have issues with that as well, so I thought I would share the solution.</p>
 

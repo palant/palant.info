@@ -1,4 +1,13 @@
-{"title": "Fake \"hg rebase\" implementation", "date": "2008-10-24 09:13:21", "description": "", "categories": ["adblock-plus", "mozilla"], "slug": "fake-hg-rebase-implementation"}
+{
+  "title": "Fake \"hg rebase\" implementation",
+  "date": "2008-10-24 09:13:21",
+  "description": "",
+  "categories": [
+    "adblock-plus",
+    "mozilla"
+  ],
+  "slug": "fake-hg-rebase-implementation"
+}
 
 	<p>After doing two merges in Mercurial when I couldn&#8217;t push my changes due to totally unrelated changes in the remote repository, I noticed that <a href="https://developer.mozilla.org/en/Mercurial_FAQ#How_do_I_deal_with_.22abort.3a_push_creates_new_remote_heads!.22.3f">mq works great</a> but having a <a href="https://developer.mozilla.org/en/Mercurial/Desired_Features#hg_rebase">fully automated solution</a> instead of running several commands manually would be desirable. So I whipped up a short script that basically does what &#8220;hg rebase&#8221; would do:</p>
 

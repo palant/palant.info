@@ -1,4 +1,13 @@
-{"title": "On Web Extensions shortcomings and their impact on add-on security", "date": "2017-11-11 20:21:14", "description": "", "categories": ["mozilla", "security"], "slug": "on-web-extensions-shortcomings-and-their-impact-on-add-on-security"}
+{
+  "title": "On Web Extensions shortcomings and their impact on add-on security",
+  "date": "2017-11-11 20:21:14",
+  "description": "",
+  "categories": [
+    "mozilla",
+    "security"
+  ],
+  "slug": "on-web-extensions-shortcomings-and-their-impact-on-add-on-security"
+}
 
 	<p>Recently, I reported a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1380616">security issue in the new Firefox Screenshots feature</a> (fixed in Firefox 56). This issue is remarkable for a number of reasons. First of all, the vulnerable code was running within the Web Extensions sandbox, meaning that it didn&#8217;t have full privileges like regular Firefox code. This code was also well-designed, with security aspects taken into consideration. In fact, what I found were multiple minor flaws, each of them pretty harmless. And yet, in combination these flaws were sufficient for Mozilla to assign security impact &#8220;high&#8221; to my bug report (only barely, but still). Finally, I think that these flaws only existed due to shortcomings of the Web Extensions platform, something that should be a concern given that most extensions based on it are <em>not</em> well-designed.</p>
 

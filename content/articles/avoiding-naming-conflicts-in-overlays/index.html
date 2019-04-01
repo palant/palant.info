@@ -1,4 +1,13 @@
-{"title": "Avoiding naming conflicts in overlays", "date": "2009-02-16 22:12:29", "description": "", "categories": ["mozilla", "xul"], "slug": "avoiding-naming-conflicts-in-overlays"}
+{
+  "title": "Avoiding naming conflicts in overlays",
+  "date": "2009-02-16 22:12:29",
+  "description": "",
+  "categories": [
+    "mozilla",
+    "xul"
+  ],
+  "slug": "avoiding-naming-conflicts-in-overlays"
+}
 
 	<p><span class="caps">XUL</span> overlays are a great mechanism for extending existing functionality. However, there is a catch&nbsp;&mdash; any scripts loaded by an overlay are sharing the namespace with the scripts loaded by the original page <strong>and</strong> the scripts loaded by other overlays (typically from other extensions). So if extension Foo defines a global variable myGreatVar and extension Bar chooses to define a global variable myGreatVar as well, bad things will happen&nbsp;&mdash; both extensions will end up accessing the same variable and usually both extensions will behave erratically because of that. Same happens with functions, if two scripts define the same global function the second function definition will override the first. The situation is worst for constants&nbsp;&mdash; a constant cannot be redeclared meaning that one of the extensions will cause an error message.</p>
 

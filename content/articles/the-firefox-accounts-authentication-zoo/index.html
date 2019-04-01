@@ -1,4 +1,13 @@
-{"title": "The Firefox Accounts authentication zoo", "date": "2018-03-27 10:35:39", "description": "", "categories": ["mozilla", "security"], "slug": "the-firefox-accounts-authentication-zoo"}
+{
+  "title": "The Firefox Accounts authentication zoo",
+  "date": "2018-03-27 10:35:39",
+  "description": "",
+  "categories": [
+    "mozilla",
+    "security"
+  ],
+  "slug": "the-firefox-accounts-authentication-zoo"
+}
 
 <p>After my <a href="/2018/03/13/can-chrome-sync-or-firefox-sync-be-trusted-with-sensitive-data">article on the browser sync mechanisms</a> I spent some time figuring out how Firefox Accounts work. The setup turned out remarkably complex, with many different server types communicating with each other even for the most basic tasks. While this kind of overspecialization probably should be expected given the scale at which this service operates, the number of different authentication methods is surprising and the <a href="https://github.com/mozilla/fxa-auth-server/wiki/onepw-protocol">official documentation</a> only tells a part of the story while already being fairly complex. I&#8217;ll try to show the entire picture here, in case somebody else needs to piece it all together.</p>
 

@@ -1,4 +1,13 @@
-{"title": "Safari extension format (.safariextz) explained", "date": "2016-08-17 16:48:26", "description": "", "categories": ["add-ons", "os-x"], "slug": "safari-extension-format-safariextz-explained"}
+{
+  "title": "Safari extension format (.safariextz) explained",
+  "date": "2016-08-17 16:48:26",
+  "description": "",
+  "categories": [
+    "add-ons",
+    "os-x"
+  ],
+  "slug": "safari-extension-format-safariextz-explained"
+}
 
 	<p>As extension formats go, Apple clearly chose the most obscure and least documented one for their Safari browser. It&#8217;s based on the <span class="caps">XAR</span> (eXtensible ARchiver) format which is a <a href="https://code.google.com/archive/p/xar/">dead project</a> with <a href="https://code.google.com/archive/p/xar/wikis/xarformat.wiki">barely existing and outdated format documentation</a> (note how it suggests setting <code>XAR_HEADER_VERSION</code> to zero even though current header version is one). But Apple went further and added signing support to the format without documenting it. Why bother if everybody can use Safari to create an extension package? And so for a long time your best choice to automate the build process was <a href="https://mackyle.github.io/xar/howtosign.html">a complicated list of instructions</a> relying on a patched version of the xar command line tool. A year ago somebody apparently added a <a href="https://github.com/robertknight/xar-js">much more convenient xar-js library</a> to the list but I didn&#8217;t find out until I started writing this blog post.</p>
 

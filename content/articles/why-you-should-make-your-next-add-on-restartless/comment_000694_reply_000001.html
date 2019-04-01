@@ -1,3 +1,6 @@
-{"author": "Wladimir Palant", "id": "000001"}
+{
+  "author": "Wladimir Palant",
+  "id": "000001"
+}
 
 <p>That&#8217;s one advantage I forgot to mention &#8211; you actually notice it when you leak memory because compartments belonging to your extension stay around after you disable it. Debugging memory leaks is always a bit tedious but with about:ccdump (<a href="https://addons.mozilla.org/addon/cycle-collector-analyzer/" rel="nofollow">https://addons.mozilla.org/addon/cycle-collector-analyzer/</a>) it is quite doable. You get the CC data, look through the sandboxes in the list, identify the one belonging to your extension (the compartment that leaked) and display the roots for it. Then you have to understand why that root is connected to your extension (current version of about:ccdump doesn&#8217;t make that step easy enough, I am saving the log and processing it with my own script).</p>

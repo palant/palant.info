@@ -1,4 +1,9 @@
-{"publishDate": "2009-02-08 02:13:53", "author": "Minh Nguy\u1ec5n", "authorUrl": "http://www.1ec5.org/software/avim/", "id": "000335"}
+{
+  "publishDate": "2009-02-08 02:13:53",
+  "author": "Minh Nguy\u1ec5n",
+  "authorUrl": "http://www.1ec5.org/software/avim/",
+  "id": "000335"
+}
 
 	<p>I reluctantly added a call to eval() in my extension recently, because of an annoying corner case. The extension operates entirely within an onKeyPress event handler. Under some circumstances, the handler must call event.preventDefault() to keep the entered key from appearing in the textbox. But that also prevents the textbox’s oninput attribute from firing. As far as I can tell, there’s no way to fire that event without generating a new onKeyPress event (causing a feedback loop of sorts).</p>
 

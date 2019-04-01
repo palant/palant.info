@@ -1,4 +1,13 @@
-{"title": "Deobfuscating JavaScript", "date": "2009-01-12 16:28:48", "description": "", "categories": ["security", "jsdeobfuscator"], "slug": "deobfuscating-javascript"}
+{
+  "title": "Deobfuscating JavaScript",
+  "date": "2009-01-12 16:28:48",
+  "description": "",
+  "categories": [
+    "security",
+    "jsdeobfuscator"
+  ],
+  "slug": "deobfuscating-javascript"
+}
 
 	<p>A few months ago I read a post in the WebSense Security Labs blog: <a href="http://securitylabs.websense.com/content/Blogs/3198.aspx">The Ultimate Deobfuscator</a>. Wow, pretty impressive hacking effort and nice tricks to hook JavaScript <code>eval()</code> function and <code>document.write()</code> in Internet Explorer. But couldn&#8217;t you use JS Debugger hooks in Firefox to do the same thing with only a few lines of code? And then maybe even more generic because <code>eval()</code> and <code>document.write()</code> are certainly not the only ways to generate JavaScript code on the fly (out of the top of my head: changing <code>window.location</code> to a JavaScript <span class="caps">URL</span>, event handler attributes or <code>setTimeout()</code> with a string parameter).</p>
 
