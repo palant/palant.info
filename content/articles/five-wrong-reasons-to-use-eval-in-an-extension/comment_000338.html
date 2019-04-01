@@ -1,0 +1,46 @@
+{"publishDate": "2009-02-08 19:01:03", "author": "Dorando", "authorUrl": "", "id": "000338"}
+
+	<p>Lets assume the original gBrowser.foo in point 5 is something like (similar code can easily be found throughout the Mozilla codebase, look for .isTrusted or permitUnload in tabbrowser.xml for  examples):</p>
+
+	<p>gBrowser.foo = function(param1, param2)<br />
+{<br />
+if(!gBrowser.isItSaveToDoSomethingBeforeFoo())<br />
+return;</p>
+
+	<p>if (param1 == &#8220;do_nothing&#8221;)<br />
+return;</p>
+
+	<p>var color = &#8220;red&#8221;;<br />
+doSomething(color, param2.length);</p>
+
+	<p>if (param2 == &#8220;some_extensions_want_to_prevent_this&#8221;)<br />
+doSomethingAnnoying(&#8220;dark&#8221;+color);<br />
+}</p>
+
+	<p>a) How to ensure to only doSomethingAfterFoo if the function did doSomething?<br />
+b) How to ensure to only doSomethingBeforeFoo if the function will doSomething?<br />
+Duplicating some of the original code would work, but that could as well reintroduce a security issue (and has in the past) and somewhat defeats the purpose of not simply rewriting the function. Keeping references to something the function changes and compare it afterward might work in some situations but that seems kind of an overkill <span class="caps">IMHO</span> (and might slowdown the code quite a bit).</p>
+
+	<p>c) How to prevent gBrowser.foo to doSomethingAnnoying?<br />
+d) How to change gBrowser.foo to use green as color?<br />
+Replacing additional functions and checking the caller from there is an option but <span class="caps">IMHO</span> that only increases the likelihood of breaking something. Letting the function do its work and reverting it afterward is also possible but it doesn&#8217;t seem like that a good user experience.</p>
+
+	<p><cite>The assumption in both cases is that the code of the function being rewritten never changes — but what if it does?</cite><br />
+That&#8217;s what maxVersion is for.</p>
+
+	<p><cite>Or, if the browser function changed to fix a security issue, the extension could reintroduce that issue.</cite><br />
+As could replacing the function if isItSaveToDoSomethingBeforeFoo was introduced later and doSomethingBeforeFoo(); contains something similar to the patched in code.</p>
+
+	<p>On the other hand enables eval patching the extension author to patch bugs (including security related) before they are fixed in the original code. If correctly written, the eval patch would fail gracefully once the original code fixes the bug since that code portion would be gone.</p>
+
+	<p><cite>Changes in the middle of a function you didn’t write are generally not a good idea.</cite><br />
+Sure, as it is always the case by changing the built-in behavior of anything, but sometimes that is the only option an extension author has to achieve something as built-in interfaces/functions for this are missing. </p>
+
+	<p>Just to repeat what Simon already pointed out, replacing instead of patching the function would prevent this completely for extensions that need it, so please don&#8217;t advocate that unless you can provide an alternative.</p>
+
+	<p><cite>This is bound to end badly, no matter how you do it.</cite><br />
+So far I&#8217;ve seen more code break due other changes (including <span class="caps">API</span>) than I&#8217;ve seen break due to eval patching, despite the fact that the most minimal changes possible could break it.</p>
+
+
+
+

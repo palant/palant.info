@@ -1,0 +1,15 @@
+{"publishDate": "2014-07-01 17:03:33", "author": "Ian Feather", "authorUrl": "ianfeather.co.uk", "id": "000739"}
+
+	<p>There&#8217;s a peculiar amount of misinformation within this post amongst some other more valid points. </p>
+
+	<p>We shouldn&#8217;t kid ourselves that <span class="caps">CDN</span>s are there for anything other than performance gains. Simplicity and scalability are misnomers in your Advantages list which feel like you put them there just to be kind :) </p>
+
+	<p>This line in the performance bullet is a strange one:</p>
+
+	<p>&#8220;However, whether there is really a performance advantage when using persistent connections (that’s the typical scenario these days) is doubtful to say the least.&#8221;</p>
+
+	<p>In the era of mobile connections we are definitely not in the persistent connection world. If you have any mobile users (and you do) you will definitely be serving your site over a non-persistent connection at some point as well as over a connection with potentially higher latency and more network collision. <span class="caps">CDN</span>s are ultimately for putting your assets closer to the user. They are for reducing latency between the time that the browser requests your asset and and the time it is evaluated. If you host your site in the US, a user in Australia will incur a latency of 100s of milliseconds (regardless of vendor and bound by the speed of light). Using a <span class="caps">CDN</span> will place your static assets closer to each user and reduce latency.</p>
+
+	<p>For the disadvantages you mention a lack of control. This can be mitigated by placing a <span class="caps">CDN</span> in front of your own asset servers or a third party static server with good uptime. With cdns and asset servers providing <span class="caps">SLA</span>s of 99.9%+, are you really going to be able to guarantee you can do better with your own hardware?</p>
+
+	<p>And as for stability, fundamentally your site shouldn&#8217;t depend on javascript libraries being available. Transfer failures and downtime will happen whether it&#8217;s your servers or a third party one. This is often not to do with your hardware but again with the network (something <span class="caps">CDN</span>s can help with reducing e.g. timeouts). You should include javascript in a resilient way which doesn&#8217;t stop the user from using your application.</p>

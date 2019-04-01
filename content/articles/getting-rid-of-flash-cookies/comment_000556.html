@@ -1,0 +1,14 @@
+{"publishDate": "2010-07-06 07:20:35", "author": "jre6", "authorUrl": "", "id": "000556"}
+
+	<p>A shell script for Linux to remove <span class="caps">LSO</span>s. Put the code in any text editor and save it. It requires to be executed on every user account. To delete <span class="caps">LSO</span>s from all user accounts, just replace the path in third line with /home/*/.macromedia/Flash_Player/#SharedObjects/* (not yet tested, may also require sudo)</p>
+
+	<p>#!/bin/sh</p>
+
+	<p>echo &#8220;This will delete all flash cookies from your user account&#8221; </p>
+
+	<p>rm -r ~/.macromedia/Flash_Player/#SharedObjects/*</p>
+
+	<p>exit</p>
+
+	<p>#EOF.</p>
+

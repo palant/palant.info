@@ -1,0 +1,9 @@
+{"publishDate": "2009-02-09 17:02:19", "author": "Simon", "authorUrl": "", "id": "000341"}
+
+	<p><em>“Different context” means “unprivileged context”, right?</em></p>
+
+	<p>Not necessarily. <em>domWindow</em> was meant to be what the window mediator returns and the <em>context</em> could just as well be an Object with chrome privileges (into which you load scripts with the subscript loader and then dynamically use those scripts without polluting the window object, e.g. inside an <span class="caps">XBL</span> binding).</p>
+
+	<p>To see the first effect, try eval&#8217;ing the following line in the Error Console:<br />
+Components.classes[&#8221;@mozilla.org/appshell/window-mediator;1&#8221;].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow(&#8220;navigator:browser&#8221;).eval(&#8220;location&#8221;);</p>
+

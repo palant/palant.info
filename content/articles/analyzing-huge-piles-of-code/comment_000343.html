@@ -1,0 +1,13 @@
+{"publishDate": "2009-02-10 23:50:34", "author": "Haploid", "authorUrl": "", "id": "000343"}
+
+	<p>That was an interesting little puzzle.</p>
+
+	<p>It took quite a bit more than 20 seconds on my somewhat obsolete machine, and Firefox wanted a reminder from me to continue running the script a few times. It was that reminder that gave me puzzle piece #1. Apparently, noscriptService.js was the culprit.</p>
+
+	<p>When it was done running the script, Firebug revealed that the page was now filled with a very long, hidden list of anchors. Obviously some overly zealous find-and-replace scheme. Didn&#8217;t take very long to discover that the problem lies in the function detectJSRedirects().</p>
+
+	<p><cite>const findURL = /(?:(?:\b(?:open|replace)\s*\(|(?:\b(?:href|location|src|path|pathname|search)|(?:[Pp]ath|UR[IL]|[uU]r[il]))\s*=)\s*[&#8217;&#8221;]|[&#8217;&#8221;](?=https?:\/\/\w|\w*[\.\/\?]))([\?\/\.\w\-%\&amp;][^\s&#8217;&#8221;]*)/g;</cite><br />
+matches any of the thousands of &#8220;.AA pairs in the &#8216;script&#8217;. I&#8217;m terrible at reading regexp, so I&#8217;m not even sure exactly what it&#8217;s supposed to do. ;)</p>
+
+	<p>Love reading your blog, <span class="caps">BTW</span>. You&#8217;re obviously passionate about what you do, and it shows. Kudos!</p>
+

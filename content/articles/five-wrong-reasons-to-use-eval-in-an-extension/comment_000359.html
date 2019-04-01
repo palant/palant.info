@@ -1,0 +1,6 @@
+{"publishDate": "2009-02-17 21:01:51", "author": "phin", "authorUrl": "", "id": "000359"}
+
+	<p>For some reason, even that doesn&#8217;t seem to change it.  I even tried reassigning it to null or alert(&#8220;hello&#8221;), still nothing.  The only way that worked was to override the &#8220;load&#8221; method in tree.xml, let the PlacesTreeView object be created in that method, then reassign getImageSrc right there.</p>
+
+	<p>Maybe it&#8217;s being overwritten with GetImageSrc from nsTreeContentView.cpp or nsXULTreeBuilder.cpp.  Thanks for replying!  Basically, I&#8217;m trying to replace the icons for all the nodes with the return value of my own function.</p>
+

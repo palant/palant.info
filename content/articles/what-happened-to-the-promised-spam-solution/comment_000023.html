@@ -1,0 +1,61 @@
+{"publishDate": "2006-11-24 20:52:12", "author": "Jorge Santos", "authorUrl": "http://www.emailxt.com", "id": "000023"}
+
+	<p>Wladimir, answers to your questions:</p>
+
+	<p>&#8220; There is no real specification so what I say here is only my impression from looking at the documentation,...&#8221; </p>
+
+	<p>We are preparing the specification document. It&#8217;s almost ready to be published.</p>
+
+	<p>&#8220;The problem is that exchanging messages might take a while in this case, email software often doesn’t run all the time.&#8221; </p>
+
+	<p>True. However, you only have to do it once per correspondent. Normally you can establish a relationship in the same day, or in a few minutes if both sides have automatic check on. Still, if you want people to relate to you instantly, you give them a &#8220;passcode&#8221; : a simple code/word that, when used, automatically validates your correspondent.</p>
+
+	<p>&#8220;Second problem is that it seems to assume that only one client is running, however the user might have email clients at home and at work for example.&#8221; </p>
+
+	<p>Yes, EmailXT makes it a little harder to have multiple clients, but not much. You can put your address book on your <span class="caps">USB</span> pendrive, or even better, in the case of InfinityXT (EmailXT official client) you can put your entire client in your pendrive! Imagine being free from synchronization hassles forever&#8230;</p>
+
+	<p>&#8220;Finally, what is this challenge? How do you generate a riddle that only someone who has “permission” to “relate” to the user can solve but not a spam bot for example?&#8221; </p>
+
+	<p>Although in InfinityXT&#8217;s current alpha version, the challenge is just a simple <span class="caps">CAPTCHA</span>, the user would be free to set his own challenge. No bots would be able to do it but &#8220;monkeys&#8221; can. Spammers can still hire CAPTCHA-monkeys to solve the challenges. However, can you imagine a spammer paying one cent per solved challenge, on a 100-million-mail campaign? That&#8217;s a million dollars! And at the end, end users would just revoke the relationship and the spammer would have to start again.</p>
+
+	<p>&#8220;I also fail to see the reason behind a “relationship key”. Why isn’t it enough that your contact knows your public key and will accept messages encrypted with your key?&#8221; </p>
+
+	<p>No. An attacker would be able to forge an email by using the recipient&#8217;s public key and address. A &#8220;secret&#8221; element must exist. The public encryption key is just&#8230; public!</p>
+
+	<p>&#8220;And something I didn’t see in the documentation – some solution for mailing lists and mail subscriptions. How are these supposed to work in your scheme?&#8221; </p>
+
+	<p>Passcodes. When you subscribe to a mailing list, you give your address and a valid passcode. That&#8217;s it. The mailing list manager just has to check the &#8220;Passcode&#8221; field on its database. If there is something there, then the message is mailed using EmailXT, otherwise it sends a regular message. So it&#8217;s even possible to easily mix the two systems.</p>
+
+	<p>&#8220;It will only give users an advantage if a significant number of people (let’s say &#62; 20% of all email users) uses it.&#8221; </p>
+
+	<p>Depends on the point of view. If you want to securely correspond with your mom without the hassles of regular email (spam, viruses, phishing), just install InfinityXT at both ends and that&#8217;s all. Instant benefit to two users!</p>
+
+	<p>&#8220;...so if you change your address you will have to re-request relationship permission from all your contacts. &#8220; </p>
+
+	<p>No. You just add a new email address to your profile, and make it its new primary address. At your choice, all of your established contacts will be automatically updated.</p>
+
+	<p>&#8220;And of course many email clients won’t add support for it until there are sufficient users – and who wants to be limited in his choice of email clients?&#8221; </p>
+
+	<p>You only need InfinityXT :-) Seriously, I agree that forcing the user to a specific email client is bad. Hopefully we will make InfinityXT better than Outlook so that people will want to change!</p>
+
+	<p>&#8220;there seem to be a few security issues with the protocol&#8221; </p>
+
+	<p>There are no holes in the protocol, but some parts can be better. We&#8217;re working on that&#8230;</p>
+
+	<p>&#8220;and some idea on how to transition all current email users&#8221; </p>
+
+	<p>Our projected scenario is:</p>
+
+	<p>- You are using Outlook/Eudora/Whatever, but want to try EmailXT &#8211; You install InfinityXT and set it up, using another email address (can even be the same, as long as you check for EmailXT first) &#8211; You invite some of your current contacts to EmailXT &#8211; You keep checking and using your current email client &#8211; Some of your contacts install and start using InfinityXT &#8211; You start getting your first EmailXT messages. You notice how familir it feels to work with InfinityXT and EmailXT. &#8211; You keep checking and using your current email client &#8211; More contacts start using EmailXT &#8211; You start to rely more on EmailXT as a clean and secure comunnication channel &#8211; You keep checking and using your current email client, but far less &#8211; Most of your contacts have migrated to EmailXT &#8211; You dump the old email system and your old email client</p>
+
+	<p>The timeframe could be months or even years, of course. It depends on how conservative your contacts are.</p>
+
+	<p>&#8220;And btw, if your goal is to improve email then “forms, photo albums, tasks and calendars, file sharing” aren’t going to help you.&#8221; </p>
+
+	<p>These do not belong to the protocol core. They are protocol extensions. Each EmailXT client will reveal its capabilities to the other end, so you will know, for instance, if your correspondent&#8217;s client can accept photo albums before you bother to send him one.</p>
+
+	<p>And finally, thank you for such a detailed, independent review of EmailXT. We do need this kind of feedback so that we can continuously improve EmailXT.</p>
+
+	<p>Sorry for the huge post.<br />
+JS</p>
+

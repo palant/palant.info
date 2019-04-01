@@ -1,0 +1,9 @@
+{"publishDate": "2019-03-23 13:02:13", "author": "D", "authorUrl": "", "id": "001002"}
+
+<p>This is a good analysis, but I think you slightly overstate things&#8212;commenter “a” is, in fact, spot-on. </p>
+
+<p>The Facebook plaintext password issue (<a href="https://krebsonsecurity.com/2019/03/facebook-stored-hundreds-of-millions-of-user-passwords-in-plain-text-for-years/">https://krebsonsecurity.com/2019/03/facebook-stored-hundreds-of-millions-of-user-passwords-in-plain-text-for-years/</a>) appears to be exactly what “a” was talking about. Yes, there are other ways to solve the problem, but there&#8217;s <em>some</em> advantage in the plaintext <span class="caps">HTTP</span> requests not containing plaintext passwords&#8212;both for the case that servers mistakenly log request data, and for the case that clients running debuggers do similarly. </p>
+
+<p>I can&#8217;t say this changes the argument you already made about the complexity of implementing <span class="caps">OPAQUE</span> vs the probability of passive <span class="caps">MITM</span> attacks. That&#8217;s a qualitative argument, and I won&#8217;t say you are wrong&#8212;or right. But attacks or&#8212;as in the FB case&#8212;accidental disclosures of this nature <em>do</em> occur. It&#8217;s undeniably an advantage&#8212;perhaps not one sufficient to counter the complexity cost&#8212;that <span class="caps">OPAQUE</span> mitigates against such risks.</p>
+
+

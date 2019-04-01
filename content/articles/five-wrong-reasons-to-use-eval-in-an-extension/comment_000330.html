@@ -1,0 +1,11 @@
+{"publishDate": "2009-02-07 17:53:17", "author": "Simon", "authorUrl": "", "id": "000330"}
+
+	<p>As to point #5: How would you propose to adjust code <em>inside</em> a function (i.e. when you can&#8217;t just pre- or append code but would have to rewrite the whole function otherwise)? And once one extension does what you propose, it&#8217;ll prevent all others from adjusting bits in the middle, forcing them to rewrite the whole code path and thus no longer allowing for extensions to peacefully coexist.</p>
+
+	<p>I&#8217;ve originally been proposing what you do, but been bitten by incompatibilites several times which could only be fixed by using eval. I&#8217;ll gladly learn a better way, but I&#8217;m afraid that yours doesn&#8217;t seem to be it&#8230;</p>
+
+	<p>As to point #4: How is |new Function(&#8220;some code&#8221;)()| safer than |eval(&#8220;some code&#8221;)|? Disallowing eval as you suggest in bug 477380 won&#8217;t help if you don&#8217;t disallow new Function as well.</p>
+
+
+
+

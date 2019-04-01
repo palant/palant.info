@@ -1,0 +1,11 @@
+{"publishDate": "2018-03-19 21:22:05", "author": "Nicolas", "authorUrl": "", "id": "000951"}
+
+<p>You are complaining that a key derivation uses a weak primitive. It&#8217;s a key derivation function. The salted hash isn&#8217;t stored anywhere, so you&#8217;re not going to retrieve it to brute force it.</p>
+
+<p>What is stored is the ciphertext and salt. Where would an attacker get the hash from? </p>
+
+<p>Whether you&#8217;re using MD5 or a bad <span class="caps">SHA</span> doesn&#8217;t affect that you are deriving a key from a passphrase. Most ciphers require a fixed length key, and using a hash provides a deterministic way to generate a fixed length string. </p>
+
+<p>“Password-based key derivation in OpenSSL command-line functions could do with some modernization” &lt;- could do not should do.</p>
+
+

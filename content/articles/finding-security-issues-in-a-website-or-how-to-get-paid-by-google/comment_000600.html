@@ -1,0 +1,11 @@
+{"publishDate": "2010-12-11 13:30:06", "author": "Bill Gianopoulos", "authorUrl": "http://www.wg9s.com/", "id": "000600"}
+
+	<p>In the <span class="caps">HTTP</span> Response Splitting case, you mentioned that your trick did not work in IE.  This might lead people to believe that IE is somehow less vulnerable to this type of attack.</p>
+
+	<p>I don&#8217;t believe that is the case.  As far as I know, IE attempts to determine if the server returned a site customized error page, or the generic built-in to the server error message strictly on the basis of the length of the returned content, and only displays the IE error page for shorter server responses.</p>
+
+	<p>Therefore, I think doing your same trick, but generating a much larger response message would have produced the same results under IE as you obtained on other browsers.</p>
+
+
+
+
