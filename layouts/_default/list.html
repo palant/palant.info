@@ -18,7 +18,11 @@
                   <a href="{{.RelPermalink}}" itemprop="url">{{.Title}}</a>
                 </h4>
                 <div itemprop="description">
-                  {{ safeHTML .Summary }}
+                  {{ with .Params.summary }}
+                    {{ safeHTML . }}
+                  {{ else }}
+                    {{ safeHTML .Summary }}
+                  {{ end }}
                 </div>
                 {{ if .Truncated }}
                   <div>
