@@ -1,4 +1,7 @@
 User-agent: *
 Disallow: /privacy/
 Disallow: /impressum/
+Disallow: /articles/
+Disallow: /categories/
+Disallow: /comment/
 Sitemap: {{.Site.BaseURL}}sitemap.xml
