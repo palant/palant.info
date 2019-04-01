@@ -94,6 +94,8 @@
     }
   }
 
+  // This matches Hugo's own summary logic:
+  // https://github.com/gohugoio/hugo/blob/b5f39d23b86f9cb83c51da9fe4abb4c19c01c3b7/helpers/content.go#L543
   function truncateToEndOfSentence(text, minWords)
   {
     var match;
@@ -103,7 +105,7 @@
     while (match = regexp.exec(text))
     {
       wordCount++;
-      if (wordCount <= 70)
+      if (wordCount <= minWords)
         result += match[0];
       else
       {
