@@ -47,7 +47,7 @@
                         {{ with $.Resources.Match (printf "comment_%s_reply_*" .Params.id) }}
                           {{ range sort . ".Name" }}
                             <div class="comment_reply">
-                              <p class="comment_reply_header">Reply from {{ .Params.author }}:</p>
+                              <p class="comment_reply_header">Reply from {{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}:</p>
                               {{ .Content }}
                             </div>
                           {{ end }}
