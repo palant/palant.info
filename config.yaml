@@ -17,11 +17,18 @@ permalinks:
   articles: /:year/:month/:day/:slug/
   projects: /:year/:month/:day/:slug/
 
+outputFormats:
+  MozillaRSS:
+    baseName: pmo
+    isPlainText: true
+    mediaType: application/rss+xml
+
 outputs:
   home:
     - HTML
     - JSON
     - RSS
+    - MozillaRSS
 
 menu:
   main:
