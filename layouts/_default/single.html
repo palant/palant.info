@@ -61,49 +61,51 @@
                 <p>There are currently no comments on this article.</p>
               {{ end }}
             </section>
+
+            <section id="comments-form">
+              <h3>Comment</h3>
+
+              <form id="comments" action="#" data-path="{{ .Dir }}">
+                <div class="comments-wrapper">
+                  <p id="Comment">
+                    <strong>Enter your comment below.</strong>
+                  </p>
+                  <fieldset>
+                    <p class="large">
+                      <label for="name">Name <b class="required" title="Required">*</b></label><br>
+                      <input name="name" autocomplete="name" class="comment_name_input" id="name" type="text" size="32" required="required" value="">
+                    </p>
+
+                    <p class="large">
+                      <label for="email">Email</label>
+                      <span class="footnote">Only if you want to be notified about my reply.</span><br>
+                      <input name="email" autocomplete="email" class="comment_email_input" id="email" type="email" size="32" value="">
+                    </p>
+
+                    <p class="large">
+                      <label for="web">Website</label><br>
+                      <input name="web" autocomplete="url" placeholder="https://" class="comment_web_input" id="web" type="url" size="32" value="">
+                    </p>
+
+                    <p class="small">
+                      <label for="message">Message <b class="required" title="Required">*</b></label>
+                      <span class="footnote">You can use <a rel="nofollow" href="https://www.markdownguide.org/basic-syntax/">Markdown syntax</a> here.</span><br>
+                      <textarea id="message" name="message" cols="64" rows="8" required="required"></textarea>
+                    </p>
+                  </fieldset>
+
+                  <p id="comment-submit">
+                    <small>By submitting your comment, you agree to your comment being published here under the terms of the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</small><br>
+                    <input class="button" type="submit" value="Submit">
+                  </p>
+
+                  <input name="uri" type="hidden" value="{{ .RelPermalink }}">
+                </div>
+              </form>
+            </section>
+
+            <script src="/js/comments.js?{{now.Unix}}" async></script>
           {{ end }}
-
-          <section id="comments-form">
-            <h3>Comment</h3>
-
-            <form method="post" action="/comment/submit">
-              <div class="comments-wrapper">
-                <p id="Comment">
-                  <strong>Enter your comment below.</strong>
-                </p>
-                <fieldset>
-                  <p class="large">
-                    <label for="name">Name <b class="required" title="Required">*</b></label><br>
-                    <input name="name" autocomplete="name" class="comment_name_input" id="name" type="text" size="32" required="required" value="">
-                  </p>
-
-                  <p class="large">
-                    <label for="email">Email</label>
-                    <span class="footnote">Only if you want to be notified about my reply.</span><br>
-                    <input name="email" autocomplete="email" class="comment_email_input" id="email" type="email" size="32" value="">
-                  </p>
-
-                  <p class="large">
-                    <label for="web">Website</label><br>
-                    <input name="web" autocomplete="url" placeholder="https://" class="comment_web_input" id="web" type="url" size="32" value="">
-                  </p>
-
-                  <p class="small">
-                    <label for="message">Message <b class="required" title="Required">*</b></label>
-                    <span class="footnote">You can use <a rel="nofollow" href="https://www.markdownguide.org/basic-syntax/">Markdown syntax</a> here.</span><br>
-                    <textarea id="message" name="message" cols="64" rows="8" required="required"></textarea>
-                  </p>
-                </fieldset>
-
-                <p>
-                  <small>By submitting your comment, you agree to your comment being published here under the terms of the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</small><br>
-                  <input class="button" type="submit" value="Submit">
-                </p>
-
-                <input name="article" type="hidden" value="{{ .Dir }}">
-              </div>
-            </form>
-          </section>
         </div>
 
         {{ partial "complementary.html" . }}
