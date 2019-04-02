@@ -39,6 +39,7 @@
 
     var request = new XMLHttpRequest();
     request.open("POST", url);
+    request.setRequestHeader("X-XMLHttpRequest", "1");
     request.addEventListener("load", function()
     {
       if (request.status != 200)
