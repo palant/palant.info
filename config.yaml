@@ -22,6 +22,8 @@ outputFormats:
     baseName: pmo
     isPlainText: true
     mediaType: application/rss+xml
+  HTML:
+    isHTML: false
 
 outputs:
   home:

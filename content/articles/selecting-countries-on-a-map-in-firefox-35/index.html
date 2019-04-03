@@ -13,8 +13,7 @@
 
 	<p>Ten years ago I already had to solve this problem. How do you present the user with a map and let him choose a country? Back then I ended up using Win32 <span class="caps">API</span> and two bitmaps&nbsp;&mdash; one to display to the user and a second invisible bitmap to let the application translate clicks into actual countries by checking the color corresponding to the click position. The visible bitmap was static meaning that it wasn&#8217;t possible to show the selected country on the map. But that wasn&#8217;t necessary anyway back then. And now I had to solve the same problem, this time for the Mozilla platform.</p>
 
-	<p style="text-align:center;"><a href="/trash/map_select.xhtml">View the demo in Firefox 3.5<br />
-</a></p>
+	<p style="text-align:center;"><a href="map_select.xhtml">View the demo in Firefox 3.5</a></p>
 
 	<p>My idea was: wouldn&#8217;t it be possible to use only one image and apply <a href="https://developer.mozilla.org/En/Applying_SVG_effects_to_HTML_content">some transformations</a> to it? I would like to encode each country with a different color on the image and transform these colors as necessary. Turns out, this is possible with the <a href="http://www.w3.org/TR/SVG/filters.html#feComponentTransferElement">feComponentTransfer <span class="caps">SVG</span> filter</a>, particularly by using discrete translation functions. Let&#8217;s give an example:</p>
 

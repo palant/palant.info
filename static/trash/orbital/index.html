@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>Orbital Viewer</title>
+
+<style type="text/css">
+  #canvasContainer {
+    float: left;
+    border: 1px solid black;
+    padding: 5px;
+    margin-right: 10px;
+  }
+</style>
+
+<script type="text/javascript" src="mjs.js"></script>
+<script type="text/javascript" src="orbitalview.js"></script>
+
+<!-- shaders -->
+<script id="shader-vs" type="x-shader/x-vertex">
+attribute vec3 aVertex;
+attribute vec3 aNormal;
+
+uniform mat4 uPMatrix;
+uniform mat4 uRotMatrix;
+uniform mat4 uTransMatrix;
+
+varying vec3 vNormal;
+
+void main(void) {
+  gl_Position = uPMatrix * uTransMatrix * uRotMatrix * vec4(aVertex, 1.0);
+
+  vNormal = normalize((uRotMatrix * vec4(aNormal, 0.0)).xyz);
+}
+</script>
+
+<script id="shader-fs" type="x-shader/x-fragment">
+#ifdef GL_ES
+precision highp float;
+#endif
+
+uniform vec3 uColor;
+uniform vec3 uLightDir;
+
+varying vec3 vNormal;
+
+void main(void) {
+  vec3 lightDir = normalize(uLightDir);
+  float intensity = abs(dot(lightDir, vNormal));
+  gl_FragColor = vec4(uColor * intensity, 1);
+}
+</script>
+
+</head>
+
+<body>
+  <p style="clear: both;">
+    Instructions: Click "recalculate" after changing the parameters of the orbital
+    for changes to apply. Drag the orbital to rotate. Hold down the Shift button while
+    dragging to zoom. Hold down the Control button while dragging to change the
+    position of the orbital.
+  </p>
+
+  <div id="canvasContainer">
+    <canvas id="canvas" width="500" height="500"></canvas>
+  </div>
+  <div>
+    <p>
+      Angular quantum number (l):<br>
+      <select id="l" onchange="onSelectionUpdate();">
+        <option value="0">s (0)</option>
+        <option value="1">p (1)</option>
+        <option value="2" selected="selected">d (2)</option>
+        <option value="3">f (3)</option>
+        <option value="4">g (4)</option>
+        <option value="5">h (5)</option>
+      </select>
+    </p>
+    <p>
+      Magnetic quantum number (m):<br>
+      <select id="m">
+        <option value="0" selected="selected">0</option>
+        <option value="1">+/- 1</option>
+        <option value="2">+/- 2</option>
+        <option value="3">+/- 3</option>
+        <option value="4">+/- 4</option>
+        <option value="5">+/- 5</option>
+      </select>
+    </p>
+    <p>
+      Precision:<br>
+      <select id="step">
+        <option value="10">10° (2592 triangles)</option>
+        <option value="5">5° (10368 triangles)</option>
+        <option value="4">4° (16200 triangles)</option>
+        <option value="3">3° (28800 triangles)</option>
+        <option value="2" selected="selected">2° (64800 triangles)</option>
+        <option value="1.5">1.5° (115200 triangles)</option>
+        <option value="1">1° (259200 triangles)</option>
+        <option value="0.5">0.5° (1036800 triangles)</option>
+      </select>
+    </p>
+    <p>
+      <button onclick="recalculate()">Recalculate</button>
+    </p>
+    <p>
+      <button onclick="resetPos()">Reset position</button>
+    </p>
+  </div>
+
+</body>
+</html>

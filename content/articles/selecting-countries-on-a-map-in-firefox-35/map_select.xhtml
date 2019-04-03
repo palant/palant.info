@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Map selection demo</title>
+    <script type="text/javascript">
+    <![CDATA[
+        // Colors to be used for unselected and selected countries (three values
+        // each, for red, green and blue channels)
+        const colors = [[0, 0.4, 0.4], [0.4, 0.8, 0.4]];
+
+        // Minimal difference between colors of different countries
+        const colorStep = 4;
+
+        // Array to contain the selection state for each country, 0 for
+        // unselected and 1 for selected
+        let countries = [];
+
+        window.onload = function()
+        {
+            let canvas = document.getElementById("canvas");
+            let image = document.getElementById("image");
+
+            canvas.setAttribute("width", image.offsetWidth);
+            canvas.setAttribute("height", image.offsetHeight);
+
+            // Copy image into canvas to get its pixel data later
+            let context = canvas.getContext("2d");
+            context.drawImage(image, 0, 0);
+
+            // All countries are initially unselected
+            for (let i = 0; i < 256 / colorStep; i++)
+                countries.push(0);
+
+            updateSelection();
+        }
+
+        function handleClick(event)
+        {
+            let context = document.getElementById("canvas").getContext("2d");
+            let targetPosition = event.target.getBoundingClientRect();
+            let pixelData = context.getImageData(event.clientX - targetPosition.left, event.clientY - targetPosition.top, 1, 1);
+
+            let alphaValue = pixelData.data[3];
+            if (!alphaValue)
+                return; // transparent area, ignore clicks
+
+            // Calculate country code from the red color value and toggle its state
+            let redValue = pixelData.data[0];
+            let countryCode = redValue / colorStep;
+            countries[countryCode] = (countries[countryCode] ? 0 : 1);
+
+            updateSelection();
+        }
+
+        function updateSelection()
+        {
+            document.getElementById("redFilter").setAttribute("tableValues", countries.map(function(n) {return colors[n][0]}).join(" "));
+            document.getElementById("greenFilter").setAttribute("tableValues", countries.map(function(n) {return colors[n][1]}).join(" "));
+            document.getElementById("blueFilter").setAttribute("tableValues", countries.map(function(n) {return colors[n][2]}).join(" "));
+        }
+    ]]>
+    </script>
+</head>
+<body>
+    <canvas id="canvas" style="display: none;"/>
+    <svg xmlns="http://www.w3.org/2000/svg" height="0">
+        <filter id="colorFilter" style="color-interpolation-filters: sRGB;">
+            <feComponentTransfer>
+                <feFuncR id="redFilter" type="discrete"/>
+                <feFuncG id="greenFilter" type="discrete"/>
+                <feFuncB id="blueFilter" type="discrete"/>
+            </feComponentTransfer>
+        </filter>
+    </svg>
+    <h2>Please select some countries on the map by clicking them</h2>
+    <p><em>Disclaimer</em>: This map isn't 100% polically correct, this is only to demonstrate the principle.</p>
+    <img id="image" style="filter: url(#colorFilter);" onclick="handleClick(event)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbsAAAGmCAMAAADS%2F9ppAAAAeFBMVEUAAABMTEwwMDA8PDwgICBcXFwsLCxAQEBQUFA0NDRsbGwEBARwcHBkZGSEhIR0dHRUVFSMjIw4ODgMDAxgYGCAgICIiIh8fHxEREQAAABISEgUFBRoaGgkJCSUlJQcHBwYGBh4eHgoKCiXPqlYWFgICAiQkJAQEBDMOMDNAAAAAXRSTlMAQObYZgAAFd9JREFUeF7s1OFqxCAQReHzMHfs%2B79hA4pElk0lZppsew8omPzzY2QpFzfGxZnOdraznSRAQrqOi4h0OttpC9S6dNJ%2BVc520ie8krZTXdXr8%2B1sx3oBtstNaqtuLS7KdnlJQnXfN0HxEDzbDQ1WPzq0P8%2B0s13EDAIRd%2BPZTmqo0ZsluM3OdgBqjXYx2U12tqNs9QPEmdLxbCf6kI12pX0lTma75LSzg05X4%2Fl2njvt7Sg9Vuwim852ArSLcr1dRNju%2BsSxHcs3FSnZrmrBG7vCul3YLlXPdp%2Bs9xYv%2Fq%2Bd7bBdmtuhHWG7J4%2Fc8dyxQGe7rASawHve2NlOOXb5dLbT1l%2Bzsx1liIfR2U7dTiTYge3S2lNxaFdOEGC7vEapfgS63RDY7gFJAOOUsXOEUlb0gBw622kfNCma3VFMm%2BXb2Y6vraoHEuWMHY3NdunpBe%2BrmkGZt4suQ8926YlXPMpEnLwH26U9m9N6LFxE1LDdaoNdC5iwW9K7dAptxzc7d5OjOhBDUfjMPX8rCGT%2FO3wDhK5aCFVVlxPZbp8l8OnmFzjVcHy4fBhtt%2F%2BtMNkpZu1UAjmVeWw%2F7WANj42PZOtvHtruleQ4T0QnvAU7leNKMzOdktqenWq76%2FHQee4yO2H2vbkb3puR0x2PDzx%2FuT7frQ5PsWT3aDvX74VxyM4X75YTXD%2BLBgZ2RfGSw6HNXYMnPmfEthPd1Xi0nW%2BiK4rXdkXxctPJbgev7eLNTnZueI9ItR0MPp%2F%2BXvQNh0z3G3Q9C2s7dzrf4Y0Lbmd9sZLVzqzkGa%2BmXV48PYYeR107sZmZJZHbtVPUsCOZHedc1LYzSzS8w9UOSL87syR2x6IdADwptT3Bgb0qZYfogJp2poyvWb7dgeiASnfoKJCdnAxlKe0UUOmKBT70vt8xmFk8O0c8ktqJR072shNnKLp1u7Feajtk9w7MtMK0s1NV7cxMcLJTEIcPzmH8md2Z7JQKtrwNujp2EkE7%2B1qm59Bl6WT3Dpso1cPMJTsS2okshx2%2Bdgpq25F8d2X0WMYjlR2zdgrK2lmqF0ADutR6vMtod%2BBrpyhqZ4ntnqXsUuNxDluyU7RdgLfmte3W8RLYqcp2GS9Xfmn3nI%2FeXQC68nZm2eja7k%2Bd7p717KQ3CZiKrrqdij86BYuzK25HgktMxYJd2xHcrj6dYgGPEHTLdm1HkI4lPOrbjfVIYDemq28nPESX52%2BiFcVmN7aTHiqeHXAu0tW3E19QOnS0bLssiU520enaTnSIru3yJLoJO4LRtR06YrZdttkds7Nru2B4sDK7QK9%2F2m7nx1ttl%2BYHQLRdtI62U1nI0IXKDB6f3U%2FXdiC3HTva7v6Q26wde3a0nVfHrXYAtN2deGM72u5%2BONZ3t4EHwttAbDu5Dez88Hj3kOJybSe4e4bHR2230X12fBb8oEkNPH%2B7PbW2O260g3R40RfH8S3c7Xp3%2Fn7rdnxpRa7tdvO1q3DAVLHVBrtzw5uTq29nZn6Lu8UO2u5NZ5fKyc4Lj6R4%2BGdXyin4jR1zdP8y8BG5%2F%2BzXQQrDMAwF0Vn6AEEnaJv737C0CAxN0jhIrbz4s7C9f0jggB7fO7GzVyC7mrU5avdp9j49ZJfN1iNsRw%2Fziu1kt57YwXbmyvFk53ElsxI72cX5bDY72a2T0skOpwvjmezyio9db1o72cX1rIBOdil49iM72UGJnXZmXI8auzie7PwVxEN2BeXaxfFk166gxe04yvwaxpNda9UfvG4mu0S6fDtOGsWTXWtDdtz4rx0M2Mku4YdOp8vB48AO7cxOl2JHjp3reLtyy4LscsYu325Pssu9QnYe89jZ1s61AFwuF092wDgdg2MH9mTvjlEYhmEwCr%2FReG5vkNL737AuLf2hiyykJBDrLUHzh0gIwRGXMvDKzomHAw9H0toNr77PzLUTXRJe2W2mnY2Hq7JLhCP4sII6bPHKjs264QGBtTt58cqOdLu98epsHCQXxrtF7Cg7Hx2k2EkLTQYegLygs4JdG%2BXRxe2ENa0H9Hdfvc%2FkwCs78OCZdPN49F%2FwkTsb7yg5Gv4y7eQoJzVlpzQsYAccuHbKslMaDbq%2FuLrdKHXrhEeGnR3r2uEPTDqesLed5CJ49S4apSbpNPjtJLeeXWs5eHjx%2FoRn7ACm6BQXtGsq5bhoAnbM0cF9hABBdAvYtUQ7Ims3ctpxVwAwrt0MrmEnqJZip38rE7LDvt292LFj1YhhIIqiV51RHTcqRUL%2B%2Fw8Tliwv2E32aYZ4wLdSf3iFBtEp2V1P76p0SovLspOcjdcpbycoDDkr%2FyYmN5Ccadehvh1HO5Jbs0NuHp6C0nZIypfLH57sxObTKR7VtFPpoxsBwwulU9S221SO3HcycO1g9%2Bx8vNtuxNjtsXSKun9z2T3fuXaYdiTRdQr%2FzbU6tt8F0%2BXb3XYqjm6gwKODHDuq2QkPJJZCJzvl2RFqJ7mydlum3Rgv2MEqHr5cfqSURTcUh65h58jddnh2GHYGXUrV6ZRHR%2B7uQJy33V%2FxUD4efc2O1hrUtyPU7oxnwckOwu9h0B5RyG5LtlMo8O0A5oRYO9ozituRYBcxO3aYPxF4y4RW0Y7%2FsMOkg6mw6RSSE15pOxLsWLWbkjvZQfdCchXtMOQMPA69jDdPITk3JKcovLsMO1jE%2B6LODlYbBmIoit4uMpRuTTddBkr%2F%2Fw8b1JhH%2FRZjWkm2L3GCtT1ogvHdA3Rc%2FqmA8yjQ47p4eP%2BmG2NAMp1WD%2BBqe0daiXTct3wwolQ6RbjC2e3is8b57HzzCLk6O4UbgN0faBffwkvzm9GhrNBBbeAUdXSOBzEDft032s2PzkI7p%2FRWHqNjhVNU0TkeaEzkwP12tY942xGTBCS7dezRYicp62i7SrwnmgbMEoyNuuwU0ZT3eDtVYsdeOmWTVrz9ugfaeal2%2BpnbmQ3jrHb7V49r4olubjdxOqvdfPESpZrtIMEuC48ol%2B5xddgty2J4r%2BV2aJBNN9iPJ7TcGuyWn5BOw0s8u5%2FYlenJrR8viU52XS%2FPQQPmdDXHpuCubCcryZXaCSxXTtG0cv1nptO5nZdh9%2BQrhXM7nhWvXP%2F%2FHVufeIsQF9l23G6xfYVysnMpog65jmdz0TkQVOA9CsImOkl1ZnJWHp0yumy8b3btmLdBIIaj%2BOtwFeoWZWVg4ft%2FxYpW7V%2BqRHySz3ZI7w0sGX%2FyQTDtJ2hBdLLLh%2Btd0TrE%2Fp6YKmyfIDqFLAPoJJda0O5VZAB6UgHDLgJPqZFHJm8lEW2nDh80f9TZaRQvaSe5BDvhyS5hF9Ts%2FHhU0e2duegUuvH9msWtE1qknaLEjr03cOsppIKAlgWHXSVe6dhBhp1K%2B3blVe2EF7c3vzvtFqfby9uRZGfj1dBd2I44u%2FtZBp2adueB6C5vJzHARTftzvWIwpMd4XaKarp6u2WgXaP1BdfE47Xs1hWJyS5j9KCSrt7OtUJfWb8SWYqdooiu0u7Q8X67siqaG2%2Fa2f%2FvRMbyoGln0BXaWfXRyS4Nb9rhtluT7erxSLC7n5VLZ8cF6ertDhzT7pHg%2Bj%2FtVJWdPXv61UGXgEe2XD9eNp0SLMC0o96uH0%2FZdqTj1dvtVm44e%2B7szukUNXZku4W%2FE0sZu8pTs95ut%2FPLKQLGzm%2FXmHN3Cgd8Xwy65CNT8ex2pNlB3%2BJnoB00T9TS1dupLrmhdM3XtFPIzYbz29Ge2g6cwlzWLuRVpoLWAKLoYNs2GC3HbhdBB147htlxuwG34xpkt31FPJ3fTn48aOkFDNq6ik4BQ%2B1EdwRJdIrAbLnA%2FY%2FoFOMHj%2B038u1K9c7lkCED6GQHwCi7T2buoLVhGIaj%2BCthYz7mnBp22ff%2FiluNxh%2BqYEtLjffoRecfinyq6AZ4EIfjKxbz8SB%2F7KD%2BROWFdHb0yHw%2FGb1TnF0GryO32k6F6aptWv2NP9vBfhIw%2BnzSCuBRCsnF45lOgHm8lXS2lKhaARqd8HiRnN9ATuWOFlaP7lEGD9Bskij9a6b9YLld9OZVi3rZjn3YQ9ffPpOzuHWixPEwI%2B0gYnyya3yole%2FMMJ26aAd7IrRyhOjydlgaNWjO3sBFcoqBXYVpcrID7VzMDkoJ4zk6jye5sN5%2Fodu2jVfYAXsymhqe7iAgF3mvoDT408eNbgvsQnKy8zFj6RSNDWJ2klPQxeM0LzxuqR1tMFtEN8KbqMchtSBdcfGpIGDSWc4wH%2FPp0MB5mwUX7FQG79TNNAnS%2BdWbYecJp8sZ5Td3d7CaQAwEYPgri9DFQ%2BheS6GXvv8rVnDrqKkah6Ys%2BS95gI9hklPcazrln%2B1uyJWCX%2BwIu7uj190O3f%2FI1tIUaaDra0c5prg2mAVd3i5P17%2FzzdZoF5G1i%2BTtKOeJiTiaYb4RNNhtnm411G4XkbSLpOnKVWBuTtO%2BWx90YbgxOMjY1VtPLzvUdHXmJ9JiF23GrgZL2FV49nZPR%2BaGqXSwk7fbflMd8GO3l9HLXFNu0eXtML5d3cnu0B%2FgWQ9voIEua6d16hiMLsJqF3R5PMCyWA5VduTparuowW4ouEjKbg3CznKReuZ62PEYbyy4CLDLRoudLF2dCzuDNj2RXTqP7ZQGuozdUFwVXXc8i6A7SwNdzs6Ict%2Fs1s2K2zAUgNEzmDBokRnwyqabMX3%2Fd2wjI1zi%2FN%2FEpo4%2B0ELrw73cplne7kAGHrKTAnbZfUt2j%2BMB9xnSns1r7FKhszW7ZgJsHuseQe2lYHaoxPHIelJug%2BcJTSQRutKBjCIXt5uC8tnkZbk%2B3fWkUNVunjCdgF21W3Ps%2BOb79Xa2Q8eidsF9Gacj%2Fedar7BbCM977st%2Fbsln29nF7VrV7qbdCI2MuKTdzsp2bAAvQBax26l2Ybx16CxvV%2FHidqAN0pEWt6t2tFcSkNu6XbOeHdoYHUhPqE7dJTsnVuX1EJm4ihe3Q2%2F60N4ShuGCnf0eb233Mj9kKfpDyp68MUOOs3Q5z7er43cQo59idzscw5juJJ6RLo7HkV3Vo5%2Fnt2Oi%2FGYZSnSd00MXxpPw9YWk4s3kLtrx%2BZnfebpB9zdmQxe3k%2BHGlFQ%2B%2FclARhvlxoqdkmFKlzMfuinc7%2BcPe3aw6jYMhFH4MF2Y0tx0aXeTcN%2F%2FJXuHiv5YJZrakRTs6IBh9h8j2TixDb2QTuFowKQAnJLPLFhSQL50ud8OOjXoZFdMbqt4KCc%2BWDK7PWcnXFvamR147SrZLXm4Jh9lPNgo51X0Ms809ZOsQdfATsV20QVIVTmBSc5DI73qvnaKwC7E83DbvnQWRLfa33aN7BTfO9pZ0Cn2joBuokinYD8elekszg68dgkT0rPbTm3Hk1xVOzu0XUz3d9%2FwJ7juGtohuXUV5M5w3yEtXW%2Bgs3IitKNIB5vtBFfXzs5n96UPovNA6xbSLfCJ7BTePLPdDq6lmsgp%2BvUcHaTJkxiBHYD2jQXyVYM5BXOMt%2Fq5cy3XRE7BEfSA9eEpHCI5%2BARY8twswanIzrWE9lo6gwPogcZfSK4cE4DcEKAPUttkt6E2copD4CnBRaESnSYt3EY8mtKd205yYeR4GuZCRHbN9OzcdkxP2cV48eLRCs%2FU2Ls1Hv%2B9eF31Yrthlx4I7F72wmIHseuPp5bOeFvohp0q4NHHDrBWdEbvOtpR2LyF5nQklMpyiu51s%2BNhsmv4kYd557Kj7Ze5olCEV5HOWtFZdzjosHXC23PlwfNrh6nT2H3jha8qovOAVidm7rGFbnzfxYvn0cYOyxt2lRZPerR4y3zsgVlRbtgpQj0goNthd7k8MEGj5IbdHjzxVbb7KsBTb2xXwiTC08ee6DrZDTu8h3Q%2FHJa4bXawww71vnZkdCU95BvZiU7JUcH9fs%2F18DS7HJgChl2mhyqfnUB8eJLZccOtVnDcvUyPi4dHmgvrYW9opwCRqKlUhOeRoGQHt5vwEpz0RJcF7Y5LdSg6hTgq4AmQld2f0Gm5CtH9U2YnumGHNCriwcruNzt3sOI2EERR9BI3aGEl5Asmi%2Fz%2FP2aGUVKgh9LqKpVcGvsutLJXhyfa0Njs7G0pdjBv2rHQrX%2FNvezw2vVb2y1wYscip%2F2zWsQWyJcdH3h07MJ4vP1tkZNQMACDM7mUrkj3mxtA4vDAbydy1ezae4%2ByM7jA8OJ2IHCW%2FSNDYm45l14GXf7wGJUD21xBO%2B0sOzgHDxmeyFkgevkF1LTH0zFl4KFycbp4MTrtKLtNbYJ48eGhcPXt2s4%2BlRFI57iELqKXYDd%2FCTuNxdIlZ4lc6vLU7g2lsxx0pe00cNBZBhfEm4bsFI9ZCtLVt2sxOyADb%2BraLcHqnLKqtl0cjyy62xiegU1dO4u1HAJX2I4WDEiwM%2FCx7RnjLjxAlmZy5e1o4YDj6QwP1aNjuH94s9jBjAbUtIsH5hS32ya3G0dxO6Wb6VTNjnZItmJYA%2FrttO7uSLSj%2Bu7icb8TsPs%2FefACrtAN2fEMdney7GDa1RPYtZaD90HA8nDbxfSmL2%2BXIgitQVseLWqnTX4%2BtbPoV8iOn%2B%2FREvPiATl6QlfnsOKjgxpyhkenyfyGBGV2A3jfytl9GiaeXvx23fExYKe70y5lp0GJ4bEvD57ZaZey02gV8CCOx4Yee%2FFedji6EcczWsEzO%2BlCdvl4pNd7T6qd0UmXOmdqVJPzHDrXuKybtwNedpyXw86hR207Eug8EAE8terY1dgeY6W%2BMIMjitppfbwVbGm7qnTx4eHCM68tvByxA%2Bwgw82L4DEf%2B%2FLcAeQMO2dJoyOUTCcZ%2FrGnFSrZxeFieG477QQ7KtlRxG5ywSF4T2RHtLAdg%2FZqxcpOKkZX3y4fD4jgqceTzQ4OsBvGY800A%2FhOLAMLhZddZHg6QkPDYef4ZA07OBTvZP5DrozthaYaXZ5dPv%2FwfT9gt4nCFbOjnh07c9wZW55i18f7074drDgMw0AYHpYFH%2BzDvv%2FTLtQxCZiW4KksqZ3%2FlPuHVKcmGMU5ZSKOHUAM3XM8zsWAzsyOxwOFh1W6g5KwIyLsDOnu6pb9dphGbqK7sUEJOfrmzphup12XJ%2FBCZ0jnvzNLofDueweg478oITalu92sd1vbUc7%2B9aDLxrPj8Yj1muKMubZQhxtnh57Z2nwTXa3Og4dndli1AxFrdx8PvFwNdcjkf%2FA87UCcNQk6yg5WdlixI9iIwe1iHXCLHE%2FHDx7CVA47rNuhbTGrg875E5Igbo9A17AB70qnuSs9BK9ewkK2djstT6uS0K6G%2ByP6d5va0CpnOeSorQm4Xrzylal0Y4f1GDp%2FPX%2B6hqUC2mF3znatEXYAR%2BezMvPbtRGoKogcbu8S47VI97Mf8Xq3R%2B%2FAIuTi4sE1a7s2B4SyA2UXS8%2FE7nxGgFi5EfwzHrzp2bugBxUeEA4ltUOc%2FOw0dnyh5TR26u%2B77WSHrHiyg3cCxKOEdOLDKDGdSkynktNV2SWeupqXT3b58GSnXiJd2BLQCW%2FWTcEmPORKJZZTielUYjr1NXRKKfUPhZYsV3KmgCMAAAAASUVORK5CYII%3D"/>
+    <div style="font-size: 70%;">(Image modified from <a href="http://commons.wikimedia.org/wiki/File:Europe_population_map_countries.PNG">Europe population map at Wikimedia</a>)</div>
+</body>
+</html>
