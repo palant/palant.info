@@ -24,7 +24,7 @@
 
   function showSuccess(text)
   {
-    var parent = document.getElementById("comments").textContent;
+    var parent = document.getElementById("comments");
     while (parent.firstChild)
       parent.removeChild(parent.firstChild);
 
