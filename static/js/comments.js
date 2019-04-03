@@ -24,7 +24,14 @@
 
   function showSuccess(text)
   {
-    document.getElementById("comments").textContent = text;
+    var parent = document.getElementById("comments").textContent;
+    while (parent.firstChild)
+      parent.removeChild(parent.firstChild);
+
+    var message = document.createElement("p");
+    message.id = "cpreview";
+    message.textContent = text;
+    parent.appendChild(message);
   }
 
   var form = document.getElementById("comments");
