@@ -1,6 +1,7 @@
 ---
 title: "Dear Mozilla, please stop spamming!"
 date: 2019-04-03T21:26:47+02:00
+description: Detailing Mozilla's failures to send newsletters only to users who actually opted in.
 categories:
   - mozilla
 ---
@@ -15,9 +16,9 @@ Do you still remember how I opted out of all your emails last year? Luckily, I k
 
 It clearly says that I've opted out, so you didn't forget. So why do you keep sending me promotional messages?
 
-This isn't your only issue however. A year ago I reported a [security issue in Mozilla Basket](https://bugzil.la/1446612) (not publicly accessible). The essence is that anybody could subscribe you to Mozilla's newsletters even if you opted out previously. The consensus in this bug seems to be that this is "working as expected." This cannot seriously be it, right?
+This isn't your only issue however. A year ago I reported a [security issue in Mozilla Basket](https://bugzil.la/1446612) (not publicly accessible). The essence is that subscribing anybody to Mozilla's newsletters is trivial even if that person opted out previously. The consensus in this bug seems to be that this is "working as expected." This cannot seriously be it, right?
 
-Now there is some legislation that is IMHO being violated here, e.g. the CAN-SPAM Act and GDPR. And Mozilla's privacy policy ends with the email address one can contact to report compliance issues. So I did.
+Now there is some legislation that is IMHO being violated here, e.g. the CAN-SPAM Act and GDPR. And your privacy policy ends with the email address one can contact to report compliance issues. So I did.
 
 <p style="margin-left: 20px; margin-right: 20px;">{{< img "mozilla_bounce.png" "Screenshot of Mozilla's bounce mail" 957 >}}</p>
 
