@@ -11,6 +11,7 @@ author:
 taxonomies:
   category: categories
 
+buildFuture: true
 enableRobotsTXT: true
 
 permalinks:
