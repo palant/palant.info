@@ -12,6 +12,7 @@ taxonomies:
   category: categories
 
 enableRobotsTXT: true
+pygmentsUseClasses: true
 
 permalinks:
   articles: /:year/:month/:day/:slug/
