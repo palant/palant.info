@@ -2,6 +2,8 @@
 title: "Switching my blog to a static site generator"
 date: 2019-04-04T12:39:23+02:00
 description: "My blog is now being built by a static site generator. I explain how I kept search and comments functionality without relying on third parties."
+category:
+  - website
 ---
 
 After staying on [Textpattern](https://textpattern.com/) for more than ten years, time was right for a new blog engine. It's not that Textpattern is bad, it's actually pretty good and rather sturdy security-wise. But perfect is the enemy of good, and a blog where it's only static files on the server side is perfect security -- no attack surface whatsoever. No PHP and no database on the server means far fewer security updates. And I can easily see locally what any modifications to the site would look like, then push to a [repository](https://github.com/palant/palant.de) that doubles as backup -- done, the changes are deployed. Finally, I got simply fed up with writing Textile when everywhere else the format of choice is Markdown.
