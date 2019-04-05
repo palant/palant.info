@@ -16,7 +16,7 @@ Do you still remember how I opted out of all your emails last year? Luckily, I k
 
 <p style="margin-left: 20px; margin-right: 20px;">{{< img "basket_data.png" "Screenshot of Basket data" 415 >}}</p>
 
-It clearly says that I've opted out, so you didn't forget. So why do you keep sending me promotional messages?
+It clearly says that I've opted out, so you didn't forget. So why do you keep sending me promotional messages? **Edit** (2019-04-05): Yes, that `optin` value is thoroughly confusing but it doesn't mean what it seems to mean. Basket only uses it to indicate a "verified email," somebody who either went through double opt-in once or registered with Firefox Accounts.
 
 This isn't your only issue however. A year ago I reported a [security issue in Mozilla Basket](https://bugzil.la/1446612) (not publicly accessible). The essence is that subscribing anybody to Mozilla's newsletters is trivial even if that person opted out previously. The consensus in this bug seems to be that this is "working as expected." This cannot seriously be it, right?
 
