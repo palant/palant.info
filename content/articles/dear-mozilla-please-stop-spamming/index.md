@@ -1,9 +1,11 @@
 ---
-title: "Dear Mozilla, please stop spamming!"
-date: 2019-04-03T21:26:47+02:00
-description: Detailing Mozilla's failures to send newsletters only to users who actually opted in.
 categories:
-  - mozilla
+- mozilla
+date: 2019-04-03 19:26:47
+description: Detailing Mozilla's failures to send newsletters only to users who actually
+  opted in.
+lastmod: '2019-04-05 06:12:26'
+title: Dear Mozilla, please stop spamming!
 ---
 
 Dear Mozilla, of course I learned about your new file sharing project from the news. But it seems that you wanted to be really certain, so today I got this email:
