@@ -4,7 +4,7 @@ categories:
 date: 2019-04-03 19:26:47
 description: Detailing Mozilla's failures to send newsletters only to users who actually
   opted in.
-lastmod: '2019-04-05 07:59:49'
+lastmod: '2019-04-05 08:18:50'
 title: Dear Mozilla, please stop spamming!
 ---
 
