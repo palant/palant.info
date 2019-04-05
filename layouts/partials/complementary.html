@@ -5,15 +5,17 @@
   </form>
 
   {{ with .Scratch.Get "rss" -}}
-    <p><a type="application/rss+xml" title="RSS feed" href="{{ .Permalink }}"><img src="/images/rss.svg" width="16" height="16"> RSS feed</a></p>
+    <p><a type="application/rss+xml" title="RSS feed" href="{{ .Permalink }}"><img src="/images/rss.svg" alt="" width="16" height="16"> RSS feed</a></p>
   {{ end -}}
 
   <h4>External links</h4>
-  <ul class="linklist">
-    <li><a rel="external" href="https://adblockplus.org/">Adblock Plus project</a></li>
-    <li><a rel="external" href="https://addons.mozilla.org/user/palant/#my-addons">My Firefox extensions</a></li>
-    <li><a rel="external" href="https://github.com/palant?tab=repositories">My GitHub repositories</a></li>
-    <li><a rel="external" href="http://stackoverflow.com/users/785541/wladimir-palant?tab=answers">My Stack Overflow answers</a></li>
+  <ul class="linklist" style="list-style: none;">
+    <li><a rel="me" href="https://twitter.com/WPalant"><img src="/images/twitter.svg" alt="" width="16" height="16"> Twitter</a></li>
+    <li><a rel="me" href="https://infosec.exchange/@WPalant"><img src="/images/mastodon.svg" alt="" width="16" height="16"> Mastodon</a></li>
+    <li><a rel="external" href="https://pfp.works/"><img src="/images/pfp.svg" alt="" width="16" height="16"> PfP: Pain-free Passwords project</a></li>
+    <li><a rel="external" href="https://adblockplus.org/"><img src="/images/abp.svg" alt="" width="16" height="16"> Adblock Plus project</a></li>
+    <li><a rel="external" href="https://github.com/palant?tab=repositories"><img src="/images/github.svg" alt="" width="16" height="16"> GitHub repositories</a></li>
+    <li><a rel="external" href="http://stackoverflow.com/users/785541/wladimir-palant?tab=answers"><img src="/images/stackoverflow.svg" alt="" width="16" height="16"> Stack Overflow answers</a></li>
   </ul>
 </div>
 
