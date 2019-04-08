@@ -5,19 +5,16 @@
   </form>
 
   {{ with .Scratch.Get "rss" -}}
-    <p><a type="application/rss+xml" title="RSS feed" href="{{ .Permalink }}"><img src="/images/combined.svg#rss" alt="" style="width: 16px; height: 16px;"> RSS feed</a></p>
+    <p><a type="application/rss+xml" title="RSS feed" href="{{ .Permalink }}"><img src="{{ $.Scratch.Get "svg" }}#rss" alt="" style="width: 16px; height: 16px;"> RSS feed</a></p>
   {{ end -}}
 
   <h4>External links</h4>
   <ul class="linklist" style="list-style: none;">
-    <li><a rel="me" href="https://twitter.com/WPalant"><img src="/images/combined.svg#twitter" alt="" style="width: 16px; height: 16px;"> Twitter</a></li>
-    <li><a rel="me" href="https://infosec.exchange/@WPalant"><img src="/images/combined.svg#mastodon" alt="" style="width: 16px; height: 16px;"> Mastodon</a></li>
-    <li><a rel="external" href="https://pfp.works/"><img src="/images/combined.svg#pfp" alt="" style="width: 16px; height: 16px;"> PfP: Pain-free Passwords project</a></li>
-    <li><a rel="external" href="https://adblockplus.org/"><img src="/images/combined.svg#abp" alt="" style="width: 16px; height: 16px;"> Adblock Plus project</a></li>
-    <li><a rel="external" href="https://github.com/palant?tab=repositories"><img src="/images/combined.svg#github" style="width: 16px; height: 16px;"> GitHub repositories</a></li>
-    <li><a rel="external" href="http://stackoverflow.com/users/785541/wladimir-palant?tab=answers"><img src="/images/combined.svg#stackoverflow" alt="" style="width: 16px; height: 16px;"> Stack Overflow answers</a></li>
+    <li><a rel="me" href="https://twitter.com/WPalant"><img src="{{ .Scratch.Get "svg" }}#twitter" alt="" style="width: 16px; height: 16px;"> Twitter</a></li>
+    <li><a rel="me" href="https://infosec.exchange/@WPalant"><img src="{{ .Scratch.Get "svg" }}#mastodon" alt="" style="width: 16px; height: 16px;"> Mastodon</a></li>
+    <li><a rel="external" href="https://pfp.works/"><img src="{{ .Scratch.Get "svg" }}#pfp" alt="" style="width: 16px; height: 16px;"> PfP: Pain-free Passwords project</a></li>
+    <li><a rel="external" href="https://adblockplus.org/"><img src="{{ .Scratch.Get "svg" }}#abp" alt="" style="width: 16px; height: 16px;"> Adblock Plus project</a></li>
+    <li><a rel="external" href="https://github.com/palant?tab=repositories"><img src="{{ .Scratch.Get "svg" }}#github" style="width: 16px; height: 16px;"> GitHub repositories</a></li>
+    <li><a rel="external" href="http://stackoverflow.com/users/785541/wladimir-palant?tab=answers"><img src="{{ .Scratch.Get "svg" }}#stackoverflow" alt="" style="width: 16px; height: 16px;"> Stack Overflow answers</a></li>
   </ul>
 </div>
-
-<script src="/js/lunr.js?{{now.Unix}}" async></script>
-<script src="/js/lunr-init.js?{{now.Unix}}" async></script>

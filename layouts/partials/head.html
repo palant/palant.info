@@ -9,9 +9,14 @@
   {{ with .Scratch.Get "rss" -}}
     <link rel="alternate" type="application/rss+xml" title="RSS feed" href="{{ .Permalink }}" />
   {{ end -}}
+  {{ .Scratch.Set "css" ((resources.Get "css/style.css") | resources.Fingerprint "md5").Permalink -}}
+  {{ $scripts := slice (resources.Get "js/lunr.js") (resources.Get "js/lunr-init.js") (resources.Get "js/comments.js") }}
+  {{ .Scratch.Set "js" ($scripts | resources.Concat "js/site.js"  | resources.Fingerprint "md5").Permalink -}}
+  {{ .Scratch.Set "svg" ((resources.Get "images/combined.svg") | resources.Fingerprint "md5").Permalink -}}
   <title>{{ .Title }}</title>
 
-  <link rel="stylesheet" href="/css/style.css?{{now.Unix}}">
+  <link rel="stylesheet" href="{{ .Scratch.Get "css" }}">
+  <script src="{{ .Scratch.Get "js" }}" async></script>
 
   {{ .Hugo.Generator }}
 
