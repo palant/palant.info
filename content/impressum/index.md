@@ -1,6 +1,6 @@
 ---
-title: Legal Notice
 date: "2018-05-18 08:59:25"
+title: Legal Notice
 ---
 
 Responsible for this website in accordance with § 5 of the Telemedia Act (TMG):

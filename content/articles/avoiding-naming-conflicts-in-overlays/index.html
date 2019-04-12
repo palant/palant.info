@@ -1,15 +1,14 @@
-{
-  "title": "Avoiding naming conflicts in overlays",
-  "date": "2009-02-16 22:12:29",
-  "description": "",
-  "categories": [
-    "mozilla",
-    "xul"
-  ],
-  "slug": "avoiding-naming-conflicts-in-overlays"
-}
+---
+categories:
+- mozilla
+- xul
+date: "2009-02-16 22:12:29"
+description: ""
+slug: avoiding-naming-conflicts-in-overlays
+title: Avoiding naming conflicts in overlays
+---
 
-	<p><span class="caps">XUL</span> overlays are a great mechanism for extending existing functionality. However, there is a catch&nbsp;&mdash; any scripts loaded by an overlay are sharing the namespace with the scripts loaded by the original page <strong>and</strong> the scripts loaded by other overlays (typically from other extensions). So if extension Foo defines a global variable myGreatVar and extension Bar chooses to define a global variable myGreatVar as well, bad things will happen&nbsp;&mdash; both extensions will end up accessing the same variable and usually both extensions will behave erratically because of that. Same happens with functions, if two scripts define the same global function the second function definition will override the first. The situation is worst for constants&nbsp;&mdash; a constant cannot be redeclared meaning that one of the extensions will cause an error message.</p>
+<p><span class="caps">XUL</span> overlays are a great mechanism for extending existing functionality. However, there is a catch&nbsp;&mdash; any scripts loaded by an overlay are sharing the namespace with the scripts loaded by the original page <strong>and</strong> the scripts loaded by other overlays (typically from other extensions). So if extension Foo defines a global variable myGreatVar and extension Bar chooses to define a global variable myGreatVar as well, bad things will happen&nbsp;&mdash; both extensions will end up accessing the same variable and usually both extensions will behave erratically because of that. Same happens with functions, if two scripts define the same global function the second function definition will override the first. The situation is worst for constants&nbsp;&mdash; a constant cannot be redeclared meaning that one of the extensions will cause an error message.</p>
 
 	<p>Now this problem isn&#8217;t a new one and Mark Ziesemer wrote a <a href="http://blogger.ziesemer.com/2007/10/respecting-javascript-global-namespace.html">nice article suggesting namespaces as a solution</a> a while ago. This blog article even made it into <span class="caps">AMO</span>&#8217;s text block answers. Unfortunately, I think that these fake namespaces are an awkward and unnatural construct in JavaScript. You will have to spell out your namespace all the time and you will have to force your code into an object oriented writing style (which may or may not be desired). And of course you are still polluting the global namespace, and be it only for the namespace variable.</p>
 

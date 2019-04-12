@@ -1,9 +1,9 @@
-{
-  "publishDate": "2009-02-17 01:15:26",
-  "author": "Neil Rashbrook",
-  "authorUrl": "http://neil.rashbrook.org/",
-  "id": "000356"
-}
+---
+author: Neil Rashbrook
+authorUrl: http://neil.rashbrook.org/
+id: "000356"
+publishDate: "2009-02-17 01:15:26"
+---
 
-	<p>When designing SeaMonkey&#8217;s new toolkit-enhanced prefwindow Mnyromyr decided to use the subscript loader to load the scripts into the context of one of the <span class="caps">DOM</span> nodes. This benefits from a feature that at one point in Gecko&#8217;s ancient past used to work on all nodes but nowadays only works in <span class="caps">XUL</span> which is that an inline event listener can call functions defined on any node in the element&#8217;s hierarchy. Unfortunately some of the preference elements simulate event dispatch with Function objects using only the node&#8217;s own scope, so to call the loaded functions you have to write awkward code such as document.getElementById(&#8220;foo&#8221;).bar();</p>
+<p>When designing SeaMonkey&#8217;s new toolkit-enhanced prefwindow Mnyromyr decided to use the subscript loader to load the scripts into the context of one of the <span class="caps">DOM</span> nodes. This benefits from a feature that at one point in Gecko&#8217;s ancient past used to work on all nodes but nowadays only works in <span class="caps">XUL</span> which is that an inline event listener can call functions defined on any node in the element&#8217;s hierarchy. Unfortunately some of the preference elements simulate event dispatch with Function objects using only the node&#8217;s own scope, so to call the loaded functions you have to write awkward code such as document.getElementById(&#8220;foo&#8221;).bar();</p>
 

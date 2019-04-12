@@ -1,14 +1,13 @@
-{
-  "title": "Please don't use externally hosted JavaScript libraries",
-  "date": "2014-06-30 07:57:54",
-  "description": "",
-  "categories": [
-    "security"
-  ],
-  "slug": "please-don-t-use-externally-hosted-javascript-libraries"
-}
+---
+categories:
+- security
+date: "2014-06-30 07:57:54"
+description: ""
+slug: please-don-t-use-externally-hosted-javascript-libraries
+title: Please don't use externally hosted JavaScript libraries
+---
 
-	<p>A few days ago I outlined that the Reuters website <a href="/2014/06/27/third-party-javascript-more-critical-than-ever">relies on 40 external parties with its security</a>. What particularly struck me was the use of external code hosting services, e.g. loading the jQuery library directly from the <a href="http://jquery.com/">jQuery website</a> and <span class="caps">GSAP</span> library from <a href="http://www.cdnjs.com/">cdnjs</a>. It seems that in this particular case Reuters isn&#8217;t the one to blame&nbsp;&mdash; they don&#8217;t seem to include these scripts directly, it&#8217;s rather some of the other scripts they are using that are doing this.</p>
+<p>A few days ago I outlined that the Reuters website <a href="/2014/06/27/third-party-javascript-more-critical-than-ever">relies on 40 external parties with its security</a>. What particularly struck me was the use of external code hosting services, e.g. loading the jQuery library directly from the <a href="http://jquery.com/">jQuery website</a> and <span class="caps">GSAP</span> library from <a href="http://www.cdnjs.com/">cdnjs</a>. It seems that in this particular case Reuters isn&#8217;t the one to blame&nbsp;&mdash; they don&#8217;t seem to include these scripts directly, it&#8217;s rather some of the other scripts they are using that are doing this.</p>
 
 	<p>Why would one use externally hosted libraries as opposed to just uploading them to your own server? I can imagine three possible reasons:</p>
 

@@ -1,14 +1,13 @@
-{
-  "title": "What is going on with Internet Explorer?",
-  "date": "2007-12-06 11:43:18",
-  "description": "",
-  "categories": [
-    "mozilla"
-  ],
-  "slug": "what-is-going-on-with-internet-explorer"
-}
+---
+categories:
+- mozilla
+date: "2007-12-06 11:43:18"
+description: ""
+slug: what-is-going-on-with-internet-explorer
+title: What is going on with Internet Explorer?
+---
 
-	<p>So now we know: <a href="http://blogs.msdn.com/ie/archive/2007/12/05/internet-explorer-8.aspx">the next Internet Explorer version will be called Internet Explorer 8</a>. What a surprise. Thanks, Dean, for telling us. What we don&#8217;t know is just about everything else about Internet Explorer 8 because the IE team has been maintaining <a href="http://blogs.zdnet.com/microsoft/?p=761">strict radio silence</a> about it. And what we get is a bullshit answer that &#8220;the whole world relies on Internet Explorer and we must be very careful about what we say.&#8221;</p>
+<p>So now we know: <a href="http://blogs.msdn.com/ie/archive/2007/12/05/internet-explorer-8.aspx">the next Internet Explorer version will be called Internet Explorer 8</a>. What a surprise. Thanks, Dean, for telling us. What we don&#8217;t know is just about everything else about Internet Explorer 8 because the IE team has been maintaining <a href="http://blogs.zdnet.com/microsoft/?p=761">strict radio silence</a> about it. And what we get is a bullshit answer that &#8220;the whole world relies on Internet Explorer and we must be very careful about what we say.&#8221;</p>
 
 	<p>But the IE team had one and a half years to work on Internet Explorer 8, they must have fixed some of the major bugs/design flaws by now! For example, what about this unholy design decision that <a href="http://xpoint.ru/know-how/JavaScript/Atributyi">attributes and properties of <span class="caps">DOM</span> nodes are the same thing</a> that is causing bugs and very problematic non-standard/inconsistent behavior on numerous occasions? Has it finally been dropped? How about the <a href="http://www.satzansatz.de/cssd/onhavinglayout.html">hasLayout switch</a> that makes setting a simple <span class="caps">CSS</span> property like &#8220;zoom : 1&#8221; have an effect like switching to a different layout engine? Has the behavior been made consistent? Does Internet Explorer 8 feature a way to read out and set selection in text fields without the abomination that is TextRange? I mean something simple like selectionStart/selectionEnd properties&nbsp;&mdash; something that cannot even be emulated using TextRange because the &#8220;characters&#8221; TextRange works with are not the same as actual string characters. Are <span class="caps">HTML</span> elements regular JavaScript objects in Internet Explorer 8 now, with actual JavaScript prototypes that can be extended? Or maybe document.importNode was implemented so that there is now a way to avoid an unintelligible error message when nodes are moved between documents? If nothing else, what about standard-compliant aliases for existing functionality, like addEventListener/attachEvent, dispatchEvent/fireEvent, window.getComputedStyle/runtimeStyle? Immutable event objects, anyone? The fact that the web pages can manipulate authentic events has been known to cause security issues (e.g. clipboard stealing) for years, Opera fixed the same bug five years ago.</p>
 

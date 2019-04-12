@@ -1,11 +1,11 @@
-{
-  "publishDate": "2010-07-17 06:08:52",
-  "author": "johnjbarton",
-  "authorUrl": "http://getfirebug.com",
-  "id": "000567"
-}
+---
+author: johnjbarton
+authorUrl: http://getfirebug.com
+id: "000567"
+publishDate: "2010-07-17 06:08:52"
+---
 
-	<p>Firebug project does not have a perfect solution either, but we&#8217;ve made some progress. We removed all <span class="caps">DTD</span> files for the reasons you outlined. We have our own localization functions, one that takes a list of element ids to translate the static UI, and two that translate strings added dynamically (one for simple string substitution and one for parameters). The translation falls back to US-en if the locale fails to have an entry. The property files are uploaded to BabelZilla where translators do their magic. </p>
+<p>Firebug project does not have a perfect solution either, but we&#8217;ve made some progress. We removed all <span class="caps">DTD</span> files for the reasons you outlined. We have our own localization functions, one that takes a list of element ids to translate the static UI, and two that translate strings added dynamically (one for simple string substitution and one for parameters). The translation falls back to US-en if the locale fails to have an entry. The property files are uploaded to BabelZilla where translators do their magic. </p>
 
 	<p>This scheme gives two fall backs: if the locale entry is missing, the US-en value is used; if the US-en value is missing the label is still readable and usable. Failures are not catastrophic and it&#8217;s easy to notice a missing translation. These are all properties important for a small project like ours.</p>
 

@@ -1,15 +1,14 @@
-{
-  "title": "Solution to a problem nobody has: Changing Total Commander application icon",
-  "date": "2014-02-13 10:56:21",
-  "description": "",
-  "categories": [
-    "wine",
-    "os-x"
-  ],
-  "slug": "solution-to-a-problem-nobody-has-changing-total-commander-application-icon"
-}
+---
+categories:
+- wine
+- os-x
+date: "2014-02-13 10:56:21"
+description: ""
+slug: solution-to-a-problem-nobody-has-changing-total-commander-application-icon
+title: 'Solution to a problem nobody has: Changing Total Commander application icon'
+---
 
-	<p>Maybe you are like me and tend to drag along your favorite Windows applications even though you switched away to a different operating system a while ago. Well, maybe not&#8230; Still, I couldn&#8217;t find any file manager for Linux or OS X that would work as well as Total Commander. So I keep running it via <a href="http://www.winehq.org/">Wine</a> and it works surprisingly well.</p>
+<p>Maybe you are like me and tend to drag along your favorite Windows applications even though you switched away to a different operating system a while ago. Well, maybe not&#8230; Still, I couldn&#8217;t find any file manager for Linux or OS X that would work as well as Total Commander. So I keep running it via <a href="http://www.winehq.org/">Wine</a> and it works surprisingly well.</p>
 
 	<p>Having the standard application icon display on OS X is somewhat awkward however: with 32&#215;32 pixels it is simply too small, one would need a significantly larger icon for it to fit nicely into the OS X user interface. Wine doesn&#8217;t allow configuring the icon however, the <a href="https://source.winehq.org/source/dlls/winemac.drv/image.c?v=wine-1.7.12#L281">source code</a> shows that it will read the icon from the application resource unconditionally. Well, not really a problem&nbsp;&mdash; changing resources in Windows applications is fairly easy.</p>
 

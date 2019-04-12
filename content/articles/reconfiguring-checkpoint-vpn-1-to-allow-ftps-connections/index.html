@@ -1,14 +1,13 @@
-{
-  "title": "Reconfiguring CheckPoint VPN-1 to allow FTPS connections",
-  "date": "2008-07-13 15:05:00",
-  "description": "",
-  "categories": [
-    "off-topic"
-  ],
-  "slug": "reconfiguring-checkpoint-vpn-1-to-allow-ftps-connections"
-}
+---
+categories:
+- off-topic
+date: "2008-07-13 15:05:00"
+description: ""
+slug: reconfiguring-checkpoint-vpn-1-to-allow-ftps-connections
+title: Reconfiguring CheckPoint VPN-1 to allow FTPS connections
+---
 
-	<p>I recently tried using <span class="caps">FTPS</span> (<span class="caps">SSL</span>-encrypted <span class="caps">FTP</span>) and noticed that it didn&#8217;t work, immediately after &#8220;<span class="caps">AUTH</span> <span class="caps">TLS</span>&#8221; command the connection was disconnected. That happened independently of the server I tried to connect to and the server wasn&#8217;t aware of any disconnect. I am posting the solution here since more people might be affected by this.</p>
+<p>I recently tried using <span class="caps">FTPS</span> (<span class="caps">SSL</span>-encrypted <span class="caps">FTP</span>) and noticed that it didn&#8217;t work, immediately after &#8220;<span class="caps">AUTH</span> <span class="caps">TLS</span>&#8221; command the connection was disconnected. That happened independently of the server I tried to connect to and the server wasn&#8217;t aware of any disconnect. I am posting the solution here since more people might be affected by this.</p>
 
 	<p>Turned out my router wasn&#8217;t responsible. When I looked at the issue with a network sniffer, I saw a <span class="caps">TCP</span> <span class="caps">RST</span> packet immediately after first <span class="caps">SSL</span> handshake packet&nbsp;&mdash; and that one was received with less than 0.1 ms delay which is too little even for the router. And since apparently some program on my computer was responsible, CheckPoint <span class="caps">VPN</span>-1 was my first guess, I already made the experience that this <span class="caps">VPN</span> client is overly protective and messes around with <strong>all</strong> connections made by the computer even when it isn&#8217;t active.</p>
 

@@ -1,15 +1,14 @@
-{
-  "title": "Displaying web content in an extension - without security issues",
-  "date": "2009-01-28 11:02:50",
-  "description": "",
-  "categories": [
-    "xul",
-    "security"
-  ],
-  "slug": "displaying-web-content-in-an-extension-without-security-issues"
-}
+---
+categories:
+- xul
+- security
+date: "2009-01-28 11:02:50"
+description: ""
+slug: displaying-web-content-in-an-extension-without-security-issues
+title: Displaying web content in an extension - without security issues
+---
 
-	<p>Over the last few years I reported a bunch of security vulnerabilities in various extensions and by far the most common issue was: &#8220;Extension Foo allows execution of remote code in privileged context&#8221;. Typically, an <span class="caps">RSS</span> reader extension would take the content of the <span class="caps">RSS</span> feed (<span class="caps">HTML</span> code), format it nicely and insert into the extension window. The issue that is overlooked here is that the <span class="caps">RSS</span> feed could contain some JavaScript code and it would then execute with the privileges of the extension&nbsp;&mdash; meaning for example that it would get full access to the browser (cookies, history etc) and to user&#8217;s files. pdp discovered <a href="http://www.gnucitizen.org/blog/firebug-goes-evil/">a similar issue in the Firebug extension</a> that uses an <span class="caps">HTML</span>-based templating system and forgot to sanitize some input received from the webpage. (<strong>Clarification:</strong> The Firebug vulnerability is a very old one, this wasn&#8217;t meant as an example of an open vulnerability)</p>
+<p>Over the last few years I reported a bunch of security vulnerabilities in various extensions and by far the most common issue was: &#8220;Extension Foo allows execution of remote code in privileged context&#8221;. Typically, an <span class="caps">RSS</span> reader extension would take the content of the <span class="caps">RSS</span> feed (<span class="caps">HTML</span> code), format it nicely and insert into the extension window. The issue that is overlooked here is that the <span class="caps">RSS</span> feed could contain some JavaScript code and it would then execute with the privileges of the extension&nbsp;&mdash; meaning for example that it would get full access to the browser (cookies, history etc) and to user&#8217;s files. pdp discovered <a href="http://www.gnucitizen.org/blog/firebug-goes-evil/">a similar issue in the Firebug extension</a> that uses an <span class="caps">HTML</span>-based templating system and forgot to sanitize some input received from the webpage. (<strong>Clarification:</strong> The Firebug vulnerability is a very old one, this wasn&#8217;t meant as an example of an open vulnerability)</p>
 
 	<p>In my opinion, all these problems could have easily been avoided by choosing the right approach that makes use of the existing security mechanisms in the Mozilla codebase. For <a href="https://addons.mozilla.org/addon/10345">JavaScript Deobfuscator 1.5</a> I had to display JavaScript code from potentially malicious websites in my own window so I decided to take as many precautions as possible. And it is really not that hard.</p>
 

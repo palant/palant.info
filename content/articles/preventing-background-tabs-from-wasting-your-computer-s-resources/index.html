@@ -1,14 +1,13 @@
-{
-  "title": "Preventing background tabs from wasting your computer's resources",
-  "date": "2012-05-12 11:27:49",
-  "description": "",
-  "categories": [
-    "mozilla",
-    "gecko"
-  ],
-  "slug": "preventing-background-tabs-from-wasting-your-computer-s-resources"
-}
+---
+categories:
+- mozilla
+- gecko
+date: "2012-05-12 11:27:49"
+description: ""
+slug: preventing-background-tabs-from-wasting-your-computer-s-resources
+title: Preventing background tabs from wasting your computer's resources
+---
 
-	<p>Taras recently <a href="http://blog.mozilla.org/tglek/2012/04/18/web-2-0-a-collection-of-settimeouts/">blogged</a> on how websites manage to ruin Firefox performance by continuing to do something even though their tab is no longer active&nbsp;&mdash; they keep updating the view that you cannot see. He wondered whether it would be possible to suspend these tabs from an extension. I looked into this and there is a way to suspend all timeouts for a tab&nbsp;&mdash; something that an extension could use. Getting the details right wasn&#8217;t quite trivial but I think that my extension gets it right now: <a href="https://addons.mozilla.org/addon/suspend-background-tabs/">Suspend background tabs</a>. Enjoy!</p>
+<p>Taras recently <a href="http://blog.mozilla.org/tglek/2012/04/18/web-2-0-a-collection-of-settimeouts/">blogged</a> on how websites manage to ruin Firefox performance by continuing to do something even though their tab is no longer active&nbsp;&mdash; they keep updating the view that you cannot see. He wondered whether it would be possible to suspend these tabs from an extension. I looked into this and there is a way to suspend all timeouts for a tab&nbsp;&mdash; something that an extension could use. Getting the details right wasn&#8217;t quite trivial but I think that my extension gets it right now: <a href="https://addons.mozilla.org/addon/suspend-background-tabs/">Suspend background tabs</a>. Enjoy!</p>
 
 	<p>This doesn&#8217;t completely disable all activity in the background tabs of course. Network requests will continue, videos will also keep playing. So I might implement some improvements in future. However, please have understanding that this is a very low priority side-project for me. So it&#8217;s best if you bring your code. The current code is <a href="https://hg.adblockplus.org/suspendbackgroundtabs/">here</a>.</p>

@@ -1,14 +1,13 @@
-{
-  "title": "Java and Firefox memory usage",
-  "date": "2007-04-04 13:59:18",
-  "description": "",
-  "categories": [
-    "mozilla"
-  ],
-  "slug": "java-and-firefox-memory-usage"
-}
+---
+categories:
+- mozilla
+date: "2007-04-04 13:59:18"
+description: ""
+slug: java-and-firefox-memory-usage
+title: Java and Firefox memory usage
+---
 
-	<p>I have been using Sun&#8217;s old Java 1.5.0_06 runtime for quite a while, there simply wasn&#8217;t a good reason to waste time updating it. When investigating a Java-related crash I decided to check whether it will happen with a newer runtime (1.6.0-b105 was current at that time). Surprisingly, the crash disappeared even though this crash happened in Gecko code and not in the Java plugin.</p>
+<p>I have been using Sun&#8217;s old Java 1.5.0_06 runtime for quite a while, there simply wasn&#8217;t a good reason to waste time updating it. When investigating a Java-related crash I decided to check whether it will happen with a newer runtime (1.6.0-b105 was current at that time). Surprisingly, the crash disappeared even though this crash happened in Gecko code and not in the Java plugin.</p>
 
 	<p>But what I find more interesting is the change in Firefox&#8217; memory usage I observe since that update. Previously Firefox would use 250 MB of memory after a few hours. It wouldn&#8217;t change much after that, only after a week or two the memory usage would climb to 350 MB. Now with a current Java version the usual numbers for Firefox are 150 MB reserved memory and below. After using it for over a week without restarting I still saw only 190 MB.</p>
 

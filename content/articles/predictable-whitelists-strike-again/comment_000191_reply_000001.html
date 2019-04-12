@@ -1,6 +1,6 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>No, I think I got it right. Of course, RSnake doesn&#8217;t describe the attack in all details but my understanding is that &#8220;vuln in NoScript&#8221; means an <span class="caps">XSS</span> attack that wasn&#8217;t stopped by NoScript (simply because you cannot distinguish an <span class="caps">XSS</span> attack from a correct request that easily). So we got back to the problem where a non-trusted site can <span class="caps">XSS</span> into a whitelisted site and run JavaScript by doing that (the problem that was &#8220;solved&#8221; by NoScript 1.1.4.9). This is the classic case where you solve one problem by creating an even bigger problem &#8211; now everything that the <span class="caps">XSS</span> protection in NoScript misses is a vulnerability in NoScript (and it misses a lot).</p>

@@ -1,10 +1,11 @@
 ---
-title: "Bogus security mechanisms: Encrypting localhost traffic"
-date: 2019-04-11T13:07:14+02:00
-description: RememBear invested much effort into securing communication between browser extensions and application. I think that most of this work could have been spared.
 categories:
-  - security
-  - remembear
+- security
+- remembear
+date: "2019-04-11T13:07:14+02:00"
+description: RememBear invested much effort into securing communication between browser
+  extensions and application. I think that most of this work could have been spared.
+title: 'Bogus security mechanisms: Encrypting localhost traffic'
 ---
 
 Nowadays it is common for locally installed applications to also offer installing browser extensions that will take care of browser integration. Securing the communication between extensions and the application is not entirely trivial, something that [Logitech had to discover recently](https://bugs.chromium.org/p/project-zero/issues/detail?id=1663) for example. I've also found a bunch of applications with security issues in this area. In this context, one has to appreciate RememBear password manager [going to great lengths](https://www.remembear.com/blog/securing-the-remembear-browser-extensions/) to secure this communication channel. Unfortunately, while their approach isn't strictly wrong, it seems to be based on a wrong threat assessment and ends up investing far more effort into this than necessary.

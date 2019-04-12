@@ -1,15 +1,14 @@
-{
-  "title": "XULRunner in large projects, part 4: Localization pitfalls",
-  "date": "2010-07-17 00:41:50",
-  "description": "",
-  "categories": [
-    "mozilla",
-    "xul"
-  ],
-  "slug": "xulrunner-in-large-projects-part-4-localization-pitfalls"
-}
+---
+categories:
+- mozilla
+- xul
+date: "2010-07-17 00:41:50"
+description: ""
+slug: xulrunner-in-large-projects-part-4-localization-pitfalls
+title: 'XULRunner in large projects, part 4: Localization pitfalls'
+---
 
-	<p>I am back from the <a href="https://wiki.mozilla.org/Summit2010">Mozilla Summit</a> and somewhat managed to process all the new information I got there. But instead of posting yet another summit summary or more summit photos (what, you didn&#8217;t know how great this summit was?) I have a far more boring topic for today: localization of <span class="caps">XULR</span>unner-based applications.</p>
+<p>I am back from the <a href="https://wiki.mozilla.org/Summit2010">Mozilla Summit</a> and somewhat managed to process all the new information I got there. But instead of posting yet another summit summary or more summit photos (what, you didn&#8217;t know how great this summit was?) I have a far more boring topic for today: localization of <span class="caps">XULR</span>unner-based applications.</p>
 
 	<p>I mean, what is there to say about localization? It is really very simple. Some magic in the chrome:// protocol makes sure that whenever a file in the <code>locale</code> &#8220;subdirectory&#8221; is accessed one of the available locales is selected and the file is loaded from there. This automatic selection mechanism works very well and will select the locale that is closest to the value of the <code>general.useragent.locale</code> preference.</p>
 

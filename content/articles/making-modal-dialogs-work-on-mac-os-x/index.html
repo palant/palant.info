@@ -1,15 +1,14 @@
-{
-  "title": "Making modal dialogs work on Mac OS X",
-  "date": "2008-09-15 20:49:38",
-  "description": "",
-  "categories": [
-    "tomtom",
-    "gecko"
-  ],
-  "slug": "making-modal-dialogs-work-on-mac-os-x"
-}
+---
+categories:
+- tomtom
+- gecko
+date: "2008-09-15 20:49:38"
+description: ""
+slug: making-modal-dialogs-work-on-mac-os-x
+title: Making modal dialogs work on Mac OS X
+---
 
-	<p>If you ever tried TomTom <span class="caps">HOME</span>, you probably noticed that its user interface is &#8220;unusual&#8221;. It tries to mimic the user interface of a navigation device meaning among others that all messages (&#8220;dialogs&#8221;) replace the entire window content and require you to dismiss them before you can continue doing whatever you have been doing. There are some advantages to that kind of user interface but it was also a constant source of irritation among our testers (and, no doubt, users). In particular, you could still use the menu despite the dialog, with strange results.</p>
+<p>If you ever tried TomTom <span class="caps">HOME</span>, you probably noticed that its user interface is &#8220;unusual&#8221;. It tries to mimic the user interface of a navigation device meaning among others that all messages (&#8220;dialogs&#8221;) replace the entire window content and require you to dismiss them before you can continue doing whatever you have been doing. There are some advantages to that kind of user interface but it was also a constant source of irritation among our testers (and, no doubt, users). In particular, you could still use the menu despite the dialog, with strange results.</p>
 
 	<p>After this has been going on for a year, a decision was made to switch to a more conventional user interface concept and use real modal dialogs. Modality was an important point because often these dialogs are a reaction to an <span class="caps">USB</span> event where we really want to stop the user from doing anything until he is done with the dialog. Now you can probably imagine that such a radical paradigm shift wasn&#8217;t easy to implement and replacing the function that opened dialogs was only the beginning. Still, after some time we got something that was stable and made sense&nbsp;&mdash; even though we now have way too many modal dialogs, something that we will continue working on.</p>
 

@@ -1,12 +1,12 @@
-{
-  "title": "Security considerations for password generators",
-  "date": "2016-04-20 12:42:30",
-  "description": "Generating unique passwords deterministically from a single master password is a compelling concept, but there are fall traps to consider.",
-  "categories": [
-    "security"
-  ],
-  "slug": "security-considerations-for-password-generators"
-}
+---
+categories:
+- security
+date: "2016-04-20 12:42:30"
+description: Generating unique passwords deterministically from a single master password
+  is a compelling concept, but there are fall traps to consider.
+slug: security-considerations-for-password-generators
+title: Security considerations for password generators
+---
 
 <p>When I started writing <a href="/2016/04/19/introducing-easy-passwords-the-new-best-way-to-juggle-all-those-passwords">my very own password generation extension</a> I didn&#8217;t know much about the security aspects. In theory, any hash function should do in order to derive the password because hash functions cannot be reversed, right? Then I started reading and discovered that one is supposed to use <a href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a>. And not just that, you had to use a large number of iterations. But why?</p>
 

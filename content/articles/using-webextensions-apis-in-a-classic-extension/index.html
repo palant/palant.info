@@ -1,15 +1,14 @@
-{
-  "title": "Using WebExtensions APIs in a \"classic\" extension",
-  "date": "2015-10-15 10:41:16",
-  "description": "",
-  "categories": [
-    "gecko",
-    "mozilla"
-  ],
-  "slug": "using-webextensions-apis-in-a-classic-extension"
-}
+---
+categories:
+- gecko
+- mozilla
+date: "2015-10-15 10:41:16"
+description: ""
+slug: using-webextensions-apis-in-a-classic-extension
+title: Using WebExtensions APIs in a "classic" extension
+---
 
-	<p>So <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions">WebExtensions</a> are the great new way to build Firefox extensions, and soon everybody creating a new extension should be using that over everything else. But what about all the people who already have extensions? How can one be expected to migrate a large extension to WebExtensions and still keep it working? Chances are that you will first spend tons of time rewriting your code, and then even more time responding to complains of your users because that rewrite introduced bugs and unintended changes.</p>
+<p>So <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions">WebExtensions</a> are the great new way to build Firefox extensions, and soon everybody creating a new extension should be using that over everything else. But what about all the people who already have extensions? How can one be expected to migrate a large extension to WebExtensions and still keep it working? Chances are that you will first spend tons of time rewriting your code, and then even more time responding to complains of your users because that rewrite introduced bugs and unintended changes.</p>
 
 	<p>I don&#8217;t want to see myself in that hell, a gradual migration is almost always a better idea. So I looked into ways to use WebExtensions <span class="caps">API</span>s from my existing, &#8220;classic&#8221; extension. And &#8211; yes, it works. However, at this point the approach still makes many assumptions and uses internal <span class="caps">API</span>s, so the code example below is merely a proof-of-concept and should be used with caution.</p>
 

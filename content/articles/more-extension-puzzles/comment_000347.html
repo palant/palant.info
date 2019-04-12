@@ -1,11 +1,11 @@
-{
-  "publishDate": "2009-02-11 18:59:02",
-  "author": "Giorgio Maone",
-  "authorUrl": "http://hackademix.net",
-  "id": "000347"
-}
+---
+author: Giorgio Maone
+authorUrl: http://hackademix.net
+id: "000347"
+publishDate: "2009-02-11 18:59:02"
+---
 
-	<p>I&#8217;ll solve it for you: NoScript has been reporting every supposed script source (not necessarily a &#8220;request&#8221;) on a page even before it implemented a content policy. Therefore, <em>in addition</em> to the ones detected from its nsIContentPolicy implementation, it shows the &#8220;site&#8221; (which can be the 2nd level domain, or the full domain or the prepath, depending on user&#8217;s preferences) for every src attribute of <span class="caps">SCRIPT</span> elements (even if they actually won&#8217;t load code, which is an arguably rare case on real world pages). <br />
+<p>I&#8217;ll solve it for you: NoScript has been reporting every supposed script source (not necessarily a &#8220;request&#8221;) on a page even before it implemented a content policy. Therefore, <em>in addition</em> to the ones detected from its nsIContentPolicy implementation, it shows the &#8220;site&#8221; (which can be the 2nd level domain, or the full domain or the prepath, depending on user&#8217;s preferences) for every src attribute of <span class="caps">SCRIPT</span> elements (even if they actually won&#8217;t load code, which is an arguably rare case on real world pages). <br />
 On the other hand, NoScript filters out those &#8220;sites&#8221; which don&#8217;t make sense in its UI: Reporting <em>view-source:</em> for script permissions is quite pointless, isn&#8217;t it?</p>
 
 	<p>P.S.: my AdBlock Plus 1.0.1 reports &#8220;no blockable items&#8221;. Is this expected (you wrote &#8220;the one request&#8221;)?</p>

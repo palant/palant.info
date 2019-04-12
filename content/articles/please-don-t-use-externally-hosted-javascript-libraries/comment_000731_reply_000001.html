@@ -1,6 +1,6 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>Yes, so much for the theory. I also noticed that jQuery advertises their <span class="caps">CDN</span> solution with the promise of having the library cached. And jQuery is certainly ubiquitous. Problem is: there isn&#8217;t just one version of jQuery. Each website uses a different jQuery version and they won&#8217;t use the &#8220;latest and greatest&#8221; because that means redoing the compatibility testing (don&#8217;t forget plugin compatibility). For example, if you look only at the Reuters website, it loads both jQuery 1.6.1 and 1.10.1 (both outdated). Stack Overflow and Mozilla Add-ons use jQuery 1.7.1 (via Google and Verizon <span class="caps">CDN</span>s respectively). Looking at this, what are the chances that you visit two different websites both using the same version of jQuery from the same <span class="caps">CDN</span> within the cache expiration interval?</p>

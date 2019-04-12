@@ -1,7 +1,7 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>As outlined in reply to the comments above, a caching hit with a <span class="caps">CDN</span> isn&#8217;t terribly more likely than a caching hit for a library you host yourself. That&#8217;s because there is a number of different <span class="caps">CDN</span>s and lots of different library versions with each website relying on another one. And cache sizes aren&#8217;t unlimited, even with a lengthy expiration interval some files are bound to be evicted from cache. And even when the library is cached, it only saves you the <span class="caps">TCP</span> connection and <span class="caps">DNS</span> lookup you normally wouldn&#8217;t have had in the first place.</p>
 

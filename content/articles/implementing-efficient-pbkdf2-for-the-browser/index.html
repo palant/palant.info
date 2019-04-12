@@ -1,13 +1,12 @@
-{
-  "title": "Implementing efficient PBKDF2 for the browser",
-  "date": "2016-10-25 13:05:35",
-  "description": "",
-  "categories": [
-    "security",
-    "pfp"
-  ],
-  "slug": "implementing-efficient-pbkdf2-for-the-browser"
-}
+---
+categories:
+- security
+- pfp
+date: "2016-10-25 13:05:35"
+description: ""
+slug: implementing-efficient-pbkdf2-for-the-browser
+title: Implementing efficient PBKDF2 for the browser
+---
 
 <p>As I <a href="/2016/04/20/security-considerations-for-password-generators">mentioned previously</a>, an efficient PBKDF2 implementation is absolutely essential for <a href="/2016/04/19/easy-passwords">Easy Passwords</a> in order to generate passwords securely. So when I looked into Microsoft Edge and discovered that it chose to implement WebCrypto <span class="caps">API</span> but <a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/documentation/dev-guide/security/web-Cryptography-API/">not the PBKDF2 algorithm</a> this was quite a show-stopper. I still decided to investigate the alternatives, out of interest.</p>
 

@@ -1,6 +1,6 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>The salted hash is stored in the database, it&#8217;s being used to tell you whether the master password you entered is correct. But even if it weren&#8217;t, the hash isn&#8217;t the only way to do bruteforcing. In order to validate your guess, you can always try to do decrypting &#8211; the correct plaintext is an <span class="caps">ASN</span>.1 encoded private key. Sure, decrypting would slow the attack down a bit but only insignificantly.</p>

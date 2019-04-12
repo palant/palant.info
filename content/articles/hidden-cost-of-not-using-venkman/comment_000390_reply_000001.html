@@ -1,6 +1,6 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>It seems that you get at least the same performance cost as soon as you install Chromebug. It will flip Firebug&#8217;s filterSystemURLs pref which effectively means that Firebug always turns on the debugger at startup. And it stays permanently on which has the impact on performance that I describe here &#8211; regardless of whether Firebug is actually doing anything with the debugger. That effect stays even after you uninstall Chromebug.</p>

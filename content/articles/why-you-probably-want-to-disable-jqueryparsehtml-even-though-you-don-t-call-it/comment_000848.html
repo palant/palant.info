@@ -1,11 +1,11 @@
-{
-  "publishDate": "2015-09-02 15:01:55",
-  "author": "m_gol",
-  "authorUrl": "",
-  "id": "000848"
-}
+---
+author: m_gol
+authorUrl: ""
+id: "000848"
+publishDate: "2015-09-02 15:01:55"
+---
 
-	<p>We&#8217;ve hidden `jQuery.buildFragment` in jQuery 3.0.0 (not released yet but there&#8217;s an alpha to try) so this technique won&#8217;t work for you. But at the same time we&#8217;ve exposed `jQuery.htmlPrefilter` that&#8217;s invoked on the <span class="caps">HTML</span> input any time jQuery tries to parse something less trivial than a single tag without content so you won&#8217;t have to rely on private <span class="caps">API</span>s, you&#8217;ll just be able to:</p>
+<p>We&#8217;ve hidden `jQuery.buildFragment` in jQuery 3.0.0 (not released yet but there&#8217;s an alpha to try) so this technique won&#8217;t work for you. But at the same time we&#8217;ve exposed `jQuery.htmlPrefilter` that&#8217;s invoked on the <span class="caps">HTML</span> input any time jQuery tries to parse something less trivial than a single tag without content so you won&#8217;t have to rely on private <span class="caps">API</span>s, you&#8217;ll just be able to:</p>
 
 	<p>jQuery.htmlPrefilter = function () { return &#8216;&#8217;; }</p>
 

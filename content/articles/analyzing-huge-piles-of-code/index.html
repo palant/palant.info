@@ -1,15 +1,14 @@
-{
-  "title": "Analyzing huge piles of code",
-  "date": "2009-02-10 22:37:27",
-  "description": "",
-  "categories": [
-    "mozilla",
-    "off-topic"
-  ],
-  "slug": "analyzing-huge-piles-of-code"
-}
+---
+categories:
+- mozilla
+- off-topic
+date: "2009-02-10 22:37:27"
+description: ""
+slug: analyzing-huge-piles-of-code
+title: Analyzing huge piles of code
+---
 
-	<p>Back in August, at the Firefox Summit, I promised Giorgio Maone to properly analyze NoScript. Trust me, better that than <a href="http://hackademix.net/2008/07/31/about-to-eat-wladimir-palant/">the alternative</a>. And it is not that I forgot. I tried, really. Problem is, Giorgio isn&#8217;t a big friend of modularization. Most of NoScript code is contained in two files, one being 2000 and the other whooping 8000 lines long, all of its 500 features nicely intertwined. He isn&#8217;t a big fan of documentation either, keeping code comments to a minimum as to prevent code bloat. Finally, he isn&#8217;t a big fan of consistency and made sure that each feature is triggered only under its very unique conditions. In short, the code is a mess.</p>
+<p>Back in August, at the Firefox Summit, I promised Giorgio Maone to properly analyze NoScript. Trust me, better that than <a href="http://hackademix.net/2008/07/31/about-to-eat-wladimir-palant/">the alternative</a>. And it is not that I forgot. I tried, really. Problem is, Giorgio isn&#8217;t a big friend of modularization. Most of NoScript code is contained in two files, one being 2000 and the other whooping 8000 lines long, all of its 500 features nicely intertwined. He isn&#8217;t a big fan of documentation either, keeping code comments to a minimum as to prevent code bloat. Finally, he isn&#8217;t a big fan of consistency and made sure that each feature is triggered only under its very unique conditions. In short, the code is a mess.</p>
 
 	<p>Fortunately, I now have a nice tool for just these cases. On the train from <span class="caps">FOSDEM</span> I added the ability to change filters to <a href="https://addons.mozilla.org/addon/10345">JavaScript Deobfuscator</a> and worked around <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=475334">bug 475334</a> to make sure all scripts being executed really show up. It turned out that this isn&#8217;t quite enough, <span class="caps">XPCOM</span> components are apparently invisible to the debugger and still don&#8217;t show up. But at least now I can open JavaScript Deobfuscator, adjust the filters to include &#8220;chrome://noscript/&#8221; while not excluding anything&nbsp;&mdash; and next time I load a page I see exactly what NoScript is doing on page load. There are quite a few things going on there but it is still a lot easier to get an overview than by looking at the source code.</p>
 

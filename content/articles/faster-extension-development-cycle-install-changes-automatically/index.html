@@ -1,14 +1,13 @@
-{
-  "title": "Faster extension development cycle: install changes automatically",
-  "date": "2012-01-13 15:33:24",
-  "description": "",
-  "categories": [
-    "gecko"
-  ],
-  "slug": "faster-extension-development-cycle-install-changes-automatically"
-}
+---
+categories:
+- gecko
+date: "2012-01-13 15:33:24"
+description: ""
+slug: faster-extension-development-cycle-install-changes-automatically
+title: 'Faster extension development cycle: install changes automatically'
+---
 
-	<p>The usual extension development cycle is less than optimal: change something, create a new extension build, install it in the browser (gonna love warnings), restart the browser, finally test it. I don&#8217;t like repeating this cycle all the time and so in the past years I&#8217;ve been using a test environment in which most extension files are loaded directly from my source code checkout (thanks to a manipulated <code>chrome.manifest</code> file). With this test environment many changes could be tested by simply reopening the extension window, for others you would restart the browser.</p>
+<p>The usual extension development cycle is less than optimal: change something, create a new extension build, install it in the browser (gonna love warnings), restart the browser, finally test it. I don&#8217;t like repeating this cycle all the time and so in the past years I&#8217;ve been using a test environment in which most extension files are loaded directly from my source code checkout (thanks to a manipulated <code>chrome.manifest</code> file). With this test environment many changes could be tested by simply reopening the extension window, for others you would restart the browser.</p>
 
 	<p>Unfortunately, this approach is less useful when working on restartless extensions&nbsp;&mdash; it requires me to restart the browser where updating the extension without a browser restart should be sufficient. And it completely broke down when I started testing Adblock Plus on an Android phone. My development machine and the browser where I test the extension are physically separated now. Add to this that getting Firefox Mobile to install an extension from the development machine is a rather complicated affair, and the result is that most of my &#8220;development&#8221; suddenly has nothing to do with writing code.</p>
 

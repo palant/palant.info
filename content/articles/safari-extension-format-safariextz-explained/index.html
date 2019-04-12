@@ -1,15 +1,14 @@
-{
-  "title": "Safari extension format (.safariextz) explained",
-  "date": "2016-08-17 16:48:26",
-  "description": "",
-  "categories": [
-    "add-ons",
-    "os-x"
-  ],
-  "slug": "safari-extension-format-safariextz-explained"
-}
+---
+categories:
+- add-ons
+- os-x
+date: "2016-08-17 16:48:26"
+description: ""
+slug: safari-extension-format-safariextz-explained
+title: Safari extension format (.safariextz) explained
+---
 
-	<p>As extension formats go, Apple clearly chose the most obscure and least documented one for their Safari browser. It&#8217;s based on the <span class="caps">XAR</span> (eXtensible ARchiver) format which is a <a href="https://code.google.com/archive/p/xar/">dead project</a> with <a href="https://code.google.com/archive/p/xar/wikis/xarformat.wiki">barely existing and outdated format documentation</a> (note how it suggests setting <code>XAR_HEADER_VERSION</code> to zero even though current header version is one). But Apple went further and added signing support to the format without documenting it. Why bother if everybody can use Safari to create an extension package? And so for a long time your best choice to automate the build process was <a href="https://mackyle.github.io/xar/howtosign.html">a complicated list of instructions</a> relying on a patched version of the xar command line tool. A year ago somebody apparently added a <a href="https://github.com/robertknight/xar-js">much more convenient xar-js library</a> to the list but I didn&#8217;t find out until I started writing this blog post.</p>
+<p>As extension formats go, Apple clearly chose the most obscure and least documented one for their Safari browser. It&#8217;s based on the <span class="caps">XAR</span> (eXtensible ARchiver) format which is a <a href="https://code.google.com/archive/p/xar/">dead project</a> with <a href="https://code.google.com/archive/p/xar/wikis/xarformat.wiki">barely existing and outdated format documentation</a> (note how it suggests setting <code>XAR_HEADER_VERSION</code> to zero even though current header version is one). But Apple went further and added signing support to the format without documenting it. Why bother if everybody can use Safari to create an extension package? And so for a long time your best choice to automate the build process was <a href="https://mackyle.github.io/xar/howtosign.html">a complicated list of instructions</a> relying on a patched version of the xar command line tool. A year ago somebody apparently added a <a href="https://github.com/robertknight/xar-js">much more convenient xar-js library</a> to the list but I didn&#8217;t find out until I started writing this blog post.</p>
 
 	<p>Yesterday I was transitioning our build process from M2Crypto which has neither Python 3 support nor useful documentation to PyCrypto which has both. While at it, I had to spend an awful lot of time reimplementing step 3 of that complicated list of instructions, namely creating a valid signature. It wasn&#8217;t working no matter what I tried, and I ended up understanding the format a lot better than I ever wished for. As it turned out, this step was relying on a broken <span class="caps">RSA</span> signing implementation as offered by the deprecated <code>openssl rsautl</code> command and M2Crypto, but which PyCrypto chose not to implement for obvious reasons. I solved the problem, but in the process I realized that the format is simpler than the unsupported command line tool with its quirks and bugs. And so I <a href="https://github.com/adblockplus/buildtools/commit/b2ab71dd3fe85fd1be9c2b9188ed46a63892f0f6">created our own <span class="caps">XAR</span> generator</a> which no longer relied on that command line tool (not quite general-purpose code unfortunately).</p>
 

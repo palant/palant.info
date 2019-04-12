@@ -1,7 +1,7 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>Unfortunately, I didn&#8217;t make notes last time I looked into this &#8211; the issues simply weren&#8217;t serious enough for reporting. And I only looked at a small portion of the codebase, so when I look at it now it will probably be some different code paths. So the <code>getDomain()</code> function I see under <a href="https://github.com/bitwarden/jslib/blob/dd46d5ecdd51f91dace5488272dd1f7bafd995c5/src/misc/utils.ts#L169" rel="nofollow">https://github.com/bitwarden/jslib/blob/dd46d5ecdd51f91dace5488272dd1f7bafd995c5/src/misc/utils.ts#L169</a> is indeed using <code>URL</code> objects. It also knows that tld.js won&#8217;t handle IP addresses correctly, but it will only consider IPv4 addresses in dotted decimal notation and not IPv4 addresses in other notations or IPv6 addresses. All of that appears to be a minor risk but not an actual issue &#8211; assuming that <span class="caps">URL</span>s are already normalized when they get here (ok, let&#8217;s ignore the code prefixing <span class="caps">URL</span>s with <code>http://</code> here).</p>
 

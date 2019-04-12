@@ -1,15 +1,14 @@
-{
-  "title": "How bad is a buffer overflow in an Emscripten-compiled application?",
-  "date": "2017-04-23 08:57:34",
-  "description": "",
-  "categories": [
-    "security",
-    "adblock-plus"
-  ],
-  "slug": "how-bad-is-a-buffer-overflow-in-an-emscripten-compiled-application"
-}
+---
+categories:
+- security
+- adblock-plus
+date: "2017-04-23 08:57:34"
+description: ""
+slug: how-bad-is-a-buffer-overflow-in-an-emscripten-compiled-application
+title: How bad is a buffer overflow in an Emscripten-compiled application?
+---
 
-	<p><a href="http://kripken.github.io/emscripten-site/">Emscripten</a> allows compiling C++ code to JavaScript. It is an interesting approach allowing porting large applications (games) and libraries (crypto) to the web relatively easily. It also promises better performance and memory usage for some scenarios (something we are currently looking into for Adblock Plus core). These beneficial effects largely stem from the fact that the &#8220;memory&#8221; Emscripten-compiled applications work with is a large uniform <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">typed array</a>. The side-effect is that buffer overflows, use-after-free bugs and similar memory corruption mistakes are introduced to JavaScript that was previously safe from them. But are these really security-relevant?</p>
+<p><a href="http://kripken.github.io/emscripten-site/">Emscripten</a> allows compiling C++ code to JavaScript. It is an interesting approach allowing porting large applications (games) and libraries (crypto) to the web relatively easily. It also promises better performance and memory usage for some scenarios (something we are currently looking into for Adblock Plus core). These beneficial effects largely stem from the fact that the &#8220;memory&#8221; Emscripten-compiled applications work with is a large uniform <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">typed array</a>. The side-effect is that buffer overflows, use-after-free bugs and similar memory corruption mistakes are introduced to JavaScript that was previously safe from them. But are these really security-relevant?</p>
 
 	<p>Worst-case scenario are obviously memory corruption bugs that can be misused in order to execute arbitrary code. At the first glance, this don&#8217;t seem to be possible here&nbsp;&mdash; even with Emscripten the code is still running inside the JavaScript sandbox and cannot escape. In particular, it can only corrupt data but not change any code because code is kept separately from the array serving as &#8220;memory&#8221; to the application. Then again, native applications usually cannot modify code either due to protection mechanisms of modern processors. So memory corruption bugs are typically abused by manipulating function pointers such as those found on the stack.</p>
 

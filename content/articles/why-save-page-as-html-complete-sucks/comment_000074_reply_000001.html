@@ -1,7 +1,7 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>That’s exactly how it works now, it saves the current state of the <span class="caps">DOM</span>. But removing some JavaScript while keeping other is impossible – JavaScript is Turing-complete, you can’t tell whether it will modify the <span class="caps">DOM</span> or not. So you have the choice between leaving all JavaScript (meaning that you will need to save its state) or remove all of it. The latter will break some pages, e.g. the ones that don’t display all their content at the same time but allow you to switch pages using JavaScript.</p>
 

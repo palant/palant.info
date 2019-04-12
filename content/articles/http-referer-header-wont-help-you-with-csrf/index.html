@@ -1,14 +1,13 @@
-{
-  "title": "HTTP Referer header won't help you with CSRF",
-  "date": "2008-05-21 13:44:46",
-  "description": "",
-  "categories": [
-    "security"
-  ],
-  "slug": "http-referer-header-wont-help-you-with-csrf"
-}
+---
+categories:
+- security
+date: "2008-05-21 13:44:46"
+description: ""
+slug: http-referer-header-wont-help-you-with-csrf
+title: HTTP Referer header won't help you with CSRF
+---
 
-	<p>It seems to be obvious but apparently this idea still isn&#8217;t common knowledge&nbsp;&mdash; <span class="caps">HTTP</span> Referer header is unreliable, and it is especially unsuited for any security measures. The Referer header isn&#8217;t always present because of users going to a page directly (via bookmark and similar), using an &#8220;unusual&#8221; browser (most commonly download helper applications), using filtering firewalls (privacy protection) etc. The Referer header might be incorrect because of the same filtering firewalls (some prefer to advertise rather than remove the header entirely), special browser extensions to manipulate the Referer header etc.</p>
+<p>It seems to be obvious but apparently this idea still isn&#8217;t common knowledge&nbsp;&mdash; <span class="caps">HTTP</span> Referer header is unreliable, and it is especially unsuited for any security measures. The Referer header isn&#8217;t always present because of users going to a page directly (via bookmark and similar), using an &#8220;unusual&#8221; browser (most commonly download helper applications), using filtering firewalls (privacy protection) etc. The Referer header might be incorrect because of the same filtering firewalls (some prefer to advertise rather than remove the header entirely), special browser extensions to manipulate the Referer header etc.</p>
 
 	<p>And in addition to that we also have the fact that referring websites can remove the Referer header with tricks like <span class="caps">META</span> refresh. With slightly more advanced tricks these websites can even send <span class="caps">POST</span> requests without a Referer header. Sending a fake Referer header is harder but in the past it was possible via XMLHttpRequest or Flash&nbsp;&mdash; and it still might be possible somehow.</p>
 

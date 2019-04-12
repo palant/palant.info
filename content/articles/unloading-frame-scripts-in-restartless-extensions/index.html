@@ -1,15 +1,14 @@
-{
-  "title": "\"Unloading\" frame scripts in restartless extensions",
-  "date": "2014-11-19 07:51:23",
-  "description": "",
-  "categories": [
-    "add-ons",
-    "gecko"
-  ],
-  "slug": "unloading-frame-scripts-in-restartless-extensions"
-}
+---
+categories:
+- add-ons
+- gecko
+date: "2014-11-19 07:51:23"
+description: ""
+slug: unloading-frame-scripts-in-restartless-extensions
+title: '"Unloading" frame scripts in restartless extensions'
+---
 
-	<p>The big news is: e10s is coming to desktop Firefox after all, and it was even enabled in the nightly builds already. And while most of the times the add-ons continue working without any changes, this doesn&#8217;t always work correctly. Plus, using the compatibility shims faking a single-process environment might not be the most efficient approach. So reason enough for add-on authors to look into the dreaded and underdocumented <a href="https://developer.mozilla.org/en-US/Firefox/Multiprocess_Firefox/The_message_manager">message manager</a> and start working with frame scripts again.</p>
+<p>The big news is: e10s is coming to desktop Firefox after all, and it was even enabled in the nightly builds already. And while most of the times the add-ons continue working without any changes, this doesn&#8217;t always work correctly. Plus, using the compatibility shims faking a single-process environment might not be the most efficient approach. So reason enough for add-on authors to look into the dreaded and underdocumented <a href="https://developer.mozilla.org/en-US/Firefox/Multiprocess_Firefox/The_message_manager">message manager</a> and start working with frame scripts again.</p>
 
 	<p>I tried porting a simple add-on to this <span class="caps">API</span>. The good news: the <span class="caps">API</span> hasn&#8217;t changed since Firefox 17, so the changes will be backwards-compatible. And the bad news? Well, there are several.</p>
 

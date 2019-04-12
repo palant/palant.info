@@ -1,14 +1,13 @@
-{
-  "title": "Modularization in a restartless extension",
-  "date": "2012-07-12 15:21:57",
-  "description": "",
-  "categories": [
-    "gecko"
-  ],
-  "slug": "modularization-in-a-restartless-extension"
-}
+---
+categories:
+- gecko
+date: "2012-07-12 15:21:57"
+description: ""
+slug: modularization-in-a-restartless-extension
+title: Modularization in a restartless extension
+---
 
-	<p>A simple restartless extension can probably keep all its code in the <code>bootstrap.js</code> file. However, it gets crowded there very soon. Plus there is some code that is really only boilerplate and should probably kept separate from your actual code.</p>
+<p>A simple restartless extension can probably keep all its code in the <code>bootstrap.js</code> file. However, it gets crowded there very soon. Plus there is some code that is really only boilerplate and should probably kept separate from your actual code.</p>
 
 	<p>This sounds like a job for <a href="https://developer.mozilla.org/en/JavaScript_code_modules/Using">JavaScript code modules</a>. It is mostly a matter of taste (I prefer <a href="http://www.commonjs.org/specs/modules/1.0/">CommonJS module syntax</a>) but there is one really big disadvantage of JavaScript code modules: they have to be <a href="https://developer.mozilla.org/en/Components.utils.unload">unloaded explicitly</a> when your extension is shut down. Which means that you either have to keep a list of modules to unload in your <code>bootstrap.js</code> file or add cleanup code each time you load a module. I find neither approach very compelling.</p>
 

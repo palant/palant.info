@@ -1,11 +1,11 @@
-{
-  "publishDate": "2009-02-09 17:02:19",
-  "author": "Simon",
-  "authorUrl": "",
-  "id": "000341"
-}
+---
+author: Simon
+authorUrl: ""
+id: "000341"
+publishDate: "2009-02-09 17:02:19"
+---
 
-	<p><em>“Different context” means “unprivileged context”, right?</em></p>
+<p><em>“Different context” means “unprivileged context”, right?</em></p>
 
 	<p>Not necessarily. <em>domWindow</em> was meant to be what the window mediator returns and the <em>context</em> could just as well be an Object with chrome privileges (into which you load scripts with the subscript loader and then dynamically use those scripts without polluting the window object, e.g. inside an <span class="caps">XBL</span> binding).</p>
 

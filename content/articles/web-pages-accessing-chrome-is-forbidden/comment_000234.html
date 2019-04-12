@@ -1,11 +1,11 @@
-{
-  "publishDate": "2008-04-14 09:00:44",
-  "author": "Pavlos",
-  "authorUrl": "",
-  "id": "000234"
-}
+---
+author: Pavlos
+authorUrl: ""
+id: "000234"
+publishDate: "2008-04-14 09:00:44"
+---
 
-	<p>Here&#8217;s an example from my extension:<br />
+<p>Here&#8217;s an example from my extension:<br />
 The stylesheet service requires a <span class="caps">URI</span> to load a stylesheet. My extension generates the css dynamically, saves it to a temp file and uses the stylesheet service to load it from there. The <span class="caps">CSS</span> uses xbl bindings and images found in my extension&#8217;s chrome. It doesn&#8217;t work as-is anymore.</p>
 
 	<p>Anyway, this change may have broken it but it works with contentaccessible=&#8220;true&#8221;. The problem is that I don&#8217;t have the option to allow access to the content from file:/// urls while restricting access from the web. If file:/// urls where able to access it then I wouldn&#8217;t have to add contentaccessible=&#8220;true&#8221;, exposing the extension&#8217;s presence. Another option would be to have contentaccessible accept protocols instead of a simple yes/no; something like: contentaccessible=&#8220;file,data&#8221;.</p>

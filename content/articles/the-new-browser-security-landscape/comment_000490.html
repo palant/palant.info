@@ -1,11 +1,11 @@
-{
-  "publishDate": "2010-01-26 16:01:17",
-  "author": "Nathaniel Kofalt",
-  "authorUrl": "",
-  "id": "000490"
-}
+---
+author: Nathaniel Kofalt
+authorUrl: ""
+id: "000490"
+publishDate: "2010-01-26 16:01:17"
+---
 
-	<p>In my opinion, it&#8217;s pretty clear from events like Microsoft&#8217;s Mozilla plugin fiasco that ideas like Andreas&#8217; need to be realized (restricting new plugins until the user whitelists them), and it is also clear that plugins can no longer be allowed to run on the host machine without some form of sandboxing. But the problem may be less getting browsers to implement these features (Erunno noted one way for Chrome to sandbox already) and more getting plugins to play nice with this new security model.</p>
+<p>In my opinion, it&#8217;s pretty clear from events like Microsoft&#8217;s Mozilla plugin fiasco that ideas like Andreas&#8217; need to be realized (restricting new plugins until the user whitelists them), and it is also clear that plugins can no longer be allowed to run on the host machine without some form of sandboxing. But the problem may be less getting browsers to implement these features (Erunno noted one way for Chrome to sandbox already) and more getting plugins to play nice with this new security model.</p>
 
 	<p>As Erunno pointed out, plugins are not designed to be secured nicely in a box, asking father for permission to play outside; they are designed to be in absolute control of their own operations, running their own processes, etc. This works great for functionality, not so great for security. I would suggest that moving from one method to the other will be difficult or impossible to achieve in practice. In an ideal world, a browser could provide a framework for disk I/O, network access, and update checks that every plugin must use, but who would bother adapting their plugins? The cat is already out of the bag &#8211; plugins are running free. It is hard to take that privlage away.</p>
 

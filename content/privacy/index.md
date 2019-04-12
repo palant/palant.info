@@ -1,6 +1,6 @@
 ---
-title: "Privacy Policy"
-date: 2019-04-03T09:11:20+02:00
+date: "2019-04-03T09:11:20+02:00"
+title: Privacy Policy
 ---
 
 This website complies with the General Data Protection Regulation (GDPR) by avoiding to collect personal data wherever possible. It will only store your personal data when you leave a comment on an article.

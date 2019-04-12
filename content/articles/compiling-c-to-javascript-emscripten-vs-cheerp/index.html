@@ -1,14 +1,13 @@
-{
-  "title": "Compiling C++ to JavaScript: Emscripten vs. Cheerp",
-  "date": "2016-02-05 20:31:58",
-  "description": "",
-  "categories": [
-    "emscripten"
-  ],
-  "slug": "compiling-c-to-javascript-emscripten-vs-cheerp"
-}
+---
+categories:
+- emscripten
+date: "2016-02-05 20:31:58"
+description: ""
+slug: compiling-c-to-javascript-emscripten-vs-cheerp
+title: 'Compiling C++ to JavaScript: Emscripten vs. Cheerp'
+---
 
-	<p>Your JavaScript code is slow or needs too much memory? No problem, just rewrite it in C++ and compile back to JavaScript&nbsp;&mdash; you will get much better performance and the code will still run in any browser (or Node.js). Well, at least that&#8217;s what C++ to JavaScript compilers like Emscripten and Cheerp promise you. And often they can deliver, primarily thanks to heavy usage of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">typed arrays</a> which allow modern JavaScript engines to optimize the resulting code much better than more traditional JavaScript. Also, the code is already preoptimized, with the C++ compiler recognizing calculations yielding constant results as well as inlining short functions.</p>
+<p>Your JavaScript code is slow or needs too much memory? No problem, just rewrite it in C++ and compile back to JavaScript&nbsp;&mdash; you will get much better performance and the code will still run in any browser (or Node.js). Well, at least that&#8217;s what C++ to JavaScript compilers like Emscripten and Cheerp promise you. And often they can deliver, primarily thanks to heavy usage of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">typed arrays</a> which allow modern JavaScript engines to optimize the resulting code much better than more traditional JavaScript. Also, the code is already preoptimized, with the C++ compiler recognizing calculations yielding constant results as well as inlining short functions.</p>
 
 	<p>I tried both Emscripten and Cheerp but the following isn&#8217;t exactly a fair comparison. For one, I spent much more time learning Emscripten than Cheerp, so I might have missed some Cheerp tweaks. Then again, I might have missed some Emscripten tweaks as well as I am by no means an expert in it. If you are still interested, enjoy the reading!</p>
 

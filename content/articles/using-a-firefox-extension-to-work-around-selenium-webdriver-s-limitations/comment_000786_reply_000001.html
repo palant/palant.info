@@ -1,6 +1,6 @@
-{
-  "author": "Wladimir Palant",
-  "id": "000001"
-}
+---
+author: Wladimir Palant
+id: "000001"
+---
 
 <p>So far I only located elements by <span class="caps">CSS</span> selector and that definitely works via <code>element.querySelector()</code> (verified it in the source code). The XPath locator is more convoluted, the Firefox extension still contains a custom XPath processor. However, my understanding is that it will only be used if there is no predefined <code>document.evaluate()</code> method &#8211; meaning never. As to result type, only elements can be returned, this doesn&#8217;t seem to have changed. I guess that one can use <code>driver.execute_script()</code> and call <code>document.evaluate()</code> yourself to get other result types.</p>

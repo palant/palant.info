@@ -1,11 +1,11 @@
-{
-  "publishDate": "2015-10-30 14:33:48",
-  "author": "Gijs",
-  "authorUrl": "",
-  "id": "000863"
-}
+---
+author: Gijs
+authorUrl: ""
+id: "000863"
+publishDate: "2015-10-30 14:33:48"
+---
 
-	<p><span class="caps">FWIW</span>, re &#8220;improving what you already have&#8221; for Jetpack&#8230; Jetpack&#8217;s security model was never seriously enforced, and bolting it back on after the fact would have been difficult/impossible, because everything and their dog uses third-party modules which just require(&#8220;chrome&#8221;), which boils down to a <span class="caps">XUL</span> add-on in how tightly it&#8217;s linked to the platform (and how much breaks/broke due to e10s and other changes).</p>
+<p><span class="caps">FWIW</span>, re &#8220;improving what you already have&#8221; for Jetpack&#8230; Jetpack&#8217;s security model was never seriously enforced, and bolting it back on after the fact would have been difficult/impossible, because everything and their dog uses third-party modules which just require(&#8220;chrome&#8221;), which boils down to a <span class="caps">XUL</span> add-on in how tightly it&#8217;s linked to the platform (and how much breaks/broke due to e10s and other changes).</p>
 
 	<p>There might have been ways to deal with that (ie get rid of require(&#8220;chrome&#8221;), replace with more modules, add actual security enforcement), but it would have meant an equal amount of deprecation of existing add-ons and in-product code, I think. That and the technical debt inside jetpack with all the actors and all kinds of other code which, to the best of my knowledge, nobody was particularly fond of, made &#8220;make jetpack better&#8221; less appealing than the webextensions option (to me, anyway) &#8212; at least with webextensions we get compatibility with existing other add-ons to make up for all the stuff that will start breaking. If we didn&#8217;t do that, we would have had to start from scratch, and even most if not all jetpack add-ons would have needed changes.</p>
 

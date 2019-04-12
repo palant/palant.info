@@ -1,15 +1,14 @@
-{
-  "title": "Google Chrome and pre-installed web apps",
-  "date": "2011-11-15 08:47:35",
-  "description": "",
-  "categories": [
-    "mozilla",
-    "security"
-  ],
-  "slug": "google-chrome-and-pre-installed-web-apps"
-}
+---
+categories:
+- mozilla
+- security
+date: "2011-11-15 08:47:35"
+description: ""
+slug: google-chrome-and-pre-installed-web-apps
+title: Google Chrome and pre-installed web apps
+---
 
-	<p>Google recently launched a redesigned version of its Web Store where one can install extensions and web apps. One particular feature caught my attention: it marks the extensions that you already have with a check mark. How does the web page know which extensions you have installed?</p>
+<p>Google recently launched a redesigned version of its Web Store where one can install extensions and web apps. One particular feature caught my attention: it marks the extensions that you already have with a check mark. How does the web page know which extensions you have installed?</p>
 
 	<p>Turns out the answer is simple. The Web Store is a pre-installed web app (actually, it is even hardcoded into the browser). Web apps in Chrome can have special privileges if they request them, same as extensions. A look at the <code>Preferences</code> file shows the privileges of the Web Store app: <a href="http://code.google.com/chrome/extensions/management.html">management <span class="caps">API</span></a> and <code>webstorePrivate</code> <span class="caps">API</span>. The former allows querying your installed extensions which explains how the website learns about them. But it can do more: enable or disable extensions and even uninstall them without any kind of visible notification.</p>
 

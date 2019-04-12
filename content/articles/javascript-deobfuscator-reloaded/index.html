@@ -1,15 +1,14 @@
-{
-  "title": "JavaScript Deobfuscator reloaded",
-  "date": "2015-07-17 23:00:17",
-  "description": "",
-  "categories": [
-    "jsdeobfuscator",
-    "mozilla"
-  ],
-  "slug": "javascript-deobfuscator-reloaded"
-}
+---
+categories:
+- jsdeobfuscator
+- mozilla
+date: "2015-07-17 23:00:17"
+description: ""
+slug: javascript-deobfuscator-reloaded
+title: JavaScript Deobfuscator reloaded
+---
 
-	<p>A few weeks ago I released <a href="https://addons.mozilla.org/addon/javascript-deobfuscator/">JavaScript Deobfuscator 2.0</a> &mdash; finally something that works with current Firefox versions again. Why did it take me a year to fix this compatibility issue? Well, it really wasn&#8217;t that simple. After considering all the possibilities I decided that rewriting it from scratch was the only possibility, and that was hard to accomplish in my spare time.</p>
+<p>A few weeks ago I released <a href="https://addons.mozilla.org/addon/javascript-deobfuscator/">JavaScript Deobfuscator 2.0</a> &mdash; finally something that works with current Firefox versions again. Why did it take me a year to fix this compatibility issue? Well, it really wasn&#8217;t that simple. After considering all the possibilities I decided that rewriting it from scratch was the only possibility, and that was hard to accomplish in my spare time.</p>
 
 	<p>Before I continue with the technical details, allow me to introduce JavaScript Deobfuscator in its new reincarnation: it now adds a panel to Firefox Developer Tools. Instead of messing with filters your view is limited to the current tab automatically. Both compiled and executed scripts go into the same list, with some text indicating whether we&#8217;ve seen the script being compiled or executed or both. Starting with Firefox 39 even code running in Web Workers will be displayed. And JavaScript Deobfuscator will beautify the code instead of relying on the JavaScript engine to do so.</p>
 
