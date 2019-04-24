@@ -3,9 +3,10 @@ categories:
 - security
 - remembear
 - password-managers
-date: "2019-04-11T13:07:14+02:00"
+date: '2019-04-11T13:07:14+02:00'
 description: RememBear invested much effort into securing communication between browser
   extensions and application. I think that most of this work could have been spared.
+lastmod: '2019-04-24 09:38:16'
 title: 'Bogus security mechanisms: Encrypting localhost traffic'
 ---
 
