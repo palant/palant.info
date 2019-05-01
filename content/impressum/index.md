@@ -12,7 +12,7 @@ Germany
 
 ## Contact Information
 
-E-Mail: <pyablog@palant.de><br>
+E-Mail: <mdmblog@palant.de><br>
 Internet address: <https://palant.de/>
 
 ## Disclaimer
