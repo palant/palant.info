@@ -1,0 +1,12 @@
+{
+  "publishDate": "2019-05-16 20:52:31",
+  "author": "T",
+  "authorUrl": "",
+  "id": "001003"
+}
+
+<p>Overall a good analysis, very useful - thanks.</p>
+<p>Similar to a, I think that passwords, session tokens, and API keys are susceptible to being logged, and so to the extent that they are long-lived, they probably should not be sent over the wire.</p>
+<p>I wanted to point out that many web properties are fronted by TLS termination devices for various reasons.  Common ones include Akamai, MaxCDN, CloudFlare, CloudFront, and Amazon ELB - which together probably account for &gt;50% of internet HTTPS traffic.  This presents a noticeable weak point in the TLS assurances, though I'm not at the moment aware of any well-known breaches.  On the client side, enterprise TLS-MITM boxes with built in CAs in HSMs certainly exist for corporate customers.</p>
+<p>Furthermore, the last few years have been full of TLS-busting bugs like LOGJAM, BREACH, SMACK-TLS, FREAK, POODLE, 3SHAKE, DROWN, et al.  I've been attempting to keep track of all the TLS-breaking bugs and my summary excerpts have reached 150 pages already.  Surprisingly, none of them have substantially disrupted the entire ecosystem.</p>
+<p>Your points about the abject failure of IETF HTTP-AUTH are well received.  I suspect that a next-gen layer 7 authentication would want to talk directly to the Chrome team and get it implemented there to penetrate the ecosystem - Mozilla would quickly follow and then Microsoft and Apple would grudgingly comply a few years later.</p>
