@@ -1,7 +1,7 @@
 ---
 title: "Various RememBear security issues"
-date: 2019-07-01T12:49:09+02:00
-description: Technically, RememBear is very similar to its competitor 1Password, to the point that the developers are being accused of plagiarism. Security-wise the tool doesn't appear to be as advanced however, and I quickly found six issues (severity varies) which have all been fixed since.
+date: 2019-07-08T11:05:09+02:00
+description: Technically, RememBear is very similar to its competitor 1Password. Security-wise the tool doesn't appear to be as advanced however, and I quickly found six issues (severity varies) which have all been fixed since.
 categories:
 - security
 - password-managers
