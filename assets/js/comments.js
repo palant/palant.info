@@ -35,6 +35,9 @@
   }
 
   var form = document.getElementById("comments");
+  if (!form)
+    return;
+
   form.addEventListener("submit", function(event)
   {
     event.preventDefault();
