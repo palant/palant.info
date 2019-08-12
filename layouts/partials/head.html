@@ -20,42 +20,44 @@
 
   {{ .Hugo.Generator }}
 
-  {{ with .Title }}
+  {{ with .Title -}}
     <meta property="og:title" content="{{ . }}">
-    <meta name="twitter:title" content="{{ . }}">
-  {{ end }}
+  {{ end -}}
 
-  {{ with .Description }}
+  {{ with .Description -}}
     <meta name="description" content="{{ . }}">
     <meta property="og:description" content="{{ . }}">
-    <meta name="twitter:description" content="{{ . }}">
-  {{ end }}
+  {{ end -}}
 
-  {{ with .Permalink }}
+  {{ with .Params.image -}}
+    <meta name="og:image" content="{{ ($.Resources.GetMatch .).Permalink }}">
+  {{ end -}}
+
+  {{ with .Permalink -}}
     <link rel="canonical" href="{{ . }}">
     <meta property="og:url" content="{{ . }}">
-  {{ end }}
+  {{ end -}}
 
   <meta name="author" content="{{ .Site.Author.name }}" />
 
   <meta property="og:locale" content="{{ .Site.LanguageCode }}">
-  {{ if eq .Kind "page" }}
+  {{ if eq .Kind "page" -}}
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z" }}">
     <meta property="article:modified_time" content="{{.Lastmod.UTC.Format "2006-01-02T15:04:05Z" }}">
-    {{ range .Params.categories }}
+    {{ range .Params.categories -}}
       <meta property="article:tag" content="{{ . }}">
-    {{ end }}
-  {{ else }}
+    {{ end -}}
+  {{ else -}}
     <meta property="og:type" content="website">
-  {{ end }}
+  {{ end -}}
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:updated_time" content="{{.Lastmod.UTC.Format "2006-01-02T15:04:05Z" }}">
 
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="{{ if .Params.image }}summary_large_image{{ else }}summary{{ end }}">
 
-  {{ with .Site.Params.AuthorTwitter }}
+  {{ with .Site.Params.AuthorTwitter -}}
     <meta name="twitter:site" content="{{ . }}">
     <meta name="twitter:creator" content="{{ . }}">
-  {{ end }}
+  {{ end -}}
 </head>

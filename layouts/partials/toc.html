@@ -1,0 +1,35 @@
+{{ $headers := findRE "<h\\d.*?>.*?</h\\d>" .Content -}}
+<nav id="toc">
+  <h4>Table of Contents</h4>
+  {{- $minLevel := -1 -}}
+  {{- $curLevel := -1 -}}
+  {{- $level := -1 -}}
+  {{- range $headers -}}
+    {{- $level = int (replace (index (findRE "<h\\d" . 1) 0) "<h" "") -}}
+    {{- $anchor := replaceRE "^id=\"" "" (index (findRE "id=\"[^\"]*" . 1) 0) -}}
+    {{- $text := replaceRE "</?h\\d.*?>" "" . -}}
+    {{- if eq $minLevel -1 -}}
+      {{- $minLevel = add $level -1 -}}
+      {{- $curLevel = add $level -1 -}}
+    {{- end -}}
+    {{- if lt $curLevel $level -}}
+      {{- range seq (sub $level $curLevel) -}}
+        <ul><li>
+      {{- end -}}
+    {{- end -}}
+    {{- if gt $curLevel $level -}}
+      {{- range seq (sub $curLevel $level) -}}
+        </li></ul>
+      {{- end -}}
+    {{- end -}}
+    {{- if ge $curLevel $level -}}
+      </li><li>
+    {{- end -}}
+    {{- $curLevel = $level -}}
+
+    <a href="#{{ $anchor }}">{{ $text }}</a>
+  {{- end -}}
+  {{- range seq (sub $level $minLevel) -}}
+    </li></ul>
+  {{- end -}}
+</nav>

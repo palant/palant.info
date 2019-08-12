@@ -235,7 +235,7 @@ header h3 {
   margin: .66666666666667em 0 0;
 }
 
-nav {
+#navigation {
   border-top: solid 1px #e1a61a;
   border-bottom: solid 1px #e1a61a;
   background-color: #ffda44;
@@ -253,11 +253,11 @@ nav {
   background-image: linear-gradient(#ffda44, #fabc2b);
 }
 
-nav h1 {
+#navigation h1 {
   display: none;
 }
 
-nav ul {
+#navigation ul {
   margin: 0 auto;
   padding: 0;
   max-width: 86em;
@@ -265,17 +265,17 @@ nav ul {
   list-style-image: none;
 }
 
-nav li {
+#navigation li {
   margin: 0;
   border-bottom: solid 1px #e1a61a;
 }
 
-nav li:last-child {
+#navigation li:last-child {
   border-bottom: 0;
 }
 
-nav li:hover,
-nav li.active {
+#navigation li:hover,
+#navigation li.active {
   background-color: #ffe477;
   /* Konqueror */
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffe477), to(#fbcc5d));
@@ -291,7 +291,7 @@ nav li.active {
   background-image: linear-gradient(#ffe477, #fbcc5d);
 }
 
-nav li:active {
+#navigation li:active {
   background-color: #fabc2b;
   /* Konqueror */
   background-image: -khtml-gradient(linear, left top, left bottom, from(#fabc2b), to(#ffda44));
@@ -307,7 +307,7 @@ nav li:active {
   background-image: linear-gradient(#fabc2b, #ffda44);
 }
 
-nav a {
+#navigation a {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
   display: block;
   padding: .5em 3.125%;
@@ -1119,21 +1119,21 @@ select:not([multiple]) {
 
 @media only screen and (min-width: 35em) {
 
-nav ul {
+#navigation ul {
   width: 93.75%;
 }
 
-nav li {
+#navigation li {
   float: left;
   border-right: solid 1px #e1a61a;
   border-bottom: 0;
 }
 
-nav li:first-child {
+#navigation li:first-child {
   border-left: solid 1px #e1a61a;
 }
 
-nav a {
+#navigation a {
   padding: .5em 1em;
 }
 
@@ -1204,7 +1204,7 @@ body {
 }
 
 header,
-nav ul,
+#navigation ul,
 .container,
 footer {
   /* 1152px / 1280px */
@@ -1646,4 +1646,22 @@ footer
 .license
 {
   float: right;
+}
+
+#toc
+{
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 1em;
+}
+
+#toc > ul
+{
+  padding: 0;
+  margin-bottom: 0;
+}
+
+#toc ul
+{
+  list-style: none;
 }

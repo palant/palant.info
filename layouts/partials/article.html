@@ -4,7 +4,11 @@
   <p><strong>Posted</strong> on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by <a href="/about/">{{ .Site.Author.name }}</a></p>
   {{ end }}
   <div itemprop="articleBody">
-    {{ .Content }}
+    {{ $content := .Content -}}
+    {{ if findRE "<p>{{toc}}</p>" $content -}}
+      {{ $content = safeHTML (replace $content "<p>{{toc}}</p>" (partial "toc.html" .)) -}}
+    {{ end -}}
+    {{ $content }}
   </div>
 
   <p>
