@@ -8,14 +8,6 @@ categories:
   - password-managers
 ---
 
-<style>
-article img
-{
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-</style>
-
 If you want to use a password manager (as you probably should), there are literally hundreds of them to choose from. And there are lots of reviews, weighing in features, usability and all other relevant factors to help you make an informed decision. Actually, almost all of them, with one factor suspiciously absent: security. How do you know whether you can trust the application with data as sensitive as your passwords?
 
 Unfortunately, it's really hard to see security or lack thereof. In fact, even tech publications struggle with this. They will talk about two-factor authentication support, even when discussing a local password manager where it is of very limited use. Or worse yet, they will fire up a debugger to check whether they can see any passwords in memory, completely disregarding the fact that somebody with debug rights can also install a simple key logger (meaning: game over for any password manager).
@@ -24,7 +16,7 @@ Judging security of a password manager is a very complex task, something that on
 
 So I want to go with you through some basic flaws which you might encounter in a local password manager. That's a password manager where all data is stored on your computer rather than being uploaded to some server, a rather convenient feature if you want to take a quick look. Some technical understanding is required, but hopefully you will be able to apply the tricks shown here, particularly if you plan to write about a password manager.
 
-<p style="text-align: center;">{{< img "about.png" "About Password Depot screen" 568 >}}</p>
+{{< img src="about.png" alt="About Password Depot screen" width="568" />}}
 
 Our guinea pig is a password manager called Password Depot, produced by the German company AceBit GmbH. What's so special about Password Depot? Absolutely nothing, except for the fact that one of their users asked me for a favor. So I spent 30 minutes looking into it and noticed that they've done pretty much everything wrong that they could.
 
@@ -36,7 +28,7 @@ Our guinea pig is a password manager called Password Depot, produced by the Germ
 
 First let's have a look at the data. Luckily for us, with a local password manager it shouldn't be hard to find. Password Depot stores its in self-contained database files with the file extension `.pswd` or `.pswe`, the latter being merely a ZIP-compressed version of the former. XML format is being used here, meaning that the contents are easily readable:
 
-<p style="text-align: center;">{{< img "database.png" "XML-formatted Password Depot database" 694 >}}</p>
+{{< img src="database.png" alt="XML-formatted Password Depot database" width="694" />}}
 
 The good news: `<encrypted>` flag here clearly indicates that the data is encrypted, as it should be. The bad news: this flag shouldn't be necessary, as "safely encrypted" should be the only supported mode for a password manager. As long as some form of unencrypted database format is supported, there is a chance that an unwitting user will use it without knowing. Even a [downgrade attack](https://en.wikipedia.org/wiki/Downgrade_attack) might be possible, an attacker replacing the passwords database by an unencrypted one when it's still empty, thus making sure that any passwords added to the database later won't be protected. I'm merely theorizing here, I don't know whether Password Depot would ever write unencrypted data.
 
@@ -44,7 +36,7 @@ The actual data is more interesting. It's a base64-encoded blob, when decoded it
 
 AES is considered secure, so all is good? Not quite, as there are various [block cipher modes](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) which could be used and not all of them are equally good. Which one is it here? I got a hint by saving the database as an outdated "mobile password database" file with the `.pswx` file extension:
 
-<p style="text-align: center;">{{< img "database2.png" "Excerpt from Password Depot database in older format" 752 >}}</p>
+{{< img src="database2.png" alt="Excerpt from Password Depot database in older format" width="752" />}}
 
 Unlike with the newer format, here various fields are encrypted separately. What sticks out are two pairs of identical values. That's something that should never happen, identical ciphertexts are always an indicator that something went terribly wrong. In addition, the shorter pair contains merely 16 bytes of data. This means that only a single AES block is stored here (the minimal possible amount of data), no initialization vector or such. And there is only one block cipher mode which won't use initialization vectors, namely ECB. Every article on ECB says: "Old and busted, do not use!" We'll later see proof that ECB is used by the newer file format as well.
 
@@ -58,7 +50,7 @@ Note that even without data authentication you might see an application reject m
 
 So how can we see whether Password Depot uses authenticated encryption? By changing a byte in the middle of the ciphertext of course! Since with ECB every 16 byte block is encrypted separately, changing a block in the middle won't affect the last block where the padding is. When I try that with Password Depot, the file opens just fine and all the data is seemingly unaffected:
 
-<p style="text-align: center;">{{< img "no_corruption.png" "No signs of data corruption when opening a manipulated database" 865 >}}</p>
+{{< img src="no_corruption.png" alt="No signs of data corruption when opening a manipulated database" width="865" />}}
 
 In addition to proving that no data authentication is implemented, that's also a clear confirmation that ECB is being used. With ECB only one block is affected by the change, and it was probably some unimportant field -- that's why you cannot see any data corruption here. In fact, even changing the last byte doesn't make the application reject the data, meaning that there are no padding checks either.
 
@@ -68,7 +60,7 @@ As with so many products, the website of Password Depot stresses the fact that a
 
 Now a weaker master password isn't a big deal as long as the application came up with reasonable bruteforce protection. This way anybody trying to guess your password will be slowed down, and this kind of attack would take too much time. Password Depot developers indeed thought of something:
 
-<p style="text-align: center;">{{< img "bruteforce_protection.png" "Password Depot enforces a delay after entering the wrong password" 452 >}}</p>
+{{< img src="bruteforce_protection.png" alt="Password Depot enforces a delay after entering the wrong password" width="452" />}}
 
 Wait, no... This is *not* reasonable bruteforce protection. It would make sense with a web service or some other system that the attackers don't control. Here however, they could replace Password Depot by a build where this delay has been patched out. Or they could remove Password Depot from the equation completely and just let their password guessing tools run directly against the database file, which would be far more efficient anyway.
 
@@ -86,11 +78,11 @@ In fact, there is exactly one such field: `<fingerprint>`. It appears to be a ra
 
 If you've been reading my blog, you already know that browser integration is a common weak point of password managers. Most of the issues are rather obscure and hard to recognize however. Not so in this case. If you look at the Password Depot options, you will see a panel called "Browser." This one contains an option called "WebSockets port."
 
-<p style="text-align: center;">{{< img "browser_integration.png" "Browser integration options listing WebSockets port" 800 >}}</p>
+{{< img src="browser_integration.png" alt="Browser integration options listing WebSockets port" width="800" />}}
 
 So when the Password Depot browser extension needs to talk to the Password Depot application, it will connect to this port and use the WebSockets protocol. If you check the TCP ports of the machine, you will indeed see Password Depot listening on port 25109. You can use `netstat` command line tool for that or the more convenient [CurrPorts utility](https://www.nirsoft.net/utils/cports.html).
 
-<p style="text-align: center;">{{< img "socket.png" "Password Depot listening on TCP port 25109" 505 >}}</p>
+{{< img src="socket.png" alt="Password Depot listening on TCP port 25109" width="505" />}}
 
 Note how this lists 0.0.0.0 as the address rather than the expected 127.0.0.1. This means that connections aren't merely allowed from applications running on the same machine (such as your browser) but from anywhere on the internet. This is a completely unnecessary risk, but that's really shadowed by the much bigger issue here.
 
@@ -161,7 +153,7 @@ The encryption key cannot be based on the master password set by the user becaus
 
 As far as I know, the only way this could make sense is by using [Windows Data Protection API](https://en.wikipedia.org/wiki/Data_Protection_API). It can encrypt data using a user-specific secret and thus protect it against other users when the user is logged off. So I would expect either [CryptProtectData](https://docs.microsoft.com/en-us/windows/win32/api/dpapi/nf-dpapi-cryptprotectdata) or the newer [NCryptProtectSecret](https://docs.microsoft.com/en-us/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptprotectsecret) function to be used here. But looking through the imported functions of the application files in the Password Depot directory, there is no dependency on `NCrypt.dll` and only unrelated functions imported from `Crypt32.dll`.
 
-<p style="text-align: center;">{{< img "imports.png" "Functions imported by PasswordDepot.exe" 536 >}}</p>
+{{< img src="imports.png" alt="Functions imported by PasswordDepot.exe" width="536" />}}
 
 So here we have a guess again, one that I managed to confirm when debugging a related application however: the encryption key is hardcoded in the Password Depot application in a more or less obfuscated way. [Security through obscurity](https://en.wikipedia.org/wiki/Security_through_obscurity) at its best.
 

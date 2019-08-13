@@ -30,7 +30,9 @@ Now the sad reality of password managers is: once there is a malicious applicati
 
 But hey, isn't all this setting the bar higher? Like, messing with local communication would have been easier than installing a modified application? One could accept this line argumentation of course. The trouble is: messing with that WebSocket connection is still trivial. If you check your Firefox profile directory, there will be a file called `browser-extension-data/ff@remembear.com/storage.js`. Part of this file: the extension's client key and RememBear application's public key, in plain text. A malware can easily read out (if it wants to connect to the application) or modify these (if to wants to fake the application towards the extension). With Chrome the data format is somewhat more complicated but equally unprotected.
 
-<p style="text-align: center;">{{< img "lock.jpg" "Rusty lock not attached to anything" 320 >}}<br><em>Image by <a href="https://www.flickr.com/photos/joybot/" rel="nofollow">Joybot</a></em></p>
+{{< img src="lock.jpg" alt="Rusty lock not attached to anything" width="320" >}}
+<em>Image by <a href="https://www.flickr.com/photos/joybot/" rel="nofollow">Joybot</a></em>
+{{< /img >}}
 
 ## The actual threat
 

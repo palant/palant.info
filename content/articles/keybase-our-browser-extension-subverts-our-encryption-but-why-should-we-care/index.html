@@ -21,7 +21,7 @@ title: 'Keybase: "Our browser extension subverts our encryption, but why should 
 
 <p>So the app allows you to exchange messages or files with other people, with the encryption happening on sender&#8217;s computer in such a way that decryption is only possible by the designated recipient. This app is available for both desktop and mobile platforms. And for desktop you get a bonus: you can install the Keybase browser extension. It will add a “Keybase Chat” button to people&#8217;s profiles on Facebook, Twitter, GitHub, Reddit or Hacker News. This button allows you to connect to people easily.</p>
 
-<p style="text-align: center;">{{< img "keybase_chat.png" "Keybase chat button on Github" 320 >}}</p>
+{{< img src="keybase_chat.png" alt="Keybase chat button on Github" width="320" />}}
 
 <p>Clicking the button will open a chat window and allow you to enter a message directly in the browser. Only after that initial message is sent the conversation will be transferred to the Keybase app.</p>
 
@@ -29,7 +29,7 @@ title: 'Keybase: "Our browser extension subverts our encryption, but why should 
 
 <p>The issue here is a very common one, merely a week ago I listed it as #6 in <a href="/2018/08/29/password-managers-please-make-sure-autofill-is-secure">this article</a>. The extension injects its user interface (the button and the chat window) into third-party websites, yet it fails to isolate it from these websites. So the first consequence is: the Keybase message you enter on Facebook is by no means private. Facebook&#8217;s JavaScript code can read it out as you type it in, so much for end-to-end encryption. This is quite contrary to the promise Keybase still makes on their Mozilla Add-ons and Chrome Web Store installation pages.</p>
 
-<p style="text-align: center;">{{< img "keybase_install.png" "Keybase promises on the install page" 428 >}}</p>
+{{< img src="keybase_install.png" alt="Keybase promises on the install page" width="428" />}}
 
 <p>Don&#8217;t believe that Facebook would intentionally spy on you? Maybe not, but by now it is pretty common to protocol all of user&#8217;s actions, for “site optimization” purposes&nbsp;&mdash; this includes anything entered into text fields of course. But in my opinion, that&#8217;s not even the worst issue.</p>
 

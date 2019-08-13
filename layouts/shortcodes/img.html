@@ -1,6 +1,47 @@
-{{ $image := $.Page.Resources.GetMatch (.Get 0)}}
-{{ if .Get 2 }}
-<img src="{{ $image.RelPermalink }}" alt="{{ .Get 1 }}" width="{{ .Get 2 }}" height="{{ div (mul $image.Height (int (.Get 2))) $image.Width }}" />
-{{ else }}
-<img src="{{ $image.RelPermalink }}" alt="{{ .Get 1 }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
-{{ end }}
+{{- $src := .Get 0 -}}
+{{- $alt := .Get 1 -}}
+{{- $width := "" -}}
+{{- $parclass := "" -}}
+{{- $thumb := "" -}}
+
+{{- if .IsNamedParams -}}
+{{- $src = .Get "src" -}}
+{{- $alt = .Get "alt" -}}
+{{- $width = .Get "width" -}}
+{{- $parclass = .Get "class" -}}
+{{- $thumb = .Get "thumb" -}}
+{{- end -}}
+
+{{- if not $alt -}}
+{{- errorf "Missing alt parameter for image %s" $src -}}
+{{- end -}}
+
+{{- if $thumb -}}
+{{- $width = int (default "200" $width) -}}
+{{- else -}}
+{{- $width = int (default "0" $width) -}}
+{{- end -}}
+
+{{- $parclass = default "image-par" $parclass -}}
+
+{{- $image := $.Page.Resources.GetMatch $src -}}
+<p class="{{ $parclass }}">
+
+{{- if $thumb -}}
+  <a href="{{ $image.RelPermalink }}">
+{{- end -}}
+
+{{- if $width -}}
+<img class="article-image" src="{{ $image.RelPermalink }}" alt="{{ $alt }}" width="{{ $width }}" height="{{ div (mul $image.Height $width) $image.Width }}" />
+{{- else -}}
+<img class="article-image" src="{{ $image.RelPermalink }}" alt="{{ $alt }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
+{{- end -}}
+
+{{- with .Inner -}}
+<br>{{ . }}
+{{- end -}}
+
+{{- if $thumb -}}
+  </a>
+{{- end -}}
+</p>

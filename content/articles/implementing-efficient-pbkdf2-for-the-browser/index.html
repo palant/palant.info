@@ -27,7 +27,7 @@ title: Implementing efficient PBKDF2 for the browser
 
 <p>As to the others, you can <a href="https://jsperf.com/pbkdf2-implementations-comparison">test them yourself if you like</a> (on browsers without native PBKDF2 support the first test will error out so you need to click the tests individually there). The following graph sums up my results:</p>
 
-<p>{{< img "pbkdf2-performance.png" "Performance of PBKDF2 libraries in different browsers" >}}</p>
+{{< img "pbkdf2-performance.png" "Performance of PBKDF2 libraries in different browsers" />}}
 
 <p>The implementation I <a href="https://github.com/palant/easypasswords/blob/195b934e192a97c64e3998e337c33af552e12069/data/pbkdf2.js">added as fallback in Easy Passwords</a> now performs consistently well in all browsers, never needing more than twice the time of native implementations. The other pure-JavaScript implementations are at least factor three slower, always taking more than a second to derive a single password. For some reason they seem particularly slow in Edge, with crypto-browserify even taking around a minute for one operation.</p>
 

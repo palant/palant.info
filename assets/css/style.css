@@ -1648,6 +1648,23 @@ footer
   float: right;
 }
 
+.image-par
+{
+  text-align: center;
+}
+
+.image-par-left
+{
+  float: left;
+  margin: 5px;
+}
+
+.article-image
+{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
 #toc
 {
   border: 1px solid #ccc;

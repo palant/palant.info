@@ -25,7 +25,7 @@ title: Revisiting permission prompt for Firefox extensions
 
 	<p>This prompt doesn&#8217;t show up on the stable Firefox release yet, but Firefox Nightly indeed shows it:</p>
 
-	<p>{{< img "permission-prompt-firefox.png" "Permissions prompt on update in Firefox" 359 >}}</p>
+	{{< img src="permission-prompt-firefox.png" alt="Permissions prompt on update in Firefox" width="359" />}}
 
 	<p>I guess that I must consider myself lucky for having implemented this change so early. A few months later I would have received lots of comments like that, as all users would have seen this prompt. As I explained in my previous blog post, permission prompts on update are particularly disruptive and should be avoided if somehow possible. However, Firefox is currently displaying them <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1373434">even if the extension&#8217;s permissions got reduced</a> like in this case.</p>
 
@@ -33,7 +33,7 @@ title: Revisiting permission prompt for Firefox extensions
 
 	<p>It seems that the use case &#8220;run on various search pages&#8221; is common enough that Chrome developers chose to special-case it. The permission prompt displayed by Chrome is way more straightforward:</p>
 
-	<p>{{< img "permission-prompt-chrome.png" "Permissions prompt on update in Chrome" 278 >}}</p>
+	{{< img src="permission-prompt-chrome.png" alt="Permissions prompt on update in Chrome" width="278" />}}
 
 	<p>This also leaves me hoping that Chrome won&#8217;t display a permission prompt just because a future update added a new Google domain. Still questionable whether I want to add support for more search engines in future, but it probably won&#8217;t confuse users all too much.</p>
 

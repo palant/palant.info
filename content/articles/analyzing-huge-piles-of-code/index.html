@@ -12,6 +12,6 @@ title: Analyzing huge piles of code
 
 	<p>Fortunately, I now have a nice tool for just these cases. On the train from <span class="caps">FOSDEM</span> I added the ability to change filters to <a href="https://addons.mozilla.org/addon/10345">JavaScript Deobfuscator</a> and worked around <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=475334">bug 475334</a> to make sure all scripts being executed really show up. It turned out that this isn&#8217;t quite enough, <span class="caps">XPCOM</span> components are apparently invisible to the debugger and still don&#8217;t show up. But at least now I can open JavaScript Deobfuscator, adjust the filters to include &#8220;chrome://noscript/&#8221; while not excluding anything&nbsp;&mdash; and next time I load a page I see exactly what NoScript is doing on page load. There are quite a few things going on there but it is still a lot easier to get an overview than by looking at the source code.</p>
 
-	<p style="text-align: center;">{{< img "jsdeobfuscator_noscript.png" "JavaScript Deobfuscator analyzing NoScript" >}}</p>
+	{{< img "jsdeobfuscator_noscript.png" "JavaScript Deobfuscator analyzing NoScript" />}}
 
 	<p>Which brings us to the quiz part of this blog post. Some of the things that NoScript is doing can produce rather interesting effects. For example, who can guess why <a href="">this page</a> hangs up Firefox for 20 seconds when NoScript is enabled but loads in no time without NoScript? Hint: it has something to do with the awfully long scroll bar on the right that appears when NoScript is enabled.</p>

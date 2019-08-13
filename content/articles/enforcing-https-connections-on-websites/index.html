@@ -10,7 +10,7 @@ title: Enforcing HTTPS connections on websites
 
 <p>TL;DR: I created a new extension called <a href="https://addons.mozilla.org/addon/enforce-encryption/">Enforce Encryption</a>. See extension description for a simple explanation of how it works and why using encrypted connections is important.</p>
 
-	<p><hr></p>
+	<hr>
 
 	<p>I realized that <a href="https://stackoverflow.com/">Stack Overflow</a> is one of the few websites that I use with authentication and yet over plain unencrypted <span class="caps">HTTP</span> connections. So, what if I just change <code>http://</code> into <code>https://</code> in the address bar? Surprisingly, this worked, even though Stack Overflow doesn&#8217;t support <span class="caps">HTTPS</span> officially (way too many links lead back to <span class="caps">HTTP</span>).</p>
 
@@ -24,6 +24,6 @@ title: Enforcing HTTPS connections on websites
 
 	<p>So I simply wrote my own extension called <a href="https://addons.mozilla.org/addon/enforce-encryption/">Enforce Encryption</a> (not reviewed by Mozilla yet, that should take a few weeks). It is very minimalistic, in the current version it is merely a hundred lines of code. All it does is adding a checkbox to the Security tab of the Page Info dialog to enable or disable Strict Transport Security. It isn&#8217;t quite as flexible as Force-<span class="caps">TLS</span>, yet it should cover most use cases and be much easier to use. Enjoy!</p>
 
-	<p><a href="enforceencryption.png">{{< img "enforceencryption.png" "Enforce Encryption screenshot" 200 >}}</a></p>
+	{{< img src="enforceencryption.png" alt="Enforce Encryption screenshot" thumb="1" />}}
 
 	<p>For reference, the source code is <a href="https://github.com/palant/enforceencryption/">available on GitHub</a>.</p>
