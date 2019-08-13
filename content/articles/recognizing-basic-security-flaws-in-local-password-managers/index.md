@@ -1,11 +1,13 @@
 ---
-title: Recognizing basic security flaws in local password managers
-date: 2019-08-12T09:12:37+02:00
-description: Usually it's hard to judge security of password managers. Sometimes the flaws are easy to recognize however if you only know where to look.
-image: about.png
 categories:
-  - security
-  - password-managers
+- security
+- password-managers
+date: 2019-08-12 07:12:37
+description: Usually it's hard to judge security of password managers. Sometimes the
+  flaws are easy to recognize however if you only know where to look.
+image: about.png
+lastmod: '2019-08-13 17:13:56'
+title: Recognizing basic security flaws in local password managers
 ---
 
 If you want to use a password manager (as you probably should), there are literally hundreds of them to choose from. And there are lots of reviews, weighing in features, usability and all other relevant factors to help you make an informed decision. Actually, almost all of them, with one factor suspiciously absent: security. How do you know whether you can trust the application with data as sensitive as your passwords?
