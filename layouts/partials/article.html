@@ -40,7 +40,9 @@
   <p>
     <a href="{{ .RelPermalink }}">Read more…</a>
 
-    <span class="comments_invite"><a href="{{.RelPermalink}}#Comment">Comment</a> [{{ len (.Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*") }}]</span>
+    {{ if eq .Section "articles" -}}
+      <span class="comments_invite"><a href="{{.RelPermalink}}#Comment">Comment</a> [{{ len (.Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*") }}]</span>
+    {{ end -}}
    </p>
   {{ end -}}
 {{ end }}
