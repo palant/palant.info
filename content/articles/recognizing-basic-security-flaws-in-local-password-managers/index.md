@@ -20,7 +20,7 @@ So I want to go with you through some basic flaws which you might encounter in a
 
 Our guinea pig is a password manager called Password Depot, produced by the German company AceBit GmbH. What's so special about Password Depot? Absolutely nothing, except for the fact that one of their users asked me for a favor. So I spent 30 minutes looking into it and noticed that they've done pretty much everything wrong that they could.
 
-*Note*: The flaws discussed here have been reported to the company in February this year. The company ensured that they take these very seriously but, to my knowledge, didn't manage to address any of them so far.
+*Note*: The flaws discussed here have been reported to the company in February this year. The company assured that they take these very seriously but, to my knowledge, didn't manage to address any of them so far.
 
 {{toc}}
 
