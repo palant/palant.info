@@ -1,30 +1,46 @@
 {{ $kind := .kind }}
 {{ with .scope }}
   {{ if eq .Section "articles" }}
-  <p><strong>Posted</strong> on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by <a href="/about/">{{ .Site.Author.name }}</a></p>
-  {{ end }}
-  <div itemprop="articleBody">
-    {{ $content := .Content -}}
-    {{ if findRE "<p>{{toc}}</p>" $content -}}
-      {{ $content = safeHTML (replace $content "<p>{{toc}}</p>" (partial "toc.html" .)) -}}
-    {{ end -}}
-    {{ $content }}
-  </div>
-
   <p>
+    <strong>Posted</strong> on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by <a href="/about/">{{ .Site.Author.name }}</a>
     {{ with .Params.categories }}
-      <strong>Categories:</strong><span itemprop="keywords">
+      <span class="categories" itemprop="keywords">
       {{ range . }}
         {{ $name := . }}
         {{ with $.scope.Site.GetPage (printf "/categories/%s" ($name | urlize))}}
-          <a rel="tag" href="{{ .Permalink }}">{{ $name }}</a>
+          <a class="category" rel="tag" href="{{ .Permalink }}">{{ $name }}</a>
         {{ end }}
       {{ end }}
       </span>
     {{ end }}
+  </p>
+  {{ end }}
+  <div itemprop="articleBody">
+    {{ $content := .Content -}}
+    {{ if eq $kind "home" -}}
+      {{ if findRE "\\S(.|\n)*<p>{{toc}}</p>" $content 1 -}}
+        {{ $content = safeHTML (replaceRE "<p>{{toc}}</p>(.|\n)*" "" $content) -}}
+      {{ else -}}
+        {{ $content = replace $content "<p>{{toc}}</p>" "" -}}
+        {{ if findRE "\\S(.|\n)*<h\\d" $content 1 -}}
+          {{ $content = safeHTML (replaceRE "<h\\d(.|\n)*" "" $content) -}}
+        {{ else -}}
+          {{ $content = safeHTML (replaceRE "(^(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>)(.|\n)*" "$1" $content) -}}
+        {{ end -}}
+      {{ end -}}
+    {{ else -}}
+      {{ if findRE "<p>{{toc}}</p>" $content -}}
+        {{ $content = safeHTML (replace $content "<p>{{toc}}</p>" (partial "toc.html" .)) -}}
+      {{ end -}}
+    {{ end -}}
+    {{ $content }}
+  </div>
 
-    {{ if eq $kind "home" }}
-      <span class="comments_invite"><a href="{{.RelPermalink}}#Comment">Comment</a> [{{ len (.Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*") }}]</span>
-    {{ end }}
+  {{ if eq $kind "home" -}}
+  <p>
+    <a href="{{ .RelPermalink }}">Read more…</a>
+
+    <span class="comments_invite"><a href="{{.RelPermalink}}#Comment">Comment</a> [{{ len (.Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*") }}]</span>
    </p>
+  {{ end -}}
 {{ end }}

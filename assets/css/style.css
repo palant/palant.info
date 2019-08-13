@@ -1638,6 +1638,19 @@ a.installLink:active {
   border-radius: 5px;
 }
 
+.categories
+{
+  float: right;
+}
+
+.category
+{
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #ffe;
+  padding: .3em;
+}
+
 footer
 {
   font-size: 15px;
