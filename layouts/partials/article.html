@@ -18,16 +18,7 @@
   <div itemprop="articleBody">
     {{ $content := .Content -}}
     {{ if eq $kind "home" -}}
-      {{ if findRE "\\S(.|\n)*<p>{{toc}}</p>" $content 1 -}}
-        {{ $content = safeHTML (replaceRE "<p>{{toc}}</p>(.|\n)*" "" $content) -}}
-      {{ else -}}
-        {{ $content = replace $content "<p>{{toc}}</p>" "" -}}
-        {{ if findRE "\\S(.|\n)*<h\\d" $content 1 -}}
-          {{ $content = safeHTML (replaceRE "<h\\d(.|\n)*" "" $content) -}}
-        {{ else -}}
-          {{ $content = safeHTML (replaceRE "(^(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>)(.|\n)*" "$1" $content) -}}
-        {{ end -}}
-      {{ end -}}
+      {{ $content = partial "summary.html" $content -}}
     {{ else -}}
       {{ if findRE "<p>{{toc}}</p>" $content -}}
         {{ $content = safeHTML (replace $content "<p>{{toc}}</p>" (partial "toc.html" .)) -}}

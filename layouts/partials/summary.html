@@ -1,0 +1,10 @@
+{{ if findRE "\\S(.|\n)*<p>{{toc}}</p>" . 1 -}}
+  {{ safeHTML (replaceRE "<p>{{toc}}</p>(.|\n)*" "" .) -}}
+{{ else -}}
+  {{ $content := replace . "<p>{{toc}}</p>" "" -}}
+  {{ if findRE "^\\s*<p\\b(.|\n)*<h\\d" $content 1 -}}
+    {{ safeHTML (replaceRE "<h\\d(.|\n)*" "" $content) -}}
+  {{ else -}}
+    {{ safeHTML (replaceRE "(^(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>)(.|\n)*" "$1" $content) -}}
+  {{ end -}}
+{{ end -}}
