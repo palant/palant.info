@@ -6,7 +6,7 @@ date: 2019-08-12 07:12:37
 description: Usually it's hard to judge security of password managers. Sometimes the
   flaws are easy to recognize however if you only know where to look.
 image: about.png
-lastmod: '2019-08-14 06:46:45'
+lastmod: '2019-08-14 17:02:12'
 title: Recognizing basic security flaws in local password managers
 ---
 
