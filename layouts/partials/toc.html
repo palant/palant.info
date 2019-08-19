@@ -7,7 +7,7 @@
   {{- range $headers -}}
     {{- $level = int (replace (index (findRE "<h\\d" . 1) 0) "<h" "") -}}
     {{- $anchor := replaceRE "^id=\"" "" (index (findRE "id=\"[^\"]*" . 1) 0) -}}
-    {{- $text := replaceRE "</?h\\d.*?>" "" . -}}
+    {{- $text := safeHTML (replaceRE "</?h\\d.*?>" "" .) -}}
     {{- if eq $minLevel -1 -}}
       {{- $minLevel = add $level -1 -}}
       {{- $curLevel = add $level -1 -}}
