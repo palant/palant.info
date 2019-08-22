@@ -6,7 +6,7 @@ date: 2019-08-19 07:40:50
 description: Despite many warnings, Kaspersky products will still snoop inside HTTPS
   connections. This weakens security considerably, with some fallout presented here.
 image: mitm.png
-lastmod: '2019-08-22 08:27:20'
+lastmod: '2019-08-22T11:24:20+0200'
 title: Kaspersky in the Middle - what could possibly go wrong?
 ---
 
@@ -17,6 +17,8 @@ Of course not. So when I decided to look into Kaspersky Internet Security in Dec
 {{< img src="mitm.png" alt="Kaspersky Internet Security getting between browser and server" width="600" />}}
 
 I reported eight vulnerabilities to Kaspersky Lab between 2018-12-13 and 2018-12-21. This article will only describe three vulnerabilities which have been fixed in April this year. This includes two vulnerabilities that weren't deemed a security risk by Kaspersky, it's up to you to decide whether you agree with this assessment. The remaining five vulnerabilities have only been fixed in July, and I agreed to wait until November with the disclosure to give users enough time to upgrade.
+
+**Edit** (2019-08-22): In order to disable this functionality you have to go into Settings, select "Additional" on the left side, then click "Network." There you will see a section called "Encryption connection scanning" where you need to choose "Do not scan encrypted connections."
 
 {{toc}}
 
