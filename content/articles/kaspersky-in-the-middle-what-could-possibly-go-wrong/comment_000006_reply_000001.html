@@ -1,0 +1,7 @@
+{
+  "id": "000001"
+}
+
+<p>You seem to be misunderstanding the issue. It's not about you surfing the web and encountering a server where the owner somehow didn't manage to get a valid certificate or forgot to renew it or whatever. It's rather the scenario that HTTPS is supposed to protect you against: it's not the right server at all, merely somebody posing as it. Which could be the case e.g. if you are connected to a malicious or compromised network (open WiFi being a typical scenario where you cannot trust the network), or if state-level actor wants to see contents of your communication (see Kazakhstan in the news just recently). These are scenarios where an easy to override warning is not enough, because ignoring the warning will result in really bad things happening. Besides, in the clickjacking scenario the user wouldn't even see the warning - merely a page with whatever "explanation" attackers can come up with.</p>
+<p>Where does one disable HTTPS inspection in Kaspersky Internet Security? I can disable "Inject script into web traffic" and I can disable "Web Anti-Virus" -- neither of these has the desired effect. If you check the certificate for any website in the browser, you will still see it being signed by Kaspersky.</p>
+<p>Yes, I received $2,500 bug bounty for the Universal XSS vulnerability, thank you.</p>

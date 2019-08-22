@@ -6,7 +6,7 @@ date: 2019-08-19 07:40:50
 description: Despite many warnings, Kaspersky products will still snoop inside HTTPS
   connections. This weakens security considerably, with some fallout presented here.
 image: mitm.png
-lastmod: '2019-08-20 10:44:34'
+lastmod: '2019-08-22 08:27:20'
 title: Kaspersky in the Middle - what could possibly go wrong?
 ---
 
