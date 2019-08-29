@@ -6,7 +6,7 @@ date: 2019-08-19 07:40:50
 description: Despite many warnings, Kaspersky products will still snoop inside HTTPS
   connections. This weakens security considerably, with some fallout presented here.
 image: mitm.png
-lastmod: '2019-08-22T11:24:20+0200'
+lastmod: '2019-08-29T09:37:20+0200'
 title: Kaspersky in the Middle - what could possibly go wrong?
 ---
 
@@ -118,7 +118,7 @@ And here you have it: a malicious website taking over your Google or social medi
 ## Timeline
 
 * 2018-12-13: Sent report via Kaspersky bug bounty program: Lack of HSTS support facilitating MiTM attacks.
-* 2018-12-17: Sent reports via Kaspersky bug bounty program: Certificate warning pages susceptible to clickjacking and Universal XSS in Microsoft Edge.
+* 2018-12-17: Sent reports via Kaspersky bug bounty program: [Certificate warning pages susceptible to clickjacking](https://hackerone.com/reports/463695) and [Universal XSS in Microsoft Edge](https://hackerone.com/reports/463915).
 * 2018-12-20: Response from Kaspersky: HSTS and clickjacking reports are not considered security issues.
 * 2018-12-20: Requested disclosure of the HSTS and clickjacking reports.
 * 2018-12-24: Disclosure denied due to similarity with one of my other reports.
