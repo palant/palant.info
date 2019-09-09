@@ -1,12 +1,15 @@
 ---
-title: "State of the art protection in Chrome Web Store"
-date: 2019-09-09T16:04:00+02:00
-description: Google will take down legitimate extensions in Chrome Web Store without prior notice and without clear instructions on how to get them published again. No problem as long as the bad guys are kept out?
-image: canons.jpg
 categories:
-  - add-ons
-  - security
-  - privacy
+- add-ons
+- security
+- privacy
+date: 2019-09-09 14:04:00
+description: Google will take down legitimate extensions in Chrome Web Store without
+  prior notice and without clear instructions on how to get them published again.
+  No problem as long as the bad guys are kept out?
+image: canons.jpg
+lastmod: '2019-09-09 20:26:06'
+title: State of the art protection in Chrome Web Store
 ---
 
 All of you certainly know already that Google is guarding its Chrome Web Store vigilantly and making sure that no bad apples get in. So when you hit "Report abuse" your report will certainly be read carefully by another human being and acted upon ASAP. Well, eventually... maybe... [when it hits the news](/2018/04/18/the-ticking-time-bomb-fake-ad-blockers-in-chrome-web-store/). If it doesn't, then it probably wasn't important anyway and these extensions might stay up despite [being taken down by Mozilla three months ago](https://bugzilla.mozilla.org/show_bug.cgi?id=1557258).
