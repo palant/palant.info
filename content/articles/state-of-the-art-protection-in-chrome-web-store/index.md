@@ -35,3 +35,7 @@ So there we go. All I need to do is to write a privacy policy document for the e
 See what Google is doing here? There is really only one place where the bad guys could add their privacy policy, namely that crappy unformatted "Detailed Description" field. Since it's so unreadable, users ignore it anyway, so they will just assume that the extension has no privacy policy and won't trust it with any data. And as an additional bonus, "Detailed Description" isn't the designated field for privacy policy, which gives Google a good reason to take bad guys' extensions down at any time. Brilliant, isn't it?
 
 In the meantime, PfP takes a vacation from Chrome Web Store. I'll let you know how this situation develops.
+
+**Update** (2019-09-10): As commenter drawdrove points out, the field for the privacy policy actually exists. Instead of placing it under extension settings, Google put it in the overall developer settings. So all of the developer's extensions share the same privacy policy, no matter how different. Genius!
+
+PfP is now back in Chrome Web Store. But will the bad guys also manage to figure it out?
