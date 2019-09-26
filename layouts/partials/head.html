@@ -38,7 +38,7 @@
     <meta property="og:url" content="{{ . }}">
   {{ end -}}
 
-  <meta name="author" content="{{ .Site.Author.name }}" />
+  <meta name="author" content="{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}" />
 
   <meta property="og:locale" content="{{ .Site.LanguageCode }}">
   {{ if eq .Kind "page" -}}

@@ -2,7 +2,12 @@
 {{ with .scope }}
   {{ if eq .Section "articles" }}
   <p>
-    <strong>Posted</strong> on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by <a href="/about/">{{ .Site.Author.name }}</a>
+    <strong>Posted</strong> on <time datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time> by
+    {{ with .Params.author}}
+      {{ . }}
+    {{ else }}
+      <a href="/about/">{{ .Site.Author.name }}</a>
+    {{ end }}
     {{ with .Params.categories }}
       <span class="categories" itemprop="keywords">
       {{ range . }}
