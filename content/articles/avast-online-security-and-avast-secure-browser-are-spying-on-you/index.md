@@ -102,6 +102,8 @@ Unfortunately, after reading this passage I still don't know whether they retain
 
 And that seems to be all of it. In other words, Avast will keep your data and they don't feel like they need your approval for that. They also reserve the right to use it in pretty much any way they like, including giving it to unnamed third parties for "trend analytics." That is, as long as the data is considered anonymized. Which it probably is, given that technically the unique user identifier is not tied to you as a person. That your identity can still be deduced from the data -- well, bad luck for you.
 
+**Edit** (2019-10-29): I got a hint that [Avast acquired Jumpshot a bunch of years ago](https://press.avast.com/avast-software-acquires-jumpshot-to-work-magic-against-slow-pc-performance). And if you take a look at the Jumpshot website, they [list "clickstream data from 100 million global online shoppers and 20 million global app users" as their product](https://www.jumpshot.com/product/clickstream-data). So you now have a pretty good guess as to where your data is going.
+
 ## Conclusions
 
 Avast Online Security collecting personal data of their users is not an oversight and not necessary for the extension functionality either. The extension attempts to collect as much context data as possible, and it does so on purpose. The Avast privacy policy shows that Avast is aware of the privacy implications here. However, they do not provide any clear retention policy for this data. They rather appear to hold on to the data forever, feeling that they can do anything with it as long as the data is anonymized. The fact that browsing data can usually be deanonymized doesn't instill much confidence however.
