@@ -22,7 +22,11 @@
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       {{ end }}
       <guid>{{ .Permalink }}</guid>
-      <description>{{ .Content | html }}</description>
+      {{ $content := .Content -}}
+      {{ if findRE "<p>{{toc}}</p>" $content -}}
+        {{ $content = safeHTML (replace $content "<p>{{toc}}</p>" (partial "toc.html" .)) -}}
+      {{ end -}}
+      <description>{{ $content | html }}</description>
     </item>
     {{ end }}
   </channel>
