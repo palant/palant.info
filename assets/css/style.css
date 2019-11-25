@@ -1692,3 +1692,59 @@ footer
 {
   list-style: none;
 }
+
+.linklist
+{
+  list-style: none;
+}
+
+.iconLink
+{
+  padding-left: 20px;
+  min-height: 16px;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.iconLink.rss
+{
+  background-image: url({{ $.Scratch.Get "svg" }}#rss);
+}
+
+.iconLink.twitter
+{
+  background-image: url({{ .Scratch.Get "svg" }}#twitter);
+}
+
+.iconLink.mastodon
+{
+  background-image: url({{ .Scratch.Get "svg" }}#mastodon);
+}
+
+.iconLink.pfp
+{
+  background-image: url({{ .Scratch.Get "svg" }}#pfp);
+}
+
+.iconLink.abp
+{
+  background-image: url({{ .Scratch.Get "svg" }}#abp);
+}
+
+.iconLink.github
+{
+  background-image: url({{ .Scratch.Get "svg" }}#github);
+}
+
+.iconLink.stackoverflow
+{
+  background-image: url({{ .Scratch.Get "svg" }}#stackoverflow);
+}
+
+.iconLink.cc-by-sa
+{
+  background-image: url({{ .Scratch.Get "svg" }}#cc-by-sa);
+  background-size: 80px 16px;
+  padding-left: 84px;
+}
