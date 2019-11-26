@@ -13,6 +13,8 @@ Kaspersky's web protection feature will block ads and trackers, warn you about m
 
 {{< img src="doormat.png" alt="Kaspersky's communication with the browser protected by an easy to find key" width="600" />}}
 
+*Note*: Lots of technical details ahead. If you only want a high-level summary, there is one [here](/2019/11/26/internal-kaspersky-api-exposed-to-websites/).
+
 This post sums up five vulnerabilities that I reported to Kaspersky. It is already more than enough ground to cover, so I had to leave unrelated vulnerabilities out. But don't despair, a separate blog post discussing those will be published in two days!
 
 {{toc}}
