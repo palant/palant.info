@@ -239,8 +239,8 @@ Interestingly, I've since looked at Avast/AVG products which also break up HTTPS
 
 ## Timeline
 
-* 2018-12-18: Sent report via Kaspersky bug bounty program: Predictable links on certificate warning pages.
-* 2018-12-21: Sent report via Kaspersky bug bounty program: Websites can trigger uninstallation of browser extensions.
+* 2018-12-18: Sent report via Kaspersky bug bounty program: [Predictable links on certificate warning pages.](https://hackerone.com/reports/469372)
+* 2018-12-21: Sent report via Kaspersky bug bounty program: [Websites can trigger uninstallation of browser extensions.](https://hackerone.com/reports/470519)
 * 2018-12-24: Kaspersky acknowledges the issues and says that they are working on fixing them.
 * 2019-07-29: Kaspersky notifies me about these two issues being fixed in KIS 2020.
 * 2019-07-29: Requested disclosure of my reports.
