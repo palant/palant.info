@@ -13,6 +13,8 @@ This will hopefully be my last article on vulnerabilities in Kaspersky products 
 
 {{< img src="kaspersky-shattered.jpeg" width="600" alt="Kaspersky functionality shattered" />}}
 
+*Note*: Lots of technical details ahead. If you only want a high-level summary, there is one [here](/2019/11/27/more-kaspersky-vulnerabilities-uninstalling-extensions-user-tracking-predictable-links/).
+
 {{toc}}
 
 ## Summary of the findings
