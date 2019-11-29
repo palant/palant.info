@@ -1,12 +1,16 @@
 ---
-title: "More Kaspersky vulnerabilities: uninstalling extensions, user tracking, predictable links"
-date: 2019-11-27T13:53:53+01:00
-description: Three more vulnerabilities allowed websites to uninstall browser extensions, track users across Private Browsing session or even different browsers and control some functionality of Kaspersky software.
-image: kaspersky-shattered.jpeg
 categories:
-  - kaspersky
-  - security
-  - privacy
+- kaspersky
+- security
+- privacy
+date: 2019-11-27 12:53:53
+description: Three more vulnerabilities allowed websites to uninstall browser extensions,
+  track users across Private Browsing session or even different browsers and control
+  some functionality of Kaspersky software.
+image: kaspersky-shattered.jpeg
+lastmod: '2019-11-29 10:10:37'
+title: 'More Kaspersky vulnerabilities: uninstalling extensions, user tracking, predictable
+  links'
 ---
 
 I'm discuss three more vulnerabilities in Kaspersky software such as Kaspersky Internet Security 2019 here, all exploitable by arbitrary websites. These allowed websites to uninstall browser extensions, track users across Private Browsing session or even different browsers and control some functionality of Kaspersky software. As of Patch F for 2020 products family and Patch I for 2019 products family all of these issues should be resolved.
