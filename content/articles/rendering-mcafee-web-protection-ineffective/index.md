@@ -1,6 +1,7 @@
 ---
 title: "Rendering McAfee web protection ineffective"
 date: 2019-12-02T09:28:18+01:00
+lastmod: 2019-12-02T18:56:18+01:00
 description: Until recently, McAfee WebAdvisor "blocking" malicious content was easily tricked, even whitelisting websites without the user noticing.
 image: rusty_shield.jpg
 categories:
@@ -19,9 +20,9 @@ Of course, browser extensions claiming to protect you from online threats have s
 
 ## Summary of the findings
 
-A bug in the way McAfee WebAdvisor deals with malicious frames made it trivial for websites to avoid blocking. Also, I found ways for websites to unblock content programmatically, both for top-level and frame-level blocking.
+A bug in the way McAfee WebAdvisor deals with malicious frames made it trivial for websites to avoid blocking. Also, I found ways for websites to unblock content programmatically, both for top-level and frame-level blocking ([CVE-2019-3665](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3665)).
 
-In fact, the way unblocking top-level content was implemented, it allowed arbitrary websites to open special pages. Browsers normally prevent websites from opening these pages to avoid phishing attacks or exploitation of potential security vulnerabilities in browser extensions. McAfee WebAdvisor allowed websites to circumvent this security mechanism.
+In fact, the way unblocking top-level content was implemented, it allowed arbitrary websites to open special pages ([CVE-2019-3666](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3666)). Browsers normally prevent websites from opening these pages to avoid phishing attacks or exploitation of potential security vulnerabilities in browser extensions. McAfee WebAdvisor allowed websites to circumvent this security mechanism.
 
 ## Breaking frame blocking
 
