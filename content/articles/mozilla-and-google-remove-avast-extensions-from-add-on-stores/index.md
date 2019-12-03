@@ -1,5 +1,5 @@
 ---
-title: "Mozilla and Google remove Avast extensions from add-on stores"
+title: "Mozilla removes Avast extensions from their add-on store, what will Google do?"
 date: 2019-12-03T09:47:02+01:00
 description: The Avast extensions which were spying on their users are no longer available from Mozilla and Google add-on stores.
 image: avast.png
@@ -20,6 +20,8 @@ After I published my article I got the hint to look at Jumpshot, a company [acqu
 
 That sounds exactly like the data that Avast collects from their SafePrice and Online Security users. Yes, you are the product -- even if you paid for that antivirus.
 
-Spying on your users is clearly a violation of the terms that both Google and Mozilla make extension developers sign. So yesterday I reported these four extensions to Mozilla and Google. Quite surprisingly, as of today all of these extensions are no longer listed on either Mozilla Add-ons website or Chrome Web Store. That was a rather swift action!
+Spying on your users is clearly a violation of the terms that both Google and Mozilla make extension developers sign. So yesterday I reported these four extensions to Mozilla and Google. Mozilla immediately disabled the extension listings, so that these extensions can no longer be found on the Mozilla Add-ons site. Mozilla didn't blacklist the extensions however, stating that they are still talking to Avast. So for existing users these extensions will still be active and continue spying on the users.
 
-It remains to be seen how this will affect millions of existing extension users. At least Mozilla didn't add Avast extensions to the blocklist yet, stating that they are still talking to Avast. So the extensions will remain active and keep spying on the users for now. As to Google, I don't really know where I can see their blocklist, any hints?
+And what about Google? The only official way to report an extension to them is the "report abuse" link. I used that one of course, but previous experience shows that it never has any effect. Extensions have only ever been removed from Chrome Web Store after considerable news coverage. Or does anybody have a contact at Google how would be able to help?
+
+**Update** (2019-12-03): This article initially stated incorrectly that Google removed these extensions as well. This isn't currently the case, somehow I didn't look them up correctly.
