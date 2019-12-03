@@ -1,7 +1,8 @@
 ---
 title: "Mozilla removes Avast extensions from their add-on store, what will Google do?"
 date: 2019-12-03T09:47:02+01:00
-description: The Avast extensions which were spying on their users are no longer available from Mozilla and Google add-on stores.
+lastmod: 2019-12-03T10:05:02+01:00
+description: The Avast extensions which were spying on their users are no longer available from Mozilla Add-ons site. Google still has to take action.
 image: avast.png
 categories:
   - privacy
