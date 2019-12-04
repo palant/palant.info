@@ -1,15 +1,17 @@
 ---
-title: "Mozilla and Opera remove Avast extensions from their add-on stores, what will Google do?"
-slug: mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do
-date: 2019-12-03T09:47:02+01:00
-lastmod: 2019-12-03T19:23:02+01:00
-description: The Avast extensions which were spying on their users are no longer available from Mozilla and Opera add-on stores. Google still has to take action.
-image: avast.png
 categories:
-  - privacy
-  - avast
-  - mozilla
-  - google
+- privacy
+- avast
+- mozilla
+- google
+date: 2019-12-03 08:47:02
+description: The Avast extensions which were spying on their users are no longer available
+  from Mozilla and Opera add-on stores. Google still has to take action.
+image: avast.png
+lastmod: '2019-12-04 18:04:05'
+slug: mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do
+title: Mozilla and Opera remove Avast extensions from their add-on stores, what will
+  Google do?
 ---
 
 A month ago I wrote about [Avast browser extensions being essentially spyware](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/). While this article only names Avast Online Security and AVG Online Security extensions, the browser extensions Avast SafePrice and AVG SafePrice show the same behavior: they upload detailed browsing profiles of their users to `uib.ff.avast.com`. The amount of data collected here exceeds by far what would be considered necessary or appropriate even for the security extensions, for the shopping helpers this functionality isn't justifiable at all.
