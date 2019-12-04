@@ -1,8 +1,9 @@
 ---
-title: "Mozilla removes Avast extensions from their add-on store, what will Google do?"
+title: "Mozilla and Opera remove Avast extensions from their add-on stores, what will Google do?"
+slug: mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do
 date: 2019-12-03T09:47:02+01:00
 lastmod: 2019-12-03T19:23:02+01:00
-description: The Avast extensions which were spying on their users are no longer available from Mozilla Add-ons site. Google still has to take action.
+description: The Avast extensions which were spying on their users are no longer available from Mozilla and Opera add-on stores. Google still has to take action.
 image: avast.png
 categories:
   - privacy
@@ -23,8 +24,10 @@ That sounds exactly like the data that Avast collects from their SafePrice and O
 
 Spying on your users is clearly a violation of the terms that both Google and Mozilla make extension developers sign. So yesterday I reported these four extensions to Mozilla and Google. Mozilla immediately disabled the extension listings, so that these extensions can no longer be found on the Mozilla Add-ons site. Mozilla didn't blacklist the extensions however, stating that they are still talking to Avast. So for existing users these extensions will still be active and continue spying on the users.
 
+**Update** (2019-12-04): I also reported these extensions to Opera. 16 hours later I received a response from Opera:
+
+> Thanks for reporting it to us. We unpublished these extensions from our store.
+
 And what about Google? Google Chrome is where the overwhelming majority of these users are. The only official way to report an extension here is the "report abuse" link. I used that one of course, but previous experience shows that it never has any effect. Extensions have only ever been removed from the Chrome Web Store after considerable news coverage. Or does anybody have a contact at Google who would be able to help?
 
 **Update** (2019-12-03): This article initially stated incorrectly that Google removed these extensions as well. This isn't currently the case, somehow I didn't look them up correctly.
-
-**Update** (2019-12-03): As these add-ons are also available via Opera Add-ons site, I also sent a report to Opera.
