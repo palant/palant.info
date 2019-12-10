@@ -8,7 +8,7 @@ date: 2019-12-03 08:47:02
 description: The Avast extensions which were spying on their users are no longer available
   from Mozilla and Opera add-on stores. Google still has to take action.
 image: avast.png
-lastmod: '2019-12-06 23:31:57'
+lastmod: '2019-12-10 18:07:42'
 slug: mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do
 title: Mozilla and Opera remove Avast extensions from their add-on stores, what will
   Google do?
