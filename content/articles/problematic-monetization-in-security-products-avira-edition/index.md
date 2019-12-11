@@ -1,7 +1,7 @@
 ---
 title: "Problematic monetization in security products, Avira edition"
 date: 2019-12-11T16:22:09+01:00
-description: Avira Browser Safety extension monetizes itself by offering shopping deals, implemented in an unusually risky way. Privacy questions aren't really resolved in the privacy policy.
+description: Avira extensions monetize themselves by offering shopping deals, implemented in an unusually risky way. Privacy questions aren't really resolved in the privacy policy.
 image: avira_protection.png
 categories:
   - avira
