@@ -1,12 +1,15 @@
 ---
-title: "Problematic monetization in security products, Avira edition"
-date: 2019-12-11T16:22:09+01:00
-description: Avira extensions monetize themselves by offering shopping deals, implemented in an unusually risky way. Privacy questions aren't really resolved in the privacy policy.
-image: avira_protection.png
 categories:
-  - avira
-  - security
-  - privacy
+- avira
+- security
+- privacy
+date: 2019-12-11 15:22:09
+description: Avira extensions monetize themselves by offering shopping deals, implemented
+  in an unusually risky way. Privacy questions aren't really resolved in the privacy
+  policy.
+image: avira_protection.png
+lastmod: '2019-12-12 06:16:42'
+title: Problematic monetization in security products, Avira edition
 ---
 
 A while back we've seen how Avast [monetizes their users](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/). Today we have a much smaller fish to fry, largely because the Avira's extensions in question aren't installed by default and require explicit user action for the additional "protection." So these have far fewer users, currently 400 thousands on Firefox and slightly above a million on Chrome according to official add-on store numbers. It doesn't make their functionality any less problematic however.
