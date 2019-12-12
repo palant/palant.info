@@ -8,7 +8,7 @@ description: Avira extensions monetize themselves by offering shopping deals, im
   in an unusually risky way. Privacy questions aren't really resolved in the privacy
   policy.
 image: avira_protection.png
-lastmod: '2019-12-12 06:16:42'
+lastmod: '2019-12-12 12:31:42'
 title: Problematic monetization in security products, Avira edition
 ---
 
@@ -75,5 +75,7 @@ Still, Avira would be well-advised to at least remove query and anchor parts fro
 ## Conclusions
 
 The excessive data collection, incomplete privacy policy, unexpected functionality and execution of remote code are all issues that violate Mozilla Add-ons policies. I notified Mozilla and I assume that they will ask Avira to fix these. Maybe the Firefox extension will even be renamed to match the one for Chrome?
+
+**Update** (2019-12-12): As of now, Avira Browser Safety extension is no longer listed on Mozilla Add-ons. I did not receive any reply from Mozilla yet other than "we are looking into this."
 
 I did not report any of this to Google, none of these issues have been considered a concern in the past. In particular, Google allows execution of remote code as long as there is no proof for it being used for malicious purposes. But I hope that Avira will improve their Chrome extension as well nevertheless.
