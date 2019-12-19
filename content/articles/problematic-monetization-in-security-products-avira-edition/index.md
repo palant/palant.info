@@ -26,6 +26,8 @@ The Avira Browser Safety extension is identical to Avira Safe Shopping and monet
 
 In addition to that, the security part of the extension is implemented in a suboptimal way and will upload the entire browsing history of the users to Avira's servers without even removing potentially sensitive data first. Again, Avira's privacy policy is severely lacking and won't make any clear statements as to what happens with this data.
 
+**Update (2019-12-19)**: Avira reached out to me to discuss the issues. You can find a summary of their clarifications at the [bottom of this post](#avira-s-clarifications).
+
 ## How does this monetization approach work?
 
 You've probably seen some of the numerous websites offering you coupon codes for certain shops to help you get the best deal. Or maybe you've even used browser extensions doing the same. If you ever asked yourself what these are getting out of it: the shop owners are paying them for referring customers to the shop. So even if you already were at this shop and selected the product you wanted to buy, if you then wandered off to a coupon deal website and had it send you back to the shop -- the owner of the coupon deal website gets paid a certain percentage of your spending.
@@ -79,3 +81,15 @@ The excessive data collection, incomplete privacy policy, unexpected functionali
 **Update** (2019-12-12): As of now, Avira Browser Safety extension is no longer listed on Mozilla Add-ons. I did not receive any reply from Mozilla yet other than "we are looking into this."
 
 I did not report any of this to Google, none of these issues have been considered a concern in the past. In particular, Google allows execution of remote code as long as there is no proof for it being used for malicious purposes. But I hope that Avira will improve their Chrome extension as well nevertheless.
+
+## Avira's clarifications
+
+**Update** (2019-12-19): Avira reached out to me with some clarifications about this functionality and the intent behind it. Here is my summary of the communication:
+
+* The "Browser Safety" extension is in the process of being renamed into "Safe Shopping." This is only complete for Chrome so far but the plan is to rename the variants for other browsers as well. Incomplete add-on store descriptions and privacy policy are partly a side-effect of this transitional state.
+* The data received by Avira servers might only be stored temporarily for debugging purposes, no longer than 14 days for the shopping functionality and no longer than 7 days for the security component.
+* Avira does not attempt to reconstruct browsing histories, create user profiles or deduce any kind of behavior patterns. The user identifier is only used for basic statistics, and the data is never shared with any third parties.
+* The potential value of the data is intentionally being restricted by aggressive caching and whitelisting of a number of popular services.
+* None of the extension data is transmitted to coupon providers.
+* Running remote JavaScript code was indeed meant to provide more flexibility to Avira, this functionality will be removed however.
+* Considering query parameters is important when making decisions to block malicious content. These allow in particular identifying ad campaigns, malicious redirects and specific resources on websites like Google Drive. Similar services like Google Safe Browsing and Microsoft SmartScreen also transmit query parameters.
