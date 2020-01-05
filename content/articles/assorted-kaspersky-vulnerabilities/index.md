@@ -1,12 +1,14 @@
 ---
-title: "Assorted Kaspersky vulnerabilities"
-date: 2019-11-27T08:39:29+01:00
-description: "More vulnerabilities in Kaspersky software: websites removing Chrome extensions, user tracking with unique identifiers and predictable links."
-image: kaspersky-shattered.jpeg
 categories:
-  - kaspersky
-  - security
-  - privacy
+- kaspersky
+- security
+- privacy
+date: 2019-11-27 07:39:29
+description: 'More vulnerabilities in Kaspersky software: websites removing Chrome
+  extensions, user tracking with unique identifiers and predictable links.'
+image: kaspersky-shattered.jpeg
+lastmod: '2020-01-05 16:37:39'
+title: Assorted Kaspersky vulnerabilities
 ---
 
 This will hopefully be my last article on vulnerabilities in Kaspersky products for a while. With one article on [vulnerabilities introduced by interception of HTTPS connections](/2019/08/19/kaspersky-in-the-middle-what-could-possibly-go-wrong/) and another on [exposing internal APIs to web pages](/2019/11/25/kaspersky-the-art-of-keeping-your-keys-under-the-door-mat/), what's left in my queue are three vulnerabilities without any relation to each other.
