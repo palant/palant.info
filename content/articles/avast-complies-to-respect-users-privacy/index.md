@@ -3,6 +3,7 @@ title: "Avast complies to respect users' privacy"
 date: 2020-01-08T14:35:06+01:00
 description: "Despite their claims that there is no privacy issue, Avast has made considerable changes to the Online Security extension. The current versions are much more privacy-friendly."
 image: avast.png
+lastmod: 2020-01-10T08:57:06+01:00
 categories:
   - avast
   - privacy
