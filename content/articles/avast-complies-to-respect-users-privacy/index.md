@@ -1,13 +1,14 @@
 ---
-title: "Avast complies to respect users' privacy"
-date: 2020-01-08T14:35:06+01:00
-description: "Despite their claims that there is no privacy issue, Avast has made considerable changes to the Online Security extension. The current versions are much more privacy-friendly."
-image: avast.png
-lastmod: 2020-01-11T09:48:06+01:00
 categories:
-  - avast
-  - privacy
-  - security
+- avast
+- privacy
+- security
+date: 2020-01-08 13:35:06
+description: Despite their claims that there is no privacy issue, Avast has made considerable
+  changes to the Online Security extension. The current versions are much more privacy-friendly.
+image: avast.png
+lastmod: '2020-01-12 15:03:23'
+title: Avast complies to respect users' privacy
 ---
 
 December last year has been an interesting month in Avast-land. After my [investigation into Avast's data collection practices](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/) didn't attract any attention initially, [Mozilla and Opera removed Avast's browser extensions from their respective add-on stores](/2019/12/03/mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do/) immediately after I reported them. Google spent two weeks evaluating the issue but eventually did the same. The matter of Avast selling users' data even [attracted attention of high-level politicians](https://www.vice.com/en_us/article/v744v9/senator-ron-wyden-asks-avast-selling-users-browsing-data).
