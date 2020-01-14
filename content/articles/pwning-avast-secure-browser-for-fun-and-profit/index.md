@@ -7,7 +7,7 @@ description: Avast Secure Browser could be compromised by any website via the bu
   Video Downloader extension. An additional vulnerability allowed executing arbitrary
   applications on user's system.
 image: avast.png
-lastmod: '2020-01-14 06:30:05'
+lastmod: '2020-01-14 08:03:38'
 title: Pwning Avast Secure Browser for fun and profit
 ---
 
