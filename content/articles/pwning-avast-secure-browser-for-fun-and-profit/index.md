@@ -1,11 +1,14 @@
 ---
-title: "Pwning Avast Secure Browser for fun and profit"
-date: 2020-01-13T10:14:34+01:00
-description: Avast Secure Browser could be compromised by any website via the built-in Video Downloader extension. An additional vulnerability allowed executing arbitrary applications on user's system.
-image: avast.png
 categories:
-  - avast
-  - security
+- avast
+- security
+date: 2020-01-13 09:14:34
+description: Avast Secure Browser could be compromised by any website via the built-in
+  Video Downloader extension. An additional vulnerability allowed executing arbitrary
+  applications on user's system.
+image: avast.png
+lastmod: '2020-01-14 06:30:05'
+title: Pwning Avast Secure Browser for fun and profit
 ---
 
 Avast took an interesting approach when integrating their antivirus product with web browsers. Users are often hard to convince that Avast browser extensions are good for them and should be activated in their browser of choice. So Avast decided to bring out their own browser with the humble name Avast Secure Browser. Their products send a clear message: ditch your current browser and use Avast Secure Browser (or AVG Secure Browser as AVG users know it) which is better in all respects.
