@@ -7,7 +7,7 @@ date: 2020-01-08 13:35:06
 description: Despite their claims that there is no privacy issue, Avast has made considerable
   changes to the Online Security extension. The current versions are much more privacy-friendly.
 image: avast.png
-lastmod: '2020-01-12 15:03:23'
+lastmod: '2020-01-16 09:43:23'
 title: Avast complies to respect users' privacy
 ---
 
@@ -21,7 +21,7 @@ So when on December 22nd they finally brought out updated versions of their exte
 
 Let's say this much up front: the changes are far more extensive and far more convincing than I would have expected. While Chrome and Opera versions appear identical however, there are some additional changes in the Firefox version. That's presumably to comply with stricter privacy requirements of the Mozilla Add-ons site.
 
-**Update (2020-01-10)**: Avast contacted me to clarify the situation. One piece of information stood out here: "we completely discontinued the practice of using any data from the browser extensions for any other purpose than the core security engine." In other words, Avast isn't merely doing the bare minimum required to comply with store policies, they completely give up collecting too much data via their browser extensions and they won't share this data with anybody either. That's a massive privacy improvement for any Avast users out there. The open question is whether this policy change also applies to the Avast SafePrice extension and Avast Secure Browser. I'll update the post again once I have the answer. **Update (2020-01-11)**: The quoted statement from Avast seemed unambiguous, yet from further communication it now looks like their plan is to establish sharing data with Jumpshot as opt-in functionality of the free antivirus application. I hope for further clarification about which one it is in the end.
+**Update (2020-01-10)**: Avast contacted me to clarify the situation. One piece of information stood out here: "we completely discontinued the practice of using any data from the browser extensions for any other purpose than the core security engine." In other words, Avast isn't merely doing the bare minimum required to comply with store policies, they completely give up collecting too much data via their browser extensions and they won't share this data with anybody either. That's a massive privacy improvement for any Avast users out there. The open question is whether this policy change also applies to the Avast SafePrice extension and Avast Secure Browser. I'll update the post again once I have the answer. **Update (2020-01-16)**: The quoted statement from Avast seemed unambiguous, yet further communication established that sharing data with Jumpshot is going to be opt-in functionality for users of the free antivirus application. It's still an improvement of course but quite different from the initial statement. As to Avast SafePrice and Avast Secure Browser, improvements are expected here in future. Supposedly, the data collected by these was never used, a statement that is impossible to validate.
 
 Just to be clear: with the large codebases and without any official information from Avast I might have overlooked some of the changes. On Firefox I looked at Avast Online Security 19.4.426, on Chrome at Avast Online Security 19.4.433 and on Opera at AVG Online Security 19.4.433.
 
@@ -80,3 +80,5 @@ I didn't spend too much time investigating Avast SafePrice. This extension being
 At least I noticed one change to the data collection practices. While the data collected here is still quite extensive and will always contain a unique user identifier as well as window and tab identifiers for example, the page address is now being shortened to contain protocol and host name only. At least that much.
 
 **Update (2020-01-10)**: I clarified that the consent screen is required by Mozilla's policies. There has been a number of other corrections based on information provided by Avast, these are marked separately.
+
+**Update (2020-01-16)**: Avast's statement above has been extended based on further communication.
