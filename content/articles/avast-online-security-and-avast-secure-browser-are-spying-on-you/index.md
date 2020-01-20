@@ -8,7 +8,7 @@ description: Avast Online Security (standalone and built into Avast Secure Brows
   siphons out your entire browsing behavior. No, this isn't necessary for it to do
   its job.
 image: avast.png
-lastmod: '2019-12-30 07:32:15'
+lastmod: '2020-01-20 06:51:46'
 title: Avast Online Security and Avast Secure Browser are spying on you
 ---
 
