@@ -1,1 +1,1 @@
-{{- partial "rss.xml" (dict "pages" (where .Data.Pages "Section" "articles") "scope" .) -}}
+{{- partial "rss.xml" (dict "pages" (where .RegularPages "Section" "articles") "scope" .) -}}
