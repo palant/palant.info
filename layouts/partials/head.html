@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ .Scratch.Get "css" }}">
   <script src="{{ .Scratch.Get "js" }}" async></script>
 
-  {{ .Hugo.Generator }}
+  {{ hugo.Generator }}
 
   {{ with .Title -}}
     <meta property="og:title" content="{{ . }}">

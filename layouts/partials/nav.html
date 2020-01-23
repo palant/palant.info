@@ -8,7 +8,7 @@
   <h1>Navigation</h1>
   <ul class="section_list" role="menubar">
     {{range .Site.Menus.main}}
-      <li {{if eq $.Page.URL .URL}}class="active"{{end}} role="menuitem"><a href="{{.URL}}">{{.Name}}</a></li>
+      <li {{if eq $.Page.RelPermalink .URL}}class="active"{{end}} role="menuitem"><a href="{{.URL}}">{{.Name}}</a></li>
     {{end}}
   </ul>
 </nav>
