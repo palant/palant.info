@@ -1,0 +1,11 @@
+{
+  "publishDate": "2020-02-24 21:22:03",
+  "author": "Murphy",
+  "authorUrl": "https://blog.murphyslantech.de",
+  "id": "000001"
+}
+
+<p>Just stumbled upon your article, but I must say: Portforwarding, no matter how it is done (userland proxy, iptables, loadbalancer, reverse proxy etc. etc.) is actually not a good thing but more of a terrible workaround - IPv6 helps you to get rid of this complexity (yes there are even use cases where an application layer gateway is just not available/advisable) - you have more Addresses available than one will probably ever use on an single Host (64Bit or even more!).
+Now of course it is a bit more work to layout and administer your internal networks und routing properly, but well it is just what routing was invented for and for very good reasons (separation of concerns) it has its own layer in the OSI-Stack.
+There should be no problem with exposing to much of your Container details when using IPv6 - normally every Container should not expose more Ports than needed (eg. http(s) should only expose port 80 and 443 - maybe 8080 as "last resort") - and of course you will have to make sure that for example database-services are normally not exposed to the outside world, but this is just few lines of additional iptable rules and you may even have the opportunity to decide on a project (custom network basis) which ports are exposed by a whole network segment. Inside the same segment you may use any ports you like / need. 
+In my opinion thats the price you pay for independent containers and microservices: You will need a bit more time and have a bit more complexity on the routing/network-layer. It may feel uncommon or even strange in the beginning but once you got your structures right you will wonder how complicated things were before.</p>
