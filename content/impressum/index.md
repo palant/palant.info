@@ -12,7 +12,7 @@ Germany
 
 ## Contact Information
 
-E-Mail: <amzblog@palant.de><br>
+E-Mail: <cklblog@palant.de><br>
 Internet address: <https://palant.de/>
 
 ## Disclaimer
