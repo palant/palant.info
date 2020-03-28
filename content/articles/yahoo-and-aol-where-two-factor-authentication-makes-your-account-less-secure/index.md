@@ -1,13 +1,15 @@
 ---
-title: "Yahoo! and AOL: Where two-factor authentication makes your account less secure"
-date: 2020-03-09T08:43:05+01:00
-description: Yahoo! and AOL let anybody controlling the phone number gain access to the account, even if that phone number was never verified.
-image: yahoo_login.png
 categories:
-  - yahoo
-  - aol
-  - verizon
-  - security
+- yahoo
+- aol
+- verizon
+- security
+date: 2020-03-09 07:43:05
+description: Yahoo! and AOL let anybody controlling the phone number gain access to
+  the account, even if that phone number was never verified.
+image: yahoo_login.png
+lastmod: '2020-03-28 17:40:32'
+title: 'Yahoo! and AOL: Where two-factor authentication makes your account less secure'
 ---
 
 If you are reading this, you probably know already that you are supposed to use two-factor authentication for your most important accounts. This way you make sure that nobody can take over your account merely by guessing or stealing your password, which [makes an account takeover far less likely](https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html). And what could be more important than your email account that [everything else ties into](https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/)? So you probably know, when Yahoo! greets you like this on login -- it's only for your own safety:
