@@ -1,0 +1,11 @@
+{
+  "publishDate": "2020-04-15 18:48:04",
+  "author": "Emelia Smith",
+  "authorUrl": "https://unobvious.technology",
+  "id": "001005"
+}
+
+<p>If I'm reading your arguments correctly, the main one is that you can't trust that the javascript on the page hasn't been tampered with by a MITM or bad actor; I think the way to mitigate this would be to employ a Content Security Policy that prevents javascript from being run directly on the page; i.e., no script-src=self; Furthermore, you can have the server include Subresource Integrity checksums into the HTML of the page, which the browser will then verify match the checksums calculated for the downloaded javascript.</p>
+<p>Using CSP, you can also assert that all scripts and styles on the page have SRIs, and then have the browser report back to your server or a reporting service when/if the SRIs fail or are missing.</p>
+<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy</p>
