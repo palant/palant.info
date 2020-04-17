@@ -1,0 +1,7 @@
+{
+  "id": "000001"
+}
+
+<p>No, 1Password implemented the sensible solution - autofill isn't actually automatic, it's rather triggered by your action. When this is implemented correctly (in their case it is), there is no way to exploit it.</p>
+<p>The browser integration represents much of the attack surface of course. It <em>can</em> be done well to minimize the risk, it's just not how LastPass approached this. Stand-alone applications without browser integration have another issue: they are very inconvenient to use, so people will often install third-party solutions for convenience which again introduce risks. That's the case with the otherwise quite recommendable KeePass application.</p>
+<p>One remaining risk with stand-alone applications is still sync. Even if you do it manually by copying the database around, that database needs to be properly encrypted - what if you lose that USB stick? Unfortunately, even encrypted databases aren't always secure (see <a href="https://palant.de/2019/08/12/recognizing-basic-security-flaws-in-local-password-managers/" rel="nofollow">Recognizing basic security flaws in local password managers</a> for an example). What I've seen from 1Password was sane however. Same goes for KeePass if the newer Argon2 key derivation is used (and don't bother with their two factor authentication plugins).</p>
