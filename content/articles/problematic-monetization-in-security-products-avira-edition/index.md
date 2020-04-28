@@ -3,6 +3,7 @@ categories:
 - avira
 - security
 - privacy
+- antivirus
 date: 2019-12-11 15:22:09
 description: Avira extensions monetize themselves by offering shopping deals, implemented
   in an unusually risky way. Privacy questions aren't really resolved in the privacy

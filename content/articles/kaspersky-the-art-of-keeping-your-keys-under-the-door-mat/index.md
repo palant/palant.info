@@ -7,6 +7,7 @@ categories:
   - kaspersky
   - security
   - privacy
+  - antivirus
 ---
 
 Kaspersky's web protection feature will block ads and trackers, warn you about malicious search results and much more. The complication here: this functionality runs in the browser and needs to communicate with the main application. For this communication to be secure, an important question had to be answered: under which doormat does one put the keys to the kingdom?

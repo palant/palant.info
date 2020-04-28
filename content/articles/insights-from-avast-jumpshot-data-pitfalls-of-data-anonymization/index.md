@@ -7,6 +7,7 @@ categories:
   - avast
   - security
   - privacy
+  - antivirus
 ---
 
 There has been a surprising development after my [previous article on the topic](/2020/01/27/avasts-broken-data-anonymization-approach/), Avast having [announced that they will terminate Jumpshot and stop selling users' data](https://www.pcmag.com/news/avast-to-end-browser-data-harvesting-terminates-jumpshot). That's not the end of the story however, with the Czech Office for Personal Data Protection [starting an investigation into Avast's practices](https://www.uoou.cz/en/vismo/dokumenty2.asp?id_org=200156&id=1896). I'm very curious to see whether this investigation will confirm Avast's claims that they were always fully compliant with the [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) requirements. For my part, I now got a glimpse of what the Jumpshot data actually looks like. And I learned that I massively overestimated Avast's success when anonymizing this data.

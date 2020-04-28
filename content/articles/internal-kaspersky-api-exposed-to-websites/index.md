@@ -6,6 +6,7 @@ categories:
   - kaspersky
   - security
   - privacy
+  - antivirus
 image: doormat.png
 ---
 

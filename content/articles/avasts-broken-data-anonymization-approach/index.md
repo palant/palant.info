@@ -7,6 +7,7 @@ categories:
   - avast
   - privacy
   - security
+  - antivirus
 ---
 
 Avast used to [collect the browsing history of their users](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/) without informing them and turn this data into profits via their Jumpshot subsidiary. After a public outcry and [considerable pressure from browser vendors](/2019/12/03/mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do/) they [decided to change their practices](/2020/01/08/avast-complies-to-respect-users-privacy/), so that only data of free antivirus users would be collected and only if these explicitly opt in. Throughout the entire debacle Avast maintained that the privacy impact wasn't so wild because the data is "de-identified and aggregated," so that Jumpshot clients never get to see personally identifiable information (PII).

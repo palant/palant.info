@@ -4,6 +4,7 @@ categories:
 - avast
 - mozilla
 - google
+- antivirus
 date: 2019-12-03 08:47:02
 description: The Avast extensions which were spying on their users are no longer available
   from Mozilla and Opera add-on stores. Google still has to take action.

@@ -3,6 +3,7 @@ categories:
 - kaspersky
 - security
 - privacy
+- antivirus
 date: 2019-11-27 07:39:29
 description: 'More vulnerabilities in Kaspersky software: websites removing Chrome
   extensions, user tracking with unique identifiers and predictable links.'

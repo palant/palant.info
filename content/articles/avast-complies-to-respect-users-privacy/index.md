@@ -3,6 +3,7 @@ categories:
 - avast
 - privacy
 - security
+- antivirus
 date: 2020-01-08 13:35:06
 description: Despite their claims that there is no privacy issue, Avast has made considerable
   changes to the Online Security extension. The current versions are much more privacy-friendly.

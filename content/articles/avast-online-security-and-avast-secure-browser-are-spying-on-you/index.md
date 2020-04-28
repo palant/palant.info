@@ -3,6 +3,7 @@ categories:
 - security
 - privacy
 - avast
+- antivirus
 date: 2019-10-28 07:47:30
 description: Avast Online Security (standalone and built into Avast Secure Browser)
   siphons out your entire browsing behavior. No, this isn't necessary for it to do
