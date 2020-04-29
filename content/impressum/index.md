@@ -13,7 +13,7 @@ Germany
 ## Contact Information
 
 E-Mail: <cklblog@palant.de><br>
-Internet address: <https://palant.de/>
+Internet address: <https://palant.info/>
 
 ## Disclaimer
 

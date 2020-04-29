@@ -27,7 +27,7 @@ And there you have the issue: often websites want to find an element by selector
 
 It took until jQuery 1.9 (released in 2013) for this issue to be addressed. In order to be interpreted as HTML code, a string has to start with `<` now. Given incompatible changes, it took websites years to migrate to safer jQuery versions. In particular, the Addons.Mozilla.Org website still had some vulnerabilities in 2015 going back to this [<sup>1</sub>](https://bugzilla.mozilla.org/show_bug.cgi?id=1198957) [<sup>2</sup>](https://bugzilla.mozilla.org/show_bug.cgi?id=1200007).
 
-The root issue that the same function performs both safe and dangerous operations remains part of jQuery however, likely due to backwards compatibility constrains. It can still cause issues even now. Attackers would have to manipulate the start of a selector which is less likely, but it is still something that application developers have to keep in mind (and they almost never do). This danger prompted me to [advise disabling jQuery.parseHTML](https://palant.de/2015/08/30/why-you-probably-want-to-disable-jqueryparsehtml-even-though-you-don-t-call-it/) some years ago.
+The root issue that the same function performs both safe and dangerous operations remains part of jQuery however, likely due to backwards compatibility constrains. It can still cause issues even now. Attackers would have to manipulate the start of a selector which is less likely, but it is still something that application developers have to keep in mind (and they almost never do). This danger prompted me to [advise disabling jQuery.parseHTML](/2015/08/30/why-you-probably-want-to-disable-jqueryparsehtml-even-though-you-don-t-call-it/) some years ago.
 
 ## Downloads, insecure by default
 

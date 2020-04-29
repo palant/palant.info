@@ -34,7 +34,7 @@ Luckily, the consequences aren't as severe as with similar LastPass issues for e
 
 ## Messing with AutoFill functionality
 
-AutoFill functionality of password managers is another [typical area](https://palant.de/2018/08/29/password-managers-please-make-sure-autofill-is-secure/) where security issues are found. RememBear requires a user action to activate AutoFill which is an important preventive measure. Also, AutoFill user interface will be displayed by the native RememBear application, so websites won't have any way of messing with it. I found multiple other aspects of this functionality to be exploitable however.
+AutoFill functionality of password managers is another [typical area](/2018/08/29/password-managers-please-make-sure-autofill-is-secure/) where security issues are found. RememBear requires a user action to activate AutoFill which is an important preventive measure. Also, AutoFill user interface will be displayed by the native RememBear application, so websites won't have any way of messing with it. I found multiple other aspects of this functionality to be exploitable however.
 
 Most importantly, RememBear would not verify that it filled in credentials on the right website (a recent regression according to the developers). Given that considerable time can pass between the user clicking the bear icon to display AutoFill user interface and the user actually selecting a password to be filled in, one cannot really expect that the browser tab is still displaying the same website. RememBear will happily continue filling in the password however, not recognizing that it doesn't belong to the current website.
 
@@ -42,7 +42,7 @@ Worse yet, RememBear will try to fill out passwords in all frames of a tab. So i
 
 ## Public Suffix List implementation issues
 
-One point on my [list of common AutoFill issues](https://palant.de/2018/08/29/password-managers-please-make-sure-autofill-is-secure/) is: Domain name is *not* "the last two parts of a host name." On the first glance, RememBear appears to have this done correctly by using Mozilla's Public Suffix List. So it knows in particular that the relevant part of `foo.bar.example.co.uk` is `example.co.uk` and not `co.uk`. On a closer glance, there are considerable issues in the C# based implementation however.
+One point on my [list of common AutoFill issues](/2018/08/29/password-managers-please-make-sure-autofill-is-secure/) is: Domain name is *not* "the last two parts of a host name." On the first glance, RememBear appears to have this done correctly by using Mozilla's Public Suffix List. So it knows in particular that the relevant part of `foo.bar.example.co.uk` is `example.co.uk` and not `co.uk`. On a closer glance, there are considerable issues in the C# based implementation however.
 
 For example, there is some rather bogus logic in the `CheckPublicTLDs()` function and I'm not even sure what this code is trying to accomplish. You will only get into this function for multi-part public suffixes where one of the parts has more than 3 characters -- meaning `pilot.aero` for example. The code will correctly recognize `example.pilot.aero` as being the relevant part of the `foo.bar.example.pilot.aero` host name, but it will come to the same conclusion for `pilot.aeroexample.pilot.aero` as well. Since domains are being registered under the `pilot.aero` namespace, the two host names here actually belong to unrelated domains, so the bug here allows one of them to steal credentials for the other.
 
