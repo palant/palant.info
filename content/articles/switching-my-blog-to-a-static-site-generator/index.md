@@ -54,7 +54,7 @@ A concern I have about lunr.js is its [awkward query language](https://lunrjs.co
 
 The concept of [page bundles](https://gohugo.io/content-management/page-bundles/) also has the nice effect that you can put a number of comment files into an article's directory and a simple change to the templates will have them displayed under the article. So you can have comments in the same repository, neatly organized by article and generated statically along with all the other comment. Nice!
 
-Only issue: how do you get comments there? This is the part that's no longer possible without some server-side code. Depending on how much you want this to be automated, it might not even be a lot of code. I ended up going for full automation, so [right now](https://github.com/palant/palant.de_commentserver) I've got around 300 lines of Python code and additional 100 lines of templates.
+Only issue: how do you get comments there? This is the part that's no longer possible without some server-side code. Depending on how much you want this to be automated, it might not even be a lot of code. I ended up going for full automation, so [right now](https://github.com/palant/palant.info_commentserver) I've got around 300 lines of Python code and additional 100 lines of templates.
 
 Comments on my blog are always pre-moderated, this makes things easier. So when somebody submits a comment, it is merely validated and put into queue. No connection to GitHub at this point, that would be slow and not entirely reliable. Contacting GitHub can be done when the comment is approved, I have more patience that the the average blog visitor.
 
@@ -66,7 +66,7 @@ The comment form will now send the URI of the blog post. The comment server will
 
 ### Sanitizing content
 
-Ideally, I would add comments to the repository exactly as entered by the user and leave conversion from Markdown up to Hugo. Unfortunately, Hugo doesn't have a sanitizer for untrusted content, the [corresponding issue report](https://github.com/gohugoio/hugo/issues/1457) is stale. So the comment server has to do [Markdown conversion and sanitization](https://github.com/palant/palant.de_commentserver/blob/ef950d053156294dbd21883a01c4121fd28d4800/format.py), the comments will be stored in the repository as already safe HTML code and `rel="nofollow"` added to all links. The good news: Python-Markdown module allows disabling some syntax handlers, which I did for headings for example -- the corresponding HTML tags would have been converted to plain text by the sanitizer otherwise.
+Ideally, I would add comments to the repository exactly as entered by the user and leave conversion from Markdown up to Hugo. Unfortunately, Hugo doesn't have a sanitizer for untrusted content, the [corresponding issue report](https://github.com/gohugoio/hugo/issues/1457) is stale. So the comment server has to do [Markdown conversion and sanitization](https://github.com/palant/palant.info_commentserver/blob/ef950d053156294dbd21883a01c4121fd28d4800/format.py), the comments will be stored in the repository as already safe HTML code and `rel="nofollow"` added to all links. The good news: Python-Markdown module allows disabling some syntax handlers, which I did for headings for example -- the corresponding HTML tags would have been converted to plain text by the sanitizer otherwise.
 
 ### Securing moderation interface
 

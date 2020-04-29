@@ -1,1 +1,1 @@
-The contents of <https://palant.info> website are generated from this repository using [Hugo](https://gohugo.io/). Blog comments are usually added automatically via the [comment management server](https://github.com/palant/palant.de_commentserver).
+The contents of <https://palant.info> website are generated from this repository using [Hugo](https://gohugo.io/). Blog comments are usually added automatically via the [comment management server](https://github.com/palant/palant.info_commentserver).
