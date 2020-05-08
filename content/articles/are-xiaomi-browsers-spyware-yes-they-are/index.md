@@ -1,7 +1,7 @@
 ---
 title: "Are Xiaomi browsers spyware? Yes, they are..."
 date: 2020-05-04T15:50:01+02:00
-lastmod: 2020-05-07T10:49:01+02:00
+lastmod: 2020-05-08T18:07:01+02:00
 description: "Xiaomi browsers collect not merely your browsing history but also searches, downloads, YouTube videos watched and much more."
 categories:
 - xiaomi
@@ -15,7 +15,7 @@ TL;DR: It is really that bad, and even worse actually.
 
 If you've been following my blog for a while, you might find this argumentation familiar. It's almost identical to Avast's communication after they were [found spying on the users](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/) and [browser vendors pulled their extensions from add-on stores](/2019/12/03/mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do/). In the end I was given proof that [their data anonymization attempts were only moderately successful](/2020/02/18/insights-from-avast/jumpshot-data-pitfalls-of-data-anonymization/) if you allow me this understatement.
 
-Given that neither the Forbes article nor the security researchers involved seem to provide any technical details, I wanted to take a look for myself. I decompiled Mint Browser 3.4.0 and looked for clues. This isn't the latest version, just in case Xiaomi already modified to code in reaction to the Forbes article.
+Given that neither the Forbes article nor the security researchers involved seem to provide any technical details, I wanted to take a look for myself. I decompiled Mint Browser 3.4.0 and looked for clues. This isn't the latest version, just in case Xiaomi already modified to code in reaction to the Forbes article. **Update** (2020-05-08): If you don't need the technical explanation, the [newer article](/2020/05/08/what-data-does-xiaomi-collect-about-you/) gives an overview of the issue.
 
 *Disclaimer*: I think that this is the first time I analyzed a larger Android application, so please be patient with me. I might have misinterpreted one thing or another, even though the big picture seems to be clear. Also, my conclusions are based exclusively on code analysis, I've never seen this browser in action.
 
