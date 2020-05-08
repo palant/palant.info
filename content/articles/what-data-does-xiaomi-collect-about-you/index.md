@@ -1,6 +1,7 @@
 ---
 title: "What data does Xiaomi collect about you?"
 date: 2020-05-08T13:43:47+02:00
+lastmod: 2020-05-08T14:48:47+02:00
 description: A high-level overview of the various events making Xiaomi browsers send your private data to Xiaomi servers - by default, unless you discover an obscure settings combination.
 image: xiaomi-privacy.png
 categories:
@@ -25,7 +26,7 @@ In this article I want to provide a high-level overview of the data being exfilt
 
 {{toc}}
 
-*Disclaimer*: This article is based entirely on reverse engineering Xiaomi Mint Browser 3.4.3. I haven't seen the browser in action, so some details might be wrong.
+*Disclaimer*: This article is based entirely on reverse engineering Xiaomi Mint Browser 3.4.3. I haven't seen the browser in action, so some details might be wrong. **Update** (2020-05-08): From a quick glance at Xiaomi Mint Browser 3.4.4 which has been released in the meantime, no further changes to this functionality appear to have been implemented.
 
 ## Event data
 
