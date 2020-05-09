@@ -1,1 +1,1 @@
-{{- partial "rss.xml" (dict "pages" .RegularPages "scope" .) -}}
+{{- partial "rss.xml" (dict "pages" .RegularPages "lastmod" .Lastmod "scope" .) -}}

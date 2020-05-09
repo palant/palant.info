@@ -43,3 +43,12 @@ menu:
     - Name: Projects
       URL: /projects/
       Weight: 3
+
+markup:
+  goldmark:
+    extensions:
+      linkify: false
+    parser:
+      autoHeadingIDType: blackfriday
+    renderer:
+      unsafe: true

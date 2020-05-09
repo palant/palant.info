@@ -9,7 +9,7 @@
     <div class="wrapper">
       <div class="container">
         <div id="main" role="main">
-          {{range (.Paginate (where .RegularPages "Section" "articles")).Pages }}
+          {{range (.Paginate (where .Site.RegularPages "Section" "articles")).Pages }}
             <article role="article" itemscope itemtype="http://schema.org/Article">
               <h1 itemprop="name">
                 <a href="{{.RelPermalink}}" itemprop="url">{{.Title}}</a>

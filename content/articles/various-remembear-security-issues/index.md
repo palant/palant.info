@@ -74,7 +74,7 @@ There was one more issue: the function `hostFromString()` used to extract host n
 * 2019-04-10: Reported issue: "RememBear extensions leak remembear.com token."
 * 2019-04-10: RememBear fixes "RememBear extensions leak remembear.com token" issue and updates their Firefox and Chrome extensions.
 * 2019-04-11: Reported issue "No protection against logins being filled in on wrong websites."
-* 2019-04-12: Reported issues: "Unrelated websites can share logins", "Wrong interpretation of Mozilla's Public Suffix list", "Login saved for wrong site (frames in Chrome)", "Websites can save logins for arbitrary site (Safari)."
+* 2019-04-12: Reported issues: "Unrelated websites can share logins", "Wrong interpretation of Mozilla's Public Suffix list", &ldquo;Login saved for wrong site (frames in Chrome)&rdquo;, "Websites can save logins for arbitrary site (Safari)."
 * 2019-04-23: RememBear fixes parts of the "No protection against logins being filled in on wrong websites" issue in the Chrome extension.
 * 2019-04-24: RememBear confirms that "Websites can save logins for arbitrary site (Safari)" issue doesn't affect any current products but they intend to remove `hostFromString()` function regardless.
 * 2019-05-27: RememBear reports having fixed all outstanding issues in the Windows application and Chrome extension. macOS application is supposed to follow a week later.

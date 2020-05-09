@@ -86,19 +86,19 @@ But Avast has a [privacy policy](https://www.avast.com/privacy-policy). They sur
 Let's have a look. The privacy policy is quite long and applies to all Avast products and websites. The relevant information doesn't come until the middle of it:
 
 > We may collect information about the computer or device you are using, our products and services running on it, and, depending on the type of device it is, what operating systems you are using, device settings, application identifiers (AI), hardware identifiers or universally unique identifiers (UUID), software identifiers, IP Address, location data, cookie IDs, and crash data (through the use of either our own analytical tools or tolls provided by third parties, such as Crashlytics or Firebase). Device and network data is connected to the installation GUID.
-
+>
 > We collect device and network data from all users. We collect and retain only the data we need to provide functionality, monitor product and service performance, conduct research, diagnose and repair crashes, detect bugs, and fix vulnerabilities in security or operations (in other words, fulfil our contract with you to provision the service).
 
 Unfortunately, after reading this passage I still don't know whether they retain this data for me. I mean, "conduct research" for example is a very wide term and who knows what data they need to do it? Let's look further.
 
 > Our AntiVirus and Internet security products require the collection of usage data to be fully functional. Some of the usage data we collect include:
-
+>
 > [...]
-
+>
 > * information about where our products and services are used, including approximate location, zip code, area code, time zone, the URL and information related to the URL of sites you visit online
-
+>
 > [...]
-
+>
 > We use this Clickstream Data to provide you malware detection and protection. We also use the Clickstream Data for security research into threats. We pseudonymize and anonymize the Clickstream Data and re-use it for cross-product direct marketing, cross-product development and third party trend analytics.
 
 And that seems to be all of it. In other words, Avast will keep your data and they don't feel like they need your approval for that. They also reserve the right to use it in pretty much any way they like, including giving it to unnamed third parties for "trend analytics." That is, as long as the data is considered anonymized. Which it probably is, given that technically the unique user identifier is not tied to you as a person. That your identity can still be deduced from the data -- well, bad luck for you.

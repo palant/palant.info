@@ -59,7 +59,7 @@ Hey, big thanks Yahoo! for carefully documenting the issue. But you could have s
 
 Now you are probably wondering: who is that other "X Y" account? Is that my test account? No, it's not. It's some poor soul who somehow managed to enter my phone number as their recovery phone. Given that this phone number has many repeating digits, it's not too surprising that somebody typed it in merely to avoid Yahoo! nagging them. The other detail is surprising however: didn't they have to verify that they actually own this number?
 
-Now I had to go back to Yahoo!'s nag screen:
+Now I had to go back to Yahoo!&rsquo;s nag screen:
 
 {{< img src="yahoo_nagscreen.png" width="430" alt="Yahoo! asking for a recovery phone number on login" />}}
 

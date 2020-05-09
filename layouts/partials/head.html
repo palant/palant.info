@@ -52,7 +52,7 @@
     <meta property="og:type" content="website">
   {{ end -}}
   <meta property="og:site_name" content="{{ .Site.Title }}">
-  <meta property="og:updated_time" content="{{.Lastmod.UTC.Format "2006-01-02T15:04:05Z" }}">
+  <meta property="og:updated_time" content="{{ if .IsHome }}{{.Site.LastChange.UTC.Format "2006-01-02T15:04:05Z" }}{{ else }}{{.Lastmod.UTC.Format "2006-01-02T15:04:05Z" }}{{ end }}">
 
   <meta name="twitter:card" content="{{ if .Params.image }}summary_large_image{{ else }}summary{{ end }}">
 
