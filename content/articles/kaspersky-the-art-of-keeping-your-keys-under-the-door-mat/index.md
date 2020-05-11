@@ -18,7 +18,7 @@ Kaspersky's web protection feature will block ads and trackers, warn you about m
 
 This post sums up five vulnerabilities that I reported to Kaspersky. It is already more than enough ground to cover, so I had to leave unrelated vulnerabilities out. But don't despair, there is [a separate blog post](/2019/11/27/assorted-kaspersky-vulnerabilities/) discussing those.
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

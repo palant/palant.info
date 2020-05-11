@@ -21,7 +21,7 @@ I reported eight vulnerabilities to Kaspersky Lab between 2018-12-13 and 2018-12
 
 **Edit** (2019-08-22): In order to disable this functionality you have to go into Settings, select "Additional" on the left side, then click "Network." There you will see a section called "Encryption connection scanning" where you need to choose "Do not scan encrypted connections."
 
-{{toc}}
+{{< toc >}}
 
 ## The underappreciated certificate warning pages
 

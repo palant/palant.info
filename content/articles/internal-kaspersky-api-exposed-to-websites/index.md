@@ -16,7 +16,7 @@ In December 2018 I discovered a series of vulnerabilities in Kaspersky software 
 
 *Note*: This is the high-level overview. If you want all the technical details you can find them [here](/2019/11/25/kaspersky-the-art-of-keeping-your-keys-under-the-door-mat/).
 
-{{toc}}
+{{< toc >}}
 
 ## What does Web Protection do?
 

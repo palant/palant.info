@@ -19,7 +19,7 @@ But even if you didn't install Avast Online Security yourself, it doesn't mean t
 
 {{< img src="avast.png" alt="Avast watching you while browsing the web" title="Why are hackers always depicted in hoodies and gloves and masks? Most of time they hack without even bothering to put on pants." href="https://twitter.com/statuses/1188096117268873216" width="600" />}}
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

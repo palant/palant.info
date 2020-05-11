@@ -24,7 +24,7 @@ Our guinea pig is a password manager called Password Depot, produced by the Germ
 
 *Note*: The flaws discussed here have been reported to the company in February this year. The company assured that they take these very seriously but, to my knowledge, didn't manage to address any of them so far.
 
-{{toc}}
+{{< toc >}}
 
 ## Understanding data encryption
 

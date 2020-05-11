@@ -21,15 +21,11 @@
   </p>
   {{ end }}
   <div itemprop="articleBody">
-    {{ $content := .Content -}}
     {{ if eq $kind "home" -}}
-      {{ $content = partial "summary.html" $content -}}
+      {{ partial "summary.html" .Content }}
     {{ else -}}
-      {{ if findRE "<p>{{toc}}</p>" $content -}}
-        {{ $content = safeHTML (replace $content "<p>{{toc}}</p>" (partial "toc.html" .)) -}}
-      {{ end -}}
+      {{ .Content }}
     {{ end -}}
-    {{ $content }}
   </div>
 
   {{ if eq $kind "home" -}}

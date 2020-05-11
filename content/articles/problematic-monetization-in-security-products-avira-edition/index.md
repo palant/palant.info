@@ -19,7 +19,7 @@ That's especially the case for Avira Browser Safety extension that Avira offers 
 
 {{< img src="avira_protection.png" alt="Avira user interface offering Browser Safety extension as protection feature" width="600" />}}
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

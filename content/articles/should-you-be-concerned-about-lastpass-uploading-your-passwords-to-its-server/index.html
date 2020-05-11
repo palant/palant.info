@@ -17,7 +17,17 @@ title: Should you be concerned about LastPass uploading your passwords to its se
 
 <p>Sadly, no. It is absolutely possible for a password manager to use a server for some functionality while not trusting it. However, LastPass has been designed in a way that makes taking this route very difficult. In particular, the decision to fall back to server-provided pages for parts of the LastPass browser extension functionality is highly problematic. For example, whenever you access Account Settings you leave the trusted browser extension and access a web interface presented to you by the LastPass server, something that the extension tries to hide from you. Some other extension functionality is implemented similarly.</p>
 
-<p>{{toc}}</p>
+<div id="tocBox">
+  <h4>Table of Contents</h4>
+  <nav id="TableOfContents">
+    <ul>
+      <li><a href="#">The glaring hole</a></li>
+      <li><a href="#">The attack</a></li>
+      <li><a href="#">The fix</a></li>
+      <li><a href="#">Conclusion</a></li>
+    </ul>
+  </nav>
+</div>
 
 <h2>The glaring hole</h2>
 

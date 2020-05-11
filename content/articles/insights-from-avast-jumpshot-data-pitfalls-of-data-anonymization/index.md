@@ -18,7 +18,7 @@ In reality, the data sold by Jumpshot contained plenty of user identifiers, name
 
 Why did I decide to document Avast's failure in so much detail? My goal is to spread appreciation for the task of data anonymization: it's very hard to ensure that no conclusions about users' identity are possible. So maybe whoever is toying with the idea of collecting anonymized data will better think twice whether they really want do go there. And maybe next time we see a vendor collecting data we'll ask the right questions about how they ensure it's a "completely anonymous" process.
 
-{{toc}}
+{{< toc >}}
 
 ## The data
 

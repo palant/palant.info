@@ -1675,20 +1675,20 @@ footer
   border-radius: 10px;
 }
 
-#toc
+#tocBox
 {
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 1em;
 }
 
-#toc > ul
+#TableOfContents > ul
 {
   padding: 0;
   margin-bottom: 0;
 }
 
-#toc ul
+#TableOfContents ul
 {
   list-style: none;
 }

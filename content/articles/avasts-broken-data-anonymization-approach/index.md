@@ -22,7 +22,7 @@ The controversy around selling user data didn't come up just now. Back in 2015 A
 
 From what I've seen now, his statement was spot on and Avast's data anonymization is nothing but a fig leaf.
 
-{{toc}}
+{{< toc >}}
 
 ## Overview of Avast's "de-identification"
 

@@ -24,7 +24,7 @@ Is the problem solved now? Not really. There is now exactly one non-obvious sett
 
 In this article I want to provide a high-level overview of the data being exfiltrated here. TL;DR: Lots and lots of it.
 
-{{toc}}
+{{< toc >}}
 
 *Disclaimer*: This article is based entirely on reverse engineering Xiaomi Mint Browser 3.4.3. I haven't seen the browser in action, so some details might be wrong. **Update** (2020-05-08): From a quick glance at Xiaomi Mint Browser 3.4.4 which has been released in the meantime, no further changes to this functionality appear to have been implemented.
 

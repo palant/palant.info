@@ -20,7 +20,7 @@ Avast Secure Browser is based on Chromium and its most noticeable difference are
 
 *Note*: I did not finish my investigation of the other extensions which are part of the Avast Secure Browser. Given how deeply this product is [compromised on another level](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/), I did not feel that there was a point in making it more secure. In fact, I'm not going to write about the Avast Passwords issues I reported to Avast -- nothing special here, yet another password manager that made several of the [usual mistakes](/2018/08/29/password-managers-please-make-sure-autofill-is-secure/) and put your data at risk.
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

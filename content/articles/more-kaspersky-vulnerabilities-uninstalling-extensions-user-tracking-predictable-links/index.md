@@ -20,7 +20,7 @@ I'm discuss three more vulnerabilities in Kaspersky software such as Kaspersky I
 
 *Note*: This is the high-level overview. If you want all the technical details you can find them [here](/2019/11/27/assorted-kaspersky-vulnerabilities/). There are also older articles on Kaspersky vulnerabilities: [Internal Kaspersky API exposed to websites](/2019/11/26/internal-kaspersky-api-exposed-to-websites/) and [Kaspersky in the Middle - what could possibly go wrong?](/2019/08/19/kaspersky-in-the-middle-what-could-possibly-go-wrong/)
 
-{{toc}}
+{{< toc >}}
 
 ## Uninstalling browser extensions in Chrome
 

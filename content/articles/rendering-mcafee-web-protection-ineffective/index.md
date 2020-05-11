@@ -16,7 +16,7 @@ Of course, browser extensions claiming to protect you from online threats have s
 
 {{< img src="rusty_shield.jpg" width="600" alt="Rusty WebAdvisor shield" />}}
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

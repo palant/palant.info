@@ -19,7 +19,7 @@ Given that neither the Forbes article nor the security researchers involved seem
 
 *Disclaimer*: I think that this is the first time I analyzed a larger Android application, so please be patient with me. I might have misinterpreted one thing or another, even though the big picture seems to be clear. Also, my conclusions are based exclusively on code analysis, I've never seen this browser in action.
 
-{{toc}}
+{{< toc >}}
 
 ## The general analytics setup
 

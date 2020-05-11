@@ -18,7 +18,7 @@ If you are reading this, you probably know already that you are supposed to use 
 
 Yahoo! makes sure that "Remind me later" link is small and doesn't look like an action, so it would seem that adding a phone number is the only way out here. And why would anybody oppose adding it anyway? But here is the thing: complying *reduces* the security of your account considerably. This is due to the way Verizon Media (the company which acquired Yahoo! and AOL a while ago) implements account recovery. And: yes, everything I say about Yahoo! also applies to AOL accounts.
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

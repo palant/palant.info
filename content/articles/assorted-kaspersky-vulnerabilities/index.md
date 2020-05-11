@@ -18,7 +18,7 @@ This will hopefully be my last article on vulnerabilities in Kaspersky products 
 
 *Note*: Lots of technical details ahead. If you only want a high-level summary, there is one [here](/2019/11/27/more-kaspersky-vulnerabilities-uninstalling-extensions-user-tracking-predictable-links/).
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

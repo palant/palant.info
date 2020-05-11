@@ -15,7 +15,7 @@ Now an XSS vulnerability in a browser extension is usually very hard to exploit 
 
 {{< img src="webadvisor-shattered.jpeg" width="600" alt="McAfee WebAdvisor shattered like glass" />}}
 
-{{toc}}
+{{< toc >}}
 
 ## Summary of the findings
 

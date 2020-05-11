@@ -26,7 +26,7 @@ Let's say this much up front: the changes are far more extensive and far more co
 
 Just to be clear: with the large codebases and without any official information from Avast I might have overlooked some of the changes. On Firefox I looked at Avast Online Security 19.4.426, on Chrome at Avast Online Security 19.4.433 and on Opera at AVG Online Security 19.4.433.
 
-{{toc}}
+{{< toc >}}
 
 ## The bogus consent screen
 
