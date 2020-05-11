@@ -3,166 +3,11 @@
    ========================================================================== */
 
 
-/* Abridged version of Normalize.css
-   ========================================================================== */
-/* original authors: Nicolas Gallagher and Jonathan Neal - http://necolas.github.com/normalize.css/ */
-
-/* corrects block display not defined in IE7-9, Firefox3 */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section,
-summary {
-  display: block;
-}
-
-/* corrects inline-block display not defined in IE7-9, Firefox3 */
-audio,
-canvas,
-video {
-  display: inline-block;
-  /* display and zoom IE7 fix for display:inline-block */
-  *display: inline;
-  *zoom: 1;
-}
-
-/* prevents modern browsers from displaying 'audio' without controls, remove excess height in iOS5 devices */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/* addresses styling for 'hidden' attribute not present in IE7-9, Firefox3, Safari4 */
-[hidden] {
-  display: none;
-}
-
-html {
-  /* corrects text resizing oddly in IE7 when body font-size is set using em units -
-     http://clagnut.com/blog/348/#c790 */
-  font-size: 100%;
-  /* always force scrollbar padding so we don't get 'jumping' */
-  overflow-y: scroll;
-  /* prevents iOS text size adjust after orientation change, without disabling user zoom -
-     http://www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
-  -webkit-text-size-adjust: 100%;
-  /* as above, for Windows Phone */
-  -ms-text-size-adjust: 100%;
-}
-
-/* Addresses margins set differently in IE7 */
-p,
-pre {
-  margin: 1em 0;
-}
-
-/* addresses style set to 'bolder' in Firefox3-4, Safari4-5, Chrome */
-b,
-strong {
-  font-weight: bold;
-}
-
-/* addresses CSS quotes not supported in IE7, addresses quote property not supported in Safari4 */
-q {
-  quotes: none;
-}
-
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-
-/* prevents sub and sup affecting line-height in all browsers */
-sub,
-sup {
-  /* 12px */
-  font-size: .85714285714286em;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-/* removes border when inside 'a' element in IE7-9, Firefox3, improves image quality when scaled in IE7 -
-   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
-img {
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-}
-
-/* consistent tables */
-table {
-  margin-bottom: 1em;
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-}
-
-/* make table cells align top and left by default */
-th,
-td {
-  vertical-align: top;
-  text-align: left;
-}
-
-/* addresses margins set differently in IE7 */
-dl,
-menu,
-ol,
-ul {
-  margin: 1em 0;
-}
-dd {
-  margin: 0 0 0 2em;
-}
-
-/* remove margins from nested lists */
-dl dl,
-ul ul,
-ol ol {
-  margin: 0;
-}
-
-/* addresses paddings set differently in IE7 */
-menu,
-ol,
-ul {
-  padding: 0 0 0 2em;
-}
-
-
 /* Clearfix
    ========================================================================== */
 /* updated to prevent margin-collapsing on child elements in most situations -
    http://nicolasgallagher.com/micro-clearfix-hack/ */
 
-.clearfix,
-header,
-nav ul,
-.container,
-footer,
-#paginator,
-#monthly-list {
-  /* zoom IE7 fix */
-  *zoom: 1;
-}
-
-.clearfix:before,
-.clearfix:after,
 header:before,
 header:after,
 nav ul:before,
@@ -179,7 +24,6 @@ footer:after,
   display: table;
 }
 
-.clearfix:after,
 header:after,
 nav ul:after,
 .container:after,
@@ -236,17 +80,6 @@ header h1 {
   border-top: solid 1px #e1a61a;
   border-bottom: solid 1px #e1a61a;
   background-color: #ffda44;
-  /* Konqueror */
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffda44), to(#fabc2b));
-  /* Safari4+, Chrome */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffda44), to(#fabc2b));
-  /* Safari5.1+, Chrome10+ */
-  background-image: -webkit-linear-gradient(#ffda44, #fabc2b);
-  /* Firefox3.6 */
-  background-image: -moz-linear-gradient(#ffda44, #fabc2b);
-  /* Opera11.10+ */
-  background-image: -o-linear-gradient(#ffda44, #fabc2b);
-  /* CSS3 Compliant */
   background-image: linear-gradient(#ffda44, #fabc2b);
 }
 
@@ -274,33 +107,11 @@ header h1 {
 #navigation li:hover,
 #navigation li.active {
   background-color: #ffe477;
-  /* Konqueror */
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffe477), to(#fbcc5d));
-  /* Safari4+, Chrome */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffe477), to(#fbcc5d));
-  /* Safari5.1+, Chrome10+ */
-  background-image: -webkit-linear-gradient(#ffe477, #fbcc5d);
-  /* Firefox3.6 */
-  background-image: -moz-linear-gradient(#ffe477, #fbcc5d);
-  /* Opera11.10+ */
-  background-image: -o-linear-gradient(#ffe477, #fbcc5d);
-  /* CSS3 Compliant */
   background-image: linear-gradient(#ffe477, #fbcc5d);
 }
 
 #navigation li:active {
   background-color: #fabc2b;
-  /* Konqueror */
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#fabc2b), to(#ffda44));
-  /* Safari4+, Chrome */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fabc2b), to(#ffda44));
-  /* Safari5.1+, Chrome10+ */
-  background-image: -webkit-linear-gradient(#fabc2b, #ffda44);
-  /* Firefox3.6 */
-  background-image: -moz-linear-gradient(#fabc2b, #ffda44);
-  /* Opera11.10+ */
-  background-image: -o-linear-gradient(#fabc2b, #ffda44);
-  /* CSS3 Compliant */
   background-image: linear-gradient(#fabc2b, #ffda44);
 }
 
@@ -355,7 +166,6 @@ a:focus {
 
 header a {
   color: #333;
-  -moz-border-radius: .11904761904762em;
   border-radius: .11904761904762em;
 }
 
@@ -381,7 +191,6 @@ footer a:visited {
 
 [role="main"] h1 a {
   color: #333;
-  -moz-border-radius: .11904761904762em;
   border-radius: .11904761904762em;
 }
 
@@ -462,61 +271,20 @@ blockquote {
   font-style: italic;
   margin: .875em 0 .875em 0;
   padding: 1px .875em;
-  -moz-border-radius: .35714285714286em;
   border-radius: .35714285714286em;
   background: #fff6d3;
 }
 
-address {
-  margin: 1em 0;
-}
-
-/* addresses styling not present in IE7-9, Safari5, Chrome */
-abbr[title],
-dfn[title] {
-  border-bottom: dotted 1px;
-  cursor: help;
-}
-
-dfn,
-mark,
-q,
-var {
-  padding: 0 .21428571428571em;
-  -moz-border-radius: .21428571428571em;
-  border-radius: .21428571428571em;
-  color: #333;
-  background: #fff6d3;
-}
-
-dfn,
-q {
-  font-style: italic;
-}
-
-q q {
-  padding: 0;
-}
-
-var {
-  font-weight: bold;
-}
-
 pre,
-code,
-kbd,
-samp {
+code {
   font-family: Cousine, Consolas, "Lucida Console", Monaco, monospace;
 }
 
-code,
-kbd,
-samp {
+code {
   /* 13px */
   font-size: .92857142857143em;
   border: 1px solid #e3e3e3;
   padding: 0 .23076923076923em;
-  -moz-border-radius: .23076923076923em;
   border-radius: .23076923076923em;
   background: #f7f7f7;
 }
@@ -527,10 +295,8 @@ pre {
   overflow-x: auto;
   border: 1px solid #e3e3e3;
   padding: 1em;
-  -moz-border-radius: .35714285714286em;
   border-radius: .35714285714286em;
   background: #f7f7f7;
-  tab-size: 4;
 }
 
 pre code {
@@ -543,14 +309,12 @@ pre code {
 
 small,
 figcaption,
-tfoot,
 .footnote {
   /* 12px */
   font-size: .85714285714286em;
 }
 
 figcaption,
-tfoot,
 .footnote {
   color: #888;
 }
@@ -558,26 +322,6 @@ tfoot,
 figcaption {
   margin-top: .33333333333333em;
   font-style: italic;
-}
-
-
-/* Support for non-latin languages (can be removed if not required)
-   ========================================================================== */
-
-html[lang="ja-jp"] {
-  font-family: "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-}
-
-html[lang="ko-kr"] {
-  font-family: GulimChe, Gulim, sans-serif;
-}
-
-html[lang="zh-cn"] {
-  font-family: SimHei, sans-serif;
-}
-
-html[lang="zh-tw"] {
-  font-family: PMingLiU, sans-serif;
 }
 
 
@@ -592,25 +336,6 @@ video {
 
 figure {
   margin: 0;
-}
-
-/* image alignemnts */
-img.align-left {
-  float: left;
-  margin: 1em 1em 1em 0;
-}
-img.align-right {
-  float: right;
-  margin: 1em 0 1em 1em;
-}
-img.align-center {
-  display: block;
-  margin: 1em auto;
-}
-
-/* corrects overflow displayed oddly in IE9 */
-  svg:not(:root) {
-  overflow: hidden;
 }
 
 
@@ -639,16 +364,6 @@ thead td {
   border-bottom: solid 2px #ccc;
 }
 
-tfoot th,
-tfoot td {
-  border-bottom: 0;
-  padding: .33333333333333em .58333333333333em .33333333333333em 0;
-}
-
-tfoot:last-child {
-  padding-right: 0;
-}
-
 
 /* Lists
    ========================================================================== */
@@ -674,24 +389,11 @@ dt {
 /* Forms
    ========================================================================== */
 
-/* corrects margin displayed oddly in IE6-7 */
-form {
-  margin: 0;
-}
-
 /* remove default fieldset styling across browsers */
 fieldset {
   margin: 0;
   border: 0;
   padding: 0;
-}
-
-/* corrects text not wrapping in FF3, corrects alignment displayed oddly in IE7 */
-legend {
-  border: 0;
-  padding: 0;
-  white-space: normal;
-  *margin-left: -7px;
 }
 
 /* improves appearance and consistency in all browsers */
@@ -702,73 +404,6 @@ textarea {
   font-size: 100%;
   margin: 0;
   vertical-align: baseline;
-  /* improves appearance and consistency in IE7 */
-  *vertical-align: middle;
-}
-
-/* colour placeholder text (Webkit and Mozilla only, so far) */
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  color: #888;
-}
-input:-moz-placeholder,
-textarea:-moz-placeholder {
-  color: #888;
-}
-
-/* suppress red glow that Firefox adds to form fields by default, even when user is still typing
-   add focus glow on form elements and kill phantom spacing and dotted border that appears in Firefox */
-button:invalid,
-a.button:invalid,
-input:invalid,
-input[type="button"]:invalid,
-input[type="reset"]:invalid,
-input[type="submit"]:invalid,
-textarea:invalid {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-button::-moz-focus-inner,
-a.button::-moz-focus-inner,
-input::-moz-focus-inner,
-input[type="button"]::-moz-focus-inner,
-input[type="reset"]::-moz-focus-inner,
-input[type="submit"]::-moz-focus-inner,
-textarea::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-button:focus,
-a.button:focus,
-input:focus,
-input[type="button"]:focus,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-select:focus,
-textarea:focus {
-  -webkit-box-shadow: 0 0 7px #0066ff;
-  -moz-box-shadow: 0 0 7px #0066ff;
-  box-shadow: 0 0 7px #0066ff;
-  /* Opera */
-  z-index: 1;
-}
-
-  /* remove inner padding and search cancel button in webkit on OS X */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-}
-
-input[type="file"]:focus,
-input[type="file"]:active,
-input[type="radio"]:focus,
-input[type="radio"]:active,
-input[type="checkbox"]:focus,
-input[type="checkbox"]:active {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
 }
 
 textarea,
@@ -796,31 +431,18 @@ input[type="week"] {
   padding: .5em;
   background: #fff;
   outline: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -moz-border-radius: 0;
   border-radius: 0;
-}
-
-input[type="color"] {
-  padding: 0;
-  height: 2.33333333333333em;
 }
 
 [role="complementary"] input[type="search"] {
   margin-right: 2px;
   width: 66.666666666667%;
   display: inline-block;
-  /* display and zoom IE7 fix for display:inline-block */
-  *display: inline;
-  *zoom: 1;
 }
 
 textarea {
   min-height: 3em;
-  /* removes default vertical scrollbar in IE7-9 */
-  overflow: auto;
   /* improves readability and alignment in all browsers */
   vertical-align: top;
   resize: vertical;
@@ -835,8 +457,6 @@ select {
   border: solid 1px #ccc;
   padding: .5em;
   background: #fff;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -844,30 +464,6 @@ textarea,
 select[size],
 select[multiple] {
   height: auto;
-}
-
-optgroup {
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  color: #333;
-}
-
-/* kill phantom spacing and dotted border that appears in Firefox */
-optgroup::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-/* addresses box sizing set to content-box and excess padding in IE7-9 */
-input[type="checkbox"],
-input[type="radio"] {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0;
-  *height: 1em;
-  *width: 1em;
 }
 
 /* make sure disable elements really are disabled */
@@ -879,8 +475,7 @@ input[type="submit"][disabled],
 select[disabled],
 select[disabled] option,
 select[disabled] optgroup,
-textarea[disabled],
-span.disabled {
+textarea[disabled] {
   opacity: 1;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -917,16 +512,10 @@ span.disabled {
    ========================================================================== */
 
 button,
-[role] a.button,
-span.disabled,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   /* remove iOS Safari default styling */
-  -webkit-appearance: none;
-  -webkit-background-clip: padding;
-  -khtml-background-clip: padding-box;
-  -moz-background-clip: padding;
   background-clip: padding-box;
   width: auto;
   overflow: visible;
@@ -940,27 +529,12 @@ input[type="submit"] {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
   cursor: pointer;
   border: solid 1px #e1a61a;
-  -moz-border-radius: .35714285714286em;
   border-radius: .35714285714286em;
   padding: .5em 1em;
   display: inline-block;
-  /* display and zoom IE7 fix for display:inline-block */
-  *display: inline;
-  *zoom: 1;
   color: #333;
   outline: 0;
   background-color: #ffda44;
-  /* Konqueror */
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffda44), to(#fabc2b));
-  /* Safari4+, Chrome */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffda44), to(#fabc2b));
-  /* Safari5.1+, Chrome10+ */
-  background-image: -webkit-linear-gradient(#ffda44, #fabc2b);
-  /* Firefox3.6 */
-  background-image: -moz-linear-gradient(#ffda44, #fabc2b);
-  /* Opera11.10+ */
-  background-image: -o-linear-gradient(#ffda44, #fabc2b);
-  /* CSS3 Compliant */
   background-image: linear-gradient(#ffda44, #fabc2b);
 }
 
@@ -970,17 +544,6 @@ input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
   background-color: #ffe477;
-  /* Konqueror */
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffe477), to(#fbcc5d));
-  /* Safari4+, Chrome */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffe477), to(#fbcc5d));
-  /* Safari5.1+, Chrome10+ */
-  background-image: -webkit-linear-gradient(#ffe477, #fbcc5d);
-  /* Firefox3.6 */
-  background-image: -moz-linear-gradient(#ffe477, #fbcc5d);
-  /* Opera11.10+ */
-  background-image: -o-linear-gradient(#ffe477, #fbcc5d);
-  /* CSS3 Compliant */
   background-image: linear-gradient(#ffe477, #fbcc5d);
 }
 
@@ -993,31 +556,11 @@ input[type="submit"]:active {
   top: 1px;
   color: #1a1a1a;
   background-color: #fabc2b;
-  /* Konqueror */
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#fabc2b), to(#ffda44));
-  /* Safari4+, Chrome */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fabc2b), to(#ffda44));
-  /* Safari5.1+, Chrome10+ */
-  background-image: -webkit-linear-gradient(#fabc2b, #ffda44);
-  /* Firefox3.6 */
-  background-image: -moz-linear-gradient(#fabc2b, #ffda44);
-  /* Opera11.10+ */
-  background-image: -o-linear-gradient(#fabc2b, #ffda44);
-  /* CSS3 Compliant */
   background-image: linear-gradient(#fabc2b, #ffda44);
 }
 
 #paginator {
   margin-bottom: 2em;
-}
-
-#paginator .button {
-  padding: .25em 1em;
-}
-
-#paginator a.button {
-  text-decoration: none;
-  color: #333;
 }
 
 #paginator-l {
@@ -1034,79 +577,21 @@ input[type="submit"]:active {
 
 .comments {
   margin-bottom: 1em;
-  -moz-border-radius: .35714285714286em;
   border-radius: .35714285714286em;
   padding: 1em 1em 1px;
   background: #f7f7f7;
   word-wrap: break-word;
 }
 
-.comments h4 .is-author {
-  font-weight: normal;
-}
-
-.comments h4 .comment-anchor {
+.comment-anchor {
   float: right;
   font-weight: normal;
  }
 
-.comments-author {
-  background: #efefef;
-}
-
-#cpreview {
-  margin-bottom: 2px;
-  -moz-border-radius: .35714285714286em;
-  border-radius: .35714285714286em;
-  padding: 1em;
-  background: #fff3d6;
-}
-
-.comments_error {
-  background: #fff4f4 !important;
-}
-
-.required,
-.error_message li {
-  color: #c00;
-}
-
 .required {
+  color: #c00;
 	cursor: help;
 }
-
-
-/* Popup comments (can be removed if you don't use popups)
-   ========================================================================== */
-
-#popup-page .wrapper {
-  padding-top: 0;
-}
-
-#popup-page .container {
-  max-width: 52em;
-}
-
-}
-
-
-/* addresses select alignment in Safari/Chrome */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-
-select,
-select[size="0"],
-select[size="1"] {
-  height: 2.2em;
-}
-
-select:not([size]),
-select:not([multiple]) {
-  position: relative;
-  top: -1px;
-}
-
-}
-
 
 
 /* ==========================================================================
@@ -1154,7 +639,6 @@ select:not([multiple]) {
 [role="complementary"] {
   float: right;
   border: 1px solid #e3e3e3;
-  -moz-border-radius: .35714285714286em;
   border-radius: .35714285714286em;
   padding: 1em 1em 0;
   /* 290px / 960px */
@@ -1178,10 +662,7 @@ h3 {
 }
 
 blockquote {
-  float: right;
   margin: 0 0 .875em .875em;
-  /* 254px / 592px */
-  width: 42.905405405405%;
 }
 
 }
@@ -1226,22 +707,7 @@ body {
 
 }
 
-
-
-/* ==========================================================================
-   Fix for reponsive embedded content in IE8
-   ========================================================================== */
-
-
-@media \0screen {
-
-img,
-video {
-  width: auto;
 }
-
-}
-
 
 
 /* ==========================================================================
@@ -1256,8 +722,6 @@ video {
   color: black !important;
   text-shadow: none !important;
   background: transparent !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
   box-shadow: none !important;
 }
 
@@ -1283,10 +747,12 @@ nav,
 audio,
 video,
 form,
+footer > div:last-child,
 [role="complementary"],
+#tocBox,
 #paginator,
 #comments-form,
-.comments h4 a:last-child {
+.comment-anchor {
   display: none;
 }
 
@@ -1295,17 +761,8 @@ a {
 }
 
 /* show URLs for certain links in print */
-a[href]:after {
+[itemprop="articleBody"] a[href]:after {
   content: " (" attr(href) ")";
-}
-
-h1 a[href]:after,
-h2 a[href]:after,
-h3 a[href]:after,
-sup a[href]:after,
-a[itemprop="discussionUrl"]:after,
-a[rel="tag"]:after {
-  content: "";
 }
 
 /* show long-form for abbreviations in print */
@@ -1345,7 +802,6 @@ p {
 
 footer,
 figcaption,
-tfoot,
 small,
 .footnote {
   font-size: 6pt;
@@ -1368,15 +824,10 @@ pre {
 }
 
 pre,
-code,
-kbd,
-samp,
-var {
+code {
   font-family: "Courier New", Courier, monospace;
 }
 
-dfn,
-q,
 dt {
   font-style: italic;
 }
@@ -1386,30 +837,8 @@ img {
   page-break-inside: avoid;
 }
 
-/* image alignemnts */
-img.align-left {
-  float: left;
-  margin: 1em 1em 1em 0;
-}
-img.align-right {
-  float: right;
-  margin: 1em 0 1em 1em;
-}
-img.align-center {
-  display: block;
-  margin: 1em auto;
-}
-
 audio {
   display: none;
-}
-
-figure {
-  margin-bottom: 8pt;
-}
-
-figcaption {
-  margin-top: 4pt;
 }
 
 ul {
@@ -1457,6 +886,11 @@ td {
 }
 
 }
+
+/* ==========================================================================
+   Customizations
+   ========================================================================== */
+
 
 /* Pagination styles from Bootstrap */
 .pagination
@@ -1607,18 +1041,13 @@ td {
   padding: 1px 10px;
   margin: 10px 0;
 }
+
 .comment_reply_header {
   font-weight: bold;
 }
 
-span.comments_invite,
-.orig_announcement {
+.comments_invite {
   float: right;
-}
-
-blockquote {
-  float: none;
-  width: auto;
 }
 
 a.installLink,
@@ -1658,15 +1087,20 @@ footer
   float: right;
 }
 
-.image-par
+figure
 {
   text-align: center;
 }
 
-.image-par-left
+figure.left
 {
   float: left;
   margin: 5px;
+}
+
+figcaption
+{
+  margin-top: 0;
 }
 
 .article-image

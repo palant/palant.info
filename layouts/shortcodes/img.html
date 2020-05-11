@@ -26,10 +26,8 @@
 {{- $width = int (default "0" $width) -}}
 {{- end -}}
 
-{{- $parclass = default "image-par" $parclass -}}
-
 {{- $image := $.Page.Resources.GetMatch $src -}}
-<p class="{{ $parclass }}">
+<figure{{ with $parclass }} class="{{ $parclass }}"{{ end }}>
 
 {{- if $thumb -}}
   <a href="{{ $image.RelPermalink }}">
@@ -44,10 +42,10 @@
 {{- end -}}
 
 {{- with .Inner -}}
-<br>{{ . }}
+<figcaption>{{ . }}</figcaption>
 {{- end -}}
 
 {{- if or $thumb $href -}}
   </a>
 {{- end -}}
-</p>
+</figure>
