@@ -40,9 +40,6 @@ menu:
     - Name: Articles
       URL: /articles/
       Weight: 2
-    - Name: Projects
-      URL: /projects/
-      Weight: 3
 
 markup:
   goldmark:
