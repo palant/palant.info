@@ -22,7 +22,7 @@ socials:
   - id: "pfp"
     url: "https://pfp.works/"
     icon: "pfp"
-    title: "Pain-free Passwords project"
+    title: "PfP: Pain-free Passwords project"
     weight: 5
   - id: "github"
     url: "https://github.com/palant"
