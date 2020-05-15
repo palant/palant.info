@@ -1,14 +1,126 @@
 baseURL: https://palant.info/
 languageCode: en-us
-copyright: This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-title: "Extensions, security, random blah blah"
+copyright: "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License"
+title: "Almost Secure"
+rssLimit: 10
 params:
-  AuthorTwitter: "@WPalant"
+  enableHeader: true
+  displayHeaderInHome: true
+  headerBackground: "linear-gradient(90deg, rgba(255, 160, 0, 0.2) 0%, rgba(255, 224, 0, 0.2) 100%)"
+  headerLayout: "flex"
+  enableNavToggle: true
+  navHeight: "10em"
+  siteBrandFontSize: 1
+  siteBrandFontColor: "var(--color-contrast-high)"
+  headerFallbackWidth: "32em"
+  enableMenu: true
+  displayMenuInHome: true
+  activeInSection: true
+  homeLayout: "posts"
+  siteLogo: "/icons/apple-touch-icon.png"
+  siteDescription: "Wladimir Palant's blog"
+  siteCreatedTime:  "2006-07-10T00:00:00+00:00"
+  siteTwitter: "WPalant"
+  categoryBy: "categories"
+  enableTree: false
+  displayPosts: false
+  displayPostsCount: true
+  listWidth: 42
+  displayListTitle: true
+  listDateFormat: "January 2"
+  listDatePosition: "right"
+  groupByMonth: false
+  i18nYear: false
+  i18nMonth: false
+  displayTaxonomyTermCount: true
+  mainSections:
+    - "articles"
+  includeContent: true
+  enableDarkMode: true
+  defaultTheme: "light"
+  hideThemeToggle: false
+  hideThemeToggleInHome: false
+  themeColor: "#fff"
+  themeColorDark: "#282a36"
+  safariMaskColor: "#2a6df4"
+  msApplicationTileColor: "#fff"
+  openGraph: true
+  twitterCards: true
+  autoDetectImages: true
+
+  duration: 0.5
+  primaryColorLight: "220, 90%, 56%"
+  primaryColorDark: "201, 65%, 62%"
+  postWidth: 45
+  original: true
+  enablePostMeta: true
+  enablePostMetaInHome: true
+  postMetaDateFormat: "2006-01-02"
+  displayPublishedDate: true
+  publishedDateIcon: "calendar-alt"
+  displayModifiedDate: false
+  modifiedDateIcon: "calendar-check"
+  displayExpiredDate: false
+  expiredDateIcon: "calendar-times"
+  displayCategory: true
+  categoryIcon: "folder"
+  categoryDelimiter: "/"
+  displayWordCount: false
+  wordCountIcon: "pencil-alt"
+  displayReadingTime: true
+  readingTimeIcon: "clock"
+  hrefTargetBlank: false
+
+  enableTOC: false
+  enableHeadingsAnchor: true
+  headingsOpt: "1-6"
+  anchorSymbol: "#"
+  anchorIcon: "link"
+  enableAnchorLink: true
+  enableAnchorAutoHide: true
+
+  squareBrackets: true
+  footnoteReturnLinkIcon: "angle-up"
+  insertHrBySelf: true
+
+  fontFamilySiteBrand: "'Orkney', sans-serif"
+  fontFamilyTitle: "'Orkney', sans-serif"
+  fontFamilyHeadings: "'Orkney', sans-serif"
+  fontFamilyCode: "'SometypeMono', monospace"
+  fontFamilyBody: "'Adelle', serif"
+  fontSize: 20
+  lineHeight: 1.618
+
+  enableRelatedPosts: true
+  displayRelatedPosts: true
+  relatedPostsNumber: 5
+  relatedPostsIcon: "plus-circle"
+
+  enableFooter: true
+  enableSocials: true
+
+  enableFingerprint: true
+  enableHighlight: true
+
+  fofPoster: ""
 author:
   name: Wladimir Palant
+  twitter: WPalant
+theme: meme
 
 taxonomies:
   category: categories
+
+related:
+  threshold: 80
+  includeNewer: true
+  toLower: true
+  indices:
+    - name: "categories"
+      weight: 100
+    - name: "date"
+      weight: 10
+      pattern: "2006"
 
 enableRobotsTXT: true
 pygmentsUseClasses: true
@@ -18,9 +130,11 @@ permalinks:
   projects: /:year/:month/:day/:slug/
 
 outputFormats:
+  MainRSS:
+    baseName: rss
+    mediaType: "application/rss+xml"
   MozillaRSS:
     baseName: pmo
-    isPlainText: true
     mediaType: application/rss+xml
   HTML:
     isHTML: false
@@ -29,17 +143,37 @@ outputs:
   home:
     - HTML
     - JSON
-    - RSS
+    - MainRSS
     - MozillaRSS
+
+disableKinds:
+  - RSS
 
 menu:
   main:
     - Name: Home
       URL: /
       Weight: 1
+      pre: "internal"
+      post: "home"
     - Name: Articles
       URL: /articles/
       Weight: 2
+      pre: "internal"
+      post: "archive"
+    - URL: "/categories/"
+      name: "Categories"
+      weight: 3
+      pre: "internal"
+      post: "th"
+    - URL: "/about/"
+      name: "About"
+      weight: 4
+      pre: "internal"
+      post: "user-circle"
+    - identifier: "theme-switcher"
+      weight: 5
+
 
 markup:
   goldmark:

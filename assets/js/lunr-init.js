@@ -8,7 +8,7 @@
   {
     event.preventDefault();
 
-    var term = document.getElementById("search-textbox").value.trim();
+    var term = document.getElementById("search-input").value.trim();
     if (!term)
       return;
 
@@ -21,6 +21,22 @@
       queuedTerm = term;
       initIndex();
     }
+  }, false);
+
+  document.getElementsByClassName("search-icon")[0].addEventListener("click", function(event)
+  {
+    event.preventDefault();
+
+    var input = document.getElementById("search-input");
+    input.setAttribute("data-active", "true");
+    input.focus();
+  }, false);
+
+  document.getElementById("search-input").addEventListener("blur", function(event)
+  {
+    event.preventDefault();
+
+    document.getElementById("search-input").removeAttribute("data-active");
   }, false);
 
   function initIndex()
@@ -55,13 +71,16 @@
   {
     var results = index.search(term);
 
-    var target = document.getElementById("main");
+    var target = document.getElementsByClassName("main-inner")[0];
     while (target.firstChild)
       target.removeChild(target.firstChild);
 
+    var div = document.createElement("div");
+    div.className = "search-results";
+
     var title = document.createElement("h1");
     title.textContent = "Search results for " + term + ":";
-    target.appendChild(title);
+    div.appendChild(title);
 
     if (results.length)
     {
@@ -69,7 +88,7 @@
       {
         var doc = lookup[results[i].ref];
 
-        var par = document.createElement("p");
+        var par = document.createElement("h2");
         par.appendChild(document.createTextNode((i + 1) + ". "));
 
         var link = document.createElement("a");
@@ -77,21 +96,25 @@
         link.textContent = doc.title;
         par.appendChild(link);
 
-        target.appendChild(par);
+        div.appendChild(par);
 
         var par = document.createElement("p");
         par.textContent = truncateToEndOfSentence(doc.content, 70);
-        target.appendChild(par);
+        div.appendChild(par);
       }
     }
     else
     {
-      var par = document.createElement("p");
-      var text = document.createElement("strong");
-      text.textContent = "No results found.";
-      par.appendChild(text);
-      target.appendChild(par);
+      var par = document.createElement("h3");
+      par.textContent = "No results found.";
+      div.appendChild(par);
     }
+    target.appendChild(div);
+    div.scrollIntoView(true);
+
+    var navToogle = document.getElementsByClassName("nav-toggle")[0];
+    if (navToggleLabel.classList.contains("open"))
+      document.getElementById(navToggleLabel.getAttribute("for")).click();
   }
 
   // This matches Hugo's own summary logic:

@@ -1,1 +1,1 @@
-{{- partial "rss.xml" (dict "pages" (where .Site.RegularPages "Params.categories" "intersect" (slice "mozilla" "gecko" "security")) "lastmod" .Site.LastChange "scope" . ) -}}
+{{- partial "rss.xml" (dict "pages" (where .Site.RegularPages "Params.categories" "intersect" (slice "mozilla" "gecko" "security")) "scope" . ) -}}

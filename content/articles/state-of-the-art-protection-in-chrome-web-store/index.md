@@ -7,7 +7,6 @@ date: 2019-09-09 14:04:00
 description: Google will take down legitimate extensions in Chrome Web Store without
   prior notice and without clear instructions on how to get them published again.
   No problem as long as the bad guys are kept out?
-image: canons.jpg
 lastmod: '2019-09-09 20:26:06'
 title: State of the art protection in Chrome Web Store
 ---

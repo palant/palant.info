@@ -1,1 +1,0 @@
-{{- partial "rss.xml" (dict "pages" (where .Site.RegularPages "Section" "articles") "lastmod" .Site.LastChange "scope" .) -}}

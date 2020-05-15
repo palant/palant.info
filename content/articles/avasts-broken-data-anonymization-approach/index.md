@@ -2,7 +2,6 @@
 title: "Avast's broken data anonymization approach"
 date: 2020-01-27T16:27:10+01:00
 description: A look at the publicly available information suggests that Avast exaggerated its capability to anonymize users' data.
-image: anonymizer.jpeg
 categories:
   - avast
   - privacy

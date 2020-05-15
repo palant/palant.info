@@ -1,0 +1,36 @@
+socials:
+  - id: "rss"
+    url: "/rss.xml"
+    icon: "rss"
+    title: "RSS"
+    weight: 1
+  - id: "twitter"
+    url: "https://twitter.com/WPalant"
+    icon: "twitter"
+    title: "Twitter"
+    weight: 2
+  - id: "mastodon"
+    url: "https://infosec.exchange/@WPalant"
+    icon: "mastodon"
+    title: "Mastodon"
+    weight: 3
+  - id: "mastodon-nontech"
+    url: "https://social.tchncs.de/@WPalant"
+    icon: "mastodon"
+    title: "Mastodon (non-technical)"
+    weight: 4
+  - id: "pfp"
+    url: "https://pfp.works/"
+    icon: "pfp"
+    title: "Pain-free Passwords project"
+    weight: 5
+  - id: "github"
+    url: "https://github.com/palant"
+    icon: "github"
+    title: "GitHub"
+    weight: 6
+  - id: "stack-overflow"
+    url: "http://stackoverflow.com/users/785541/wladimir-palant?tab=answers"
+    icon: "stack-overflow"
+    title: "Stack Overflow"
+    weight: 7

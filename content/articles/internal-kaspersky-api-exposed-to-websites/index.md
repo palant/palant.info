@@ -7,7 +7,6 @@ categories:
   - security
   - privacy
   - antivirus
-image: doormat.png
 ---
 
 In December 2018 I discovered a series of vulnerabilities in Kaspersky software such as Kaspersky Internet Security 2019. Due to the way its Web Protection feature is implemented, internal application functionality can used by any website. It doesn't matter whether you allowed Kaspersky Protection browser extension to be installed, Web Protection functionality is active regardless and exploitable.

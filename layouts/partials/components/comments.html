@@ -1,0 +1,81 @@
+{{ if eq .Section "articles" }}
+<section id="comments">
+  <h4>Comments</h4>
+
+  {{ with .Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*" }}
+    <ul class="comments-list" itemscope itemtype="http://schema.org/UserComments">
+      {{ range sort . ".Name" }}
+      <li>
+        <article class="comment" itemprop="comment">
+          <div class="comment-header">
+            <a href="#c{{.Params.id}}" id="c{{.Params.id}}" class="anchor-link" itemprop="url">
+              {{ partial "utils/icon.html" (dict "Deliver" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
+            </a>
+            <span class="comment-author" itemprop="creator">
+              {{- with .Params.authorUrl -}}<a rel="nofollow" href="{{.}}">{{- end -}}
+              {{ .Params.author }}
+              {{- with .Params.authorUrl -}}</a>{{- end -}}
+            </span>
+            <time class="comment-time" datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time>
+          </div>
+          <div itemprop="commentText">
+            {{ .Content }}
+            {{ with $.Resources.Match (printf "comment_%s_reply_*" .Params.id) }}
+              {{ range sort . ".Name" }}
+                <div class="comment">
+                  <div class="comment-header">
+                    <span class="comment-author">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}</span>
+                    {{ with .PublishDate }}
+                      <time class="comment-time" datetime="{{.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.UTC.Format "2006-01-02 15:04"}}</time>
+                    {{ end }}
+                  </div>
+                  {{ .Content }}
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </article>
+      </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <div class="comment">
+      There are currently no comments on this article.
+    </div>
+  {{ end }}
+</section>
+
+<form id="comments-form" action="#" data-path="{{ .File.Dir }}">
+  <h4>Leave a comment</h4>
+  <div class="comments-form-header">
+    <div>
+      <label for="name">Name <span class="required" title="Required">*</span></label><br>
+      <input name="name" autocomplete="name" class="comment_name_input" id="name" type="text" size="32" required value="">
+    </div>
+
+    <div>
+      <label for="email">Email</label><br>
+      <input name="email" autocomplete="email" class="comment_email_input" id="email" type="email" size="32" value=""><br>
+      <span class="note">Only if you want to be notified about my reply.</span>
+    </div>
+
+    <div>
+      <label for="web">Website</label><br>
+      <input name="web" autocomplete="url" placeholder="https://" class="comment_web_input" id="web" type="url" size="32" value="">
+    </div>
+  </div>
+
+  <p>
+    <label for="message">Message <span class="required" title="Required">*</span></label>
+    <span class="note message-note">You can use <a rel="nofollow" href="https://www.markdownguide.org/basic-syntax/">Markdown syntax</a> here.</span><br>
+    <textarea id="message" name="message" cols="64" rows="8" required="required"></textarea><br>
+  </p>
+
+  <p id="comment-submit">
+    <span class="explanation">By submitting your comment, you agree to your comment being published here under the terms of the <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</span>
+    <button type="submit">Submit</button>
+  </p>
+
+  <input name="uri" type="hidden" value="{{ .RelPermalink }}">
+</form>
+{{ end }}

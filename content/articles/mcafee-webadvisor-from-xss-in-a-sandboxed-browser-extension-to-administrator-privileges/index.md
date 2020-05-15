@@ -2,7 +2,6 @@
 title: "McAfee WebAdvisor: From XSS in a sandboxed browser extension to administrator privileges"
 date: 2020-02-25T10:33:02+01:00
 description: "A vulnerability in McAfee WebAdvisor allowed any website to gain administrator privileges. User interaction required: two clicks anywhere on the page."
-image: webadvisor-shattered.jpeg
 categories:
   - security
   - mcafee

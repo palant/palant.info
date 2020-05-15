@@ -1,0 +1,436 @@
+@font-face
+{
+  font-family: "Orkney";
+  font-display: block;
+  src: url('/fonts/Orkney Regular.woff2') format('woff2'),
+       url('/fonts/Orkney Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face
+{
+  font-family: "Orkney";
+  font-display: block;
+  src: url('/fonts/Orkney Regular Italic.woff2') format('woff2'),
+       url('/fonts/Orkney Regular Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face
+{
+  font-family: "Orkney";
+  font-display: block;
+  src: url('/fonts/Orkney Bold.woff2') format('woff2'),
+       url('/fonts/Orkney Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face
+{
+  font-family: "Orkney";
+  font-display: block;
+  src: url('/fonts/Orkney Bold Italic.woff2') format('woff2'),
+       url('/fonts/Orkney Bold Italic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face
+{
+  font-family: "Adelle";
+  font-display: block;
+  src: url('/fonts/Adelle_Reg.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face
+{
+  font-family: "Adelle";
+  font-display: block;
+  src: url('/fonts/Adelle_Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face
+{
+  font-family: "Adelle";
+  font-display: block;
+  src: url('/fonts/Adelle_Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+@font-face
+{
+  font-family: "Adelle";
+  font-display: block;
+  src: url('/fonts/Adelle_BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face
+{
+  font-family: "SometypeMono";
+  font-display: block;
+  src: url('/fonts/SometypeMono-Regular.woff2') format('woff2'),
+       url('/fonts/SometypeMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face
+{
+  font-family: "SometypeMono";
+  font-display: block;
+  src: url('/fonts/SometypeMono-RegularItalic.woff2') format('woff2'),
+       url('/fonts/SometypeMono-RegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face
+{
+  font-family: "SometypeMono";
+  font-display: block;
+  src: url('/fonts/SometypeMono-Bold.woff2') format('woff2'),
+       url('/fonts/SometypeMono-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face
+{
+  font-family: "SometypeMono";
+  font-display: block;
+  src: url('/fonts/SometypeMono-BoldItalic.woff2') format('woff2'),
+       url('/fonts/SometypeMono-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@media print
+{
+  .header, .footer, #comments-form, .related-posts
+  {
+    display: none !important;
+  }
+
+  #main
+  {
+    padding: 0;
+  }
+}
+
+[data-theme="dark"]
+{
+  img
+  {
+    filter: brightness(80%);
+  }
+}
+
+/* Work-around for anchors being hidden below the header. */
+[id]:not(sup)::before
+{
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: calc(38px + 2em);
+  margin: calc(-38px - 2em) 0 0;
+}
+
+#theme-switcher
+{
+  font-size: 140%;
+}
+
+.search
+{
+  display: flex;
+  justify-content: center;
+  color: var(--color-contrast-medium);
+  cursor: pointer;
+  border: 1px solid var(--color-contrast-medium);
+  min-width: 24px;
+  height: 24px;
+  border-radius: 18px;
+  margin: 0 1em;
+  padding: 6px;
+
+  @media (max-width: $maxWidth)
+  {
+    display: none;
+
+    .header.open &
+    {
+      display: flex;
+    }
+
+    .search-input
+    {
+      display: inline;
+      flex: 1;
+    }
+  }
+}
+
+.search-icon
+{
+  width: 24px;
+  height: 24px;
+}
+
+.search-input
+{
+  display: none;
+  margin-left: 0.5em;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  border-width: 0px;
+  outline: none;
+  min-width: 60px;
+  background: transparent;
+  color: var(--color-contrast-higher);
+}
+
+.search-input[data-active]
+{
+  display: inline;
+}
+
+.search-results
+{
+  h1, h2, h3
+  {
+    font-family: $fontFamilyHeadings;
+  }
+}
+
+figure
+{
+  text-align: center;
+
+  &.left
+  {
+    float: left;
+    margin: 0.5em 1em 0 0;
+  }
+
+  figcaption
+  {
+    margin-top: 0;
+    font-size: 80%;
+    color: var(--color-contrast-medium);
+  }
+}
+
+.post .article-image
+{
+  display: inline;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 0;
+}
+
+#tocBox
+{
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 1em;
+  margin: 1em 0;
+
+  & > h4
+  {
+    margin: 0;
+  }
+}
+
+#TableOfContents
+{
+  & > ul
+  {
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  ul
+  {
+    list-style: none;
+  }
+}
+
+/* Comments */
+
+#comments,
+#comments-form
+{
+  h4
+  {
+    font-family: $fontFamilyHeadings;
+  }
+}
+
+.comments-list
+{
+  list-style: none;
+  padding: 0;
+}
+
+.comment
+{
+  padding:.5em 2em;
+  border-top: 1px solid var(--color-contrast-high);
+  border-left: 1px solid var(--color-contrast-high);
+  margin-bottom: 1em;
+
+  .comment-header
+  {
+    margin: 0;
+
+    &:hover
+    {
+      --anchor-opacity: 1;
+    }
+  }
+
+  .comment-author
+  {
+    font-weight: bold;
+  }
+
+  .comment-time
+  {
+    float: right;
+  }
+}
+
+#comments-form
+{
+  .required
+  {
+    color: #c00;
+    font-weight: bold;
+    cursor: help;
+  }
+
+  .note
+  {
+    color: var(--color-contrast-medium);
+    font-size: 80%;
+  }
+
+  .comments-form-header
+  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    & > div
+    {
+      flex: 1;
+    }
+
+    & > div:not(:first-child)
+    {
+      margin-left: 2em;
+    }
+
+    label
+    {
+      font-weight: bold;
+    }
+
+    input
+    {
+      width: 100%;
+      font-size: 120%;
+    }
+  }
+
+  textarea
+  {
+    width: 100%;
+    height: 15em;
+    resize: vertical;
+  }
+
+  .message-note
+  {
+    float: right;
+  }
+
+  #comment-submit
+  {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .explanation
+    {
+      flex: 1;
+      font-size: 80%;
+      margin-right: 4em;
+    }
+
+    button
+    {
+      font-size: 120%;
+    }
+  }
+
+  #comment-error
+  {
+    border-radius: .3em;
+    padding: 1em;
+    background: #fff0f0;
+    color: #000000;
+  }
+
+  #comment-success
+  {
+    border-radius: .3em;
+    padding: 1em;
+    background: #fff3d6;
+    color: #000000;
+  }
+}
+
+#footer
+{
+  &, & a:not(:hover)
+  {
+    color: var(--color-contrast-high);
+  }
+
+  & a
+  {
+    text-decoration: underline;
+    text-decoration-color: var(--color-contrast-low);
+  }
+
+  .site-info
+  {
+    display: none;
+  }
+  .footer-main
+  {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    & > *
+    {
+      margin: 0 1em;
+    }
+  }
+}

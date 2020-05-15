@@ -3,7 +3,6 @@ title: "PfP: Pain-free Passwords security review"
 date: 2019-09-26T14:42:29+02:00
 author: Jane Doe
 description: "This is a guest post by Jane Doe, a security professional who was asked to do a security review of PfP: Pain-free Passwords. The review turned up three issues, one of them security-relevant."
-image: pfp.png
 categories:
   - pfp
   - security

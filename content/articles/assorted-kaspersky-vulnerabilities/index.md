@@ -7,7 +7,6 @@ categories:
 date: 2019-11-27 07:39:29
 description: 'More vulnerabilities in Kaspersky software: websites removing Chrome
   extensions, user tracking with unique identifiers and predictable links.'
-image: kaspersky-shattered.jpeg
 lastmod: '2020-01-05 16:37:39'
 title: Assorted Kaspersky vulnerabilities
 ---

@@ -1,10 +1,20 @@
-<footer role="contentinfo">
-  <div class="license">
-    <a class="iconLink cc-by-sa" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"></a><br>
-    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-  </div>
-  <div>
-    <a href="/impressum/">Legal Notice / Impressum</a><br>
-    <a href="/privacy/">Privacy Policy / Datenschutzerklärung</a><br>
+<footer id="footer" class="footer">
+  <div class="footer-inner">
+    {{ partial "components/socials.html" . }}
+
+    <div class="footer-main">
+      <div>
+        {{ `[Legal Notice / Impressum](/impressum/)` | markdownify }}<br>
+        {{ `[Privacy Policy / Datenschutzerklärung](/privacy/)` | markdownify }}
+      </div>
+      <div>
+        <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license external">
+          <img src="/icons/cc-by-sa.svg" alt="Creative Commons Attribution-ShareAlike 4.0 International License">
+        </a>
+        Content under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license external">CC BY-SA 4.0 license</a><br>
+        Powered by <a href="https://github.com/gohugoio/hugo" rel="external">Hugo</a> |
+        Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" rel="external">MemE</a>
+      </div>
+    </div>
   </div>
 </footer>

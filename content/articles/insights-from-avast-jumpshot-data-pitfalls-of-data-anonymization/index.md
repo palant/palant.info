@@ -2,7 +2,6 @@
 title: "Insights from Avast/Jumpshot data: Pitfalls of data anonymization"
 date: 2020-02-18T10:00:43+01:00
 description: Analyzing a sample of Jumpshot data confirms the suspicion that Avast did indeed sell personally identifiable data of their users, lots of it.
-image: anonymizer.jpeg
 categories:
   - avast
   - security

@@ -1,9 +1,0 @@
-{{ if findRE "\\S(.|\n)*<div id=\"tocBox\">" . 1 -}}
-  {{ safeHTML (replaceRE "<div id=\"tocBox\">(.|\n)*" "" .) -}}
-{{ else -}}
-  {{ if findRE "^\\s*<p\\b(.|\n)*<h\\d" . 1 -}}
-    {{ safeHTML (replaceRE "<h\\d(.|\n)*" "" .) -}}
-  {{ else -}}
-    {{ safeHTML (replaceRE "(^(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>(.|\n)*?<p\\b[^>]*>(.|\n)*?</p>)(.|\n)*" "$1" .) -}}
-  {{ end -}}
-{{ end -}}

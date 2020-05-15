@@ -3,7 +3,6 @@ title: "What data does Xiaomi collect about you?"
 date: 2020-05-08T13:43:47+02:00
 lastmod: 2020-05-08T14:48:47+02:00
 description: A high-level overview of the various events making Xiaomi browsers send your private data to Xiaomi servers - by default, unless you discover an obscure settings combination.
-image: xiaomi-privacy.png
 categories:
 - xiaomi
 - security

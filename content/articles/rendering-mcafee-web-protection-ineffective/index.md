@@ -3,7 +3,6 @@ title: "Rendering McAfee web protection ineffective"
 date: 2019-12-02T09:28:18+01:00
 lastmod: 2019-12-02T18:56:18+01:00
 description: Until recently, McAfee WebAdvisor "blocking" malicious content was easily tricked, even whitelisting websites without the user noticing.
-image: rusty_shield.jpg
 categories:
   - security
   - mcafee

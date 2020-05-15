@@ -36,9 +36,9 @@
 {{- end -}}
 
 {{- if $width -}}
-<img class="article-image" src="{{ $image.RelPermalink }}" alt="{{ $alt }}" {{ with $title }}title="{{ . }}" {{ end }}width="{{ $width }}" height="{{ div (mul $image.Height $width) $image.Width }}" />
+<img src="{{ $image.RelPermalink }}" class="article-image" alt="{{ $alt }}" {{ with $title }}title="{{ . }}" {{ end }}width="{{ $width }}" height="{{ div (mul $image.Height $width) $image.Width }}" />
 {{- else -}}
-<img class="article-image" src="{{ $image.RelPermalink }}" alt="{{ $alt }}" {{ with $title }}title="{{ . }}" {{ end }}width="{{ $image.Width }}" height="{{ $image.Height }}" />
+<img src="{{ $image.RelPermalink }}" class="article-image" alt="{{ $alt }}" {{ with $title }}title="{{ . }}" {{ end }}width="{{ $image.Width }}" height="{{ $image.Height }}" />
 {{- end -}}
 
 {{- with .Inner -}}

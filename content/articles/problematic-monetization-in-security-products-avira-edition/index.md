@@ -8,7 +8,6 @@ date: 2019-12-11 15:22:09
 description: Avira extensions monetize themselves by offering shopping deals, implemented
   in an unusually risky way. Privacy questions aren't really resolved in the privacy
   policy.
-image: avira_protection.png
 lastmod: '2020-02-08 09:52:42'
 title: Problematic monetization in security products, Avira edition
 ---

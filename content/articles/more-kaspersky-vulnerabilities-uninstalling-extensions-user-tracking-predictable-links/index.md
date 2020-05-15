@@ -8,7 +8,6 @@ date: 2019-11-27 12:53:53
 description: Three more vulnerabilities allowed websites to uninstall browser extensions,
   track users across Private Browsing session or even different browsers and control
   some functionality of Kaspersky software.
-image: kaspersky-shattered.jpeg
 lastmod: '2019-11-29 10:10:37'
 title: 'More Kaspersky vulnerabilities: uninstalling extensions, user tracking, predictable
   links'

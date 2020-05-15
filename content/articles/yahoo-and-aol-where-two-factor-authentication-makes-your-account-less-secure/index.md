@@ -7,7 +7,6 @@ categories:
 date: 2020-03-09 07:43:05
 description: Yahoo! and AOL let anybody controlling the phone number gain access to
   the account, even if that phone number was never verified.
-image: yahoo_login.png
 lastmod: '2020-03-28 17:40:32'
 title: 'Yahoo! and AOL: Where two-factor authentication makes your account less secure'
 ---

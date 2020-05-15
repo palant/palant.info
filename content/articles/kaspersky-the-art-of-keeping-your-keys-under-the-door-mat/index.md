@@ -2,7 +2,6 @@
 title: "Kaspersky: The art of keeping your keys under the door mat"
 date: 2019-11-25T09:52:35+01:00
 description: Any website can communicate with the Kaspersky applications. In the past this allowed disabling protection feature or even crashing the antivirus.
-image: doormat.png
 categories:
   - kaspersky
   - security

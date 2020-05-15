@@ -13,7 +13,6 @@
 
     var error = document.createElement("p");
     error.id = "comment-error";
-    error.className = "comments_error";
     error.textContent = text;
 
     var insertionPoint = document.getElementById("comment-submit");
@@ -24,17 +23,17 @@
 
   function showSuccess(text)
   {
-    var parent = document.getElementById("comments");
+    var parent = document.getElementById("comments-form");
     while (parent.firstChild)
       parent.removeChild(parent.firstChild);
 
     var message = document.createElement("p");
-    message.id = "cpreview";
+    message.id = "comment-success";
     message.textContent = text;
     parent.appendChild(message);
   }
 
-  var form = document.getElementById("comments");
+  var form = document.getElementById("comments-form");
   if (!form)
     return;
 

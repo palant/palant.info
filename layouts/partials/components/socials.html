@@ -1,0 +1,13 @@
+{{ if .Site.Params.enableSocials }}
+    {{ with .Site.Data.Socials }}
+        <ul class="socials">
+            {{- range sort .socials "weight" -}}
+                <li class="socials-item">
+                    <a href="{{ .url }}" rel="{{ if in (slice "twitter" "mastodon" "mastodon-nontech") .id }}me {{ end }}external" title="{{ .title }}">
+                        {{- partial "utils/icon.html" (dict "Deliver" $ "name" .icon "class" "social-icon") -}}
+                    </a>
+                </li>
+            {{- end -}}
+        </ul>
+    {{ end }}
+{{ end }}
