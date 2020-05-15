@@ -27,6 +27,7 @@ params:
   displayPostsCount: true
   listWidth: 42
   displayListTitle: true
+  limitEntriesLimit: 5
   listDateFormat: "January 2"
   listDatePosition: "right"
   groupByMonth: false
