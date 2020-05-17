@@ -138,18 +138,16 @@
 }
 
 /* Work-around for anchors being hidden below the header. */
-[id]:not(sup)::before
+p, div, ul, form, main, footer, nav, h1, h2, h3, h4, h5, h6
 {
-  content: "";
-  display: block;
-  visibility: hidden;
-  height: calc(38px + 2em);
-  margin: calc(-38px - 2em) 0 0;
-}
-
-#theme-switcher
-{
-  font-size: 140%;
+  &[id]::before
+  {
+    content: "";
+    display: block;
+    visibility: hidden;
+    height: calc(38px + 2em);
+    margin: calc(-38px - 2em) 0 0;
+  }
 }
 
 .search
