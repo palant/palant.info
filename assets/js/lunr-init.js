@@ -89,7 +89,7 @@
       div.className = "search-results";
 
       var title = document.createElement("h1");
-      title.textContent = "Search results for " + term + ":";
+      title.textContent = "Search results for “" + term + "”:";
       div.appendChild(title);
 
       if (results.length)
