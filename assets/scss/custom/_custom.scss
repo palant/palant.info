@@ -167,10 +167,24 @@
   }
 }
 
+@keyframes spin
+{
+  100%
+  {
+    transform: rotateY(360deg);
+  }
+}
+
 .search-icon
 {
   width: 1em;
   height: 1em;
+
+  .search.active > &
+  {
+
+    animation: spin 1.5s linear infinite;
+  }
 }
 
 .search-input
