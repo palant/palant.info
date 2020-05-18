@@ -144,11 +144,11 @@
   color: var(--color-contrast-medium);
   cursor: pointer;
   border: 1px solid var(--color-contrast-medium);
-  min-width: 24px;
-  height: 24px;
-  border-radius: 18px;
+  min-width: 1em;
+  height: 1em;
+  border-radius: 0.75em;
   margin: 0 1em;
-  padding: 6px;
+  padding: 0.25em;
 
   @media (max-width: $maxWidth)
   {
@@ -169,8 +169,8 @@
 
 .search-icon
 {
-  width: 24px;
-  height: 24px;
+  width: 1em;
+  height: 1em;
 }
 
 .search-input
