@@ -86,7 +86,7 @@
         target.removeChild(target.firstChild);
 
       var div = document.createElement("div");
-      div.className = "search-results";
+      div.id = div.className = "search-results";
 
       var title = document.createElement("h1");
       title.textContent = "Search results for “" + term + "”:";
