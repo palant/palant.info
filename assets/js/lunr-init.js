@@ -5,11 +5,12 @@
   var queuedTerm = null;
 
   var searchElement = document.getElementById("search");
+  var inputElement = document.getElementById("search-input");
   searchElement.addEventListener("submit", function(event)
   {
     event.preventDefault();
 
-    var term = document.getElementById("search-input").value.trim();
+    var term = inputElement.value.trim();
     if (!term)
       return;
 
@@ -25,20 +26,26 @@
     }
   }, false);
 
-  document.getElementsByClassName("search")[0].addEventListener("click", function(event)
+  searchElement.addEventListener("mousedown", function(event)
   {
-    event.preventDefault();
-
-    var input = document.getElementById("search-input");
-    input.setAttribute("data-active", "true");
-    input.focus();
+    if (event.button == 0)
+    {
+      window.setTimeout(function()
+      {
+        inputElement.focus();
+        inputElement.select();
+      }, 0);
+    }
   }, false);
 
-  document.getElementById("search-input").addEventListener("blur", function(event)
+  inputElement.addEventListener("focus", function(event)
   {
-    event.preventDefault();
+    this.setAttribute("data-active", "true");
+  }, false);
 
-    document.getElementById("search-input").removeAttribute("data-active");
+  inputElement.addEventListener("blur", function(event)
+  {
+    this.removeAttribute("data-active");
   }, false);
 
   function searchDone()
