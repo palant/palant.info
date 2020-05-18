@@ -25,7 +25,7 @@
     }
   }, false);
 
-  document.getElementsByClassName("search-icon")[0].addEventListener("click", function(event)
+  document.getElementsByClassName("search")[0].addEventListener("click", function(event)
   {
     event.preventDefault();
 
