@@ -12,7 +12,6 @@ params:
   navHeight: "10em"
   siteBrandFontSize: 1
   siteBrandFontColor: "var(--color-contrast-high)"
-  headerFallbackWidth: "32em"
   enableMenu: true
   displayMenuInHome: true
   activeInSection: true
@@ -52,7 +51,7 @@ params:
   duration: 0.5
   primaryColorLight: "220, 90%, 56%"
   primaryColorDark: "201, 65%, 62%"
-  postWidth: 45
+  postWidth: 42
   original: true
   enablePostMeta: true
   enablePostMetaInHome: true
@@ -102,6 +101,7 @@ params:
 
   enableFingerprint: true
   enableHighlight: true
+  enableLunrSearch: true
 
   fofPoster: ""
 author:
@@ -137,15 +137,16 @@ outputFormats:
   MozillaRSS:
     baseName: pmo
     mediaType: application/rss+xml
-  HTML:
-    isHTML: false
+  SearchIndex:
+    baseName: search
+    mediaType: application/json
 
 outputs:
   home:
     - HTML
-    - JSON
     - MainRSS
     - MozillaRSS
+    - SearchIndex
 
 disableKinds:
   - RSS
@@ -174,6 +175,8 @@ menu:
       post: "user-circle"
     - identifier: "theme-switcher"
       weight: 5
+    - identifier: "search"
+      weight: 6
 
 
 markup:

@@ -156,6 +156,12 @@
     {{ end }}
 {{ end }}
 
+{{ if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") }}
+    $defaultTheme: dark;
+{{ else }}
+    $defaultTheme: light;
+{{ end }}
+
 @import "themes/light";
 
 // Dark Mode
@@ -426,6 +432,14 @@ $fofPoster: url({{ $fofPoster }});
     {{ end }}
 {{ end }}
 
+// Lunr search
+
+{{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableLunrSearch }}
+    $enableLunrSearch: true;
+    @import "components/search";
+{{ else }}
+    $enableLunrSearch: false;
+{{ end }}
 
 // Responsive
 

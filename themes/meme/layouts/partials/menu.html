@@ -20,10 +20,20 @@
             {{ else if eq .Identifier "lang-switcher" }}
                 {{ if and $.Site.IsMultiLingual $.Site.Params.enableLangToggle }}
                     {{ if eq $.Site.Params.headerLayout "flex" }}
-                        <li class="menu-item">
-                            {{ partial "components/multilingual.html" $ctx }}
-                        </li>
+                        {{ $switcher := partial "components/multilingual.html" $ctx }}
+                        {{ with $switcher }}
+                            <li class="menu-item">
+                                {{ . }}
+                            </li>
+                        {{ end }}
                     {{ end }}
+                {{ end }}
+            {{ else if eq .Identifier "search" }}
+                {{ if and $.Site.Params.enableLunrSearch (eq $.Site.Params.headerLayout "flex") }}
+                    {{- $iconName := (string .Post) -}}
+                    <li class="menu-item search-item">
+                        {{ partial "components/search.html" (dict "Deliver" $ctx "iconName" $iconName) }}
+                    </li>
                 {{ end }}
             {{ else }}
                 <li class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}">

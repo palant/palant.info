@@ -1,6 +1,0 @@
-{{ $scratch := newScratch -}}
-{{ $scratch.Add "index" slice -}}
-{{ range .Site.RegularPages -}}
-  {{ $scratch.Add "index" (dict "uri" .RelPermalink "title" .Title "description" .Description "categories" .Params.categories "content" (.Plain | htmlUnescape)) -}}
-{{ end -}}
-{{ $scratch.Get "index" | jsonify -}}
