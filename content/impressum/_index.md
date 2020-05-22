@@ -13,7 +13,7 @@ Germany
 
 ## Contact Information
 
-E-Mail: <ydublog@palant.de><br>
+E-Mail: <ydublog@palant.info><br>
 Internet address: <https://palant.info/>
 
 ## Disclaimer
