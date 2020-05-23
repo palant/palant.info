@@ -24,7 +24,7 @@
         {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
         {{ end }}
         <guid>{{ .Permalink }}</guid>
-        <description>{{ replaceRE ` (href|src)="#` (printf ` $1="%s#` .Permalink) (replaceRE ` (href|src)="/` (printf ` $1="%s` .Site.BaseURL) .Content) | html }}</description>
+        <description>{{ partial "utils/make-links-absolute.html" (dict "Deliver" . "content" .Content) | html }}</description>
       </item>
       {{ end }}
     </channel>
