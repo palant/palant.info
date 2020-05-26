@@ -9,7 +9,7 @@
         <article class="comment" itemprop="comment">
           <div class="comment-header">
             <a href="#c{{.Params.id}}" id="c{{.Params.id}}" class="anchor-link" itemprop="url">
-              {{ partial "utils/icon.html" (dict "Deliver" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
+              {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
             </a>
             <span class="comment-author" itemprop="creator">
               {{- with .Params.authorUrl -}}<a rel="nofollow" href="{{.}}">{{- end -}}

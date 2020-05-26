@@ -1,2 +1,1 @@
-{{- $script := resources.Get "js/lunr-search.js" | resources.ExecuteAsTemplate (printf "%s/js/lunr-search.js" .Lang) . -}}
-{{- .Scratch.Add "script" (slice $script) -}}
+{{- return (slice "js/lunr.js" "js/lunr-search.js") -}}

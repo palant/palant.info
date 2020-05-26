@@ -1,5 +1,5 @@
 <span class="post-meta-item comment-count">
-  {{- partial "utils/icon.html" (dict "Deliver" . "name" "comments" "class" "post-meta-icon") -}}&nbsp;
+  {{- partial "utils/icon.html" (dict "$" . "name" "comments" "class" "post-meta-icon") -}}&nbsp;
   {{- $count := len (.Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*") -}}
   <a href="{{ .RelPermalink }}#comments">
     {{- $count -}}&nbsp;
