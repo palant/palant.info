@@ -7,7 +7,7 @@ date: 2019-08-19 07:40:50
 description: Despite many warnings, Kaspersky products will still snoop inside HTTPS
   connections. This weakens security considerably, with some fallout presented here.
 lastmod: '2020-01-13 11:03:41'
-title: Kaspersky in the Middle - what could possibly go wrong?
+title: Kaspersky in the Middle -- what could possibly go wrong?
 ---
 
 Roughly a decade ago I read an article that asked antivirus vendors to stop intercepting encrypted HTTPS connections, this practice actively hurting security and privacy. As you can certainly imagine, antivirus vendors agreed with the sensible argument and today no reasonable antivirus product would even consider intercepting HTTPS traffic. Just kidding... Of course they kept going, and so two years ago a study was published detailing the [security issues introduced by interception of HTTPS connections](https://www.zdnet.com/article/google-and-mozillas-message-to-av-and-security-firms-stop-trashing-https/). Google and Mozilla once again urged antivirus vendors to stop. Surely this time it worked?
