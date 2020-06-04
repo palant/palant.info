@@ -137,6 +137,14 @@
   }
 }
 
+.post-body
+{
+  a
+  {
+    text-decoration-color: var(--color-contrast-medium);
+  }
+}
+
 figure
 {
   text-align: center;
@@ -337,7 +345,7 @@ figure
   & a
   {
     text-decoration: underline;
-    text-decoration-color: var(--color-contrast-low);
+    text-decoration-color: var(--color-contrast-medium);
   }
 
   .footer-main

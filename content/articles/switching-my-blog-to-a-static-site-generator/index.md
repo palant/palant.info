@@ -1,6 +1,7 @@
 ---
 categories:
 - website
+- hugo
 date: "2019-04-04T12:39:23+02:00"
 description: My blog is now being built by a static site generator. I explain how
   I kept search and comments functionality without relying on third parties.
