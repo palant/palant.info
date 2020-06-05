@@ -137,6 +137,16 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme])
+  {
+    img
+    {
+      filter: brightness(80%);
+    }
+  }
+}
+
 .post-body
 {
   a
