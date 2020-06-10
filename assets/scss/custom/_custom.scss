@@ -129,24 +129,6 @@
   }
 }
 
-:root[data-theme="dark"]
-{
-  img
-  {
-    filter: brightness(80%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme])
-  {
-    img
-    {
-      filter: brightness(80%);
-    }
-  }
-}
-
 .post-body
 {
   a
@@ -176,14 +158,13 @@ figure
 .post .article-image
 {
   display: inline;
-  border: 1px solid #ccc;
   border-radius: 10px;
   margin: 0;
 }
 
 #tocBox
 {
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-contrast-lower);
   border-radius: 3px;
   padding: 1em;
   margin: 1em 0;
