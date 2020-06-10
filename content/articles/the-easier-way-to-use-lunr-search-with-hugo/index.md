@@ -13,6 +13,8 @@ Now if you want to do the same, you better don't waste your time on the [solutio
 
 Eventually I realized that Hugo is perfectly capable of generating a search index by itself. I recently [contributed the necessary code](https://github.com/reuixiy/hugo-theme-meme/pull/165) to the [MemE theme](https://themes.gohugo.io/hugo-theme-meme/), so by using this theme you get search capability "for free." But in case you don't want to switch to a new theme right now, I'll walk you through the necessary changes.
 
+{{< toc >}}
+
 ## Generating the search index
 
 Hugo can generate the search index the same way it generates RSS feeds for example, it's just another output format. You merely need to add a template for it, e.g. `layouts/index.searchindex.json`:
