@@ -45,7 +45,7 @@
   {{ end }}
 </section>
 
-<form id="comments-form" action="#" data-path="{{ .File.Dir }}">
+<form id="comments-form" action="#" method="POST" data-path="{{ .File.Dir }}" hidden>
   <h4>Leave a comment</h4>
   <div class="comments-form-header">
     <div>

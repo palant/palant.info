@@ -37,6 +37,7 @@ window.addEventListener("DOMContentLoaded", function initComments()
   if (!form)
     return;
 
+  form.removeAttribute("hidden");
   form.addEventListener("submit", function(event)
   {
     event.preventDefault();
