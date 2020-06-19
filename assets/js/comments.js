@@ -1,4 +1,4 @@
-(function initComments()
+window.addEventListener("DOMContentLoaded", function initComments()
 {
   function hideError()
   {
@@ -77,4 +77,4 @@
 
     request.send(new FormData(form));
   }, false);
-})();
+}, {once: true});
