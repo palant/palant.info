@@ -1,0 +1,8 @@
+{
+  "id": "000001"
+}
+
+<p>First of all, please don't hash passwords using SHA-256, this offers very little protection against bruteforce attacks. At the very least you should use bcrypt with a reasonable work factor, scrypt or Argon2 are better if you have the necessary server-side resources. Random salt for each user as well please. This way, if your data leaks the attackers will have a much harder time recovering the original passwords from it.</p>
+<p>In case you are thinking that you aren't storing the user's password anywhere, not even in hashed form -- yes, you are, indirectly. A potential bruteforce attack would go against these encrypted keys. A password that can decrypt the key is the correct one.</p>
+<p>What you have here is encryption at rest. It makes sense in case an unauthorized person gains access to the raw data but isn't able to modify server-side code. What it cannot protect against is full server compromise of course -- somebody able to modify the code will intercept admin password hash and use it to decrypt everything.</p>
+<p>But I agree with you that SRP or PAKE won't offer any additional protection in this scenario, that's the whole point of this blog post.</p>

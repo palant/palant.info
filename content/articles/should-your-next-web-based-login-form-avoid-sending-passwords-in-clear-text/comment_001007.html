@@ -1,0 +1,19 @@
+{
+  "publishDate": "2020-06-19 07:40:14",
+  "author": "Adam",
+  "authorUrl": "",
+  "id": "001007"
+}
+
+<p>Hey Wladimir, I have been developing an online application system for a small non-profit for international students to fill out application forms for our programs, in which we ask for various sensitive information that needs to be stored securely. The project is still in development phase.</p>
+<p>What are your thoughts on our current security model below?</p>
+<p>Given your thoughts in this article (and other places), would I be correct to assume that this model is more secure than any SRP or PAKE browser-based implementation out there (such as Thinbus SRP)?</p>
+<p>Our Current Security Model:</p>
+<ul>
+<li>when registering, client is forced to create strong password for account</li>
+<li>plaintext password is then sent to server from client over HTTPS</li>
+<li>server immediately hashes pw with SHA-256, and pw hash is used to encrypt/decrypt a user-specific encryption key (randomly generated via libsodium) that unlocks the user's application data</li>
+<li>our org's registrar admins will also have a (very strong) password (hashed) that can decrypt this same encryption key to access user application data once the user has submitted their app form</li>
+<li>the admin pw hash is also used to do password resets, since we don't store the user's password anywhere on the server to do an automatic reset</li>
+</ul>
+<p>Thank you for your helpful articles and comments, I am learning a lot!</p>
