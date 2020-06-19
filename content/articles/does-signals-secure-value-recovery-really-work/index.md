@@ -1,11 +1,14 @@
 ---
-title: "Does Signal's \"secure value recovery\" really work?"
-date: 2020-06-16T14:20:55+02:00
-description: Signal messenger claims to provide secure backup uploads secured with a 4 digit PIN. This cannot really work, and Signal's solution doesn't seem watertight either.
 categories:
-  - security
-  - crypto
-  - signal
+- security
+- crypto
+- signal
+date: 2020-06-16 14:20:55+02:00
+description: Signal messenger claims to provide secure backup uploads secured with
+  a 4 digit PIN. This cannot really work, and Signal's solution doesn't seem watertight
+  either.
+lastmod: '2020-06-19 07:36:55'
+title: Does Signal's "secure value recovery" really work?
 ---
 
 If you care about privacy, [Signal messenger](https://signal.org/) is currently the gold standard of how messenger services should be build. It provides strong end-to-end encryption, without requiring any effort on the user's side. It gives users an easy way to validate connection integrity via another channel. Its source code is available for anybody to inspect, and it's generally well-regarded by experts.
