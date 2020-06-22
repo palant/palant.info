@@ -1,0 +1,15 @@
+{
+  "publishDate": "2020-06-22 00:54:01",
+  "author": "Adam",
+  "authorUrl": "",
+  "id": "001008"
+}
+
+<blockquote>
+<p>...please don't hash passwords using SHA-256...At the very least you should use bcrypt with a reasonable work factor, scrypt or Argon2 are better if you have the necessary server-side resources. Random salt for each user as well please.
+I'll admit I didn't do my research on this one, so I will definitely take this advice and implement Argon2</p>
+<p>What it cannot protect against is full server compromise of course...
+Indeed. I suppose I could force the user to store their encrypted keys and data on their own computer's file system, but since all crypto would still be server-side, that would probably only increase the chances of a data leak via logs or the very unlikely MITM/state-actor interception over HTTPS, and wouldn't really do anything to mitigate a full server compromise. Not to mention it would degrade the user experience a bit. What are your thoughts on this?</p>
+</blockquote>
+<p>Something that I forgot to mention originally was that I also am storing an encrypted version of the user's password hash in the user's browser cookies after successful login (destroyed at logout). The key used to encrypt it is a server-wide key stored in plaintext in a config file in a private directory. This key is only used for encrypting/decrypting the user's password hash for further decryption of the user's data key so they can edit their application forms. Is this secure?</p>
+<p>Thank you for your time and advice!</p>

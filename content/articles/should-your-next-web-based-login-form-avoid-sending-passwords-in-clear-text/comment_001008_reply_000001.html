@@ -1,0 +1,7 @@
+{
+  "id": "000001"
+}
+
+<p>You cannot protect against a full server compromise as long as crypto is done on the server side. And even if you were able to move all crypto to the client side, doing so would make little sense as long as "client side" means a web page - the server can change the JavaScript code running there at any time. So this is simply something where you have to keep in mind that you cannot fix it. It matters because it means that there is no point protecting against this scenario elsewhere either.</p>
+<p>That's also why I think that encrypting cookie values makes little sense, as long as the server doesn't store the cookies anywhere (logs, database, any other kind of permanent storage). Cookies being sent to the server is pretty much the same as the password itself being sent, no reason to treat them differently.</p>
+<p>Maybe you are concerned about the cookies being compromised on the user's machine. But you aren't actually protecting against this scenario -- whoever manages to steal cookies doesn't need to decrypt them. They can just use the encrypted cookie and the server will decrypt them. So if that's your concern, you better use session-only cookies if possible (prevents them from being stored on disk) and you should set HttpOnly attribute (prevents them from being read out by malicious JavaScript code). Plus the usual recommendation of using HTTPS along with Strict-Transport-Security, making sure that cookies cannot be intercepted on the network level.</p>
