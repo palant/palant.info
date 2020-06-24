@@ -7,7 +7,7 @@ date: 2020-06-16 14:20:55+02:00
 description: Signal messenger claims to provide secure backup uploads secured with
   a 4 digit PIN. This cannot really work, and Signal's solution doesn't seem watertight
   either.
-lastmod: '2020-06-19 07:36:55'
+lastmod: '2020-06-24 19:10:58'
 title: Does Signal's "secure value recovery" really work?
 ---
 
