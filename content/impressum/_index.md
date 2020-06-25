@@ -10,7 +10,7 @@ palant.info website is being maintained by **Wladimir Palant**.
 
 ## Contact Information
 
-E-Mail: <ydublog@palant.info><br>
+E-Mail: <oppblog@palant.info><br>
 Web: <https://palant.info/>
 
 ## Postal address
