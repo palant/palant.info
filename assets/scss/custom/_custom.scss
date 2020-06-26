@@ -213,6 +213,17 @@ figure
   border-left: 1px solid var(--color-contrast-high);
   margin-bottom: 1em;
 
+  &, & a:not(:hover)
+  {
+    color: var(--color-contrast-high);
+  }
+
+  & a
+  {
+    text-decoration: underline;
+    text-decoration-color: var(--color-contrast-medium);
+  }
+
   .comment-header
   {
     margin: 0;
