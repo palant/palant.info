@@ -1,11 +1,14 @@
 ---
-title: "Dismantling BullGuard Antivirus' online protection"
-date: 2020-07-06T15:02:58+02:00
-description: BullGuard Secure Browser contained multiple XSS vulnerabilities. Additionally, a vulnerability in BullGuard Antivirus rendered protection against malicious websites ineffective.
 categories:
-  - security
-  - bullguard
-  - antivirus
+- security
+- bullguard
+- antivirus
+date: 2020-07-06 15:02:58+02:00
+description: BullGuard Secure Browser contained multiple XSS vulnerabilities. Additionally,
+  a vulnerability in BullGuard Antivirus rendered protection against malicious websites
+  ineffective.
+lastmod: '2020-07-07 07:50:24'
+title: Dismantling BullGuard Antivirus' online protection
 ---
 
 Just like so many other antivirus applications, BullGuard antivirus promises to protect you online. This protection consists of the three classic components: protection against malicious websites, marking of malicious search results and BullGuard Secure Browser for your special web surfing needs. As so often, this functionality comes with issues of its own, some being unusually obvious.
