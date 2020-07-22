@@ -1,0 +1,12 @@
+{
+  "publishDate": "2020-07-21 23:41:40",
+  "author": "ADA",
+  "authorUrl": "",
+  "id": "001009"
+}
+
+<p>I'd like to expand on what 'a' and 'D' said. While Wladimir is correct that you can solve the issue in 'a' using other means, the benefit to never sending the password over the wire in plaintext is that you can implement it <strong>once</strong> and not have to worry about properly configuring everything that may log the HTTP request to successfully mask out passwords.</p>
+<p>With modern web infrastructure there may be a half dozen to a dozen points where an HTTP request might be logged, some of them not under your control. APMs running on the client may log requests, server-side APMs, web server logs, load balancer logs, logs on the web server itself, etc. Then you get into things like if your traffic passes through a CDN like CloudFront to your origin so that cached responses can be served faster. Again, the CDN could log an HTTP request which includes a password.</p>
+<p>So approach A is configure all of those to mask out passwords, and hope there's no bugs (which of course there will be), and that the software doesn't change and break your masking configuration. Or approach B where you don't send the password in clear text to begin with, and then you don't have to lose sleep over something getting misconfigured and logging plaintext passwords like Facebook.</p>
+<p>And there's yet another recent example of this, with logs for multiple VPN services being exposed due to a misconfigured Elasticsearch (https://www.vpnmentor.com/blog/report-free-vpns-leak/). Cleartext passwords were among those things in the logs.</p>
+<p>In a world where requests may be logged in multiple places and by third parties, it's probably a good practice to review how to keep data secret between just the client and the intended recipient. Relying on just HTTPS solves only the leg between the client and <em>a</em> server, but provides no guarantee that the data will remain known only to the final destination server, and won't be logged along the way. With no mention of employees of one of those other services or intermediary servers going rogue like what may have happened in the recent mass compromise of verified Twitter accounts.</p>
