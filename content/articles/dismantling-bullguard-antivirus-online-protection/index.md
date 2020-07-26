@@ -7,7 +7,7 @@ date: 2020-07-06 15:02:58+02:00
 description: BullGuard Secure Browser contained multiple XSS vulnerabilities. Additionally,
   a vulnerability in BullGuard Antivirus rendered protection against malicious websites
   ineffective.
-lastmod: '2020-07-07 07:50:24'
+lastmod: '2020-07-26 09:51:39'
 title: Dismantling BullGuard Antivirus' online protection
 ---
 
