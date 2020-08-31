@@ -1,11 +1,14 @@
 ---
-title: "A grim outlook on the future of browser add-ons"
-date: 2020-08-31T13:04:10+02:00
-description: Mozilla limiting users’ choice to 9 add-ons on mobile is only the latest development. Add-on support is degrading across all browsers and will continue to do so.
 categories:
-  - mozilla
-  - add-ons
-  - google
+- mozilla
+- add-ons
+- google
+date: 2020-08-31 13:04:10+02:00
+description: Mozilla limiting users’ choice to 9 add-ons on mobile is only the latest
+  development. Add-on support is degrading across all browsers and will continue to
+  do so.
+lastmod: '2020-08-31 19:03:13'
+title: A grim outlook on the future of browser add-ons
 ---
 
 A few days ago Mozilla [announced the release of their new Android browser](https://blog.mozilla.org/blog/2020/08/25/introducing-a-new-firefox-for-android-experience/). This release, dubbed “Firefox Daylight,” is supposed to achieve nothing less than to “revolutionize mobile browsing.” And that also goes for browser extensions of course:
