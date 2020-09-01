@@ -1,12 +1,15 @@
 ---
-title: "PfP: Pain-free Passwords security review"
-date: 2019-09-26T14:42:29+02:00
 author: Jane Doe
-description: "This is a guest post by Jane Doe, a security professional who was asked to do a security review of PfP: Pain-free Passwords. The review turned up three issues, one of them security-relevant."
 categories:
-  - pfp
-  - security
-  - password-managers
+- pfp
+- security
+- password-managers
+date: 2019-09-26 14:42:29+02:00
+description: 'This is a guest post by Jane Doe, a security professional who was asked
+  to do a security review of PfP: Pain-free Passwords. The review turned up three
+  issues, one of them security-relevant.'
+lastmod: '2020-09-01 10:05:53'
+title: 'PfP: Pain-free Passwords security review'
 ---
 
 *This is a guest post by Jane Doe, a security professional who was asked to do a security review of PfP: Pain-free Passwords. While publishing the results under her real name would have been preferable, Jane has good reasons to avoid producing content under her own name.*
