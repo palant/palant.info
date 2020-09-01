@@ -7,7 +7,7 @@ date: 2020-08-31 13:04:10+02:00
 description: Mozilla limiting users’ choice to 9 add-ons on mobile is only the latest
   development. Add-on support is degrading across all browsers and will continue to
   do so.
-lastmod: '2020-08-31 19:03:13'
+lastmod: '2020-09-01 06:59:13+02:00'
 title: A grim outlook on the future of browser add-ons
 ---
 
@@ -44,6 +44,15 @@ This might also be the reason why extension developers haven't been warned about
 I definitely expect Mozilla to add more add-ons later. But it will be the ones that users are most vocal about. Niche add-ons with only few users? Bad luck for you…
 
 What this also means: the current state of the add-on ecosystem is going to be preserved forever. If only popular add-ons are allowed, other add-ons won't get a chance to become popular. And since every add-on has to start small, developing anything new is a wasted effort.
+
+**Update** (2020-09-01): There are some objections from the Mozilla community stating that I'm overinterpreting this. Yes, maybe I am. Maybe add-ons are still a priority to Mozilla. So much that for this release they:
+
+* declared gatekeeping add-ons a virtue rather than a known limitation (“revamped the extensions experience”).
+* didn't warn add-on developers about the user complains to be expected, leaving it to them to figure out what's going on.
+* didn't bother setting a timeline when the gatekeeping is supposed to end and in fact didn't even state unambiguously that ending it is the plan.
+* didn't document the current progress anywhere, so nobody knows what works and what doesn't in terms of extension APIs (still [work in progress](https://github.com/mozilla-mobile/fenix/issues/14034) at the time of writing).
+
+I totally get it that the development team has more important issues to tackle now that their work was made available to a wider audience. I'm merely not very confident that once they have all these issues sorted out they will still go back to the add-on support and fix it. Despite all the best intentions, there is nothing as permanent as a temporary stopgap solution.
 
 ## Isn't the state of affairs much better on the desktop?
 
