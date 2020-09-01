@@ -1,0 +1,14 @@
+{
+  "publishDate": "2020-09-01 07:01:12",
+  "author": "PJ",
+  "authorUrl": "",
+  "id": "000004"
+}
+
+<p>These two threads are the clearest messaging I've been able to find:</p>
+<p>https://github.com/mozilla-mobile/fenix/issues/11308#issuecomment-642075690, in which a Mozilla dev states: "We will likely never support sideloading on Release (or even Beta)"</p>
+<p>And the related issue: https://github.com/mozilla-mobile/fenix/issues/14034, which suggests that Mozilla has finally decided that maybe allowing at least addon devs/Nightly users to load non-whitelisted addons might be a useful idea.</p>
+<p>See also this PR: https://github.com/mozilla-mobile/android-components/pull/8052, which allows the internal addon manager component to be pointed at other "collections" on AMO.</p>
+<p>So it sounds like Moz has committed to the idea that users who want to use the stable release will not have permission to install their own addons.</p>
+<p>Fortunately, once the code is in Nightly it won't be hard to make a unrestricted fork of Stable.  Even now, with the minimal case of choosing a different list from AMO, the PR for android-components is tiny, and the changes to expose it as a pref shouldn't be much larger.</p>
+<p>It's just sad to see where Moz's priorities have changed.</p>

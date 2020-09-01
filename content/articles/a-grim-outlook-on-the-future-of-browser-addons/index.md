@@ -7,7 +7,7 @@ date: 2020-08-31 13:04:10+02:00
 description: Mozilla limiting users’ choice to 9 add-ons on mobile is only the latest
   development. Add-on support is degrading across all browsers and will continue to
   do so.
-lastmod: '2020-09-01 06:41:18'
+lastmod: '2020-09-01 07:21:31'
 title: A grim outlook on the future of browser add-ons
 ---
 
