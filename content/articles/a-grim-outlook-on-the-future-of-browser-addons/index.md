@@ -52,7 +52,7 @@ What this also means: the current state of the add-on ecosystem is going to be p
 * didn't bother setting a timeline when the gatekeeping is supposed to end and in fact didn't even state unambiguously that ending it is the plan.
 * didn't document the current progress anywhere, so nobody knows what works and what doesn't in terms of extension APIs (still [work in progress](https://github.com/mozilla-mobile/fenix/issues/14034) at the time of writing).
 
-I totally get it that the development team has more important issues to tackle now that their work was made available to a wider audience. I'm merely not very confident that once they have all these issues sorted out they will still go back to the add-on support and fix it. Despite all the best intentions, there is nothing as permanent as a temporary stopgap solution.
+I totally get it that the development team has more important issues to tackle now that their work has been made available to a wider audience. I'm merely not very confident that once they have all these issues sorted out they will still go back to the add-on support and fix it. Despite all the best intentions, there is nothing as permanent as a temporary stopgap solution.
 
 ## Isn't the state of affairs much better on the desktop?
 
