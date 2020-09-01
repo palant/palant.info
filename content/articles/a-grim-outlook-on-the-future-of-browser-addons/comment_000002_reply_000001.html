@@ -1,0 +1,6 @@
+{
+  "id": "000001"
+}
+
+<p>It seems that you are right, I didn't realize that. This checkbox was implemented back when compatibility was declared in the add-on manifest for each Gecko-based application separately. So checking “all” was usually the right thing to do, it would allow any application from the add-on manifest. But with WebExtensions Mozilla dropped the ball here – rather than declaring compatibility per application, it's a single “gecko” entry in the add-on manifest now. But the AMO user interface didn't adapt to this change.</p>
+<p>If this is indeed the reasoning here, then it's rather sad. It would have been fairly easy for Mozilla to flag extensions using APIs that aren't implemented on mobile.</p>
