@@ -1,0 +1,13 @@
+{
+  "publishDate": "2020-09-03 16:44:22",
+  "author": "superkuh",
+  "authorUrl": "http://superkuh.com/welcome-to-webmentions-wladimir.html",
+  "type": "mention",
+  "title": "It's good to see webmention spreading.",
+  "id": "000002"
+}
+
+<p>I subscribe to your RSS feed and saw you <a href="https://palant.info/2020/09/03/added-webmention-support-to-the-blog/" rel="nofollow">implemented webmention</a> into your neat static comment system. I figured I'd give you a webmention reply so you can test how things work in the wild.</p>
+<p>I'm submitting it via a curl command. I initially tried to use HTTP but apparently you've disabled that with a 301 redirect to HTTPS. HTTPS only does block some older machines and means you need to get a third party's permission (the benign dictator cert authority) to host your website. Upsides and downsides... anyway,</p>
+<pre>curl -A "superkuh flashing a laser pointer by hand down a fiber optic cable" https://palant.info/mention/submit -d "source=http://superkuh.com/welcome-to-webmentions-wladimir.html" -d "target=https://palant.info/2020/09/03/added-webmention-support-to-the-blog/"</pre>
+		<p>I review my webmention batches manually too. But since I knew it was going to be manual I figured why implement anything and instead I just log all POSTs to the webmention endpoint (with disk space and rate filtering via nginx config). It's easy to scan them manually by eye and sort out the Pingback and other POST spam. Some of it is interesting in a car-wreck sort of way too.</p>
