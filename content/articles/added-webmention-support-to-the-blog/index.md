@@ -1,7 +1,7 @@
 ---
 title: "Added Webmention support to the blog"
 date: 2020-09-03T13:43:19+02:00
-description: I extended the comment system of this blog to process Webmention request. These go through the same premoderation process and will appear as comments if approved.
+description: I extended the comment system of this blog to process Webmention requests. These go through the same pre-moderation process and will appear as comments if approved.
 categories:
 - website
 - hugo
