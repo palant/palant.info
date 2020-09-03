@@ -1,10 +1,13 @@
 ---
-title: "Added Webmention support to the blog"
-date: 2020-09-03T13:43:19+02:00
-description: I extended the comment system of this blog to process Webmention requests. These go through the same pre-moderation process and will appear as comments if approved.
 categories:
 - website
 - hugo
+date: 2020-09-03 13:43:19+02:00
+description: I extended the comment system of this blog to process Webmention requests.
+  These go through the same pre-moderation process and will appear as comments if
+  approved.
+lastmod: '2020-09-03 16:23:21'
+title: Added Webmention support to the blog
 ---
 
 A discussion on Mastodon convinced me to take a look at the [Webmention standard](https://www.w3.org/TR/webmention/), and I even implemented a receiver for this blog. Essentially, this is a newer variant of the [Pingback](https://en.wikipedia.org/wiki/Pingback) mechanism: when one blog links to another, the software behind one blog will notify the other. For my blog, I implemented this as part of the commenting mechanism, and approved Webmentions will appear as comments with minimally different representation.
