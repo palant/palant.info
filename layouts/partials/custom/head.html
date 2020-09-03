@@ -1,3 +1,4 @@
 {{ if and (eq .Section "articles") (eq (len .Pages) 0) }}
-<link href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/mention/submit" rel="webmention" />
+<link href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/mention/submit" rel="webmention">
+<link href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/mention/pingback" rel="pingback">
 {{ end }}
