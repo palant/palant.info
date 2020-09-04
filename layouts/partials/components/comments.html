@@ -7,8 +7,8 @@
       {{ range sort . ".Name" }}
       <li>
         <article class="comment u-comment {{ if eq .Params.type "mention" }}h-cite{{ else }}h-entry{{ end }}" itemprop="comment">
-          <div class="comment-header">
-            <a href="#c{{.Params.id}}" id="c{{.Params.id}}" class="anchor-link u-url" itemprop="url">
+          <div id="c{{.Params.id}}" class="comment-header">
+            <a href="#c{{.Params.id}}" class="anchor-link u-url" itemprop="url">
               {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
             </a>
             <span class="comment-author p-author h-card" itemprop="creator">
@@ -30,7 +30,10 @@
             {{ with $.Resources.Match (printf "comment_%s_reply_*" .Params.id) }}
               {{ range sort . ".Name" }}
                 <div class="comment u-comment h-entry">
-                  <div class="comment-header">
+                  <div id="c{{.Params.id}}_reply" class="comment-header">
+                    <a href="#c{{.Params.id}}_reply" class="anchor-link u-url" itemprop="url">
+                      {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
+                    </a>
                     <span class="comment-author p-author h-card">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}</span>
                     {{ with .PublishDate }}
                       <time class="comment-time dt-published" datetime="{{.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.UTC.Format "2006-01-02 15:04"}}</time>
