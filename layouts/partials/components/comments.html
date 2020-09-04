@@ -6,7 +6,7 @@
     <ul class="comments-list" itemscope itemtype="http://schema.org/UserComments">
       {{ range sort . ".Name" }}
       <li>
-        <article class="comment h-entry" itemprop="comment">
+        <article class="comment u-comment {{ if eq .Params.type "mention" }}h-cite{{ else }}h-entry{{ end }}" itemprop="comment">
           <div class="comment-header">
             <a href="#c{{.Params.id}}" id="c{{.Params.id}}" class="anchor-link u-url" itemprop="url">
               {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
@@ -29,7 +29,7 @@
             {{ .Content }}
             {{ with $.Resources.Match (printf "comment_%s_reply_*" .Params.id) }}
               {{ range sort . ".Name" }}
-                <div class="comment h-entry">
+                <div class="comment u-comment h-entry">
                   <div class="comment-header">
                     <span class="comment-author p-author h-card">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}</span>
                     {{ with .PublishDate }}
