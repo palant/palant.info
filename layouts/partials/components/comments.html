@@ -7,6 +7,7 @@
       {{ range sort . ".Name" }}
       <li>
         {{ $id := .Name | replaceRE `\..*` "" | replaceRE `^comment_` "c" }}
+        {{ $replyTo := cond (eq .Params.type "mention") .Params.authorUrl "" }}
         <article class="comment u-comment {{ if eq .Params.type "mention" }}h-cite{{ else }}h-entry{{ end }}" itemprop="comment">
           <div id="{{$id}}" class="comment-header">
             <a href="#{{$id}}" class="anchor-link u-url" itemprop="url">
@@ -36,6 +37,9 @@
                     <a href="#{{$id}}" class="anchor-link u-url" itemprop="url">
                       {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
                     </a>
+                    {{ with $replyTo }}
+                      <a href="{{$replyTo}}" class="u-in-reply-to" rel="nofollow" hidden></a>
+                    {{ end }}
                     <span class="comment-author p-author h-card">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}</span>
                     {{ with .PublishDate }}
                       <time class="comment-time dt-published" datetime="{{.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.UTC.Format "2006-01-02 15:04"}}</time>
