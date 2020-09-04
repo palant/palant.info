@@ -6,37 +6,39 @@
     <ul class="comments-list" itemscope itemtype="http://schema.org/UserComments">
       {{ range sort . ".Name" }}
       <li>
-        <article class="comment" itemprop="comment">
+        <article class="comment h-entry" itemprop="comment">
           <div class="comment-header">
-            <a href="#c{{.Params.id}}" id="c{{.Params.id}}" class="anchor-link" itemprop="url">
+            <a href="#c{{.Params.id}}" id="c{{.Params.id}}" class="anchor-link u-url" itemprop="url">
               {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
             </a>
-            <span class="comment-author" itemprop="creator">
+            <span class="comment-author p-author h-card" itemprop="creator">
               {{- if eq .Params.type "mention" -}}
                 {{ .Params.author | default "Someone" }}
               {{- else -}}
-                {{- with .Params.authorUrl -}}<a rel="nofollow" href="{{.}}">{{- end -}}
+                {{- with .Params.authorUrl -}}<a rel="nofollow" class="u-url p-name" href="{{.}}">{{- end -}}
                 {{ .Params.author }}
                 {{- with .Params.authorUrl -}}</a>{{- end -}}
               {{- end -}}
             </span>
-            <time class="comment-time" datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time>
+            <time class="comment-time dt-published" datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time>
             {{- if eq .Params.type "mention" }}
-            mentioned this article in <a rel="nofollow" href="{{.Params.authorUrl}}">{{.Params.title | default .Params.authorUrl}}</a>
+            mentioned this article in <a rel="nofollow" class="u-repost-of" href="{{.Params.authorUrl}}">{{.Params.title | default .Params.authorUrl}}</a>
             {{- end -}}
           </div>
-          <div itemprop="commentText">
+          <div class="e-content" itemprop="commentText">
             {{ .Content }}
             {{ with $.Resources.Match (printf "comment_%s_reply_*" .Params.id) }}
               {{ range sort . ".Name" }}
-                <div class="comment">
+                <div class="comment h-entry">
                   <div class="comment-header">
-                    <span class="comment-author">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}</span>
+                    <span class="comment-author p-author h-card">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}</span>
                     {{ with .PublishDate }}
-                      <time class="comment-time" datetime="{{.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.UTC.Format "2006-01-02 15:04"}}</time>
+                      <time class="comment-time dt-published" datetime="{{.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.UTC.Format "2006-01-02 15:04"}}</time>
                     {{ end }}
                   </div>
-                  {{ .Content }}
+                  <div class="e-content">
+                    {{ .Content }}
+                  </div>
                 </div>
               {{ end }}
             {{ end }}
