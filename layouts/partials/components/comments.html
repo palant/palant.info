@@ -12,9 +12,13 @@
               {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
             </a>
             <span class="comment-author" itemprop="creator">
-              {{- with .Params.authorUrl -}}<a rel="nofollow" href="{{.}}">{{- end -}}
-              {{ .Params.author | default "Someone" }}
-              {{- with .Params.authorUrl -}}</a>{{- end -}}
+              {{- if eq .Params.type "mention" -}}
+                {{ .Params.author | default "Someone" }}
+              {{- else -}}
+                {{- with .Params.authorUrl -}}<a rel="nofollow" href="{{.}}">{{- end -}}
+                {{ .Params.author }}
+                {{- with .Params.authorUrl -}}</a>{{- end -}}
+              {{- end -}}
             </span>
             <time class="comment-time" datetime="{{.PublishDate.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.PublishDate.UTC.Format "2006-01-02 15:04"}}</time>
             {{- if eq .Params.type "mention" }}
