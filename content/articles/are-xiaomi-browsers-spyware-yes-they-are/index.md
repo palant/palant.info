@@ -1,12 +1,13 @@
 ---
-title: "Are Xiaomi browsers spyware? Yes, they are..."
-date: 2020-05-04T15:50:01+02:00
-lastmod: 2020-05-08T18:07:01+02:00
-description: "Xiaomi browsers collect not merely your browsing history but also searches, downloads, YouTube videos watched and much more."
 categories:
 - xiaomi
 - security
 - privacy
+date: 2020-05-04 15:50:01+02:00
+description: Xiaomi browsers collect not merely your browsing history but also searches,
+  downloads, YouTube videos watched and much more.
+lastmod: '2020-10-20 17:48:58'
+title: Are Xiaomi browsers spyware? Yes, they are...
 ---
 
 In case you missed it, there was a [Forbes article](https://www.forbes.com/sites/thomasbrewster/2020/04/30/exclusive-warning-over-chinese-mobile-giant-xiaomi-recording-millions-of-peoples-private-web-and-phone-use/) on Mi Browser Pro and Mint Browser which are preinstalled on Xiaomi phones. The article accuses Xiaomi of exfiltrating a history of all visited websites. Xiaomi on the other hand accuses Forbes of misrepresenting the facts. They claim that the data collection is following best practices, the data itself being aggregated and anonymized, without any connection to user's identity.
