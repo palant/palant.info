@@ -62,15 +62,15 @@ Out of the box, the extension won’t know what to do. Before it can do anything
 
 Clearly, not all of google.com is an online shop. So when you visit one of the “supported” domains for the first time within a browsing session, the extension will request additional information:
 
-<img src="stores_query.png" width="494" alt="Honey asking its server for shops under the google.com domain" />
+{{< img src="stores_query.png" width="494" alt="Honey asking its server for shops under the google.com domain" />}}
 
 Now the extension knows to ignore all of google.com but the shops listed here. It still doesn’t know anything about the shops however, so when you visit Google Play for example there will be one more request:
 
-<img src="store_info.png" width="542" alt="Google Play metadata returned by Honey server" />
+{{< img src="store_info.png" width="542" alt="Google Play metadata returned by Honey server" />}}
 
 The `metadata` part of the response is most interesting as it determines much of the extension’s behavior on the respective website. For example, there are optional fields `pns_siteSelSubId1` to `pns_siteSelSubId3` that determine what information the extension sends back to the server later:
 
-<img src="subids_request.png" width="528" alt="Honey sending three empty subid fields to the server" />
+{{< img src="subids_request.png" width="528" alt="Honey sending three empty subid fields to the server" />}}
 
 Here the field `subid1` and similar are empty because `pns_siteSelSubId1` is missing in the store configuration. Were it present, Honey would use it as a CSS selector to find a page element, extract its text and send that text back to the server. Good if somebody wants to know what exactly people are looking at.
 
@@ -80,13 +80,13 @@ Mind you, I only found this functionality enabled on amazon.com and macys.com, y
 
 As you can imagine, the process of applying promo codes can vary wildly between different shops. Yet Honey needs to do it somehow without bothering the user. So while store configuration normally tends to stick to CSS selectors, for this task it will resort to JavaScript code. For example, you get the following configuration for hostgator.com:
 
-<img src="store_info_javascript.png" width="600" alt="Store configuration for hostgator.com containing JavaScript code" />
+{{< img src="store_info_javascript.png" width="600" alt="Store configuration for hostgator.com containing JavaScript code" />}}
 
 The JavaScript code listed under `pns_siteRemoveCodeAction` or `pns_siteSelCartCodeSubmit` will be injected into the web page, so it could do anything there: add more items to the cart, change the shipping address or steal your credit card data. Honey requires us to put lots of trust into their web server, isn’t there a better way?
 
 Turns out, Honey actually found one. Allow me to introduce a mechanism labeled as “DAC” internally for reasons I wasn’t yet able to understand:
 
-<img src="dac_request.png" width="500" alt="Honey requesting the DAC script to be applied" />
+{{< img src="dac_request.png" width="500" alt="Honey requesting the DAC script to be applied" />}}
 
 The `acorn` field here contains base64-encoded JSON data. It’s the output of the [acorn JavaScript parser](https://www.npmjs.com/package/acorn): an Abstract Syntax Tree (AST) of some JavaScript code. When reassembled, it turns into this script:
 
