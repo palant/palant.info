@@ -171,7 +171,7 @@ console.log(decryptValue(data));
 
 What you get is once again the Abstract Syntax Tree (AST) of some JavaScript code. The lengthy chunks of JavaScript code are for example categorizing the pages of a shop, determining what kind of logic should apply to these. And the sandboxing is once again ineffective, with the code being provided access to jQuery for example.
 
-So here is a mechanism, providing the server with a simple way to run arbitrary JavaScript code on any website it likes, immediately after the page loads and with sufficient obfuscation that nobody will notice anything odd. Missing accomplished?
+So here is a mechanism, providing the server with a simple way to run arbitrary JavaScript code on any website it likes, immediately after the page loads and with sufficient obfuscation that nobody will notice anything odd. Mission accomplished?
 
 ## Taking over the extension
 
