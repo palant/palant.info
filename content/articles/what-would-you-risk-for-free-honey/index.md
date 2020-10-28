@@ -1,6 +1,7 @@
 ---
 title: "What would you risk for free Honey?"
 date: 2020-10-28T11:17:38+01:00
+lastmod: 2020-10-28T13:21:38+01:00
 description: The Honey browser extension allows its server to run arbitrary code on any website, via at least four different mechanisms and obfuscating the code being loaded.
 categories:
   - privacy
@@ -255,6 +256,8 @@ And that’s the reason why Mozilla’s [Add-on Policies](https://extensionworks
 > Add-ons must be self-contained and not load remote code for execution
 
 So it’s very surprising that the Honey browser extension in its current form is not merely allowed on Mozilla Add-ons but also marked as “Verified.” I wonder what kind of review process this extension got that none of the remote code execution mechanisms have been detected.
+
+**Edit** (2020-10-28): As Hubert Figuière [pointed out](https://twitter.com/hfiguiere/status/1321425129285603329), extensions acquire this “Verified” badge by [paying for the review](https://support.mozilla.org/en-US/kb/add-on-badges#w_verified-extensions). All the more interesting to learn what kind of review has been paid here.
 
 While Chrome Web Store is more relaxed on this front, their [Developer Program Policies](https://developer.chrome.com/webstore/program_policies) also list the following requirement:
 
