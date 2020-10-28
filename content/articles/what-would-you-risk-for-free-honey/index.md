@@ -260,4 +260,4 @@ While Chrome Web Store is more relaxed on this front, their [Developer Program P
 
 > Developers must not obfuscate code or conceal functionality of their extension. This also applies to any external code or resource fetched by the extension package.
 
-I’d say that the VIM mechanism clearly violates that requirement as well.
+I’d say that the VIM mechanism clearly violates that requirement as well. As I’m still to discover a working mechanism to report violations of Chrome’s Developer Program Policies, it is to be seen whether this will have any consequences.
