@@ -2,66 +2,66 @@
 other = "…"
 
 [colon]
-other = ": "
+other = " : "
 
 [minute]
 one = "min"
-other = "mins"
+other = "min."
 
 [tocTitle]
-other = "Contents"
+other = "Contenus"
 
 [readMore]
-other = "Read More"
+other = "Lire Plus"
 
 [prevPage]
-other = "Newer"
+other = "Récent"
 
 [nextPage]
-other = "Older"
+other = "Ancien"
 
 [copy]
-other = "Copy"
+other = "Copier"
 
 [copied]
-other = "Copied!"
+other = "Copié !"
 
 [copyrightAuthor]
-other = "Author"
+other = "Auteur"
 
 [copyrightLink]
-other = "Link"
+other = "Lien"
 
 [copyrightLicense]
-other = "License"
+other = "Licence"
 
 [shareOn]
-other = "Share on:"
+other = "Partage sur : "
 
 [shareOnTitle]
-other = "Share on "
+other = "Partage sur "
 
 [shareViaTitle]
-other = "Share via "
+other = "Partage via "
 
 [relatedPosts]
-other = "See Also:"
+other = "Lire aussi : "
 
 [loadComments]
-other = "Load Comments?"
+other = "Charger les Commentaires ?"
 
 [pageNotFound]
-other = "404 - Page not found"
+other = "404 - Page non trouvée"
 
 [fofLinkText]
-other = "Take Me Home"
+other = "Retour à la Maison"
 
 [searchResultsTitle]
-one = "Found one result for “{{ .Term }}”"
-other = "Found {{ .Count }} results for “{{ .Term }}”"
+one = "Trouvé un résultat pour “{{ .Term }}”"
+other = "Trouvé {{ .Count }} résultats pour “{{ .Term }}”"
 
 [searchResultsNone]
-other = "No results found for “{{ .Term }}”"
+other = "Aucun résultat pour “{{ .Term }}”"
 
 
 # Socials
@@ -98,40 +98,40 @@ other = "QR Code"
 # Used for `i18nMonth`
 
 [january]
-other = "January"
+other = "Janvier"
 
 [february]
-other = "February"
+other = "Février"
 
 [march]
-other = "March"
+other = "Mars"
 
 [april]
-other = "April"
+other = "Avril"
 
 [may]
-other = "May"
+other = "Mai"
 
 [june]
-other = "June"
+other = "Juin"
 
 [july]
-other = "July"
+other = "Juillet"
 
 [august]
-other = "August"
+other = "Août"
 
 [september]
-other = "September"
+other = "Septembre"
 
 [october]
-other = "October"
+other = "Octobre"
 
 [november]
-other = "November"
+other = "Novembre"
 
 [december]
-other = "December"
+other = "Décembre"
 
 
 # Numbers

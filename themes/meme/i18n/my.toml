@@ -6,62 +6,62 @@ other = ": "
 
 [minute]
 one = "min"
-other = "mins"
+other = "min"
 
 [tocTitle]
-other = "Contents"
+other = "Isi kandungan"
 
 [readMore]
-other = "Read More"
+other = "Baca lagi"
 
 [prevPage]
-other = "Newer"
+other = "Terbaru"
 
 [nextPage]
-other = "Older"
+other = "Lama"
 
 [copy]
-other = "Copy"
+other = "Salinan"
 
 [copied]
-other = "Copied!"
+other = "Disalin!"
 
 [copyrightAuthor]
-other = "Author"
+other = "Pengarang"
 
 [copyrightLink]
-other = "Link"
+other = "Sambungan"
 
 [copyrightLicense]
-other = "License"
+other = "Lesen"
 
 [shareOn]
-other = "Share on:"
+other = "Dikongsikan:"
 
 [shareOnTitle]
-other = "Share on "
+other = "Dikongsikan "
 
 [shareViaTitle]
-other = "Share via "
+other = "Dikongsikan di "
 
 [relatedPosts]
-other = "See Also:"
+other = "Sila lihat:"
 
 [loadComments]
-other = "Load Comments?"
+other = "Berikan komen?"
 
 [pageNotFound]
-other = "404 - Page not found"
+other = "404 - Halaman tidak dijumpa"
 
 [fofLinkText]
-other = "Take Me Home"
+other = "Kembali ke asal"
 
 [searchResultsTitle]
-one = "Found one result for “{{ .Term }}”"
-other = "Found {{ .Count }} results for “{{ .Term }}”"
+one = "Jumpa satu halaman untuk “{{ .Term }}”"
+other = "Jumpa {{ .Count }} halaman untuk “{{ .Term }}”"
 
 [searchResultsNone]
-other = "No results found for “{{ .Term }}”"
+other = "Tidak jumpa sebarang halaman untuk “{{ .Term }}”"
 
 
 # Socials
@@ -98,40 +98,40 @@ other = "QR Code"
 # Used for `i18nMonth`
 
 [january]
-other = "January"
+other = "Januari"
 
 [february]
-other = "February"
+other = "Februari"
 
 [march]
-other = "March"
+other = "Mac"
 
 [april]
 other = "April"
 
 [may]
-other = "May"
+other = "Mei"
 
 [june]
-other = "June"
+other = "Jun"
 
 [july]
-other = "July"
+other = "Julai"
 
 [august]
-other = "August"
+other = "Ogos"
 
 [september]
 other = "September"
 
 [october]
-other = "October"
+other = "Oktober"
 
 [november]
 other = "November"
 
 [december]
-other = "December"
+other = "Disember"
 
 
 # Numbers

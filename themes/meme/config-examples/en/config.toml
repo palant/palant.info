@@ -146,11 +146,8 @@ uglyURLs = false
     page = ["HTML"]
     home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
     section = ["HTML"]
-    # Taxonomy
-    taxonomyTerm = ["HTML"]
-    # Taxonomy term
     taxonomy = ["HTML"]
-    # Note: https://github.com/gohugoio/hugo/issues/4528#issuecomment-508488859
+    term = ["HTML"]
 
 # Maximum number of items in the Atom & RSS feed
 [services.rss]
@@ -407,6 +404,11 @@ uglyURLs = false
     # category?
     displayPostsCount = true
 
+    # Set to a non-negative number to limit
+    # the number of posts displayed per
+    # category/section.
+    limitPostsLimit = -1
+
 
     ######################################
     # Tags Page
@@ -421,7 +423,7 @@ uglyURLs = false
     ######################################
     # List Page
 
-    listWidth = 39
+    listWidth = 36
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
@@ -528,6 +530,10 @@ uglyURLs = false
     #       may still read your blog in
     #       light mode, even if you have
     #       hidden the theme toggle.
+    #       Unless you enable the following
+    #       option.
+
+    overrideSystemPreferences = false
 
 
     ######################################
@@ -586,8 +592,6 @@ uglyURLs = false
     #       environment
 
     enableServiceWorker = false
-    # Note: need third-party support, see
-    #       https://io-oi.me/tech/pwa-via-workbox/
 
 
     ######################################
@@ -617,6 +621,9 @@ uglyURLs = false
     # Note: *global settings*
     #       `mermaid` in post’s Front Matter
     #       has a higher priority than here
+
+    mermaidTheme = 'default'
+    mermaidThemeDark = 'dark'
 
 
     ######################################
@@ -716,7 +723,7 @@ uglyURLs = false
     #            supported
 
     # The content width of the post
-    postWidth = 39
+    postWidth = 36
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
@@ -956,7 +963,7 @@ uglyURLs = false
     ######################################
     ## Font Size (unit: px)
 
-    fontSize = 20
+    fontSize = 18
 
     ######################################
     ## Tab Size
@@ -1193,6 +1200,8 @@ uglyURLs = false
 
     enableFooter = true
 
+    displayFooter = true
+
     displayFooterInHome = true
 
     displayCopyrightSymbol = true
@@ -1281,7 +1290,6 @@ uglyURLs = false
     # Smooth Scroll
 
     enableSmoothScroll = true
-    # Note: https://github.com/cferdinandi/smooth-scroll
 
 
     ######################################

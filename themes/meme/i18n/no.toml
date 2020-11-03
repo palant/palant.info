@@ -6,65 +6,65 @@ other = ": "
 
 [minute]
 one = "min"
-other = "mins"
+other = "min"
 
 [tocTitle]
-other = "Conteúdo"
+other = "Innhold"
 
 [readMore]
-other = "Leia mais"
+other = "Les mer"
 
 [prevPage]
-other = "Recentes"
+other = "Nyere"
 
 [nextPage]
-other = "Anteriores"
+other = "Eldre"
 
 [copy]
-other = "Copiar"
+other = "Kopi"
 
 [copied]
-other = "Copiado!"
+other = "Kopiert!"
 
 [copyrightAuthor]
-other = "Autor"
+other = "Forfatter"
 
 [copyrightLink]
 other = "Link"
 
 [copyrightLicense]
-other = "Licença"
+other = "Lisens"
 
 [shareOn]
-other = "Compartilhar em:"
+other = "Delt på:"
 
 [shareOnTitle]
-other = "Compartilhar em "
+other = "Deler på "
 
 [shareViaTitle]
-other = "Compartilhar via "
+other = "Deler via "
 
 [relatedPosts]
-other = "Veja também:"
+other = "Se også:"
 
 [loadComments]
-other = "Carregar comentários?"
+other = "Gi kommentar?"
 
 [pageNotFound]
-other = "404 - Página não encontrada"
+other = "404 - Siden finnes ikke"
 
 [fofLinkText]
-other = "Leve-me para página inicial"
+other = "Ta meg hjem"
 
 [searchResultsTitle]
-one = "Encontrado um resultado para “{{ .Term }}”"
-other = "Encontrados {{ .Count }} resultados para “{{ .Term }}”"
+one = "Fant et resultat for “{{ .Term }}”"
+other = "Fant {{ .Count }} resultater for “{{ .Term }}”"
 
 [searchResultsNone]
-other = "Não foram encontrados resultados para “{{ .Term }}”"
+other = "Ingen er funnet for “{{ .Term }}”"
 
 
-# Redes Sociais
+# Socials
 
 [twitter]
 other = "Twitter"
@@ -94,48 +94,48 @@ other = "Qzone"
 other = "QR Code"
 
 
-# Meses
-# Utilizado em `i18nMonth`
+# Months
+# Used for `i18nMonth`
 
 [january]
-other = "Janeiro"
+other = "januar"
 
 [february]
-other = "Fevereiro"
+other = "februar"
 
 [march]
-other = "Março"
+other = "mars"
 
 [april]
-other = "Abril"
+other = "april"
 
 [may]
-other = "Maio"
+other = "mai"
 
 [june]
-other = "Junho"
+other = "juni"
 
 [july]
-other = "Julho"
+other = "juli"
 
 [august]
-other = "Agosto"
+other = "august"
 
 [september]
-other = "Setembro"
+other = "september"
 
 [october]
-other = "Outubro"
+other = "oktober"
 
 [november]
-other = "Novembro"
+other = "november"
 
 [december]
-other = "Dezembro"
+other = "desember"
 
 
-# Números
-# Utilizado em `i18nYear`
+# Numbers
+# Used for `i18nYear`
 
 [0]
 other = "0"
