@@ -81,7 +81,7 @@ And so Google with its Chrome browser is now determining what extensions should 
 
 ## Conclusions
 
-The recent browser wars set a very high bar on what a modern browser should be. We got our lean and fast browsers, supporting vast amounts of web standards and extremely powerful web applications. The cost was high however: users' choice was reduced significantly, it's essentially Firefox vs. Chrome in its numerous varieties now, other browser engines didn't survive. The negative impacts of Google's almost-monopole on web development aren't too visible yet, but in the browser customization space they already show very clearly.
+The recent browser wars set a very high bar on what a modern browser should be. We got our lean and fast browsers, supporting vast amounts of web standards and extremely powerful web applications. The cost was high however: users’ choice was reduced significantly, it's essentially Firefox vs. Chrome in its numerous varieties now, other browser engines didn't survive. The negative impacts of Google's almost-monopole on web development aren't too visible yet, but in the browser customization space they already show very clearly.
 
 Google Chrome is now the baseline for browser customization. On mobile devices this means that anything beyond “no add-on support whatsoever” will be considered a revolutionary step. Mozilla isn't the first mobile browser vendor to celebrate themselves for providing a few selected add-ons. Open add-on ecosystems for mobile browsers are just not going to happen any more.
 

@@ -35,7 +35,7 @@ sb.append(A.e);
 a = sb.toString();
 {{< /highlight >}}
 
-Looking up `A.e`, it turns out to be a country code. So the `i.a` static member here ends up holding the endpoint URL with the user's country code filled in. And it is being used in the class' initialization function:
+Looking up `A.e`, it turns out to be a country code. So the `i.a` static member here ends up holding the endpoint URL with the user's country code filled in. And it is being used in the class’ initialization function:
 
 {{< highlight java >}}
 public void a(final Context c) {

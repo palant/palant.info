@@ -58,7 +58,7 @@ Even if you ignore the fact that Avira can repurpose this extension at any time,
 
 Having access to that much data, Avira will certainly have a well-written privacy policy? Actually, the first challenge is finding it: Avira Browser Safety listing on Mozilla Add-ons doesn't even link to the [privacy policy](https://www.avira.com/en/general-privacy). And while this privacy policy has individual sections for various products, Avira Browser Safety isn't listed. But the identical Avira Safe Shopping extension is listed, so we can check there:
 
-> If you use Avira Safe Shopping, it is part of our contractual obligation to present you with suitable products from other providers or other providers' conditions for the same product. Data processing is done exclusively in accordance with the performance of the contract.
+> If you use Avira Safe Shopping, it is part of our contractual obligation to present you with suitable products from other providers or other providers’ conditions for the same product. Data processing is done exclusively in accordance with the performance of the contract.
 
 Does this mean that Avira doesn't store any of this data whatsoever? I'd certainly hope so, but I'm not sure that this is the meaning. Also, why send a user identifier along if you don't keep the data?
 

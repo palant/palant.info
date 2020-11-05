@@ -1,7 +1,7 @@
 ---
 title: "Avast's broken data anonymization approach"
 date: 2020-01-27T16:27:10+01:00
-description: A look at the publicly available information suggests that Avast exaggerated its capability to anonymize users' data.
+description: A look at the publicly available information suggests that Avast exaggerated its capability to anonymize users’ data.
 categories:
   - avast
   - privacy
@@ -31,7 +31,7 @@ No technical details on the "de-identification" were shared, neither in Avast's 
 >
 > `https://www.amazon.com/gp/buy/addressselect/handlers/edit-address.html?ie=UTF8&addressID=jirptvmsnlp&addressIdToBeDeleted=&enableDeliveryPreferences=1&from=&isBillingAddress=&numberOfDistinctItems=1&showBackBar=0&skipFooter=0&skipHeader=0&hasWorkingJavascript=1`
 >
-> The algorithm automatically replaces the PII with the word REMOVED in order to protect our users' privacy, like this:
+> The algorithm automatically replaces the PII with the word REMOVED in order to protect our users’ privacy, like this:
 >
 > `https://www.amazon.com/gp/buy/addressselect/handlers/edit-address.html?ie=UTF8&addressID=REMOVED&addressIdToBeDeleted=&enableDeliveryPreferences=1&from=&isBillingAddress=&numberOfDistinctItems=1&showBackBar=0&skipFooter=0&skipHeader=0&hasWorkingJavascript=1`
 

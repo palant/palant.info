@@ -63,4 +63,4 @@ Some pieces of data will be attached to every event. These are meant to provide 
 
 ## Conclusions
 
-Even with the recent changes, Xiaomi browsers are massively invading users' privacy. The amount of data collected by default goes far beyond what's necessary for application improvement. Instead, Xiaomi appears to be interested in where users go, what they search for and which videos they watch. Even with a fairly obscure setting to disable this tracking, the default behavior isn't acceptable. If you happen to be using a Xiaomi device, you should install a different browser ASAP.
+Even with the recent changes, Xiaomi browsers are massively invading users’ privacy. The amount of data collected by default goes far beyond what's necessary for application improvement. Instead, Xiaomi appears to be interested in where users go, what they search for and which videos they watch. Even with a fairly obscure setting to disable this tracking, the default behavior isn't acceptable. If you happen to be using a Xiaomi device, you should install a different browser ASAP.
