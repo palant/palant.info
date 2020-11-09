@@ -3,6 +3,7 @@ categories:
 - yahoo
 - aol
 - verizon
+- email
 - security
 date: 2020-03-09 07:43:05
 description: Yahoo! and AOL let anybody controlling the phone number gain access to

@@ -1,6 +1,7 @@
 ---
 categories:
 - mozilla
+- email
 date: "2019-04-03 19:26:47"
 description: Detailing Mozilla's failures to send newsletters only to users who actually
   opted in.
