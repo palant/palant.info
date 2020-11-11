@@ -10,7 +10,7 @@ palant.info website is being maintained by **Wladimir Palant**.
 
 ## Contact Information
 
-E-Mail: <bskblog@palant.de><br>
+E-Mail: <bskblog@palant.info><br>
 Web: <https://palant.info/>
 
 ## Postal address
