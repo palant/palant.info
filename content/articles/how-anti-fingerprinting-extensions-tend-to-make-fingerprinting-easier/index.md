@@ -14,7 +14,7 @@ Do you have a privacy protection extension installed in your browser? There are 
 {{< img src="piglet.png" width="600" alt="Pig disguised as a bird but still clearly recognizable">}}
 <em>
   Image credits:
-  <a href="https://pixabay.com/vectors/pig-disguised-bird-wings-piglet-575844/" rel="nofollow">OpenClipart</a>,
+  <a href="https://pixabay.com/vectors/pig-disguised-bird-wings-piglet-575844/" rel="nofollow">OpenClipart</a>
 </em>
 {{< /img >}}
 
