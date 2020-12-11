@@ -1,0 +1,8 @@
+{
+  "id": "000001",
+  "publishDate": "2020-12-11 18:03:27"
+}
+
+<p>It isn’t quite that simple. Adblock Plus has been developed in such a way that it cannot be detected directly. This means in particular: no web_accessible_resources in the extension manifest. And even if web_accessible_resources were used, it only makes the extension only detectable in Chromium-based browsers, not Firefox.</p>
+<p>So websites can only detect Adblock Plus by its effects, meaning blocked requests. That’s more complicated and more error prone. And it also means that websites cannot determine which one of the many ad blockers you use. With ad blocker users ranging in hundreds of millions, this is hardly worth it.</p>
+<p>But – sure, many browser extensions make themselves detectable for no good reason. And that could add to your fingerprint.</p>
