@@ -1,10 +1,12 @@
 ---
-title: "How anti-fingerprinting extensions tend to make fingerprinting easier"
-date: 2020-12-10T14:57:43+01:00
-description: Browser extensions claiming to protect against fingerprinting will typically result in more data available for fingerprinting.
 categories:
 - security
 - privacy
+date: 2020-12-10 14:57:43+01:00
+description: Browser extensions claiming to protect against fingerprinting will typically
+  result in more data available for fingerprinting.
+lastmod: '2020-12-11 06:35:55'
+title: How anti-fingerprinting extensions tend to make fingerprinting easier
 ---
 
 Do you have a privacy protection extension installed in your browser? There are so many around, and every security vendor is promoting their own. Typically, these will provide a feature called “anti-fingerprinting” or “fingerprint protection” which is supposed to make you less identifiable on the web. What you won’t notice: this feature is almost universally flawed, potentially allowing even better fingerprinting.
