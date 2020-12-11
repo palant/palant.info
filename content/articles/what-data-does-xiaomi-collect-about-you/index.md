@@ -1,12 +1,14 @@
 ---
-title: "What data does Xiaomi collect about you?"
-date: 2020-05-08T13:43:47+02:00
-lastmod: 2020-05-08T14:48:47+02:00
-description: A high-level overview of the various events making Xiaomi browsers send your private data to Xiaomi servers - by default, unless you discover an obscure settings combination.
 categories:
 - xiaomi
 - security
 - privacy
+date: 2020-05-08 13:43:47+02:00
+description: A high-level overview of the various events making Xiaomi browsers send
+  your private data to Xiaomi servers - by default, unless you discover an obscure
+  settings combination.
+lastmod: '2020-12-11 06:31:22'
+title: What data does Xiaomi collect about you?
 ---
 
 A few days ago I published a very technical article [confirming that Xiaomi browsers collect a massive amount of private data](/2020/05/04/are-xiaomi-browsers-spyware-yes-they-are.../). This fact was initially publicized in a [Forbes article](https://www.forbes.com/sites/thomasbrewster/2020/04/30/exclusive-warning-over-chinese-mobile-giant-xiaomi-recording-millions-of-peoples-private-web-and-phone-use/) based on the research by Gabriel Cîrlig and Andrew Tierney. After initially dismissing the report as incorrect, Xiaomi has since updated their Mint and Mi Pro browsers to include an option to disable this tracking in incognito mode.
