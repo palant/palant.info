@@ -5,7 +5,7 @@ categories:
 date: 2020-12-10 14:57:43+01:00
 description: Browser extensions claiming to protect against fingerprinting will typically
   result in more data available for fingerprinting.
-lastmod: '2020-12-14 13:36:51'
+lastmod: '2020-12-14 14:30:51'
 title: How anti-fingerprinting extensions tend to make fingerprinting easier
 ---
 
@@ -87,6 +87,8 @@ Object.defineProperty(Screen.prototype, "height", {get: (() => 1024).bind(null)}
 {{< /highlight >}}
 
 This `bind()` call makes sure the getter looks like a native function. Exactly what we needed.
+
+**Update (2020-12-14)**: Firefox allows content scripts to call [exportFunction()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Sharing_objects_with_page_scripts#exportFunction) which is a better way to do this. In particular, it doesn’t require injecting any code into web page context. Unfortunately, this functionality isn’t available in Chromium-based browsers. Thanks to kkapsner for pointing me towards this functionality.
 
 ## Catching all those pesky frames
 
