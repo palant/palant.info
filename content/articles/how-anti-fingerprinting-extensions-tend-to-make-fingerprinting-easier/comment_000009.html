@@ -1,0 +1,12 @@
+{
+  "publishDate": "2020-12-14 12:05:53",
+  "author": "CanvasBlocker",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000009"
+}
+
+<p>Disclaimer first: I am the developer of CanvasBlocker (won't link to addons.mozilla.org as it's easy enough to find)</p>
+<p>Your solution to the <code>toString()</code> problem also has a problem (at least in Firefox - not checked in Chrome as I do not care): the name of the function is wrong. It should be "get width". Also if you want to do some other protection you might need the actual object the method is called on. So the proper way to do this (in Firefox) is to use exportFunction. Then you can mimic the complete function attributes (toString(), name and length) if your function definition is correct.</p>
+<p>I think the sentence "Though the fact that all of them make exactly the same mistakes" in your reply above is incorrect. Despite the point in "The art of faking" (which I try to address as best as possible but cannot solve completely) CanvasBlocker shouldn't expose these mistakes (I have to confess it did in the past at one point).</p>
