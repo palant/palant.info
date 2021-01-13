@@ -6,7 +6,7 @@ date: 2019-07-08 09:05:09
 description: Technically, RememBear is very similar to its competitor 1Password. Security-wise
   the tool doesn't appear to be as advanced however, and I quickly found six issues
   (severity varies) which have all been fixed since.
-lastmod: '2019-07-08 12:31:31'
+lastmod: '2021-01-13 16:52:54'
 title: Various RememBear security issues
 ---
 
