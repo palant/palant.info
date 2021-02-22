@@ -1,6 +1,6 @@
 ---
 title: "Setup for testing Android app vulnerabilities"
-date: 2021-02-22T22:17:28Z
+date: 2021-02-22T22:17:28+01:00
 description: "Documenting my setup: Android emulator, minimal Android app and instrumenting the target app via Soot to get debugging info."
 categories:
 - android
