@@ -165,7 +165,7 @@ protected void internalTransform(Body b, String phaseName, Map<String, String> o
   // Only add logging to com.example.funnygame package
   String className = body.getMethod().getDeclaringClass().getName();
   if (!className.startsWith("com.example.funnygame."))
-      return;
+    return;
 
   // Instructions to be added
   List<Unit> units = new ArrayList<>();
@@ -287,6 +287,8 @@ private static Unit stringify(Local value, Local result)
   String typeSignature = (
     type instanceof PrimType ? type.toString() : "java.lang.Object"
   );
+  if (typeSignature == "byte" || typeSignature == "short")
+    typeSignature = "int";
   return Jimple.v().newAssignStmt(
     result,
     Jimple.v().newStaticInvokeExpr(
