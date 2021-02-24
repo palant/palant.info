@@ -1,6 +1,7 @@
 ---
 title: "Setup for testing Android app vulnerabilities"
 date: 2021-02-22T22:17:28+01:00
+lastmod: 2021-02-24T12:15:00+01:00
 description: "Documenting my setup: Android emulator, minimal Android app and instrumenting the target app via Soot to get debugging info."
 categories:
 - android
@@ -153,6 +154,8 @@ Now you can run `gradle installDebug` (expects `ANDROID_HOME` environment variab
 Now my first attempt didn’t go anywhere. Nothing happened and from the source code I couldn’t quite tell why. So there is no way around debugging the target application to see what’s going on there. Except: all the documentation says that debugging only works with debug builds. And I cannot exactly ask the vendor to provide me a debug build of their app.
 
 Luckily, there is still a way. If an Android app can be decompiled, it can also be modified. It seems that the most up-to-date framework to do this is [Soot](https://soot-oss.github.io/soot/) and there is a [detailed article](https://medium.com/swlh/instrumenting-android-apps-with-soot-dd6f146ff4d2) on how it can be used. It also provides a [repository with working code](https://github.com/noidsirius/SootTutorial) which is really helpful because you don’t have to start from scratch with your Java code.
+
+**Edit** (2021-02-24): I somewhat generalized and streamlined the approach described here, the code is now available in [this repository](https://github.com/palant/apk-instrumentation).
 
 What I ended up doing is very similar to the `AndroidLogger.java` example. It adds a `System.out.println()` call at the beginning of each method and will log both the method and the parameters it receives. You have to keep in mind that Jimple is a low-level representation of Java code that doesn’t support nested expressions. So the result of each intermediate expression has to be saved into a local variable which complicates things somewhat. The resulting body transformer looks like this:
 
