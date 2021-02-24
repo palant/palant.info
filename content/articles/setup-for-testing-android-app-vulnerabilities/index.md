@@ -346,7 +346,7 @@ if (className.equals("com.google.android.gms.games.Games") &&
     if (unit instanceof AssignStmt)
     {
       String typeName = ((AssignStmt)unit).getLeftOp().getType().toString();
-      if (typeName == "com.google.android.gms.games.appcontent.zzl")
+      if (typeName.equals("com.google.android.gms.games.appcontent.zzl"))
         return true;
     }
     return false;
