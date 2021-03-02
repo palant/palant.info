@@ -1,0 +1,11 @@
+{
+  "publishDate": "2021-03-02 15:35:49",
+  "author": "jUnit",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000006"
+}
+
+<p>I'm not sure how Java operates around variable reassignment, but I noticed that <code>this.c = c</code> is the first argument to the original call to <code>SensorsDataAPI.sharedInstance</code>, which (in the languages I tend to use) would make <code>this.c</code> retain the value of whatever was passed to this class's initializer as <code>final Context c</code>.</p>
+<p>Those calls to <code>this.c</code> could be calls to something else entirely, is what I'm getting at, basically</p>
