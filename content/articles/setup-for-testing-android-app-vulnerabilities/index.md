@@ -1,11 +1,12 @@
 ---
-title: "Setup for testing Android app vulnerabilities"
-date: 2021-02-22T22:17:28+01:00
-lastmod: 2021-02-24T12:15:00+01:00
-description: "Documenting my setup: Android emulator, minimal Android app and instrumenting the target app via Soot to get debugging info."
 categories:
 - android
 - soot
+date: 2021-02-22 22:17:28+01:00
+description: 'Documenting my setup: Android emulator, minimal Android app and instrumenting
+  the target app via Soot to get debugging info.'
+lastmod: '2021-03-02 13:47:32'
+title: Setup for testing Android app vulnerabilities
 ---
 
 In the [previous article](/2021/02/18/reverse-engineering-a-unity-based-android-game/) I documented my approach for reverse engineering an Android game. But getting my hands on the code is only one part of security research. Once a potential issue is identified, I need to verify that it is actually exploitable. So there is no way around messing with an actual live app. Ideally that has to happen in a controlled environment with emulated hardware. As before, this is mostly me writing things down for my future self, but it might come useful for other people as well.
