@@ -7,7 +7,7 @@ categories:
 date: 2020-05-04 15:50:01+02:00
 description: Xiaomi browsers collect not merely your browsing history but also searches,
   downloads, YouTube videos watched and much more.
-lastmod: '2021-03-02 11:41:02'
+lastmod: '2021-03-02 13:55:24'
 title: Are Xiaomi browsers spyware? Yes, they are...
 ---
 
