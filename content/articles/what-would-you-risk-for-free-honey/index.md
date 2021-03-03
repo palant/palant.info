@@ -1,13 +1,15 @@
 ---
-title: "What would you risk for free Honey?"
-date: 2020-10-28T11:17:38+01:00
-lastmod: 2020-10-28T13:21:38+01:00
-description: The Honey browser extension allows its server to run arbitrary code on any website, via at least four different mechanisms and obfuscating the code being loaded.
 categories:
-  - privacy
-  - security
-  - mozilla
-  - google
+- privacy
+- security
+- mozilla
+- google
+date: 2020-10-28 11:17:38+01:00
+description: The Honey browser extension allows its server to run arbitrary code on
+  any website, via at least four different mechanisms and obfuscating the code being
+  loaded.
+lastmod: '2021-03-03 06:53:43'
+title: What would you risk for free Honey?
 ---
 
 Honey is a popular browser extension built by the PayPal subsidiary Honey Science LLC. It promises nothing less than preventing you from wasting money on your online purchases. Whenever possible, it will automatically apply promo codes to your shopping cart, thus saving your money without you lifting a finger. And it even runs a reward program that will give you some money back! Sounds great, what’s the catch?
