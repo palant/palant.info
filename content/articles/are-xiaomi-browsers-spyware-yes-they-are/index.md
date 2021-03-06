@@ -7,13 +7,15 @@ categories:
 date: 2020-05-04 15:50:01+02:00
 description: Xiaomi browsers collect not merely your browsing history but also searches,
   downloads, YouTube videos watched and much more.
-lastmod: '2021-03-03 06:56:41'
+lastmod: '2021-03-06 17:24:41+01:00'
 title: Are Xiaomi browsers spyware? Yes, they are...
 ---
 
 In case you missed it, there was a [Forbes article](https://www.forbes.com/sites/thomasbrewster/2020/04/30/exclusive-warning-over-chinese-mobile-giant-xiaomi-recording-millions-of-peoples-private-web-and-phone-use/) on Mi Browser Pro and Mint Browser which are preinstalled on Xiaomi phones. The article accuses Xiaomi of exfiltrating a history of all visited websites. Xiaomi on the other hand accuses Forbes of misrepresenting the facts. They claim that the data collection is following best practices, the data itself being aggregated and anonymized, without any connection to user's identity.
 
 TL;DR: It is really that bad, and even worse actually.
+
+**Update** (2021-03-06): It has been close to a year since I wrote this article. In this time Xiaomi did little to address this issue. On the other hand, a similar issue [has been discovered in Xiaomi’s payment app](https://twitter.com/evstykas/status/1340433914763079681), which would even transmit account data to the “analytics” servers. So it can be assumed that other Xiaomi apps are similarly compromised.
 
 If you've been following my blog for a while, you might find this argumentation familiar. It's almost identical to Avast's communication after they were [found spying on the users](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/) and [browser vendors pulled their extensions from add-on stores](/2019/12/03/mozilla-removes-avast-extensions-from-their-add-on-store-what-will-google-do/). In the end I was given proof that [their data anonymization attempts were only moderately successful](/2020/02/18/insights-from-avast/jumpshot-data-pitfalls-of-data-anonymization/) if you allow me this understatement.
 
