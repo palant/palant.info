@@ -1,11 +1,13 @@
 ---
-title: "How Amazon Assistant lets Amazon track your every move on the web"
-date: 2021-03-08T12:36:31+01:00
-description: Amazon Assistant browser extension delegates its wide range of privileges to Amazon web services. The potential for misuse is enormous.
 categories:
 - amazon
 - privacy
 - security
+date: 2021-03-08 12:36:31+01:00
+description: Amazon Assistant browser extension delegates its wide range of privileges
+  to Amazon web services. The potential for misuse is enormous.
+lastmod: '2021-03-08 21:13:48'
+title: How Amazon Assistant lets Amazon track your every move on the web
 ---
 
 I recently noticed that Amazon is promoting their Amazon Assistant extension quite aggressively. With success: while not all browsers vendors provide usable extension statistics, it would appear that this extension has beyond 10 million users across Firefox, Chrome, Opera and Edge. Reason enough to look into what this extension is doing and how.
