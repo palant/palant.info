@@ -1,12 +1,14 @@
 ---
-title: "DuckDuckGo Privacy Essentials vulnerabilities: Insecure communication and Universal XSS"
-date: 2021-03-15T14:07:37+0100
-lastmod: 2021-03-16T11:05:37+0100
-description: "Insecure internal communication in DuckDuckGo Privacy Essentials leaked some info across domains, and an XSS vulnerability was exploitable by its server."
 categories:
 - security
 - privacy
 - duckduckgo
+date: 2021-03-15T14:07:37+0100
+description: Insecure internal communication in DuckDuckGo Privacy Essentials leaked
+  some info across domains, and an XSS vulnerability was exploitable by its server.
+lastmod: '2021-03-16 10:19:20'
+title: 'DuckDuckGo Privacy Essentials vulnerabilities: Insecure communication and
+  Universal XSS'
 ---
 
 A few months ago I looked into the inner workings of DuckDuckGo Privacy Essentials, a popular browser extension meant to protect the privacy of its users. I found some of the [typical issues](/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/) (mostly resolved since) but also two actual security vulnerabilities. First of all, the extension used insecure communication channels for some internal communication, which, quite ironically, caused some data leakage across domain boundaries. The second vulnerability gave a DuckDuckGo server way more privileges than intended: a [Cross-site Scripting (XSS) vulnerability](https://en.wikipedia.org/wiki/Cross-site_scripting) in the extension allowed this server to execute arbitrary JavaScript code on any domain.
