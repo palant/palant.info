@@ -111,7 +111,7 @@ The other concern is the `code` parameter in [tabs.executeScript()](https://deve
 * 2020-12-10: Received a developer’s email address as contact.
 * 2020-12-16: Reported both issues via email.
 * 2020-12-16: Received confirmation that the reports have been received and will be addressed.
-* 2020-01-05: Cross-frame information leakage issue resolved.
-* 2020-01-08: DuckDuckGo Privacy Essentials 2021.1.8 released.
-* 2020-01-13: Universal XSS issue resolved.
-* 2020-02-08 (presumably): DuckDuckGo Privacy Essentials 2021.2.3 released for Google Chrome only.
+* 2021-01-05: Cross-frame information leakage issue resolved.
+* 2021-01-08: DuckDuckGo Privacy Essentials 2021.1.8 released.
+* 2021-01-13: Universal XSS issue resolved.
+* 2021-02-08 (presumably): DuckDuckGo Privacy Essentials 2021.2.3 released for Google Chrome only.
