@@ -1,6 +1,7 @@
 ---
 title: "DuckDuckGo Privacy Essentials vulnerabilities: Insecure communication and Universal XSS"
 date: 2021-03-15T14:07:37+0100
+lastmod: 2021-03-16T11:05:37+0100
 description: "Insecure internal communication in DuckDuckGo Privacy Essentials leaked some info across domains, and an XSS vulnerability was exploitable by its server."
 categories:
 - security
@@ -19,7 +20,7 @@ Both issues are resolved in DuckDuckGo Privacy Essentials 2021.2.3 and above. At
 </em>
 {{< /img >}}
 
-These vulnerabilities are very typical, I’ve seen similar mistakes in other extensions many times. This isn’t merely extension developers being clueless. The extension platform introduced by Google Chrome simply doesn’t provide secure and convenient alternatives. So most extension developers are bound to get it wrong on the first try.
+These vulnerabilities are very typical, I’ve seen similar mistakes in other extensions many times. This isn’t merely extension developers being clueless. The extension platform introduced by Google Chrome simply doesn’t provide secure and convenient alternatives. So most extension developers are bound to get it wrong on the first try. **Update** (2021-03-16): Linked to respective Chromium issues.
 
 {{< toc >}}
 
@@ -98,9 +99,9 @@ This call will properly encode any data, so that it is safe to insert into JavaS
 
 I’ve heard that Google is implementing [Manivest V3](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-overview/) in order to make their extension platform more secure. While these changes will surely help, may I suggest doing something about the things that extensions continuously get wrong? If there are no convenient secure APIs, extension developers will continue using insecure alternatives.
 
-For example, extension developers keep resorting to `window.postMessage()` for internal communication. I understand that [runtime.sendMessage()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) is all one needs to keep things secure. But going through the background page when you mean to message another frame is very inconvenient, doing it correctly requires lots of boilerplate code. So maybe an API to communicate between content scripts in the same tab could be added to the extension platform, even if it’s merely a wrapper for `runtime.sendMessage()`?
+For example, extension developers keep resorting to `window.postMessage()` for internal communication. I understand that [runtime.sendMessage()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) is all one needs to keep things secure. But going through the background page when you mean to message another frame is very inconvenient, doing it correctly requires lots of boilerplate code. So maybe [an API to communicate between content scripts in the same tab](https://bugs.chromium.org/p/chromium/issues/detail?id=1188556) could be added to the extension platform, even if it’s merely a wrapper for `runtime.sendMessage()`?
 
-The other concern is the `code` parameter in [tabs.executeScript()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript), security-wise it’s a footgun that really shouldn’t exist. It has only one legitimate use case: to pass configuration data to a content script. So how about extending the API to pass a configuration object along with the script file? Yes, same effect could also be achieved with a message exchange, but that complicates matters and introduces timing issues, which is why extension developers often go for a shortcut.
+The other concern is the `code` parameter in [tabs.executeScript()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript), security-wise it’s a footgun that really shouldn’t exist. It has only one legitimate use case: to pass configuration data to a content script. So how about [extending the API to pass a configuration object](https://bugs.chromium.org/p/chromium/issues/detail?id=330111) along with the script file? Yes, same effect could also be achieved with a message exchange, but that complicates matters and introduces timing issues, which is why extension developers often go for a shortcut.
 
 ## Timeline
 
