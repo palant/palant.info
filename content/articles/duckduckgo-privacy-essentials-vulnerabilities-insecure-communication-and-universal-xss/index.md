@@ -6,14 +6,14 @@ categories:
 date: 2021-03-15T14:07:37+0100
 description: Insecure internal communication in DuckDuckGo Privacy Essentials leaked
   some info across domains, and an XSS vulnerability was exploitable by its server.
-lastmod: '2021-03-16 14:55:18'
+lastmod: '2021-03-16 17:55:18+0100'
 title: 'DuckDuckGo Privacy Essentials vulnerabilities: Insecure communication and
   Universal XSS'
 ---
 
 A few months ago I looked into the inner workings of DuckDuckGo Privacy Essentials, a popular browser extension meant to protect the privacy of its users. I found some of the [typical issues](/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/) (mostly resolved since) but also two actual security vulnerabilities. First of all, the extension used insecure communication channels for some internal communication, which, quite ironically, caused some data leakage across domain boundaries. The second vulnerability gave a DuckDuckGo server way more privileges than intended: a [Cross-site Scripting (XSS) vulnerability](https://en.wikipedia.org/wiki/Cross-site_scripting) in the extension allowed this server to execute arbitrary JavaScript code on any domain.
 
-Both issues are resolved in DuckDuckGo Privacy Essentials 2021.2.3 and above. At the time of writing, this version is only available for Google Chrome however. Two releases have been skipped for Mozilla Firefox and Microsoft Edge for some reason, so that the latest version available here only fixes the first issue (insecure internal communication).
+Both issues are resolved in DuckDuckGo Privacy Essentials 2021.2.3 and above. At the time of writing, this version is only available for Google Chrome however. Two releases have been skipped for Mozilla Firefox and Microsoft Edge for some reason, so that the latest version available here only fixes the first issue (insecure internal communication). **Update** (2021-03-16): An updated extension version is now available for both Firefox and Edge.
 
 {{< img src="duck.jpg" width="600" alt="A very dirty and battered rubber duck" >}}
 <em>
