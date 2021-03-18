@@ -6,7 +6,7 @@ categories:
 date: 2021-03-15T14:07:37+0100
 description: Insecure internal communication in DuckDuckGo Privacy Essentials leaked
   some info across domains, and an XSS vulnerability was exploitable by its server.
-lastmod: '2021-03-16 17:55:18+0100'
+lastmod: '2021-03-18 19:07:32'
 title: 'DuckDuckGo Privacy Essentials vulnerabilities: Insecure communication and
   Universal XSS'
 ---
