@@ -6,7 +6,7 @@ categories:
 date: 2021-03-08 12:36:31+01:00
 description: Amazon Assistant browser extension delegates its wide range of privileges
   to Amazon web services. The potential for misuse is enormous.
-lastmod: '2021-03-08 21:13:48'
+lastmod: '2021-03-25 10:20:48+01:00'
 title: How Amazon Assistant lets Amazon track your every move on the web
 ---
 
@@ -23,7 +23,7 @@ Here I must say that the privacy expectations for shopping assistants [aren’t 
 </em>
 {{< /img >}}
 
-Mind you, I’m not saying that Amazon is currently doing any of this. While I’m not done analyzing the code, so far everything suggests that Amazon Assistant is only transferring domain names of the web pages you visit rather than full addresses. And all website manipulations seem in line with the extension’s purpose. But since all extension privileges are delegated to Amazon web services, it’s impossible to make sure that it always works like this. If for some Amazon Assistant users the “hoover up all data” mode is switched on, nobody will notice.
+Mind you, I’m not saying that Amazon is currently doing any of this. <strike>While I’m not done analyzing the code, so far everything suggests that Amazon Assistant is only transferring domain names of the web pages you visit rather than full addresses. And all website manipulations seem in line with the extension’s purpose.</strike> **Update** (2021-03-25): There is a [follow-up article with details on what Amazon actually does](/2021/03/22/follow-up-on-amazon-assistants-data-collection/). But since all extension privileges are delegated to Amazon web services, it’s impossible to make sure that it always works like this. If for some Amazon Assistant users the “hoover up all data” mode is switched on, nobody will notice.
 
 {{< toc >}}
 
