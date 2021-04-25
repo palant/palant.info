@@ -5,7 +5,7 @@ categories:
 date: 2020-12-10 14:57:43+01:00
 description: Browser extensions claiming to protect against fingerprinting will typically
   result in more data available for fingerprinting.
-lastmod: '2021-04-25 10:39:04'
+lastmod: '2021-04-25 11:25:17'
 title: How anti-fingerprinting extensions tend to make fingerprinting easier
 ---
 
