@@ -1,11 +1,12 @@
 ---
-title: "Reverse engineering a Unity-based Android game"
-date: 2021-02-18T13:53:18+0100
-description:
 categories:
 - unity
 - android
 - reverse-engineering
+date: 2021-02-18T13:53:18+0100
+description: null
+lastmod: '2021-05-04 12:00:15'
+title: Reverse engineering a Unity-based Android game
 ---
 
 My child is playing an Android game that asks for microphone access. And while it doesn’t insist on it and the privacy policy says that no recordings are being kept, I thought that I would take a closer look. The process turned out rather complicated thanks to the fact that the game was built with the Unity framework. Since I have little experience with games in general and Android applications in particular, I thought that I would document the analysis steps here. And maybe this turns out useful for other people as well.
