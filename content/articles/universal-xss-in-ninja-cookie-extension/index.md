@@ -1,10 +1,12 @@
 ---
-title: "Universal XSS in Ninja Cookie extension"
-date: 2021-05-04T14:43:42+0200
-description: Sloppy security in Ninja Cookie extension led to Universal XSS among other issues. Only the biggest issue has been resolved.
 categories:
 - security
 - add-ons
+date: 2021-05-04T14:43:42+0200
+description: Sloppy security in Ninja Cookie extension led to Universal XSS among
+  other issues. Only the biggest issue has been resolved.
+lastmod: '2021-05-14 18:37:49'
+title: Universal XSS in Ninja Cookie extension
 ---
 
 The cookie consent screens are really annoying. They attempt to trick you into accepting all cookies, dismissing them without agreeing is made intentionally difficult. A while back I wrote on Twitter than I’m almost at the point of writing a private browser extension to automate the job. And somebody recommended Ninja Cookie extension to me, which from the description seemed perfect for the job.
