@@ -1,10 +1,12 @@
 ---
-title: "Print Friendly & PDF: Full compromise"
-date: 2021-04-13T12:41:35+0200
-description: Any website could completely compromise Print Friendly & PDF browser extension. The fix is not very convincing.
 categories:
 - security
 - add-ons
+date: 2021-04-13T12:41:35+0200
+description: Any website could completely compromise Print Friendly & PDF browser
+  extension. The fix is not very convincing.
+lastmod: '2021-06-01 09:20:26'
+title: 'Print Friendly & PDF: Full compromise'
 ---
 
 I looked into the Print Friendly & PDF browser extension while helping someone figure out an issue they were having. The issue turned out unrelated to the extension, but I already noticed something that looked very odd. A quick investigation later I could confirm a massive vulnerability affecting all of its users (close to 1 million of them). Any website could easily gain complete control of the extension.
