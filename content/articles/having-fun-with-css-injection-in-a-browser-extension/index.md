@@ -1,6 +1,6 @@
 ---
 title: "Having fun with CSS injection in a browser extension"
-date: 2021-06-28T13:06:18Z
+date: 2021-06-28T13:06:18+0200
 description: G App Launcher browser extension allowed any website to inject CSS code into Google pages. This could be used not merely for visual changes but for data exfiltration as well.
 categories:
 - security
