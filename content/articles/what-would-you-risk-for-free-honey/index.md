@@ -8,7 +8,7 @@ date: 2020-10-28 11:17:38+01:00
 description: The Honey browser extension allows its server to run arbitrary code on
   any website, via at least four different mechanisms and obfuscating the code being
   loaded.
-lastmod: '2021-03-03 06:53:43'
+lastmod: '2021-07-02 20:45:24'
 title: What would you risk for free Honey?
 ---
 
