@@ -1,0 +1,13 @@
+{
+  "publishDate": "2021-07-02 21:56:33",
+  "author": "BOB",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "001010"
+}
+
+<p>I agree with <code>ADA</code>. Sending clear-text passwords back to the servers, opens up a lot of vulnerabilities, specially in more complex architectures and larger companies, where requests can pass through various intermediary spots. These intermediaries can be part of infrastructure services like CDNs as well as organization services like API gateways. Plus, you have all the code that these requests still have to go through once they reach the origin server. No wonder these issues have affected Facebook and Twitter (and probably many other companies that either never detected the issue, or didn't report it once detected.)</p>
+<p>Instead of relying on the security of the whole communication chain, trying to patch every possible vulnerable spot that you have control over and relying on the security of all vulnerable spots that you don't control, as well as trusting hundreds if not thoushends of employees it may be a better idea to not have to deal with the clear-text passwords hot potato in the first place.</p>
+<p>And this is from the perspective of service providers. From the user perspective, trusting all these services to properly handle their passwords and not storing them (either intentionally or unintentionally) can be quite a strong requirement, specially for services aiming to minimize trust requirements, for example by offering edge-to-edge encryption.</p>
+<p>In view of these points, saying that the OPAQUE protocol doesn't offer any security advantage that is worth the implementation complexity, seems like a rather bold statement worth reviewing in more detail.</p>
