@@ -1,11 +1,14 @@
 ---
-title: "McAfee WebAdvisor: From XSS in a sandboxed browser extension to administrator privileges"
-date: 2020-02-25T10:33:02+01:00
-description: "A vulnerability in McAfee WebAdvisor allowed any website to gain administrator privileges. User interaction required: two clicks anywhere on the page."
 categories:
-  - security
-  - mcafee
-  - antivirus
+- security
+- mcafee
+- antivirus
+date: 2020-02-25 10:33:02+01:00
+description: 'A vulnerability in McAfee WebAdvisor allowed any website to gain administrator
+  privileges. User interaction required: two clicks anywhere on the page.'
+lastmod: '2021-07-12 15:27:40'
+title: 'McAfee WebAdvisor: From XSS in a sandboxed browser extension to administrator
+  privileges'
 ---
 
 A while back I wrote about [a bunch of vulnerabilities in McAfee WebAdvisor](/2019/12/02/rendering-mcafee-web-protection-ineffective/), a component of McAfee antivirus products which is also available as a stand-alone application. Part of the fix was adding a bunch of pages to the extension which were previously hosted on siteadvisor.com, generally a good move. However, when I looked closely I noticed a [Cross-Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) vulnerability in one of these pages ([CVE-2019-3670](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3670)).
