@@ -36,7 +36,7 @@ Looking at the messages being exchanged, you’ll see that these are binary data
 You can see the original message contents by copying the message as a Base64 string, then running the following code in the context of the extension’s background page:
 
 {{< highlight js >}}
-pako.inflate(atob("eAGrViouSSwpLVayMjSw0FFQylOyMjesBQBQGwZU", {to: "string"}));
+pako.inflate(atob("eAGrViouSSwpLVayMjSw0FFQylOyMjesBQBQGwZU"), {to: "string"});
 {{< /highlight >}}
 
 This will display the initial message sent by the server:
