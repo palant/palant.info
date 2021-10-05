@@ -1,6 +1,6 @@
 ---
 title: "Abusing Keepa Price Tracker to track users on Amazon pages"
-date: 2021-10-06T12:31:12+0200
+date: 2021-10-05T12:31:12+0200
 description: Two critical vulnerabilities affected users of the Keepa extension, exposing them to tracking of their Amazon shopping and even data leaks.
 categories:
 - security
