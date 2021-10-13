@@ -87,7 +87,7 @@ params:
   fontFamilyTitle: "'Orkney', sans-serif"
   fontFamilyHeadings: "'Orkney', sans-serif"
   fontFamilyCode: "'SometypeMono', monospace"
-  fontFamilyBody: "'Adelle', serif"
+  fontFamilyBody: "'Philosopher', serif"
   fontSize: 20
   lineHeight: 1.618
 
