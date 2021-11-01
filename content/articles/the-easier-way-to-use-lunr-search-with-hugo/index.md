@@ -5,7 +5,7 @@ categories:
 date: 2020-06-04 11:07:33+02:00
 description: With lunr.js you can add a site search to your Hugo-generated website
   without any server-side code, and the search index will update automatically.
-lastmod: '2021-07-13 09:23:18'
+lastmod: '2021-11-01 21:22:25'
 title: The easier way to use lunr search with Hugo
 ---
 
