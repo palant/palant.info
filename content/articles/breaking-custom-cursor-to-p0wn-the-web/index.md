@@ -1,6 +1,7 @@
 ---
 title: "Breaking Custom Cursor to p0wn the web"
 date: 2021-09-28T14:37:24+0200
+lastmod: 2021-11-24T15:27:24+0200
 description: Sloppy coding practices in Custom Cursor extension resulted in vulnerabilities with considerable abuse potential. Attack surface of the extension remains excessive.
 categories:
 - security
@@ -18,6 +19,8 @@ Browser extensions make attractive attack targets. That’s not necessarily beca
 {{< /img >}}
 
 The attack surface of Custom Cursor is unnecessarily large: it grants `custom-cursor.com` website excessive privileges while also disabling [default Content Security Policy protection](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#default_content_security_policy). The result: anybody controlling `custom-cursor.com` (e.g. via one of the very common [cross-site scripting vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting)) could take over the extension completely. As of Custom Cursor 3.0.1 this particular vulnerability has been resolved, the attack surface remains excessive however. I recommend uninstalling the extension, it isn’t worth the risk.
+
+**Update (2021-11-24)**: I’ve now looked into [Cute Cursors](https://cute-cursors.com/), a competing extension with close to identical functionality. My conclusion is that Cute Cursors is secure, the attack surface is as minimal as it should be. So I recommend any Custom Cursor users to switch.
 
 {{< toc >}}
 
