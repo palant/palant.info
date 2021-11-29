@@ -154,21 +154,21 @@ disableKinds:
 menu:
   main:
     - Name: Home
-      URL: /
+      pageref: /
       Weight: 1
       pre: "internal"
       post: "home"
     - Name: Articles
-      URL: /articles/
+      pageref: /articles/
       Weight: 2
       pre: "internal"
       post: "archive"
-    - URL: "/categories/"
+    - pageref: "/categories/"
       name: "Categories"
       weight: 3
       pre: "internal"
       post: "th"
-    - URL: "/about/"
+    - pageref: "/about/"
       name: "About"
       weight: 4
       pre: "internal"
