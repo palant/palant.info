@@ -14,7 +14,8 @@ Somehow the fun browser extension “Meow, The Cat Pet” ended up in that exact
 {{<img src="cat_malicious_reminder.png" alt="A cat is displayed on the Google website along with a talk bubble. The talk bubble contains red text saying reminder and an image of skull and crossbones." width="600">}}
 <em>
   Image credits:
-  <a href="https://openclipart.org/detail/307402/skull-and-crossbones" rel="nofollow">j4p4n </a>
+  <a href="https://www.meowplayground.com/" rel="nofollow">Meow Playground</a>,
+  <a href="https://openclipart.org/detail/307402/skull-and-crossbones" rel="nofollow">j4p4n</a>
 </em>
 {{</img>}}
 
