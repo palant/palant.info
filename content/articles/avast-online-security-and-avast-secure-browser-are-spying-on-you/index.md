@@ -8,7 +8,7 @@ date: 2019-10-28 07:47:30
 description: Avast Online Security (standalone and built into Avast Secure Browser)
   siphons out your entire browsing behavior. No, this isn't necessary for it to do
   its job.
-lastmod: '2021-12-28 16:11:34'
+lastmod: '2021-12-29 08:10:17'
 title: Avast Online Security and Avast Secure Browser are spying on you
 ---
 
