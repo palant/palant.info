@@ -1,11 +1,13 @@
 ---
-title: "How did LastPass master passwords get compromised?"
-date: 2021-12-29T23:20:14+0100
-description: "LastPass accounts are under attack. I look into how user’s master passwords might have leaked."
 categories:
 - lastpass
 - security
 - password-managers
+date: 2021-12-29T23:20:14+0100
+description: LastPass accounts are under attack. I look into how user’s master passwords
+  might have leaked.
+lastmod: '2021-12-30 07:58:41'
+title: How did LastPass master passwords get compromised?
 ---
 
 A number of LastPass users recently received an email like the following, indicating that someone else attempted to log into their account:
