@@ -1,13 +1,12 @@
 ---
+title: "How did LastPass master passwords get compromised?"
+date: 2021-12-29T23:20:14+0100
+description: "LastPass accounts are under attack. I look into how user’s master passwords might have leaked."
+lastmod: 2021-12-30T20:55:14+0100
 categories:
 - lastpass
 - security
 - password-managers
-date: 2021-12-29T23:20:14+0100
-description: LastPass accounts are under attack. I look into how user’s master passwords
-  might have leaked.
-lastmod: '2021-12-30 19:44:22'
-title: How did LastPass master passwords get compromised?
 ---
 
 A number of LastPass users recently received an email like the following, indicating that someone else attempted to log into their account:
@@ -37,6 +36,12 @@ Several affected Hacker News users claim (and I believe them) that their master 
 {{< img src="tweet.png" width="582" alt="A tweet by Valcrist @Valcristerra: Someone tried my @LastPass master password earlier yesterday and then someone just tried it again a few hours ago after I changed it. What the hell is going on?" />}}
 
 If true (and I have little reason to doubt this statement), this completely rules out credential stuffing as the attack vector here.
+
+**Update** (2021-12-30): LastPass published an [expanded statement](https://blog.lastpass.com/2021/12/unusual-attempted-login-activity-how-lastpass-protects-you/) that I was unaware of at the time of writing. It also claims that credential stuffing is the source of the issue but has an important addition:
+
+> Our investigation has since found that some of these security alerts, which were sent to a limited subset of LastPass users, were likely triggered in error.
+
+This *seems* to indicate that the email messages were mistakenly triggered by login attempts with incorrect password. This would be good news and make the rest of this article obsolete. But note how they say “likely” here. If they found and fixed a bug in the email notification mechanism, why don’t they just state so? Unfortunately, this kind of statement sounds like they still don’t have a clue about what’s going on but want to calm the crowd nevertheless.
 
 ## Phishing
 
