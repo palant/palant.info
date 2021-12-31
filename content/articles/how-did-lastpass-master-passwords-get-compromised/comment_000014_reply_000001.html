@@ -1,0 +1,7 @@
+{
+  "id": "000001",
+  "publishDate": "2021-12-31 15:23:48"
+}
+
+<p>I’m not assuming anything. The hash is calculated on the client side and I’ve looked into the approach a while ago. I’ve reported a number of LastPass security vulnerabilities, you know?</p>
+<p>The hash sent is a PBKDF-HMAC-SHA1 hash of your master password, calculated with 100,000 iterations by default (old default was 5,000, changed after a vulnerability report by me), using your email address as the salt. That’s it. Nothing else goes into it. You are the one assuming here. The client-side code doesn’t even have access to your MAC address, so it couldn’t use it even if it wanted.</p>
