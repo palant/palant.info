@@ -38,9 +38,9 @@ Several affected Hacker News users claim (and I believe them) that their master 
 
 If true (and I have little reason to doubt this statement), this completely rules out credential stuffing as the attack vector here.
 
-**Update** (2021-12-30): LastPass published an [expanded statement](https://blog.lastpass.com/2021/12/unusual-attempted-login-activity-how-lastpass-protects-you/) that I was unaware of at the time of writing. It also claims that credential stuffing is the source of the issue but has an important addition:
+**Update** (2021-12-30): LastPass published an [expanded statement](https://blog.lastpass.com/2021/12/unusual-attempted-login-activity-how-lastpass-protects-you/) that I was unaware of at the time of writing. It also claims that credential stuffing is the source of the issue but has an important addition (emphasis mine):
 
-> Our investigation has since found that some of these security alerts, which were sent to a limited subset of LastPass users, were likely triggered in error.
+> Our investigation has since found that some of these security alerts, which were sent to a limited subset of LastPass users, were *likely* triggered in error.
 
 This *seems* to indicate that the email messages were mistakenly triggered by login attempts with incorrect password. This would be good news and make the rest of this article obsolete. But note how they say “likely” here. If they found and fixed a bug in the email notification mechanism, why don’t they just state so? Unfortunately, this kind of statement sounds like they still don’t have a clue about what’s going on but want to calm the crowd nevertheless.
 
