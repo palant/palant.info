@@ -5,7 +5,7 @@ categories:
 - reverse-engineering
 date: 2021-02-18T13:53:18+0100
 description: null
-lastmod: '2021-05-04 12:00:15'
+lastmod: '2022-01-19 20:33:25'
 title: Reverse engineering a Unity-based Android game
 ---
 
