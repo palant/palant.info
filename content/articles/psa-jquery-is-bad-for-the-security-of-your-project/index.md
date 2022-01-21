@@ -1,10 +1,13 @@
 ---
-title: "PSA: jQuery is bad for the security of your project"
-date: 2020-03-02T15:19:30+01:00
-description: jQuery makes it unnecessarily hard to avoid security vulnerabilities, not something that will be fixed any time soon. Better frameworks exist, just don't use it.
 categories:
-  - jquery
-  - security
+- jquery
+- security
+date: 2020-03-02 15:19:30+01:00
+description: jQuery makes it unnecessarily hard to avoid security vulnerabilities,
+  not something that will be fixed any time soon. Better frameworks exist, just don't
+  use it.
+lastmod: '2022-01-21 05:58:29'
+title: 'PSA: jQuery is bad for the security of your project'
 ---
 
 For some time I thought that jQuery was a thing of the past, only being used in old projects for legacy reasons. I mean, there are now so much better frameworks, why would anyone stick with jQuery and its numerous shortcomings? Then some colleagues told me that they weren't aware of jQuery's security downsides. And I recently discovered two big vulnerabilities in antivirus software [<sup>1</sup>](/2020/01/13/pwning-avast-secure-browser-for-fun-and-profit/) [<sup>2</sup>](/2020/02/25/mcafee-webadvisor-from-xss-in-a-sandboxed-browser-extension-to-administrator-privileges/) which existed partly due to excessive use of jQuery. So here is your official public service announcement: jQuery is bad for the security of your project.
