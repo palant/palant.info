@@ -8,7 +8,7 @@ slug: ryzom-falling-remote-code-execution-via-the-in-game-browser
 title: 'Ryzom falling: Remote code execution via the in-game browser'
 ---
 
-{{< toc />}}
+{{< toc >}}
 
 ## The short version
 
