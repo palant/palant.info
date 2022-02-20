@@ -1,11 +1,14 @@
 ---
-title: "Data exfiltration in Keepa Price Tracker"
-date: 2021-08-02T14:46:39+0200
-description: "The Keepa browser extension collects detailed data about your Amazon visits despite claiming otherwise in the privacy policy. It will also actively use your bandwidth to scrape the Amazon website."
 categories:
 - privacy
 - keepa
 - add-ons
+date: 2021-08-02T14:46:39+0200
+description: The Keepa browser extension collects detailed data about your Amazon
+  visits despite claiming otherwise in the privacy policy. It will also actively use
+  your bandwidth to scrape the Amazon website.
+lastmod: '2022-02-20 12:43:38'
+title: Data exfiltration in Keepa Price Tracker
 ---
 
 As readers of this blog [might remember](/2020/10/28/what-would-you-risk-for-free-honey/), shopping assistants aren’t exactly known for their respect of your privacy. They will typically use their privileged access to your browser in order to extract data. For them, this ability is a competitive advantage. You pay for a free product with a privacy hazard.
