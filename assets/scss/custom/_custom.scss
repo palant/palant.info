@@ -196,6 +196,23 @@ code
   }
 }
 
+/* Code highlighting */
+
+.chroma
+{
+  .kd
+  {
+    font-style: normal;
+    font-weight: bold;
+  }
+  .kr
+  {
+    font-weight: bold;
+    color: inherit;
+  }
+}
+
+
 /* Comments */
 
 #comments,
