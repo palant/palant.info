@@ -200,15 +200,19 @@ code
 
 .chroma
 {
+  .k
+  {
+    font-weight: bold;
+  }
   .kd
   {
     font-style: normal;
     font-weight: bold;
+    color: var(--chroma-keyword-color);
   }
   .kr
   {
     font-weight: bold;
-    color: inherit;
   }
 }
 
