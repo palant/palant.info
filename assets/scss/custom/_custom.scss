@@ -100,7 +100,7 @@
 
 @font-face
 {
-  font-family: "SourceCodePro";
+  font-family: "mononoki";
   font-display: block;
   src: url('/fonts/mononoki-Bold.woff2') format('woff2'),
        url('/fonts/mononoki-Bold.woff') format('woff');
@@ -162,6 +162,11 @@ figure
   display: inline;
   border-radius: 10px;
   margin: 0;
+}
+
+code
+{
+  font-size: 90%;
 }
 
 #tocBox
