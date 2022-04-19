@@ -74,7 +74,7 @@ html += "</ul>";
 $(document.body).append(html);
 {{< /highlight >}}
 
-And you really have to do this consistently. If you forget a single `escape()` call you might introduce a vulnerability. If you omit a `escape()` code because the data is presumably safe you create a maintenance burden -- now anybody changing this code (including yourself) has to remember that this data is supposed to be safe. So they have to keep it safe, and if not they have to remember changing this piece of code. And that's already assuming that your initial evaluation of the data being safe was correct.
+And you really have to do this consistently. If you forget a single `escape()` call you might introduce a vulnerability. If you omit a `escape()` call because the data is presumably safe you create a maintenance burden -- now anybody changing this code (including yourself) has to remember that this data is supposed to be safe. So they have to keep it safe, and if not they have to remember changing this piece of code. And that's already assuming that your initial evaluation of the data being safe was correct.
 
 Any system which relies on imperfect human beings to always make perfect choices to stay secure is bound to fail at some point. [McAfee Webadvisor](/2020/02/25/mcafee-webadvisor-from-xss-in-a-sandboxed-browser-extension-to-administrator-privileges/) is merely the latest example where jQuery encouraged this problematic coding approach which failed spectacularly. That's not how it should work.
 
