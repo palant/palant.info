@@ -10,6 +10,7 @@ description: Avast Online Security (standalone and built into Avast Secure Brows
   its job.
 lastmod: '2021-12-29 08:10:17'
 title: Avast Online Security and Avast Secure Browser are spying on you
+disableComments: true
 ---
 
 Are you one of the allegedly 400 million users of Avast antivirus products? Then I have bad news for you: you are likely being spied upon. The culprit is the Avast Online Security extension that these products urge you to install in your browser for maximum protection.

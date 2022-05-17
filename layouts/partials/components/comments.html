@@ -59,6 +59,7 @@
   {{ end }}
 </section>
 
+{{ if not .Params.disableComments }}
 <form id="comments-form" action="#" method="POST" data-path="{{ .File.Dir }}" hidden>
   <h4>Leave a comment</h4>
   <div class="comments-form-header">
@@ -92,4 +93,8 @@
 
   <input name="uri" type="hidden" value="{{ .RelPermalink }}">
 </form>
+{{ else }}
+<div id="comments-form">Comments are disabled for this article.</div>
+{{ end }}
+
 {{ end }}
