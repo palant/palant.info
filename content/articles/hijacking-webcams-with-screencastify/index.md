@@ -1,6 +1,7 @@
 ---
 title: "Hijacking webcams with Screencastify"
 date: 2022-05-23T14:42:37+0200
+lastmod: 2022-05-25T21:22:00+0200
 description: Screencastify extension allows websites to access user’s webcam as well as their Google Drive account. The issue isn’t really resolved.
 categories:
 - security
@@ -12,6 +13,8 @@ Everyone has received the mails trying to extort money by claiming to have hacke
 Screencastify is a browser extension that aids you in creating a video recording of your entire screen or a single window, optionally along with your webcam stream where you explain what you are doing right now. Chrome Web Store shows “10,000,000+ users” for it which is the highest number it will display – same is shown for extensions with more than 100 million users. The extension is being marketed for educational purposes and gained significant traction in the current pandemic.
 
 As of now, it appears that Screencastify only managed to address the Cross-site Scripting vulnerability which gave arbitrary websites access to the extension’s functionality, as opposed to “merely” Screencastify themselves and a dozen other vendors they work with. As this certainly won’t be their last Cross-site Scripting vulnerability, I sincerely recommend staying clear of this browser extension.
+
+**Update** (2022-05-25): Version 2.70.0.4517 of the extension released today restricted the attack surface considerably. Now it’s only five subdomains, run by Screencastify and one other vendor.
 
 {{< toc >}}
 
@@ -114,3 +117,19 @@ Looking at the most current Screencastify 2.69.0.4425 release, the `externally_c
 Was the API accessible this way restricted at least? Doesn’t look like it. This API will still readily produce the Google OAuth token that can be used to access your Google Drive. And the `onConnectExternal` handler allowing websites to start video recording is still there as well. Not much appears to have changed here and I could verify that it is still possible to start a webcam recording without any visual clues.
 
 So, the question whether to keep using Screencastify at this point boils down to whether you trust Screencastify, Pendo, Webflow, Teachable, Atlassian, Netlify, Marketo and ZenDesk with access to your webcam and your Google Drive data. And whether you trust all of these parties to keep their web properties free of XSS vulnerabilities. If not, you should uninstall Screencastify ASAP.
+
+**Update** (2022-05-25): Screencastify released version 2.70.0.4517 of their extension today. This release finally restricts the `externally_connectable` manifest entry, now it says:
+
+```json
+"externally_connectable": {
+  "matches": [
+    "https://captions.screencastify.com/*",
+    "https://edit.screencastify.com/*",
+    "https://questions.screencastify.com/*",
+    "https://watch.screencastify.com/*",
+    "https://www.screencastify.com/*"
+  ]
+},
+```
+
+While this still includes `www.screencastify.com` which is run by Webflow, this is much better than before and limits the attack surface considerably.
