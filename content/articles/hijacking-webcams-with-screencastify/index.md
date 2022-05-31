@@ -1,7 +1,7 @@
----
+hg d---
 title: "Hijacking webcams with Screencastify"
 date: 2022-05-23T14:42:37+0200
-lastmod: 2022-05-25T21:22:00+0200
+lastmod: 2022-05-31T10:19:00+0200
 description: Screencastify extension allows websites to access user’s webcam as well as their Google Drive account. The issue isn’t really resolved.
 categories:
 - security
@@ -14,7 +14,7 @@ Screencastify is a browser extension that aids you in creating a video recording
 
 As of now, it appears that Screencastify only managed to address the Cross-site Scripting vulnerability which gave arbitrary websites access to the extension’s functionality, as opposed to “merely” Screencastify themselves and a dozen other vendors they work with. As this certainly won’t be their last Cross-site Scripting vulnerability, I sincerely recommend staying clear of this browser extension.
 
-**Update** (2022-05-25): Version 2.70.0.4517 of the extension released today restricted the attack surface considerably. Now it’s only five subdomains, run by Screencastify and one other vendor.
+**Update** (2022-05-25): Version 2.70.0.4517 of the extension released today restricted the attack surface considerably. Now it’s only five subdomains, run by Screencastify and one other vendor. **Update** (2022-05-31): Screencastify reduced the attack surface further by no longer granting websites access to the user’s Google Drive. And as of version 2.70.1.4520 all five subdomains with privileged access to the extension are run by Screencastify themselves.
 
 {{< toc >}}
 
@@ -133,3 +133,5 @@ So, the question whether to keep using Screencastify at this point boils down to
 ```
 
 While this still includes `www.screencastify.com` which is run by Webflow, this is much better than before and limits the attack surface considerably.
+
+**Update** (2022-05-31): A further look into version 2.70.0.4517 shows that `bg:getSignInToken` endpoint has been removed, this further defuses the issue here. Also, version 2.70.1.4520 released on May 27 changes the list of the sites allowed to connect once again, replacing `www.screencastify.com` by `app.screencastify.com`. So now all domains granted this access are indeed run by Screencastify and not by third parties.
