@@ -14,7 +14,7 @@ Screencastify is a browser extension that aids you in creating a video recording
 
 As of now, it appears that Screencastify only managed to address the Cross-site Scripting vulnerability which gave arbitrary websites access to the extension’s functionality, as opposed to “merely” Screencastify themselves and a dozen other vendors they work with. As this certainly won’t be their last Cross-site Scripting vulnerability, I sincerely recommend staying clear of this browser extension.
 
-**Update** (2022-05-25): Version 2.70.0.4517 of the extension released today restricted the attack surface considerably. Now it’s only five subdomains, run by Screencastify and one other vendor. **Update** (2022-05-31): Screencastify reduced the attack surface further by no longer granting websites access to the user’s Google Drive. And as of version 2.70.1.4520 all five subdomains with privileged access to the extension are run by Screencastify themselves.
+**Update** (2022-05-25): Version 2.70.0.4517 of the extension released today restricted the attack surface considerably. Now it’s only five subdomains, run by Screencastify and one other vendor. **Update** (2022-05-31): Screencastify reduced the attack surface further by no longer granting websites access to the user’s Google Drive. And as of version 2.70.1.4520 all five subdomains with privileged access to the extension are run by Screencastify themselves. As far as I can tell, with these changes the issue can no longer be exploited.
 
 {{< toc >}}
 
