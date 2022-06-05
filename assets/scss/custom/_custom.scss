@@ -211,6 +211,15 @@ code
 
 /* Code highlighting */
 
+p code
+{
+  font-size: 100%;
+  background: none;
+  padding: 0;
+  color: var(--chroma-literal-color);
+  filter: brightness(75%);
+}
+
 .chroma
 {
   .k
