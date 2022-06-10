@@ -1,11 +1,12 @@
 ---
-title: "Hijacking webcams with Screencastify"
-date: 2022-05-23T14:42:37+0200
-lastmod: 2022-05-31T10:19:00+0200
-description: Screencastify extension allows websites to access user’s webcam as well as their Google Drive account. The issue isn’t really resolved.
 categories:
 - security
 - add-ons
+date: 2022-05-23T14:42:37+0200
+description: Screencastify extension allows websites to access user’s webcam as well
+  as their Google Drive account. The issue isn’t really resolved.
+lastmod: '2022-06-10 14:29:05'
+title: Hijacking webcams with Screencastify
 ---
 
 Everyone has received the mails trying to extort money by claiming to have hacked a person’s webcam and recorded a video of them watching porn. These are a bluff of course, but the popular Screencastify browser extension actually provides all the infrastructure necessary for someone to pull this off. A website that a user visited could trick the extension into starting a webcam recording among other things, without any indications other than the webcam’s LED lighting up if present. The website could then steal the video from the user’s Google Drive account that it was uploaded to, along with anything else that account might hold.
