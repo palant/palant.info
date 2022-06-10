@@ -4,7 +4,7 @@
 }
 
 <p>In most cases it’s already visible in the DNS records:</p>
-<p>$ host www.screencastify.com
-www.screencastify.com is an alias for proxy-ssl.webflow.com.</p>
+<p><pre><code>$ host www.screencastify.com
+www.screencastify.com is an alias for proxy-ssl.webflow.com.</code></pre></p>
 <p>Some subdomains are hosted on AWS which isn’t as obvious. Page content and source usually indicate who they belong to. And you can check out the vendor to see whether they offer managed services / who they are hosting with.</p>
 <p>As to who can issue certificates: no, with Let’s Encrypt for example anybody controlling a subdomain can get an SSL certificate for this subdomain directly. They don’t need to prove domain ownership.</p>
