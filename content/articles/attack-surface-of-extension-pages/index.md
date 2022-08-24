@@ -1,6 +1,7 @@
 ---
 title: "Attack surface of extension pages"
 date: 2022-08-24T11:56:51+0200
+lastmod: 2022-08-24T16:25:51+0200
 description: "Remote Code Execution in extension pages is actually hard to achieve. We’ll produce a vulnerable extension nevertheless and look into how it can be exploited."
 categories:
 - addons
@@ -151,7 +152,9 @@ In fact: more popular extensions are more likely to be the offenders here. When 
 
 ## Further CSP circumvention approaches
 
-It doesn’t always have to be `'unsafe-eval'` or `'unsafe-inline'` script sources which essentially drop all defenses. Sometimes it is something way more innocuous, such as adding the some website as a trusted script source:
+**Edit** (2022-08-24): This section originally mentioned `'unsafe-inline'` script source. It is ignored for browser extensions however, so that it isn’t actually relevant in this context.
+
+It doesn’t always have to be the `'unsafe-eval'` script source which essentially drops all defenses. Sometimes it is something way more innocuous, such as adding the some website as a trusted script source:
 
 ```json
 {
@@ -183,7 +186,7 @@ That’s it, now `example.com` can be used to produce a script with arbitrary co
 
 So if you are an extension developer and you want to protect your extension against this kind of attacks, what can you do?
 
-First and foremost: let Content Security Policy protect you. Avoid adding `'unsafe-eval'` and `'unsafe-inline'` at any cost. Rather than allowing external script sources, bundle these scripts with your extension. If you absolutely cannot avoid loading external scripts, try to keep the list short.
+First and foremost: let Content Security Policy protect you. Avoid adding `'unsafe-eval'` at any cost. Rather than allowing external script sources, bundle these scripts with your extension. If you absolutely cannot avoid loading external scripts, try to keep the list short.
 
 And then there is the usual advise to prevent XSS vulnerabilities:
 
