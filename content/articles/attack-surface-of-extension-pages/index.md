@@ -8,9 +8,9 @@ categories:
 - extension-security-basics
 ---
 
-In the previous article we discussed [extension privileges](/2022/06/02/impact-of-extension-privileges/). And as we know from [another article](/2022/06/02/anatomy-of-a-basic-extension/#the-relevant-contexts), extension pages are the extension context with full access to these privileges. So if someone were to attack a browser extension, attempting Remote Code Execution (RCE) in an extension page would be the obvious thing to do.
+In the previous article we discussed [extension privileges](/2022/08/17/impact-of-extension-privileges/). And as we know from [another article](/2022/08/10/anatomy-of-a-basic-extension/#the-relevant-contexts), extension pages are the extension context with full access to these privileges. So if someone were to attack a browser extension, attempting Remote Code Execution (RCE) in an extension page would be the obvious thing to do.
 
-In this article we’ll make some changes to the [example extension](/2022/06/02/anatomy-of-a-basic-extension/#the-example-extension) to make such an attack against it feasible. But don’t be mistaken: rendering our extension vulnerable requires actual work, thanks to the security measures implemented by the browsers.
+In this article we’ll make some changes to the [example extension](/2022/08/10/anatomy-of-a-basic-extension/#the-example-extension) to make such an attack against it feasible. But don’t be mistaken: rendering our extension vulnerable requires actual work, thanks to the security measures implemented by the browsers.
 
 This doesn’t mean that such attacks are never feasible against real-world extensions. Sometimes even these highly efficient mechanisms [fail to prevent a catastrophic vulnerability](/2020/02/25/mcafee-webadvisor-from-xss-in-a-sandboxed-browser-extension-to-administrator-privileges/). And then there are of course extensions [explicitly disabling security mechanisms](/2020/01/13/pwning-avast-secure-browser-for-fun-and-profit/), with similarly catastrophic results. Ironically, both of these examples are supposed security products created by big antivirus vendors.
 
@@ -48,7 +48,7 @@ Actually, they would if they [use jQuery](/2020/03/02/psa-jquery-is-bad-for-the-
 
 ## Modifying the example extension
 
-I’ll discuss all the changes to the [example extension](/2022/06/02/anatomy-of-a-basic-extension/#the-example-extension) one by one. But you can download the ZIP file with the complete extension source code [here](extension.zip).
+I’ll discuss all the changes to the [example extension](/2022/08/10/anatomy-of-a-basic-extension/#the-example-extension) one by one. But you can download the ZIP file with the complete extension source code [here](extension.zip).
 
 Before an extension page can run malicious code, this code has to come from somewhere. Websites, malicious or not, cannot usually access extension pages directly however. So they have to rely on extension content scripts to pass malicious data along. This separation of concerns reduces the attack surface considerably.
 
