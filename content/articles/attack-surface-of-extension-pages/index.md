@@ -166,7 +166,7 @@ It doesn’t always have to be the `'unsafe-eval'` script source which essential
 
 With `example.com` being some big name’s code hosting or even the extension owner’s very own website, it certainly can be trusted? How likely is it that someone will hack that server only to run some malicious script in the extension?
 
-Actually, hacking the server often isn’t necessary. Maybe `example.com` has an [open redirect vulnerability](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html), allowing attackers to redirect the request to a script they control. Or it contains a [JSONP endpoint](https://en.wikipedia.org/wiki/JSONP). For example, `https://example.com/get_data?callback=ready` might produce a response like this:
+Actually, hacking the server often isn’t necessary. Occasionally, `example.com` will contain a [JSONP endpoint](https://en.wikipedia.org/wiki/JSONP) or something similar. For example, `https://example.com/get_data?callback=ready` might produce a response like this:
 
 ```js
 ready({...some data here...});
@@ -181,6 +181,8 @@ alert("XSS")//({...some data here...});
 That’s it, now `example.com` can be used to produce a script with arbitrary code and CSP protection is no longer effective.
 
 *Side-note*: These days JSONP endpoints usually restrict callback names to alphanumeric characters only, to prevent this very kind of abuse. However, JSONP endpoints without such protection are still too common.
+
+**Edit** (2022-08-25): The original version of this article mentioned open redirects as another CSP circumvention approach. Current browser versions check redirect target against CSP as well however.
 
 ## Recommendations for developers
 
