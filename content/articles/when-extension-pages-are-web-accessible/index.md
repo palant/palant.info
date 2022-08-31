@@ -1,11 +1,13 @@
 ---
-title: "When extension pages are web-accessible"
-date: 2022-08-31T14:36:51+0200
-description: Extensions can use web_accessible_resources to expose their pages to the web. This enables way more attacks against them, some discussed here.
 categories:
 - addons
 - security
 - extension-security-basics
+date: 2022-08-31T14:36:51+0200
+description: Extensions can use web_accessible_resources to expose their pages to
+  the web. This enables way more attacks against them, some discussed here.
+lastmod: '2022-08-31 21:00:21'
+title: When extension pages are web-accessible
 ---
 
 In the article discussing the [attack surface of extension pages](/2022/06/02/attack-surface-of-extension-pages/) I said:
