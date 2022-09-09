@@ -10,7 +10,7 @@ lastmod: '2022-08-31 21:00:21'
 title: When extension pages are web-accessible
 ---
 
-In the article discussing the [attack surface of extension pages](/2022/06/02/attack-surface-of-extension-pages/) I said:
+In the article discussing the [attack surface of extension pages](/2022/08/24/attack-surface-of-extension-pages/) I said:
 
 > Websites, malicious or not, cannot usually access extension pages directly however.
 
