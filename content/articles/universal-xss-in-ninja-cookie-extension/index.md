@@ -5,7 +5,7 @@ categories:
 date: 2021-05-04T14:43:42+0200
 description: Sloppy security in Ninja Cookie extension led to Universal XSS among
   other issues. Only the biggest issue has been resolved.
-lastmod: '2022-07-12 18:04:39'
+lastmod: '2022-09-15 14:43:41'
 title: Universal XSS in Ninja Cookie extension
 ---
 
