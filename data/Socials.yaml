@@ -4,11 +4,6 @@ socials:
     icon: "rss"
     title: "RSS"
     weight: 1
-  - id: "twitter"
-    url: "https://twitter.com/WPalant"
-    icon: "twitter"
-    title: "Twitter"
-    weight: 2
   - id: "mastodon"
     url: "https://infosec.exchange/@WPalant"
     icon: "mastodon"

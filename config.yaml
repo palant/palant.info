@@ -19,7 +19,6 @@ params:
   siteLogo: "/icons/apple-touch-icon.png"
   siteDescription: "Wladimir Palant's blog"
   siteCreatedTime:  "2006-07-10T00:00:00+00:00"
-  siteTwitter: "WPalant"
   categoryBy: "categories"
   enableTree: false
   displayPosts: false
@@ -106,7 +105,6 @@ params:
   fofPoster: ""
 author:
   name: Wladimir Palant
-  twitter: WPalant
 theme: meme
 
 taxonomies:
