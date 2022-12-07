@@ -60,7 +60,7 @@ For storing passwords on a server securely, the baseline are the [PBKDF2](https:
 
 Never mind the fact that each password needs to be hashed with a unique salt. Otherwise the computational effort of reversing all passwords stored in the database will be the same as the effort of reversing merely one of them. But unique salts are incompatible with the goal of checking for password reuse. So at the very least Scirge could introduce per-user salts.
 
-****Edit** (2022-12-07): Scirge explained that they do not actually store SHA-1 hashes on the server but apply bcrypt additionally. In order to compare the newly received SHA-1 hash to the existing hashed passwords, they currently apply bcrypt repeatedly. So unless there is additional logging of SHA-1 hashes when these are received by the server, this setup is reasonably safe. Proper client-side hashing would still provide better privacy.
+**Edit** (2022-12-07): Scirge explained that they do not actually store SHA-1 hashes on the server but apply bcrypt additionally. In order to compare the newly received SHA-1 hash to the existing hashed passwords, they currently apply bcrypt repeatedly. So unless there is additional logging of SHA-1 hashes when these are received by the server, this setup is reasonably safe. Proper client-side hashing would still provide better privacy.
 
 ## “Double encrypted channel” as obfuscation
 
