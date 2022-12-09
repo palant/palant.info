@@ -3,7 +3,7 @@ title: "Anatomy of a basic extension"
 date: 2022-08-10T12:26:51+0200
 description: "Starting an article series. Here we’ll take apart a very simple browser extension and look at various contexts in which its code executes."
 categories:
-- addons
+- add-ons
 - security
 - extension-security-basics
 ---

@@ -3,7 +3,7 @@ title: "Impact of extension privileges"
 date: 2022-08-17T15:01:51+0200
 description: "Security-wise, the main distinction between extensions and regular web pages are extension privileges. These can be quite dangerous if they fall into the wrong hands."
 categories:
-- addons
+- add-ons
 - security
 - extension-security-basics
 ---

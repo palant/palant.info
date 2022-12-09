@@ -4,7 +4,7 @@ date: 2022-08-24T11:56:51+0200
 lastmod: 2022-08-24T16:25:51+0200
 description: "Remote Code Execution in extension pages is actually hard to achieve. We’ll produce a vulnerable extension nevertheless and look into how it can be exploited."
 categories:
-- addons
+- add-ons
 - security
 - extension-security-basics
 ---

@@ -1,6 +1,6 @@
 ---
 categories:
-- addons
+- add-ons
 - security
 - extension-security-basics
 date: 2022-08-31T14:36:51+0200
