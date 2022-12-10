@@ -1,11 +1,14 @@
 ---
-title: "Common pitfalls of breaking up HTTPS connections"
-date: 2022-12-08T15:18:23+0100
-description: "HTTPS proxies (antivirus, company network proxies) breaking up end-to-end-encrypted connections typically introduce a number of privacy and/or security issues. This article explains some common ones."
 categories:
 - security
 - privacy
 - antivirus
+date: 2022-12-08T15:18:23+0100
+description: HTTPS proxies (antivirus, company network proxies) breaking up end-to-end-encrypted
+  connections typically introduce a number of privacy and/or security issues. This
+  article explains some common ones.
+lastmod: '2022-12-10 11:18:59'
+title: Common pitfalls of breaking up HTTPS connections
 ---
 
 Let me say it up front: breaking up end-to-end-encrypted HTTPS connections is bad. No matter why you think that you need to inspect and/or modify the contents of an HTTPS connection, please consider not doing it. And if you still think that you absolutely need it, please sit down and consider again just *not* doing it.
