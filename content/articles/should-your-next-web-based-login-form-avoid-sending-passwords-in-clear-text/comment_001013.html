@@ -1,0 +1,16 @@
+{
+  "publishDate": "2022-12-21 23:50:21",
+  "author": "Tobias",
+  "authorUrl": "https://linkedin.com/in/tobsec",
+  "type": "comment",
+  "title": "",
+  "id": "001013"
+}
+
+<blockquote>
+<p>With OPAQUE, the password is never sent to the server, so it cannot be intercepted in transit. However, with web applications the server controls both the server and the client side. So all it has to do is giving you a slightly modified version of its JavaScript code on the login page. That code can then intercept the password as you enter it into the login form. The user cannot notice this manipulation, with JavaScript code often going into megabytes these days, inspecting it every time just isn’t possible.</p>
+</blockquote>
+<p>For the web CODE SIGNING used to be long past dead… however in the spotlight of those crypto messenger's web apps seems to experience kind of resurgence. Some are using the Signed Pages browser plugin:
+https://chrome.google.com/webstore/detail/signed-pages/pdhofgeoopaglkejgpjojeikbdmkmkbp
+So, for the login form (where the password is entered by the user) you could make the web app direct to a code-signed login page (where the user would have to pay his security awareness attention to the "green check mark" – and URL/TLS of course) and from there redirect back.</p>
+<p>I personally would prefer the aPAKE login feature to be standardized and baked into the browser like FIDO2/WebAuthn – or even better: extend those FIDO2 plugins already in use by an aPAKE/OPAQUE feature (ideally including HMAC Authentication Header for the authenticated session's requests to be signed with the exchanged key K).</p>
