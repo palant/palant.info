@@ -69,7 +69,9 @@ But it all stands and falls with the way the encryption key is derived from the 
 
 In response to my concerns LastPass increased the number of PBKDF2 iterations from 5,000 to 100,100. That’s much better of course, but this graphics card can still test more than 17,000 guesses per second.
 
-**Update** (2022-12-23): While LastPass changed the default in 2018, it seems that they never bothered changing the settings for existing accounts like I suggested. So there are still LastPass accounts around configured with 5,000 PBKDF2 iterations.
+**Update** (2022-12-23): While LastPass changed the default in 2018, it seems that they never bothered changing the settings for existing accounts like I suggested. So there are still LastPass accounts around configured with 5,000 PBKDF2 iterations. The screenshot below shows my message on Bugcrowd from February 2018, so LastPass was definitely aware of the issue.
+
+{{< img src="bugcrowd.png" width="870" alt="Screenshot from Bugcrowd. bobc sent a message (5 years ago): Ok thank you. Our default is now 100k rounds and artificial limits on number of rounds have been removed. palant sent a message (5 years ago) Yes, the default changed it seems. But what about existing accounts?" />}}
 
 If someone tries to blindly test all the 4.8 · 10<sup>18</sup> possible passwords, a match will be found on average after 4,5 million years. Except that this graphics card is no longer state of the art. Judging by [these benchmark results](https://gist.github.com/Chick3nman/32e662a5bb63bc4f51b847bb422222fd), a current NVIDIA GeForce RTX 4090 graphics card could test 190,000 guesses per second!
 
