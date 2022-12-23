@@ -1,6 +1,7 @@
 ---
 title: "LastPass has been breached: What now?"
 date: 2022-12-23T14:30:06+0100
+lastmod: 2022-12-23T17:43:06+0100
 description: You should be very concerned about the LastPass breach. Depending on who you are, now might be the right time to change your passwords.
 categories:
 - lastpass
@@ -66,7 +67,9 @@ But it all stands and falls with the way the encryption key is derived from the 
 
 > Judging by [these numbers](https://discourse.codinghorror.com/t/hacker-hack-thyself/5290/22), a single GeForce GTX 1080 Ti graphics card (cost factor: less than $1000) can be used to test 346,000 guesses per second.
 
-In response to my concerns LastPass increased the number of PBKDF2 iterations from 5000 to 100,100. That’s much better of course, but this graphics card can still test more than 17,000 guesses per second.
+In response to my concerns LastPass increased the number of PBKDF2 iterations from 5,000 to 100,100. That’s much better of course, but this graphics card can still test more than 17,000 guesses per second.
+
+**Update** (2022-12-23): While LastPass changed the default in 2018, it seems that they never bothered changing the settings for existing accounts like I suggested. So there are still LastPass accounts around configured with 5,000 PBKDF2 iterations.
 
 If someone tries to blindly test all the 4.8 · 10<sup>18</sup> possible passwords, a match will be found on average after 4,5 million years. Except that this graphics card is no longer state of the art. Judging by [these benchmark results](https://gist.github.com/Chick3nman/32e662a5bb63bc4f51b847bb422222fd), a current NVIDIA GeForce RTX 4090 graphics card could test 190,000 guesses per second!
 
