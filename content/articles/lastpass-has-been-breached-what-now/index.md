@@ -1,12 +1,13 @@
 ---
-title: "LastPass has been breached: What now?"
-date: 2022-12-23T14:30:06+0100
-lastmod: 2022-12-23T17:43:06+0100
-description: You should be very concerned about the LastPass breach. Depending on who you are, now might be the right time to change your passwords.
 categories:
 - lastpass
 - security
 - password-managers
+date: 2022-12-23T14:30:06+0100
+description: You should be very concerned about the LastPass breach. Depending on
+  who you are, now might be the right time to change your passwords.
+lastmod: '2022-12-24 07:47:29'
+title: 'LastPass has been breached: What now?'
 ---
 
 If you have a LastPass account you should have received an email updating you on the state of affairs concerning a recent LastPass breach. While this email and the [corresponding blog post](https://blog.lastpass.com/2022/12/notice-of-recent-security-incident/) try to appear transparent, they don’t give you a full picture. In particular, they are rather misleading concerning a very important question: should you change all your passwords now?
