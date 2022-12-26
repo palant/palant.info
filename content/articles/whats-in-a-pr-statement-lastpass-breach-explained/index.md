@@ -84,7 +84,7 @@ Note “stronger-than-typical” here. I seriously wonder what LastPass consider
 
 In fact, OWASP currently [recommends 310,000 iterations](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2). LastPass hasn’t increased their default since 2018, despite modern graphics cards becoming much better at guessing PBKDF2-protected passwords in that time – at least by factor 7.
 
-And that isn’t even the full story. In 2018 LastPass increased the default from 5,000 iterations to 100,000. But what happened to the existing accounts? Some have been apparently upgraded, while other people report still having 5,000 iterations configured. It’s unclear why these haven’t been upgraded.
+And that isn’t even the full story. In 2018 LastPass increased the default from 5,000 iterations to 100,100. But what happened to the existing accounts? Some have been apparently upgraded, while other people report still having 5,000 iterations configured. It’s unclear why these haven’t been upgraded.
 
 In fact, my test account is also configured with 5,000 iterations. There is no warning when I log in. LastPass won’t prevent me from changing this setting to a similarly low value. LastPass users affected don’t learn that they are at risk. But they get blamed now for not keeping up with LastPass recommendations.
 
