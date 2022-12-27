@@ -1,0 +1,9 @@
+{
+  "id": "000001",
+  "publishDate": "2022-12-27 17:54:32"
+}
+
+<p>I’ve never looked into LastPass’ business offerings, so I don’t know any technical details. From the documentation however, the implementation of super-admin capabilities makes sense. The consequence of course is: a company administrator can always access the passwords for all users. This isn’t really unusual in a corporate environment.</p>
+<p>For this breach, this makes super-admins high-value targets however. If someone can decrypt a super-admin’s vault, they will be able to get the admin’s private key. With that they can retrieve the encryption key for each user and no longer need to bruteforce. And the attackers should see from the data both who is a super-admin and how many users they will get by decrypting their data – neither information can be encrypted. Great for prioritizing attacks.</p>
+<p>This SMS recovery isn’t quite as bad as you think. It works via the Recovery OTP that is stored in your LastPass browser extension. I wrote about it here: <a href="https://palant.info/2018/07/09/is-your-lastpass-data-really-safe-in-the-encrypted-online-vault/#a-few-words-on-backdoors" rel="nofollow">https://palant.info/2018/07/09/is-your-lastpass-data-really-safe-in-the-encrypted-online-vault/#a-few-words-on-backdoors</a>. I mentioned email as an additional verification step they require, but apparently SMS will work as well.</p>
+<p>No, admins cannot view master passwords, that’s not what the article you link to says. They can see when the master password was last changed, and they can force a user to change their password. They still won’t know what that password is.</p>
