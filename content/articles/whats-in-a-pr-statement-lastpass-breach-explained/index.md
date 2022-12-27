@@ -90,6 +90,8 @@ And that isn’t even the full story. In 2018 LastPass increased the default fro
 
 In fact, my test account is also configured with 5,000 iterations. There is no warning when I log in. LastPass won’t prevent me from changing this setting to a similarly low value. LastPass users affected don’t learn that they are at risk. But they get blamed now for not keeping up with LastPass recommendations.
 
+**Update** (2022-12-27): I’ve now seen comments from people who have their accounts configured to 500 iterations. I’m not even sure when this was the LastPass default, but they failed to upgrade people’s accounts back then as well. And now people’s data leaked with protection that is factor 620 (!!!) below what OWASP currently recommends. I am at loss of words at this utter negligence.
+
 > If you use the default settings above, it would take millions of years to guess your master password using generally-available password-cracking technology.
 
 I’ll translate: “If you’ve done everything right, nothing can happen to you.” This again prepares the ground for blaming the customers. One would assume that people who “test the latest password cracking technologies” would know better than that. As I’ve calculated, even guessing a truly random password meeting their complexity criteria [would take less than a million years on average](/2022/12/23/lastpass-has-been-breached-what-now/#how-long-does-decrypting-passwords-take) using a single graphics card.
