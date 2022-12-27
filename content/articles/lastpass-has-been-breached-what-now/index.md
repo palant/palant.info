@@ -26,6 +26,10 @@ If you are a regular “nobody”: access to your accounts is probably not worth
 
 Unless LastPass underestimated the scope of the breach that is. If their web application has been compromised nobody will be safe. Happy holidays, everyone!
 
+**Edit** (2022-12-27): As it turned out, even for a “nobody” there are certain risk factors. You should especially check your [password iterations setting](https://support.lastpass.com/help/how-do-i-change-my-password-iterations-for-lastpass). LastPass failed to upgrade some accounts from 5,000 to 100,100 iterations. If it’s the former for you, your account has a considerably higher risk of being targeted.
+
+Also, when LastPass introduced their new password complexity requirements in 2018 they failed to enforce them for existing accounts. So if your master password is shorter than twelve characters you should be more concerned about your passwords being decrypted.
+
 {{< toc >}}
 
 ## What happened really?
