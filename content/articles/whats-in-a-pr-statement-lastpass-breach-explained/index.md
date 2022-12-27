@@ -1,11 +1,13 @@
 ---
-title: "What’s in a PR statement: LastPass breach explained"
-date: 2022-12-26T12:12:02+0100
-description: "The LastPass statement on their latest breach is full of omissions, half-truths and outright lies. I’m providing the necessary context for some of their claims."
 categories:
 - lastpass
 - security
 - password-managers
+date: 2022-12-26T12:12:02+0100
+description: The LastPass statement on their latest breach is full of omissions, half-truths
+  and outright lies. I’m providing the necessary context for some of their claims.
+lastmod: '2022-12-27 08:29:08'
+title: 'What’s in a PR statement: LastPass breach explained'
 ---
 
 Right before the holiday season, LastPass published an [update on their breach](https://blog.lastpass.com/2022/12/notice-of-recent-security-incident/). As people have speculated, this timing was likely not coincidental but rather intentional to keep the news coverage low. Security professionals weren’t amused, this holiday season became a very busy time for them. LastPass likely could have prevented this if they were more concerned about keeping their users secure than about saving their face.
