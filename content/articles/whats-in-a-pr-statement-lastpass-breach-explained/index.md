@@ -92,7 +92,7 @@ In fact, my test account is also configured with 5,000 iterations. There is no w
 
 **Update** (2022-12-27): I’ve now seen comments from people who have their accounts configured to 500 iterations. I’m not even sure when this was the LastPass default, but they failed to upgrade people’s accounts back then as well. And now people’s data leaked with protection that is factor 620 (!!!) below what OWASP currently recommends. I am at loss of words at this utter negligence.
 
-In fact, there is so far one confirmed case of an account configured with 1 iteration, which was apparently the LastPass default before they changed to 500. I’ll just leave it standing here.
+In fact, there is so far one confirmed case of an account configured with 1 iteration, which was apparently the LastPass default before they changed to 500. I’ll just leave this standing here.
 
 > If you use the default settings above, it would take millions of years to guess your master password using generally-available password-cracking technology.
 
