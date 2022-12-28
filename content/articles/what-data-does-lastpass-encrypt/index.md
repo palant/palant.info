@@ -1,11 +1,13 @@
 ---
-title: "What data does LastPass encrypt?"
-date: 2022-12-24T21:56:11+0100
-description: "LastPass doesn’t explain what data in its “vault” is encrypted. Everyone can download their data and see for themselves easily however."
 categories:
 - lastpass
 - security
 - password-managers
+date: 2022-12-24T21:56:11+0100
+description: LastPass doesn’t explain what data in its “vault” is encrypted. Everyone
+  can download their data and see for themselves easily however.
+lastmod: '2022-12-28 18:58:52'
+title: What data does LastPass encrypt?
 ---
 
 A few days ago LastPass admitted that unknown attackers copied their “vault data.” It certainly doesn’t help that LastPass failed to clarify which parts of the vaults are encrypted and which are not. LastPass support adds to the confusion by stating that [password notes aren’t encrypted](https://defcon.social/@deaddrop/109565784698153212) which I’m quite certain is wrong.
