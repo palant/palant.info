@@ -1,0 +1,11 @@
+{
+  "id": "000001",
+  "publishDate": "2022-12-28 08:04:16"
+}
+
+<p>LastPass competitor 1Password held cracking competitions to figure out how strong real-world passwords are. Their conclusion was to introduce a secret key, a truly random factor to complement human-chosen passwords. This is keeping users safe.</p>
+<p>LastPass on the other hand didn’t warn users about unsafe security settings (I now have the first report of an account still configured with one PBKDF2 iteration) but are bubbling something about “millions of years.”</p>
+<p>Besides: how secure a password is cannot be told from its length. In fact, most people cannot even remember a high-complexity password, much less choose one. That’s why choosing a strong KDF is essential for a password manager.</p>
+<p>Don’t help LastPass blame the users, they totally messed up.</p>
+<p>Everything I mentioned here is information known to LastPass. LastPass knows when the leak happened but won’t tell us. LastPass knows who has an insufficient iteration count but won’t notify them. LastPass knows how long bruteforcing real-world passwords takes, this isn’t our first rodeo. But they still choose to ignore this, assuming truly random passwords and years old hardware.</p>
+<p>I do know that 1Password devised a secure solution in case a vault is breached (see above). I do know that Keepass switched to Argon2 for key derivation five years ago. Both are valid solutions to the problem. Ignoring it like LastPass did isn’t.</p>
