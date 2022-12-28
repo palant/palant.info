@@ -1,11 +1,13 @@
 ---
-title: "LastPass breach: The significance of these password iterations"
-date: 2022-12-28T17:02:28+0100
-description: "The Password Iterations setting is essential to keep users’ data secure. Yet LastPass failed to keep it up-to-date for many accounts."
 categories:
 - lastpass
 - security
 - password-managers
+date: 2022-12-28T17:02:28+0100
+description: The Password Iterations setting is essential to keep users’ data secure.
+  Yet LastPass failed to keep it up-to-date for many accounts.
+lastmod: '2022-12-28 21:17:47'
+title: 'LastPass breach: The significance of these password iterations'
 ---
 
 LastPass has been breached, data has been stolen. I already [pointed out](/2022/12/26/whats-in-a-pr-statement-lastpass-breach-explained/) that their official statement is misleading. I also explained that [decrypting passwords in the stolen data is possible](/2022/12/23/lastpass-has-been-breached-what-now/) which doesn’t mean however that everybody is at risk now. For assessing whether you are at risk, a fairly hidden setting turned out critical: password iterations.
