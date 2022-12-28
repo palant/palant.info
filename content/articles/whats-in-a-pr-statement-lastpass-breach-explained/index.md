@@ -6,7 +6,7 @@ categories:
 date: 2022-12-26T12:12:02+0100
 description: The LastPass statement on their latest breach is full of omissions, half-truths
   and outright lies. I’m providing the necessary context for some of their claims.
-lastmod: '2022-12-28 08:04:28'
+lastmod: '2022-12-28 08:06:08'
 title: 'What’s in a PR statement: LastPass breach explained'
 ---
 
