@@ -30,7 +30,7 @@ Choosing a password with 50 bits entropy without it being randomized? No idea ho
 
 Either way, if this is your password and someone got your LastPass vault, guessing your master password on a single graphics card would take on average 200 years. Not unrealistic (someone could get more graphics cards) but usually not worth the effort. But that’s the calculation for 100,100 iterations.
 
-Let’s look at how time estimates and price change depending on the number of iterations. I’ll be using the price estimate by [Jeffrey Goldberg who works at 1Password](https://ioc.exchange/@jpgoldberg/109589071740635270).
+Let’s look at how time estimates and cost change depending on the number of iterations. I’ll be using the cost estimate by [Jeffrey Goldberg who works at 1Password](https://ioc.exchange/@jpgoldberg/109589071740635270).
 
 | Iterations | Guessing time on a single GPU | Cost      |
 |-----------:|-------------------------------|----------:|
