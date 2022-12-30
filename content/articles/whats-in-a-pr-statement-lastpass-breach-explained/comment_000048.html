@@ -1,0 +1,13 @@
+{
+  "publishDate": "2022-12-30 06:09:20",
+  "author": "tkteo",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000048"
+}
+
+<p>In your article above, you mention that "Note “stronger-than-typical” here. I seriously wonder what LastPass considers typical, given that 100,000 PBKDF2 iterations are the lowest number I’ve seen in any current password manager. And it’s also the lowest protection level that is still somewhat (barely) acceptable today."</p>
+<p>But LastPass is hardly the only password manager software using PBKDF2 as default and 100K iterations. See for example 1Password's disclosure: "1Password uses PBKDF2 in the process of deriving encryption keys from your account password. Learn more about the key derivation process in the 1Password Security Design White Paper.
+There are 100,000 iterations, or functions, of PBKDF2 in the current version of 1Password. This means anyone who tries to guess an account password needs to perform the same calculations." https://support.1password.com/pbkdf2/</p>
+<p>I know 1Password has the additional "secret key" security feature, but this may mean that ALL password manager software security models need to be scrutinized more.</p>
