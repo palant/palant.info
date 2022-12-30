@@ -49,6 +49,8 @@ The default for LastPass accounts wasn’t always 100,100 iterations. Originally
 
 I don’t know exactly when and how these changes happened. Except for the last one: it happened in February 2018 as a result of [my research](/2018/07/09/is-your-lastpass-data-really-safe-in-the-encrypted-online-vault/#cracking-the-encryption).
 
+**Edit** (2022-12-30): I now know more, thanks to [@Sc00bz@infosec.exchange](https://infosec.exchange/@sc00bz/109599415792124027). The switch to 500 iterations happened in June 2012, the one to 5,000 iterations in February 2013. To quote Sc00bz: “I shamed the CEO into increasing this. «I think it is irresponsible to tell your users the recommended iteration count is 500. When 12 years ago, PBKDF2 had a recommended minimum iteration count of 1000.»”
+
 LastPass was notified through their bug bounty program on Bugcrowd. When they reported fixing the issue I asked them about existing accounts. That was on February 24th, 2018.
 
 {{< img src="bugcrowd.png" width="870" alt="Screenshot from Bugcrowd. bobc sent a message (5 years ago): Ok thank you. Our default is now 100k rounds and artificial limits on number of rounds have been removed. palant sent a message (5 years ago) Yes, the default changed it seems. But what about existing accounts?" />}}
