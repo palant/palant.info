@@ -1,11 +1,14 @@
 ---
-title: "South Korea’s online security dead end"
-date: 2023-01-02T14:25:10+0100
-description: "Websites in South Korea often require installation of “security applications.” Not only do these mandatory applications not help security, way too often they introduce issues."
 categories:
 - korea
 - security
 - privacy
+date: 2023-01-02T14:25:10+0100
+description: Websites in South Korea often require installation of “security applications.”
+  Not only do these mandatory applications not help security, way too often they introduce
+  issues.
+lastmod: '2023-01-03 21:23:29'
+title: South Korea’s online security dead end
 ---
 
 Last September I started investigating a South Korean application with unusually high user numbers. It took me a while to even figure out what it really did, there being close to zero documentation. I eventually realized that the application is riddled with security issues and, despite being advertised as a security application, makes the issue it is supposed to address far, far worse.
