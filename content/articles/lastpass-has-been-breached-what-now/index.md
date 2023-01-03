@@ -6,7 +6,7 @@ categories:
 date: 2022-12-23T14:30:06+0100
 description: You should be very concerned about the LastPass breach. Depending on
   who you are, now might be the right time to change your passwords.
-lastmod: '2023-01-01 08:14:51'
+lastmod: '2023-01-03 13:49:40'
 title: 'LastPass has been breached: What now?'
 ---
 
