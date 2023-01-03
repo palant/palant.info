@@ -54,7 +54,7 @@ One would think, being responsible for the security of an entire nation would ma
 
 This starts with a simple fact: some of these applications are written in the [C programming language](https://en.wikipedia.org/wiki/C_(programming_language)), not even C++. It being a low-level programming language, these days it is typically used in code that has to work close to hardware such as device drivers. Here however it is used in large applications interacting with websites in complicated ways.
 
-The manual approach to memory management in C is a typical source of exploitable memory safety issues like [buffer overflows](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow). Avoiding them in C requires outmost care. While such bugs weren’t the focus of my investigation, I couldn’t fail noticing that the developers of these applications didn’t demonstrate much experience avoiding memory safety issues.
+The manual approach to memory management in C is a typical source of exploitable memory safety issues like [buffer overflows](https://owasp.org/www-community/vulnerabilities/Buffer_Overflow). Avoiding them in C requires utmost care. While such bugs weren’t the focus of my investigation, I couldn’t fail noticing that the developers of these applications didn’t demonstrate much experience avoiding memory safety issues.
 
 Modern compilers provide a number of security mechanisms to help alleviate such issues. But these applications don’t use modern compilers, relying on Visual Studio versions released around 15 years ago instead.
 
