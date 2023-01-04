@@ -7,7 +7,7 @@ date: 2023-01-02T14:25:10+0100
 description: Websites in South Korea often require installation of “security applications.”
   Not only do these mandatory applications not help security, way too often they introduce
   issues.
-lastmod: '2023-01-04 06:54:40'
+lastmod: '2023-01-04 06:55:19'
 title: South Korea’s online security dead end
 ---
 
