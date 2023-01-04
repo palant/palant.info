@@ -1,0 +1,19 @@
+{
+  "publishDate": "2023-01-04 01:30:18",
+  "author": "AR",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000010"
+}
+
+<p>Business/enterprise accounts that use LastPass best practices are being mislead by the notion that they are not exposed to any risk if they're using Federated Login:</p>
+<blockquote>
+<p>The threat actor did not have access to the key fragments stored in customer
+Identity Provider’s or LastPass’ infrastructure and they were not included in
+the backups that were copied that contained customer vaults.
+Therefore, if you have implemented the Federated Login Services,
+you do not need to take any additional actions.</p>
+</blockquote>
+<p>However, any Super Admin user is immediately removed from federated login to <a href="https://support.lastpass.com/help/what-are-the-limitations-for-federated-ad-fs-lastpass-enterprise-users-lp010135" rel="nofollow">avoid account lockout</a> so these account(s) are vulnerable.</p>
+<p>Super Admins will often have the "Permit super admins to access shared folders" policy enabled (although this is <strong>not</strong> a default setting) which will also give their vaults access to every shared folder across the organization.  Regardless, it's likely that Super Admins have access to critical infrastructure even without access to other shared folders.</p>
