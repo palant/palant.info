@@ -11,6 +11,8 @@ lastmod: '2023-01-04 12:46:15'
 title: South Korea’s online security dead end
 ---
 
+**Edit** (2023-01-04): A Korean translation of this article is now available [here](https://www.woojinkim.org/wiki/spaces/me/pages/733085820/South+Korea+s+online+security+dead+end), thanks to Woojin Kim.
+
 Last September I started investigating a South Korean application with unusually high user numbers. It took me a while to even figure out what it really did, there being close to zero documentation. I eventually realized that the application is riddled with security issues and, despite being advertised as a security application, makes the issue it is supposed to address far, far worse.
 
 That’s how my journey to the South Korea’s very special security application landscape started. Since then I investigated several other applications and realized that the first one wasn’t an outlier. All of them caused severe security and privacy issues. Yet they were also installed on almost every computer in South Korea, being a prerequisite for using online banking or government websites in the country.
