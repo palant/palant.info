@@ -3,4 +3,5 @@ Disallow: /comment/
 Disallow: /mention/
 Disallow: /impressum/
 Disallow: /privacy/
+Disallow: /temp/
 Sitemap: {{.Site.BaseURL}}sitemap.xml
