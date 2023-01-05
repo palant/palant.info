@@ -6,7 +6,7 @@ categories:
 date: 2022-12-24T21:56:11+0100
 description: LastPass doesn’t explain what data in its “vault” is encrypted. Everyone
   can download their data and see for themselves easily however.
-lastmod: '2022-12-30 23:38:57'
+lastmod: '2023-01-05 07:12:45'
 title: What data does LastPass encrypt?
 ---
 
