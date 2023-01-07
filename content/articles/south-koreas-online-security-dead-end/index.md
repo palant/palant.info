@@ -7,11 +7,11 @@ date: 2023-01-02T14:25:10+0100
 description: Websites in South Korea often require installation of “security applications.”
   Not only do these mandatory applications not help security, way too often they introduce
   issues.
-lastmod: '2023-01-06 19:18:18'
+lastmod: '2023-01-07 11:51:18+0100'
 title: South Korea’s online security dead end
 ---
 
-**Edit** (2023-01-04): A Korean translation of this article is now available [here](https://www.woojinkim.org/wiki/spaces/me/pages/733085820/South+Korea+s+online+security+dead+end), thanks to Woojin Kim.
+**Edit** (2023-01-04): A Korean translation of this article is now available [here](https://www.woojinkim.org/wiki/spaces/me/pages/733085820/South+Korea+s+online+security+dead+end), thanks to Woojin Kim. **Edit** (2023-01-07): Scheduled one more disclosure for February.
 
 Last September I started investigating a South Korean application with unusually high user numbers. It took me a while to even figure out what it really did, there being close to zero documentation. I eventually realized that the application is riddled with security issues and, despite being advertised as a security application, makes the issue it is supposed to address far, far worse.
 
@@ -105,4 +105,5 @@ When I report security issues vendors generally get 90 days to fix them. Once th
 
 * 2023-01-09 (January 9th)
 * 2023-01-23 (January 23rd)
+* 2023-02-06 (February 6th)
 * 2023-03-06 (March 6th)
