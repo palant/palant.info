@@ -1,0 +1,8 @@
+{
+  "id": "000001",
+  "publishDate": "2023-01-08 20:00:41"
+}
+
+<p>Part of the answer here is padding.</p>
+<p>AES encrypts data as fixed-length 16 byte blocks. The input data has no fixed length however. So it is divided into pieces of 16 bytes, and the last piece gets padding added to it. If the last piece is already 16 bytes, there is a complete padding block added.</p>
+<p>When decrypting, the attackers will be able to recognize correct padding signalling successful decryption. In the unlikely event of accidentally correct padding, a real password is ASCII-only – so no binary noise. This also is a highly unlikely pattern.</p>
