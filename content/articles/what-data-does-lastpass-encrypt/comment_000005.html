@@ -1,0 +1,15 @@
+{
+  "publishDate": "2023-01-08 03:54:01",
+  "author": "Joe",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000005"
+}
+
+<p>I left LastPass years ago. I felt that trusting all the security to the master password was inherently insecure. I moved to 1password, which generates a 128-bit key with high entropy, and then adds that to the master password. </p>
+<p>At the end of the day, all these password managers have several problems that aren't easy to fix and will almost currently be exploited in the future.</p>
+<p>1) They are all susceptible to supply chain attacks where malicious code can steal the master password and, if present, 128-bit recovery key as with 1Password. Open-source software such as Bitwarden deployed on iOS and Android versions can't be audited since the code can't be reviewed once sent to Apple's and Google's servers and deployed to devices. We have no idea what is running on our smartphones.</p>
+<p>2) Huge attack surface:  All password managers run on general-purpose OSs, which, as we all know, is very insecure. We are trusting browsers and OSs that are regularly attacked. Windows, OSX, Linux, iOS, and Android are all susceptible. </p>
+<p>3) I hear many people incorrectly believing that the Yubikeys are the solution. The problem is they are referring to U2F, and FIDO2, which is an authentication protocol and has nothing to do with encryption - you can't encrypt data with U2F. I know that Yubikeys have several encryption modes like PIV and GPG which do provide strong encryption which is the solution, but no password managers supports them except Pass (Full support for GPG and smartcards) and keypass (kind of supports PIV) But no cloud support.</p>
+<p>While there is no perfect solution, I would like to see a password manager that is a mix between the Ledger Cryptocurrency wallet and the Thales HSM. Secure storage of private key with an audit log and a small attack surface.</p>
