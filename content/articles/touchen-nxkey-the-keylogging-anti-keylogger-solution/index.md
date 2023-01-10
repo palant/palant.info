@@ -7,7 +7,7 @@ date: 2023-01-09T06:36:20+0100
 description: TouchEn nxKey is supposed to combat keyloggers. Instead, this application
   made writing a keylogger extremely simple, allowed attacking banking websites and
   more.
-lastmod: '2023-01-10 05:45:03'
+lastmod: '2023-01-10 09:18:03+0100'
 title: 'TouchEn nxKey: The keylogging anti-keylogger solution'
 ---
 
@@ -333,6 +333,8 @@ Luckily, KrCERT provides a [vulnerability report form](https://www.krcert.or.kr/
 I reported all the vulnerabilities to KrCERT on October 4th, 2022. I still tried to contact some RaonSecure executives directly but received no response. At least KrCERT confirmed forwarding my reports to RaonSecure roughly two weeks later. They also noted that RaonSecure asked for my email address and wanted to contact me. They never did.
 
 And that’s it. The 90 days disclosure deadline was a week ago. TouchEn nxKey 1.0.0.78 was apparently released on October 4th, 2022, the same day I reported these vulnerabilities. At the time of writing it remains the latest release, and all the vulnerabilities described here are still present in it. The latest version of the TouchEn browser extension used by millions of people is still five years old, released in January 2018.
+
+**Update** (2023-01-10): In comments to Korean media, RaonSecure claims to have fixed the vulnerabilities and to distribute the update to customers. I cannot currently confirm this claim. The company’s own download server is still distributing TouchEn nxKey 1.0.0.78.
 
 ### Side-note: The information leak
 
