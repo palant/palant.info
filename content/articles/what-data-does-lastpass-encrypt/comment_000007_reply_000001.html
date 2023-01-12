@@ -1,0 +1,8 @@
+{
+  "id": "000001",
+  "publishDate": "2023-01-12 08:25:41"
+}
+
+<p>They use public key cryptography for that. So when you decide to share a password, it is re-encrypted with the public key of the account you are sharing with. This account can then decrypt the password using the private key known to them.</p>
+<p>So at least in theory, the server isn’t involved in the process and cannot see the password. In practice, it is really difficult to get the public key of an account without trusting the server – a malicious server could give you its own public key and get access to the password this way.</p>
+<p>And there is of course the general issue: once you have shared a password, you cannot “unshare” it. Even if you revoke access, you need to change the password. This is something that LastPass doesn’t stress enough, they rather suggest that disallowing copying passwords can be expected to work.</p>
