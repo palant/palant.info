@@ -6,7 +6,7 @@ categories:
 date: 2022-12-28T17:02:28+0100
 description: The Password Iterations setting is essential to keep users’ data secure.
   Yet LastPass failed to keep it up-to-date for many accounts.
-lastmod: '2023-01-11 08:12:05'
+lastmod: '2023-01-13 05:36:07'
 title: 'LastPass breach: The significance of these password iterations'
 ---
 
