@@ -7,7 +7,7 @@ date: 2023-01-09T06:36:20+0100
 description: TouchEn nxKey is supposed to combat keyloggers. Instead, this application
   made writing a keylogger extremely simple, allowed attacking banking websites and
   more.
-lastmod: '2023-01-16 10:40:53+0100'
+lastmod: '2023-01-16 15:40:50'
 title: 'TouchEn nxKey: The keylogging anti-keylogger solution'
 ---
 
