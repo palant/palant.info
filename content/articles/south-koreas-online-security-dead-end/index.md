@@ -7,7 +7,7 @@ date: 2023-01-02T14:25:10+0100
 description: Websites in South Korea often require installation of “security applications.”
   Not only do these mandatory applications not help security, way too often they introduce
   issues.
-lastmod: '2023-01-11 11:38:35'
+lastmod: '2023-01-16 10:34:35+0100'
 title: South Korea’s online security dead end
 ---
 
@@ -104,6 +104,6 @@ In fact, the ideal outcome is dismantling South Korea’s special security lands
 When I report security issues vendors generally get 90 days to fix them. Once that deadline is over I disclose my research. If you are interested in reading the disclosures, you can subscribe to the [RSS feed of this blog](/rss.xml). Alternatively, you could also check my blog on the scheduled disclosure dates:
 
 * 2023-01-09: [TouchEn nxKey: The keylogging anti-keylogger solution](/2023/01/09/touchen-nxkey-the-keylogging-anti-keylogger-solution/)
-* 2023-01-23 (January 23rd)
+* 2023-01-25 (January 25th): **Edit** (2023-01-16): Original date was 2023-01-23 but moved due to Korean holidays.
 * 2023-02-06 (February 6th)
 * 2023-03-06 (March 6th)
