@@ -7,9 +7,11 @@ date: 2023-01-09T06:36:20+0100
 description: TouchEn nxKey is supposed to combat keyloggers. Instead, this application
   made writing a keylogger extremely simple, allowed attacking banking websites and
   more.
-lastmod: '2023-01-15 17:36:53'
+lastmod: '2023-01-16 10:40:53+0100'
 title: 'TouchEn nxKey: The keylogging anti-keylogger solution'
 ---
+
+**Update** (2023-01-16): This article is now available [in Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/01_touchen_nxkey.md).
 
 I wrote about [South Korea’s mandatory so-called security applications](/2023/01/02/south-koreas-online-security-dead-end/) a week ago. My journey here started with TouchEn nxKey by RaonSecure which got my attention because the corresponding browser extension has more than 10 million users – the highest number Chrome Web Store will display. The real number of users is likely considerably higher, the software being installed on pretty much any computer in South Korea.
 
