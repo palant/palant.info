@@ -1,0 +1,9 @@
+{
+  "id": "000001",
+  "publishDate": "2023-01-18 05:51:37"
+}
+
+<p>No, so far this looks like vault encryption keys were not stolen. While this isn’t as impossible as LastPass wants us to believe, this would have required access to production systems and not merely the backup. This doesn’t seem to have happened.</p>
+<p>You are correct that the encryption key is derived from the master password and account name. This allows guessing the master password – an encryption key derived from the correct master password will be able to decrypt the data. The number of PBKDF2 iterations is what slows down the guessing process.</p>
+<p>Note that “encrypted vault” is a misleading image used by LastPass PR. In reality your vault data is largely stored unencrypted, it merely has <a href="https://palant.info/2022/12/24/what-data-does-lastpass-encrypt/" rel="nofollow">pieces of encrypted data sprinkled in here and there</a> (most notably passwords and notes).</p>
+<p>Storage container encryption is a separate mechanism provided by the cloud storage they used as backup, that one didn’t help here.</p>

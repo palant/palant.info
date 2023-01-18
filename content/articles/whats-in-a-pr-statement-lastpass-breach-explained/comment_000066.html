@@ -1,0 +1,14 @@
+{
+  "publishDate": "2023-01-17 20:46:27",
+  "author": "T Smith",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000066"
+}
+
+<p>Thanks for this detailed writeup.  </p>
+<p>The question I have is about the encryption of the stolen vaults. I understand from the LP blog entry and your analysis that the storage container encryption keys were leaked, but I thought customer vaults were encrypted using an encryption key generated from (a 1-way salted hash of your master password + account name) x nn PBKDF2-SHA256 rounds. </p>
+<p>If the encryption keys acquired by the actors were storage container keys and not the keys used to encrypt the data, how could simply brute forcing / guessing a master password password be used to decrypt the leaked vaults?  </p>
+<p>Maybe another way to ask this:  is my limited understanding correct, and did the threat actor also obtain the vault encryption keys?  (Please reference if you have one - I'm super curious). </p>
+<p>Many thanks</p>
