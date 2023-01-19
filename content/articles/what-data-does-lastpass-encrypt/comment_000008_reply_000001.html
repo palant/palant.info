@@ -1,0 +1,8 @@
+{
+  "id": "000001",
+  "publishDate": "2023-01-19 18:26:06"
+}
+
+<p>It’s known that Bitwarden encrypts the entire data, so it’s already better than LastPass. I also hope that Bitwarden consistently uses 100,001 PBKDF2 iterations for all accounts (unless changed manually) and at least warns if someone sets a value that’s too low.</p>
+<p>Unfortunately, otherwise it seems not too different from LastPass. There is no secret key like with 1Password that makes guessing the master password implausible. So these 100,001 PBKDF2 iterations are all the protection you get, and you should make sure to choose a strong master password.</p>
+<p>Bitwarden claims to add 100,000 PBKDF2 iterations on the server side. While this sounds good in theory, judging by their security whitepaper they misimplemented this similarly to LastPass. In 2018 I proved this mechanism to provide no security value. It <em>can</em> be implemented correctly (see Firefox Sync) but it doesn’t look like it was here.</p>
