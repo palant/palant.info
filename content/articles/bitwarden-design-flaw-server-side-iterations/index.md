@@ -19,6 +19,8 @@ As to Bitwarden, the media mostly repeated their claim that the data is protecte
 
 Mind you, LastPass isn’t only being criticized for using a default iterations count that is three time lower than the [current OWASP recommendation](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2). LastPass also [failed to encrypt all data](/2022/12/24/what-data-does-lastpass-encrypt/), a flaw that Bitwarden doesn’t seem to share. LastPass also [kept the iterations count for older accounts dangerously low](/2022/12/28/lastpass-breach-the-significance-of-these-password-iterations/), something that Bitwarden hopefully didn’t do either (**Edit**: yes, they [did this](#c000002), some accounts have considerably lower iteration count). LastPass also [chose to downplay the breach instead of suggesting meaningful mitigation steps](/2022/12/26/whats-in-a-pr-statement-lastpass-breach-explained/), something that Bitwarden hopefully wouldn’t do in this situation. Still, the protection offered by Bitwarden isn’t exactly optimal either.
 
+**Edit** (2023-01-23): Bitwarden increased the default client-side iterations to 350,000 a few days ago. So far this change only applies to new accounts, and it is unclear whether they plan to upgrade existing accounts automatically. And today OWASP changed their recommendation to 600,000 iterations, it has been adjusted to current hardware.
+
 {{< toc >}}
 
 ## How Bitwarden protects users’ data
