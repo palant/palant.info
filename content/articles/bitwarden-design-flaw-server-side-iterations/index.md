@@ -1,12 +1,14 @@
 ---
-title: "Bitwarden design flaw: Server side iterations"
-date: 2023-01-23T11:57:15+0100
-description: "Bitwarden is a hot candidate for a LastPass replacement. Looking into how they encrypt data, it doesn’t do things that much better however."
 categories:
 - bitwarden
 - security
 - password-managers
 - lastpass
+date: 2023-01-23T11:57:15+0100
+description: Bitwarden is a hot candidate for a LastPass replacement. Looking into
+  how they encrypt data, it doesn’t do things that much better however.
+lastmod: '2023-01-23 18:36:02'
+title: 'Bitwarden design flaw: Server side iterations'
 ---
 
 In the aftermath of the LastPass breach it became increasingly clear that LastPass didn’t protect their users as well as they should have. When people started looking for alternatives, two favorites emerged: 1Password and Bitwarden. But do these do a better job at protecting sensitive data?
