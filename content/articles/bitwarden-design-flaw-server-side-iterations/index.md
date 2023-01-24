@@ -21,6 +21,8 @@ Mind you, LastPass isn’t only being criticized for using a default iterations 
 
 **Edit** (2023-01-23): Bitwarden increased the default client-side iterations to 350,000 a few days ago. So far this change only applies to new accounts, and it is unclear whether they plan to upgrade existing accounts automatically. And today OWASP changed their recommendation to 600,000 iterations, it has been adjusted to current hardware.
 
+**Edit** (2023-01-24): I realized that some of my concerns were already voiced in Bitwarden’s [2018 Security Assessment](https://cure53.de/pentest-report_bitwarden.pdf). Linked to it in the respective sections.
+
 {{< toc >}}
 
 ## How Bitwarden protects users’ data
@@ -49,7 +51,7 @@ Using a dictionary for 5 dice (7776 dictionary words) and picking out four rando
 
 This should be a security level sufficient for most regular users. If you are guarding valuable secrets or are someone of interest for state-level actors, you might want to consider a stronger password. Adding one more word to your passphrase increases the cost of guessing your password by factor 7776. So a passphrase with five words is already almost unrealistic to guess even for state-level actors.
 
-All of this assumes that your [KDF iterations setting](https://bitwarden.com/help/what-encryption-is-used/#changing-kdf-iterations) is set to the default 100,000. Bitwarden will allow you to set this value as low as 5,000 without even warning you. Should your setting be too low, I recommend fixing it immediately. Reminder: [current OWASP recommendation](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2) is 310,000.
+All of this assumes that your [KDF iterations setting](https://bitwarden.com/help/what-encryption-is-used/#changing-kdf-iterations) is set to the default 100,000. Bitwarden will allow you to set this value as low as 5,000 without even warning you. This was mentioned as BWN-01-009 in Bitwarden’s [2018 Security Assessment](https://cure53.de/pentest-report_bitwarden.pdf), yet there we are five years later. Should your setting be too low, I recommend fixing it immediately. Reminder: [current OWASP recommendation](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2) is 310,000.
 
 ## Is Bitwarden as bad as LastPass?
 
@@ -61,7 +63,7 @@ The other aspect here is that Dmitry Chestnykh [wrote about Bitwarden’s server
 
 {{< img src="claims.png" width="805" alt="Screenshot of text from the Bitwarden website: The default iteration count used with PBKDF2 is 100,001 iterations on the client (client-side iteration count is configurable from your account settings), and then an additional 100,000 iterations when stored on our servers (for a total of 200,001 iterations by default). The organization key is shared via RSA-2048. The utilized hash functions are one-way hashes, meaning they cannot be reverse engineered by anyone at Bitwarden to reveal your master password. Even if Bitwarden were to be hacked, there would be no method by which your master password could be obtained." />}}
 
-Users have been [complaining and asking for better key derivation functions](https://community.bitwarden.com/t/encryption-suggestions-including-argon2/350/76) since at least 2018. This change wasn’t considered a priority however. Only after the LastPass breach things started moving, and it wasn’t Bitwarden’s core developers driving the change. Someone contributed the changes required for [scrypt support](https://github.com/bitwarden/clients/pull/4428) and [Argon2 support](https://github.com/bitwarden/clients/pull/4468). The former was rejected in favor of the latter, and Argon2 will hopefully become the default (only?) choice at some point in future.
+Users have been [complaining and asking for better key derivation functions](https://community.bitwarden.com/t/encryption-suggestions-including-argon2/350/76) since at least 2018. It was even mentioned as BWN-01-007 in Bitwarden’s [2018 Security Assessment](https://cure53.de/pentest-report_bitwarden.pdf). This change wasn’t considered a priority however. Only after the LastPass breach things started moving, and it wasn’t Bitwarden’s core developers driving the change. Someone contributed the changes required for [scrypt support](https://github.com/bitwarden/clients/pull/4428) and [Argon2 support](https://github.com/bitwarden/clients/pull/4468). The former was rejected in favor of the latter, and Argon2 will hopefully become the default (only?) choice at some point in future.
 
 Adding a secret key like 1Password would have been another option to address this issue. This suggestion has also been around [since at least 2018](https://community.bitwarden.com/t/add-optional-secret-key-functionality-like-1password-or-keyfile-like-keepass/576) and accumulated a considerable amount of votes, but so far it hasn’t been implemented either.
 
