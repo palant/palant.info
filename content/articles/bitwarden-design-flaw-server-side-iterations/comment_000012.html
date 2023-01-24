@@ -1,0 +1,15 @@
+{
+  "publishDate": "2023-01-24 13:45:54",
+  "author": "DaveH",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000012"
+}
+
+<p>This is possible to do as an end user. Not seen any instructions above.
+Just updated mine to 650,000 in online Web Vault under Account Settings | Security | Keys, set new value then press "Change KDF". 
+Requires the master password to be re-entered and to log back in to all Bitwarden copies (make sure you have your master password as finger print login etc will need to be re-enabled).
+Should be good for a few more years until OWASP change the recommendation of PBKDF2-HMAC-SHA256: 600,000 iterations. There's a little more delay when logging in but not that noticeable.
+(Bitwarden recommend 100,000 and increasing in 50K increments on slowest device).
+I used Diceware 8 word password and YubiKey for 2FA.</p>
