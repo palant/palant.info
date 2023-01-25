@@ -6,7 +6,7 @@ categories:
 date: 2021-12-29T23:20:14+0100
 description: LastPass accounts are under attack. I look into how user’s master passwords
   might have leaked.
-lastmod: '2023-01-25 05:49:03'
+lastmod: '2023-01-25 07:23:14'
 title: How did LastPass master passwords get compromised?
 ---
 
