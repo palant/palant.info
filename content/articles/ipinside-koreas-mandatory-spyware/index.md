@@ -8,6 +8,8 @@ categories:
 - security
 ---
 
+*Note*: This article is also available [in Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/02_ipinside_lws_agent.md).
+
 On our [tour of South Korea’s so-called security applications](/2023/01/02/south-koreas-online-security-dead-end/) we’ve already [took a look at TouchEn nxKey](/2023/01/09/touchen-nxkey-the-keylogging-anti-keylogger-solution/), an application meant to combat keyloggers by … *checks notes* … making keylogging easier. Today I want to shed some light on another application that many people in South Korea had to install on their computers: IPinside LWS Agent by Interezen.
 
 The stated goal of the application is retrieving your “real” IP address to prevent online fraud. I found however that it collects way more data. And while it exposes this trove of data to any website asking politely, it doesn’t look like it is all too helpful for combating actual fraud.
