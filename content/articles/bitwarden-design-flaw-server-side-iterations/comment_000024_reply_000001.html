@@ -1,0 +1,7 @@
+{
+  "id": "000001",
+  "publishDate": "2023-01-26 16:26:08"
+}
+
+<p>I don’t think that YubiKey matters here. My understanding is that it is only used as a second authentication factor for login, but vault encryption still depends entirely on the master password. So attackers who bypass the login by copying the vault data directly from the servers don’t care about your YubiKey.</p>
+<p>It still helps in case your Bitwarden credentials leak by some other means. Without it, the attackers won’t be able to log into your account, meaning that they won’t be able to download the vault data.</p>
