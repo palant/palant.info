@@ -222,4 +222,4 @@ Ok, someone would have to reverse engineer the functionality of the IPinside LWS
 
 But wait, why even go there? A [replay attack](https://en.wikipedia.org/wiki/Replay_attack) is far simpler, giving websites pre-recorded legitimate responses will just do. There is no challenge-handshake scheme here, no timestamp, nothing to prevent this attack. If anything, websites could recognize responses they’ve previously seen. But even that doesn’t really work: `ndata` and `udata` obfuscation has no randomness in it, the data is expected to be always identical. And `wdata` has only one random byte in its obfuscation scheme, that’s not sufficient to reliably distinguish legitimately identical responses from replayed ones.
 
-So it would appear that IPinside is massively invading people’s privacy, exposing way to much of their data to anybody asking, yet failing short of really stopping illegal transactions as they claim. Prove me wrong.
+So it would appear that IPinside is massively invading people’s privacy, exposing way too much of their data to anybody asking, yet falling short of really stopping illegal transactions as they claim. Prove me wrong.
