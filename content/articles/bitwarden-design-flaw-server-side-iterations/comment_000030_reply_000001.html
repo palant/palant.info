@@ -1,0 +1,8 @@
+{
+  "id": "000001",
+  "publishDate": "2023-01-29 18:03:21"
+}
+
+<p>This scheme has the same issue as Bitwarden, the login hash enjoys much better protection than the encryption key. On the client side, it really isn’t necessary to do a complicated derivation from the master key to login hash, HKDF will do. Instead, you should look into improving client-side Argon2 parameters for master key derivation. 8 MB of memory in particular seems rather low. Memory is cheap even on low-end devices and you can probably afford spending at least 32 MB.</p>
+<p>On the server side, Jeremi Gosney argues that bcrypt is superior to Argon2: <a href="https://infosec.exchange/@epixoip/109598238452730957" rel="nofollow">https://infosec.exchange/@epixoip/109598238452730957</a>. So you might want to consider switching here.</p>
+<p>But – yes, I think that Dmitry’s solution will work to make additional server side protection actually useful. But one probably shouldn’t take this too literally and do the key derivation effort twice. Instead, one would derive the serverEncKey and then hash it once more (e.g. via HKDF) to get the verifier.</p>

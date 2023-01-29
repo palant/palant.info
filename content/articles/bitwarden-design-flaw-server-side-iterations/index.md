@@ -7,7 +7,7 @@ categories:
 date: 2023-01-23T11:57:15+0100
 description: Bitwarden is a hot candidate for a LastPass replacement. Looking into
   how they encrypt data, it doesn’t do things that much better however.
-lastmod: '2023-01-28 08:42:28'
+lastmod: '2023-01-29 18:03:22'
 title: 'Bitwarden design flaw: Server side iterations'
 ---
 
