@@ -1,10 +1,13 @@
 ---
-title: "Password strength explained"
-date: 2023-01-30T17:12:14+0100
-description: "I try to explain how attackers would guess your password, should they get their hands on your encrypted data. There are some thoughts on the strength of real-world passwords and suggestions for your new password."
 categories:
 - security
 - password-managers
+date: 2023-01-30T17:12:14+0100
+description: I try to explain how attackers would guess your password, should they
+  get their hands on your encrypted data. There are some thoughts on the strength
+  of real-world passwords and suggestions for your new password.
+lastmod: '2023-01-31 07:56:33'
+title: Password strength explained
 ---
 
 The conclusion of my blog posts [on the LastPass breach](/2022/12/23/lastpass-has-been-breached-what-now/) and [on Bitwarden’s design flaws](/2023/01/23/bitwarden-design-flaw-server-side-iterations/) is invariably: a strong master password is important. This is especially the case if you are a target somebody would throw considerable resources at. But everyone else might still get targeted due to flaws like password managers failing to keep everyone on current security settings.
