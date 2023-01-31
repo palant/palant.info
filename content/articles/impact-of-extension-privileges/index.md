@@ -66,7 +66,7 @@ So a compromised or malicious browser extension has everything necessary to spy 
 
 ### Running content scripts
 
-We’ve already seen [a content script](/2022/06/02/browser-extensions-security-anatomy-of-a-basic-extension/#the-content-script) and some of its potential to manipulate web pages. However, content scripts aren’t necessarily written statically into the extension manifest. Given sufficient host-based permissions, extensions can also load them dynamically by calling [tabs.executeScript()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript) or [scripting.executeScript()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/scripting/executeScript).
+We’ve already seen [a content script](/2022/06/02/anatomy-of-a-basic-extension/#the-content-script) and some of its potential to manipulate web pages. However, content scripts aren’t necessarily written statically into the extension manifest. Given sufficient host-based permissions, extensions can also load them dynamically by calling [tabs.executeScript()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript) or [scripting.executeScript()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/scripting/executeScript).
 
 Both APIs allow executing not merely files contained in the extensions as content scripts but also arbitrary code. The former allows passing in JavaScript code as a string while the latter expects a JavaScript function which is less prone to injection vulnerabilities. Still, both APIs will wreak havoc if misused.
 
@@ -98,7 +98,7 @@ The `bookmarks` permission has similar abuse potential, this one allows reading 
 
 ## The storage permission
 
-We’ve already seen our [example extension](/2022/06/02/browser-extensions-security-anatomy-of-a-basic-extension/) use the `storage` permission to store a message text. This permission looks harmless enough. The extension storage is merely a key-value collection, very similar to [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) that any website could use. Sure, letting arbitrary websites access this storage is problematic if some valuable data is stored inside. But what if the extension is only storing some basic settings?
+We’ve already seen our [example extension](/2022/06/02/anatomy-of-a-basic-extension/) use the `storage` permission to store a message text. This permission looks harmless enough. The extension storage is merely a key-value collection, very similar to [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) that any website could use. Sure, letting arbitrary websites access this storage is problematic if some valuable data is stored inside. But what if the extension is only storing some basic settings?
 
 You have to remember that one basic issue of online advertising is reliably recognizing visitors. If you visit site A, advertisers will want to know whether you visited site B before and what you’ve bought there. Historically, this goal has been achieved via the [cookies mechanism](https://en.wikipedia.org/wiki/HTTP_cookie).
 
