@@ -100,6 +100,8 @@ A typical way to generate such a passphrase would be [diceware](https://en.wikip
 
 Let’s say the result is ⚄⚀⚂⚅⚀. You look up 51361 in the dictionary and get “renovate.” This is the first word of your passphrase. Repeat the process to get the necessary number of words.
 
+**Update** (2023-01-31): If you want it more comfortable, the [Bitwarden password generator](https://bitwarden.com/password-generator/) will do all the work for you while using the same EFF word list (type has to be set to “passphrase”).
+
 How many words do you need? As a “regular nobody,” you can probably feel confident if guessing your password takes a century on common hardware. While not impossible, decrypting your passwords will simply cost too much even on future hardware and won’t be worth it. Even if your password manager doesn’t protect you well and allows 1,000,000 guesses per second, a passphrase consisting out of four words (51 bits of entropy) should be sufficient.
 
 Maybe you are a valuable target however. If you hold the keys to lots of money or some valuable secrets, someone might decide to use more hardware for you specifically. You probably want to use at least five words then (64 bits of entropy). Even at a much higher rate of 1,000,000,000 guesses per second, guessing your password will take 900 years.
