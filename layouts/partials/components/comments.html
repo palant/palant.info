@@ -4,7 +4,7 @@
 
   {{ with .Resources.Match "comment_[0-9][0-9][0-9][0-9][0-9][0-9].*" }}
     <ul class="comments-list" itemscope itemtype="http://schema.org/UserComments">
-      {{ range sort . ".Name" }}
+      {{ range sort . ".PublishDate" }}
       <li>
         {{ $id := .Name | replaceRE `\..*` "" | replaceRE `^comment_` "c" }}
         <article class="comment u-comment {{ if eq .Params.type "mention" }}h-cite{{ else }}h-entry{{ end }}" itemprop="comment">
@@ -29,7 +29,7 @@
           <div class="e-content" itemprop="commentText">
             {{ .Content }}
             {{ with $.Resources.Match (printf "comment_%s_reply_*" .Params.id) }}
-              {{ range sort . ".Name" }}
+              {{ range sort . ".PublishDate" }}
                 {{ $id := .Name | replaceRE `\..*` "" | replaceRE `^comment_` "c" | replaceRE `_reply_` "r"}}
                 <div class="comment u-comment h-entry">
                   <div id="{{$id}}" class="comment-header">
