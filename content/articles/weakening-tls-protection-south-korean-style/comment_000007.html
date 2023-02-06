@@ -1,0 +1,10 @@
+{
+  "publishDate": "2023-02-06 19:52:43",
+  "author": "Young Min Kim",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000007"
+}
+
+<p>I wonder what is the purpose of encrypting the loopback traffic in the first place. Most browsers <a href="https://web.dev/when-to-use-local-https/" rel="nofollow">treat the <code>localhost</code> as a secure origin</a>, e.g., they can open a WebSocket to <code>ws://localhost</code> from an HTTPS site without mixed content warning. Any malware that can intercept the loopback traffic could do more damage than that.</p>
