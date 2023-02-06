@@ -8,6 +8,8 @@ categories:
 - privacy
 ---
 
+*Note*: This article is also available [in Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/03_weakeing_tls_protection.md).
+
 Normally, when you navigate to your bank’s website you have little reason to worry about impersonations. The browser takes care of verifying that you are really connected to the right server, and that your connection is safely encrypted. It will indicate this by showing a lock icon in the address bar.
 
 So even if you are connected to a network you don’t trust (such as open WiFi), nothing can go wrong. If somebody tries to impersonate your bank, your browser will notice. And it will refuse connecting.
