@@ -1,11 +1,14 @@
 ---
-title: "Weakening TLS protection, South Korean style"
-date: 2023-02-06T06:44:36+0100
-description: TLS protocol is fundamental to internet security. All South Korean security applications add their own “trusted” Certificate Authorities however, weakening this protocol severely.
 categories:
 - korea
 - security
 - privacy
+date: 2023-02-06T06:44:36+0100
+description: TLS protocol is fundamental to internet security. All South Korean security
+  applications add their own “trusted” Certificate Authorities however, weakening
+  this protocol severely.
+lastmod: '2023-02-06 07:18:59'
+title: Weakening TLS protection, South Korean style
 ---
 
 *Note*: This article is also available [in Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/03_weakeing_tls_protection.md).
