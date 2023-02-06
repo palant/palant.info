@@ -11,7 +11,7 @@ lastmod: '2023-02-06 08:03:22'
 title: Weakening TLS protection, South Korean style
 ---
 
-*Note*: This article is also available [in Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/03_weakeing_tls_protection.md).
+*Note*: This article is also available [in Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/03_weakening_tls_protection.md).
 
 Normally, when you navigate to your bank’s website you have little reason to worry about impersonations. The browser takes care of verifying that you are really connected to the right server, and that your connection is safely encrypted. It will indicate this by showing a lock icon in the address bar.
 
