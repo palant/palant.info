@@ -1,0 +1,12 @@
+{
+  "publishDate": "2023-02-07 00:35:36",
+  "author": "Hawoon",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000008"
+}
+
+<p>One of the things korean security programs are known to do is perform MITM attacks with these installed Root CA certificates. When user tries to connect to website using TLS, local security program will sign a TLS certificate using the installed root ca certificate's key, and decrypt the tls traffic for analysis.</p>
+<p>Now this is a big problem on multiple different levels, but the main one in my opinion is the fact that in order for the security software to sign a bogus TLS certificate real time, it needs the private key in local memory. This means potential attackers can steal private keys to generate browser-accepted TLS certificate for fake websites they host.</p>
+<p>If you have time, would you look into the potential exploits targeting these fake tls certificates signed by security program root CAs? I think this may be real big</p>
