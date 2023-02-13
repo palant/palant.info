@@ -1,0 +1,11 @@
+{
+  "publishDate": "2023-02-13 12:03:41",
+  "author": "Gruffly Exhaust",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000010"
+}
+
+<p>Alternatively, the way we tend to limit the scope of these 'unsafe' CAs is by using the x509v3 Name Constraint extension. This defines to which domains the CA can issue certificates, and also tells browsers to throw a warning/block access (like the one in your screenshot) when a certificate is presented for an unlisted domain. Handy little extension for intranet TLS.</p>
+<p>Source: https://www.openssl.org/docs/man1.1.1/man5/x509v3_config.html</p>
