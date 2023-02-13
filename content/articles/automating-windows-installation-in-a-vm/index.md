@@ -1,10 +1,13 @@
 ---
-title: "Automating Windows installation in a VM"
-date: 2023-02-13T16:01:20+0100
-description: "This blog post is summarizing my approach to installing Windows in a virtual machine. The whole process takes half an hour and doesn’t require any interaction whatsoever."
 categories:
 - windows
 - kvm
+date: 2023-02-13T16:01:20+0100
+description: This blog post is summarizing my approach to installing Windows in a
+  virtual machine. The whole process takes half an hour and doesn’t require any interaction
+  whatsoever.
+lastmod: '2023-02-13 22:13:08'
+title: Automating Windows installation in a VM
 ---
 
 I recently switched from VirtualBox to KVM for my virtualization needs. While this approach has clear advantages such as not requiring custom kernel drivers, the downside is that snapshots aren’t currently supported for Windows 11. And since I don’t want applications I analyze to corrupt my main Windows VM, I decided that I should run these in freshly created Windows VMs.
