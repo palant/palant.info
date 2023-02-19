@@ -48,6 +48,8 @@ And these certification authorities will stay there until removed manually. The 
 
 They are also enabled for all purposes. So one of these authorities being compromised will not merely affect web server identities but also application or email signatures for example.
 
+**Update** (2023-02-19): Someone compiled a [more comprehensive list of these certificates](https://fake-root.github.io/).
+
 ## Will a few more certification authorities really hurt?
 
 If you look at the list of trusted certification authorities, there are more than 50 entries on it anyways. What’s the problem if a few more are added?
