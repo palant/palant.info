@@ -72,6 +72,10 @@ At the same time they don’t provide additional value in the banking context. W
 
 However, if one really wanted to secure important accounts with a hardware token instead of a password, browsers have supported the [WebAuthn protocol](https://en.wikipedia.org/wiki/WebAuthn) for a while now. No third-party applications are required for that.
 
+**Edit** (2023-02-20): I forgot one scenario here. What if a user is lured to a malicious look-alike of their legitimate banking website? With password-based logins, this website will have stolen the user’s login credentials. Certificates on the other hand cannot be stolen this way.
+
+Yet the malicious website could use the user’s login attempt to log into the legitimate banking website in the background. The browser’s built-in TLS handshake mechanism effectively prevents such attacks, but from what I’ve seen the South Korean custom applications don’t. Whether certificates still offer some value then depends on how hard it will be to trick the user into signing a malicious banking transfer instead of their intended one. I don’t know that yet.
+
 ## Software distribution
 
 Even without any security issues, the mere number of applications users are supposed to install is causing considerable issues. One application required by every bank in the country? Well, probably manageable. Ten applications which you might need depending on the website, and where you have to keep the right version in mind? Impossible for regular users to navigate.
