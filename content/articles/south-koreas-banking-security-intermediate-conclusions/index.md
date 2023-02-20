@@ -8,6 +8,8 @@ categories:
 - privacy
 ---
 
+*Note*: This article is also available [in Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/04_intermediate_conclusions.md).
+
 A while back I wrote [my first overview of South Korea’s unusual approach to online security](/2023/01/02/south-koreas-online-security-dead-end/). After that I published two articles on [specific](/2023/01/09/touchen-nxkey-the-keylogging-anti-keylogger-solution/) [applications](/2023/01/25/ipinside-koreas-mandatory-spyware/). While I’m not done yet, this is enough information to draw some intermediate conclusions.
 
 The most important question is: all the security issues and bad practices aside, does this approach to banking security make sense? Do these applications have the potential to make people more secure when rolled out mandatorily nation-wide?
