@@ -106,4 +106,5 @@ When I report security issues vendors generally get 90 days to fix them. Once th
 * 2023-01-09: [TouchEn nxKey: The keylogging anti-keylogger solution](/2023/01/09/touchen-nxkey-the-keylogging-anti-keylogger-solution/)
 * 2023-01-25: [IPinside: Korea’s mandatory spyware](/2023/01/25/ipinside-koreas-mandatory-spyware/)
 * 2023-02-06: [Weakening TLS protection, South Korean style](/2023/02/06/weakening-tls-protection-south-korean-style/)
+* 2023-02-20: [South Korea’s banking security: Intermediate conclusions](/2023/02/20/south-koreas-banking-security-intermediate-conclusions/)
 * 2023-03-06 (March 6th)
