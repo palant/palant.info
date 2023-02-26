@@ -1,0 +1,17 @@
+{
+  "publishDate": "2023-02-24 13:11:32",
+  "author": "Bingo",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000021"
+}
+
+<p>I can see some logic to that, but surely password guessing strategies don't simply guess passwords in length order do they?
+For example, i would assume that they would guess something like Password1 long before it would guess something like gf7% even though Password1 is longer (obviously not arguing either of these are secure, just trying to illustrate a point)</p>
+<p>Similarly with your point about song lyrics for passwords, those seem long but probably are quite commonly used so would presumably be quite high on the password guessing list compared to something shorter but based on a less common password picking strategy.
+Even sticking with the song lyrics, surely it is not as simple as saying entropy is based on number of lines from popular songs. Surely the 20bits of entropy that you suggest for this method is further increased because the attacker is likely to guess passwords from a few other methods first (i.e. the rockyou list, common names and dates lists etc) before they start guessing song lyrics.
+Similarly even adding a single non obvious character somewhere in an otherwise common password should add a fair bit of entropy because the password guesser surely has to guess not just the correct extra character, but also where that character is.
+If they dont know how long the password is, they surely don't know that they have just "missed" a password guess hy a single character and will likely carry on guessing their next most probable guess rather than itterating through all the combinations of capitalisations, character substitutions or random character insertions for the guess that just failed.
+E.g. if we took the example password of "BaaBaaBlackSheep", surely changing it to "BaaBaa2BlackSheep" would make it significantly harder to guess because if you dont know password strategy, you wouldnt know why "BaaBaaBlackSheep" guess had failed, and to find the correct inserted character and the correct location for it would add a huge number of combinations, let alone the chances are that the attacker would probably move on to the next password guess altogether, maybe "wheelsonthebus" or something.</p>
+<p>Not trying to be difficult here, but just trying to understand what i am missing?</p>
