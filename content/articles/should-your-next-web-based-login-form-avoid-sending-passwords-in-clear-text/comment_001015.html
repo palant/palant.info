@@ -1,0 +1,11 @@
+{
+  "publishDate": "2023-02-27 14:29:57",
+  "author": "Mitar",
+  "authorUrl": "https://mitar.tnode.com",
+  "type": "comment",
+  "title": "",
+  "id": "001015"
+}
+
+<p>After reading <a href="https://github.com/cfrg/draft-irtf-cfrg-opaque" rel="nofollow">through the OPAQUE spec draft</a> myself, I tend to agree that OPAQUE makes a trade-off and increases security of the password in transit for less security of the password in the database. I made <a href="https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/395" rel="nofollow">an issue about this with more details</a>.</p>
+<p>If the goal is really to prevent logging passwords in transit (by accident) or intercepting them in TLS stripping proxies, I think much simpler solution is to establish a Diffie–Hellman key between client and server, encrypt the password with the key, and send it over. Server then decrypts it, hashes it, stores or compares it with one in the database. So in a way, if you do not trust TLS for confidentiality, you can create you own encrypted channel. You can still rely on TLS for integrity and authentication of the server for use cases I listed above.</p>
