@@ -2,7 +2,7 @@
 categories:
 - lastpass
 - security
-- password-manager
+- password-managers
 date: 2023-02-28T12:58:21+0100
 description: LastPass breach was aided by lax security policy, allowing accessing
   critical data from a home computer. Also, companies implementing federated login
