@@ -7,7 +7,7 @@ date: 2023-02-28T12:58:21+0100
 description: LastPass breach was aided by lax security policy, allowing accessing
   critical data from a home computer. Also, companies implementing federated login
   are also affected by the breach, despite LastPass originally denying it.
-lastmod: '2023-02-28 14:07:43'
+lastmod: '2023-02-28 16:30:43+0100'
 title: 'LastPass breach update: The few additional bits of information'
 ---
 
@@ -18,6 +18,8 @@ Half a year after the LastPass breach started in August 2022, information on it 
 Despite many questions being raised, LastPass maintained strict radio silence since December. Until yesterday they published [an article with details of the breach](https://support.lastpass.com/help/incident-2-additional-details-of-the-attack). If you were hoping to get answers: nope. If you look closely, the article again carefully avoids making definitive statements. There is very little to learn here.
 
 TL;DR: The breach was helped by a lax security policy, an employee was accessing critical company data from their home computer. Also, contrary to what LastPass claimed originally, business customers using Federated Login Services are very much affected by this breach. In fact, the attackers might be able to decrypt company data without using any computing resources on bruteforcing master passwords.
+
+**Update** (2023-02-28): I found additional information finally explaining the timeline here. So the breach affects LastPass users who had an active LastPass account between August 20 and September 16, 2022. The “Timeline of the breach” section has been rewritten accordingly.
 
 {{< toc >}}
 
@@ -37,22 +39,19 @@ And that certainly explains why LastPass wouldn’t mention the specific vulnera
 
 ## Timeline of the breach
 
-Other than that, we learn fairly little from the LastPass statement. In particular, the timeline of the breach remains unclear:
+Other than that, we learn fairly little from the LastPass statement. In particular, this doesn’t really help understand the timeline:
 
 > the threat actor […] was actively engaged in a new series of reconnaissance, enumeration, and exfiltration activities aligned to the cloud storage environment spanning from August 12, 2022 to October 26, 2022.
 
-What is the significance of these dates? Were these activities successful? What did they exfiltrate? When did LastPass detect that? Even after reading this and surrounding passages multiple times, this still isn’t clear to me.
+As it turns out, [another recently published document](https://support.lastpass.com/help/what-data-was-accessed) is more specific:
 
-If I have to guess, this is what the timeline of the events looks like:
+> The threat actor was able to copy five of the Binary Large Objects (BLOBs) database shards that were dated: August 20, 2022, August 30, 2022, August 31, 2022, September 8, 2022, and September 16, 2022. This took place between September 8 - 22, 2022. LastPass accounts created after these dates are not affected.
 
-1. The attackers initially breach LastPass on August 12, 2022.
-2. Among other things, they manage to steal the AWS credentials but not the decryption keys.
-3. They immediately start downloading data from AWS, hoping to get the decryption keys later.
-4. Since valid credentials are used, LastPass only detects and stops the exfiltration on October 26, 2022.
+So in the initial breach in August 2022 the attackers compromised an employee’s company laptop to steal some source code and internal information. They used the information to compromise the aforementioned senior DevOps engineer’s home computer. This way they gained access to LastPass’ backup storage, and between September 8 and 22 they’ve been copying data.
 
-And as we learned above, the attackers at some (unknown) point got the decryption keys from a senior DevOps engineer’s home computer. Which is all that they needed to get partially encrypted LastPass vault data of presumably all users – two months are more than enough time to download all of it.
+And we finally know which users are affected: the ones who had active LastPass accounts between August 20 and September 16, 2022. Anyone who deleted their account before that time span or created their account after it isn’t affected.
 
-Yes, I know that this interpretation of the events is probably the least favorable way of reading the statement. Given how LastPass only admits what they cannot avoid admitting, I expect this interpretation to be close to be the truth however.
+That’s finally something specific. Too bad that it took almost half a year to get there.
 
 ## Bad news for business customers
 
