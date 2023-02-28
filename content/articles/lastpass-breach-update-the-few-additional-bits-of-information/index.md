@@ -1,11 +1,14 @@
 ---
-title: "LastPass breach update: The few additional bits of information"
-date: 2023-02-28T12:58:21+0100
-description: "LastPass breach was aided by lax security policy, allowing accessing critical data from a home computer. Also, companies implementing federated login are also affected by the breach, despite LastPass originally denying it."
 categories:
 - lastpass
 - security
 - password-manager
+date: 2023-02-28T12:58:21+0100
+description: LastPass breach was aided by lax security policy, allowing accessing
+  critical data from a home computer. Also, companies implementing federated login
+  are also affected by the breach, despite LastPass originally denying it.
+lastmod: '2023-02-28 14:07:43'
+title: 'LastPass breach update: The few additional bits of information'
 ---
 
 Half a year after the LastPass breach started in August 2022, information on it remains sparse. It took until December 2022 for LastPass to admit losing their users’ partially encrypted vault data. This statement was [highly misleading](/2022/12/26/whats-in-a-pr-statement-lastpass-breach-explained/), e.g. making wrong claims about the protection level provided by the encryption. Some of the failures to protect users only became apparent after some time, such as [many accounts configured with a dangerously low password iterations setting](/2022/12/28/lastpass-breach-the-significance-of-these-password-iterations/), the company hasn’t admitted them to this day.
