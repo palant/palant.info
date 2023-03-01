@@ -141,7 +141,7 @@ Invoke-WebRequest -Uri https://download.sysinternals.com/files/ProcessExplorer.z
   -OutFile "C:\Windows\Temp\procexp.zip"
 Expand-Archive -Path "C:\Windows\Temp\procexp.zip" `
   -Destination "C:\Windows\Temp\procexp" -Force
-Move-Item -Path "C:\Windows\Temp\procexp\procexp64.exe" `
+Copy-Item -Path "C:\Windows\Temp\procexp\procexp64.exe" `
   -Destination "C:\Program Files"
 New-Item "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskmgr.exe" | Out-Null
 New-ItemProperty "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskmgr.exe" `
