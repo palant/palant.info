@@ -37,6 +37,10 @@ However, [Ars Technica quotes an anonymous source](https://arstechnica.com/infor
 
 And that certainly explains why LastPass wouldn’t mention the specific vulnerability used. Yes, allowing an employee to access company secrets from a computer where they also run an at least four years old Plex version that is directly accessible from the internet – that’s pretty damning.
 
+**Update** (2023-03-02): Dan Goodin, the journalist behind the article above, [got a definitive statement from LastPass confirming my speculations](https://infosec.exchange/@dangoodin/109950447675626971):
+
+> We can confirm that the engineer was running an earlier, unpatched version of Plex Media Server on the engineer’s home computer. This was not a zero-day attack.
+
 ## Timeline of the breach
 
 Other than that, we learn fairly little from the LastPass statement. In particular, this doesn’t really help understand the timeline:
