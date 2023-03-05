@@ -41,6 +41,8 @@ And that certainly explains why LastPass wouldn’t mention the specific vulnera
 
 > We can confirm that the engineer was running an earlier, unpatched version of Plex Media Server on the engineer’s home computer. This was not a zero-day attack.
 
+**Update** (2023-03-05): [According to PCMag](https://www.pcmag.com/news/lastpass-employee-couldve-prevented-hack-with-a-software-update), Plex learned that the vulnerability abused here was actually [CVE-2020-5741](https://forums.plex.tv/t/security-regarding-cve-2020-5741/586819) from 2020. That would mean that the attackers already had admin access to the media server. How they gained admin access is unknown.
+
 ## Timeline of the breach
 
 Other than that, we learn fairly little from the LastPass statement. In particular, this doesn’t really help understand the timeline:
