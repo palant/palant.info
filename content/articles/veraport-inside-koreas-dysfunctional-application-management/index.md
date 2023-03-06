@@ -8,6 +8,8 @@ categories:
 - privacy
 ---
 
+*Note*: This article is also available in [Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/05_wizvera_veraport.md).
+
 As discussed before, South Korea’s banking websites [demand installation of various so-called security applications](/2023/01/02/south-koreas-online-security-dead-end/). At the same time, we’ve seen that these applications like [TouchEn nxKey](/2023/01/09/touchen-nxkey-the-keylogging-anti-keylogger-solution/) and [IPinside](/2023/01/25/ipinside-koreas-mandatory-spyware/) lack auto-update functionality. So even in case of security issues, it is almost impossible to deliver updates to users timely.
 
 And that’s only two applications. Korea’s banking websites typically expect around five applications, and it will be different applications for different websites. That’s a lot of applications to install and to keep up-to-date.
