@@ -1,11 +1,14 @@
 ---
-title: "Veraport: Inside Korea’s dysfunctional application management"
-date: 2023-03-06T06:54:41+0100
-description: "While Wizvera Veraport is supposed to manage security applications easily, it suffers from a number of design flaws. In the worst case, these can lead to arbitrary websites installing malicious applications without the user noticing."
 categories:
 - korea
 - security
 - privacy
+date: 2023-03-06T06:54:41+0100
+description: While Wizvera Veraport is supposed to manage security applications easily,
+  it suffers from a number of design flaws. In the worst case, these can lead to arbitrary
+  websites installing malicious applications without the user noticing.
+lastmod: '2023-03-07 05:46:18'
+title: 'Veraport: Inside Korea’s dysfunctional application management'
 ---
 
 *Note*: This article is also available in [Korean](https://github.com/alanleedev/KoreaSecurityApps/blob/main/05_wizvera_veraport.md).

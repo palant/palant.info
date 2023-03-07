@@ -1,0 +1,13 @@
+{
+  "publishDate": "2023-03-06 21:53:43",
+  "author": "Alex",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000001"
+}
+
+<blockquote>
+<p>JsonCpp 0.10.7 is being used now. While this version has been released in 2016, using newer versions should be impossible as long as the application is being compiled with Visual Studio 2008.</p>
+</blockquote>
+<p>I’m just guessing here, but it might not just be developer laziness. Around that time, new VC++ releases (and their runtimes) started dropping support for old Windows versions tather quickly. If I’m reading this right, VC++2008 is the last Microsoft compiler you can use to target Windows 2000 without resorting to trickery (I <em>think</em> you can still build against MSVCRT.DLL using the WDK?). Not to say anything about the merits of using OS releases that ancient, but to me they sound like a somewhat plausible reason the developers may be stuck with an old compiler version.</p>
