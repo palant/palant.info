@@ -1,10 +1,12 @@
 ---
-title: "Converting incoming emails on the fly with OpenSMTPD filters"
-date: 2023-03-08T11:22:25+0100
-description: "OpenSMTPD filters can be used e.g. to insert a more convenient representation of the attachment into incoming emails. This article documents the approach."
 categories:
 - opensmtpd
 - email
+date: 2023-03-08T11:22:25+0100
+description: OpenSMTPD filters can be used e.g. to insert a more convenient representation
+  of the attachment into incoming emails. This article documents the approach.
+lastmod: '2023-03-09 06:20:19'
+title: Converting incoming emails on the fly with OpenSMTPD filters
 ---
 
 This little adventure began with me being annoyed at DMARC aggregate reports. My domain doesn’t have enough email traffic to justify routing DMARC emails to some third-party analytics service, yet I want to take a brief glance at them. And the format of these emails makes that maximally inconvenient: download the attachment, unpack it, look through some (always messy but occasionally not even human-readable) XML code. There had to be a better way.
