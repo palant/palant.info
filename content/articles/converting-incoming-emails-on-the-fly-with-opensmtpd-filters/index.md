@@ -46,7 +46,7 @@ Adding it to `smtpd.conf` is also largely straightforward:
 ```ini
 # Define dmarc2html filter
 filter dmarc2html proc-exec "/opt/dmarc2html/filter.py"
-# Chain all filters to be processed on incoming mail
+# Chain all filters to be applied to incoming mail
 filter incoming_chain chain {filter1, filter2, dmarc2html}
 # Apply filter
 listen on eth0 tls pki default filter incoming_chain
