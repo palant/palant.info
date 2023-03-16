@@ -8,7 +8,7 @@ date: 2019-09-26 14:42:29+02:00
 description: 'This is a guest post by Jane Doe, a security professional who was asked
   to do a security review of PfP: Pain-free Passwords. The review turned up three
   issues, one of them security-relevant.'
-lastmod: '2020-12-08 08:36:27'
+lastmod: '2023-03-16 21:07:33'
 title: 'PfP: Pain-free Passwords security review'
 ---
 
