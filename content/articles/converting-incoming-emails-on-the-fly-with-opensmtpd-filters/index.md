@@ -5,7 +5,7 @@ categories:
 date: 2023-03-08T11:22:25+0100
 description: OpenSMTPD filters can be used e.g. to insert a more convenient representation
   of the attachment into incoming emails. This article documents the approach.
-lastmod: '2023-03-10 09:09:34'
+lastmod: '2023-03-19 21:33:39'
 title: Converting incoming emails on the fly with OpenSMTPD filters
 ---
 
