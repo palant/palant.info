@@ -650,6 +650,8 @@ But the answer given back there is mostly correct. Looking through KeePass and K
 
 Even `<UUID>` tags are optional. When missing, a new UUID will be generated for groups and entries.
 
+*Edit* (2023-03-29): Turns out, there is a proper [documentation for the XML format](https://github.com/keepassxreboot/keepassxc-specs/blob/master/kdbx-xml/rfc.txt) after all, written by KeePassXC developers. I’m not sure how accurate it is (e.g. the description of the `_DATETIME_` format is outdated), but it is definitely better than nothing.
+
 ### The “protected” values
 
 Some fields enjoy additional protection. In my example, these are only passwords though protection for other fields could be enabled as well. Instead of the actual value, for “protected” fields we see:
