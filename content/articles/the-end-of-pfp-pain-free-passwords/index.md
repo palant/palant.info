@@ -1,10 +1,13 @@
 ---
-title: "The end of PfP: Pain-free Passwords"
-date: 2023-03-20T13:28:03+0100
-description: "My password manager PfP: Pain-free Passwords will no longer be developed. I write on the lessons learned developing it, disadvantages of password generators and where to go from here."
 categories:
 - pfp
 - password-managers
+date: 2023-03-20T13:28:03+0100
+description: 'My password manager PfP: Pain-free Passwords will no longer be developed.
+  I write on the lessons learned developing it, disadvantages of password generators
+  and where to go from here.'
+lastmod: '2023-04-02 20:48:12'
+title: 'The end of PfP: Pain-free Passwords'
 ---
 
 Seven years ago I [created a password manager](/2016/04/19/introducing-easy-passwords-the-new-best-way-to-juggle-all-those-passwords/). And a few days ago I pushed out the last release for it, notifying users that nothing else will come now. Yes, with the previous release being from 2019, this might have been obvious. Now it’s official however, PfP: Pain-free Passwords is no longer being developed.
