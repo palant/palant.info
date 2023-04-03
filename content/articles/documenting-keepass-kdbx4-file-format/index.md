@@ -1,10 +1,12 @@
 ---
-title: "Documenting KeePass KDBX4 file format"
-date: 2023-03-29T14:34:06+0200
-description: "KeePass password databases are widely used but not properly documented. This is my attempt to document the file format with all its ambiguities."
 categories:
 - keepass
 - password-managers
+date: 2023-03-29T14:34:06+0200
+description: KeePass password databases are widely used but not properly documented.
+  This is my attempt to document the file format with all its ambiguities.
+lastmod: '2023-04-03 06:16:18'
+title: Documenting KeePass KDBX4 file format
 ---
 
 I’ve been playing around with KeePass databases. One aspect was rather surprising: given how many open source products use this format, it is remarkably underdocumented. At best, you can find [outdated and incomplete descriptions by random people](https://gist.github.com/lgg/e6ccc6e212d18dd2ecd8a8c116fb1e45). The KeePass developers themselves never bothered providing complete documentation. All you get is a semi-intelligible list of changes [from KDBX 3.1 to KDBX 4](https://keepass.info/help/kb/kdbx_4.html) and [from KDBX 4 to KDBX 4.1](https://keepass.info/help/kb/kdbx_4.1.html). With the starting point not being documented, these are only moderately useful.
