@@ -90,7 +90,7 @@ enhanced_enum!{
 
 This macro defines its own syntax resembling that of regular enum declarations: a type name (an identifier) is followed by brackets containing any number of variant names (also identifiers), each followed by a comma.
 
-Note that writing the repetition as `$($variant:ident),*` would make the comma after the last variant optional. Personally, I consider omitting this comma bad style however. So I opted for putting the comma inside the parentheses, rendering it mandatory: `$($variant:ident,)*`.
+Note that writing the repetition as `$($variant:ident),*$(,)*` would make the comma after the last variant optional. Personally, I consider omitting this comma bad style however. So I opted for putting the comma inside the parentheses, rendering it mandatory: `$($variant:ident,)*`.
 
 ## A more complicated scenario
 
