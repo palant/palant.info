@@ -8,7 +8,7 @@ categories:
 
 I am by no means a Rust expert, and I’m no expert on declarative macros. I was merely solving an issue I had: there was a lot of redundancy in the way my error types were coded. I didn’t want to repeat the same coding patterns all the time, yet the types also seemed too heterogenous for declarative macros. And going with procedural macros wasn’t worth the effort in this case.
 
-After some experimentation I figured out how declarative macros could work in this scenario after all. I doubt that this approach is very original, and maybe I solved something in a sub-optimal way. I couldn’t find any helpful online sources however, which is why I’m documenting this in my own article.
+After some experimentation I figured out how declarative macros could work in this scenario after all. I doubt that this approach is very original, and maybe I solved something in a sub-optimal way. I couldn’t find any helpful online sources however, which is why I’m documenting this in my own article. **Edit**: After publishing this article, I found that the pattern used here is called [TT munching](https://danielkeep.github.io/tlborm/book/pat-incremental-tt-munchers.html).
 
 {{< toc >}}
 
