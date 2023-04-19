@@ -7,7 +7,7 @@ date: '2018-07-09 10:00:00'
 description: LastPass fanboys often claim that a breach of the LastPass server isn't
   a big deal because all data is encrypted. In reality, somebody able to compromise
   the LastPass server will likely gain access to the decrypted data as well.
-lastmod: '2023-01-11 17:39:33'
+lastmod: '2023-04-19 05:49:56'
 slug: is-your-lastpass-data-really-safe-in-the-encrypted-online-vault
 title: Is your LastPass data really safe in the encrypted online vault?
 ---
