@@ -7,7 +7,7 @@ date: 2023-02-28T12:58:21+0100
 description: LastPass breach was aided by lax security policy, allowing accessing
   critical data from a home computer. Also, companies implementing federated login
   are also affected by the breach, despite LastPass originally denying it.
-lastmod: '2023-03-04 06:55:45'
+lastmod: '2023-04-19 05:42:52'
 title: 'LastPass breach update: The few additional bits of information'
 ---
 
