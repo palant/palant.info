@@ -1,0 +1,13 @@
+{
+  "publishDate": "2023-05-12 08:20:23",
+  "author": "Jo Rabin",
+  "authorUrl": "https://github.com/jorabin/KeePassJava2",
+  "type": "comment",
+  "title": "",
+  "id": "000004"
+}
+
+<p>Relevant to this discussion is <a href="https://sourceforge.net/p/keepass/discussion/329220/thread/acfd14b1/?page=1#22e7" rel="nofollow">my asking Dominik his view</a> as to creating an XSD.</p>
+<p>In the same discussion archaeologists will see where the idea for binaries in the header and for the change in date encoding in V4 came from. </p>
+<p>My point about the change in date encoding (in that thread) was that although you know from the format of the data which encoding it is, you do not necessarily know what the context of loading the file was, so having a flag to indicate which encoding is in use would be useful. Actually, saying what format you are using (3 or 4) in the <code>meta</code> element would suffice, so would not be burdensome as far as file size is concerned. Anyway, I have seen XML that contains both formats, so this is something you'd need to check "in the wild".</p>
+<p>A couple of other ideas include that it would be useful to be able to indicate the format of a binary - perhaps via a mime type. There is an implication in V4 that the binaries in the headers are indexed according to their position in the header, which is slightly inconvenient as if you have removed binaries before saving you need to renumber the references.</p>
