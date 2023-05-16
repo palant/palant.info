@@ -92,7 +92,7 @@ else
 }
 ```
 
-You can again ignore the inline conditionals: both conditions are always true. The `PB` constant is only being used to somewhat mess up the timestamp when it is being stored in `localStorage.cfg`. But `qJ` becomes the number of millisecond since the first extension start. And `87217164` is slightly more than the number of milliseconds in 24 hours.
+You can again ignore the inline conditionals: both conditions are always true. The `PB` constant is only being used to somewhat mess up the timestamp when it is being stored in `localStorage.cfg`. But `qJ` becomes the number of milliseconds since the first extension start. And `87217164` is slightly more than the number of milliseconds in 24 hours.
 
 So one only has to change the timestamp in `localStorage.cfg` for the request to the “configuration” file to happen. For me, only an empty JSON file is being returned however. I suspect that this is another detection prevention mechanism on the server side. There is a cookie being set, so it will likely take some time for me to get a real response here. Maybe there is also some geo-blocking here or other conditions.
 
