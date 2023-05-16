@@ -66,7 +66,7 @@ Calling `wrapObject` with `chrome` as first parameter makes the impression that 
 
 ## Detection prevention
 
-Before I start going through the “wrapper,” there is another piece of logic worth mentioning. Somebody probably thought that the extension making a request to serasearchtop[.]com immediately upon installation would draw suspicions. While it isn’t clear what this domain does or who is behind it, it managed to get onto a bunch of anti-tracking blocking list.
+Before I start going through the “wrapper,” there is another piece of logic worth mentioning. Somebody probably thought that the extension making a request to serasearchtop[.]com immediately upon installation would draw suspicions. While it isn’t clear what this domain does or who is behind it, it managed to get onto a bunch of anti-tracking blocking lists.
 
 So rather than making the request immediately, the extension waits 24 hours. This logic is also obfuscated. It looks like this (slightly cleaned up):
 
