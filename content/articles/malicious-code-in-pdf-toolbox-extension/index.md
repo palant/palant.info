@@ -16,9 +16,9 @@ This code allows serasearchtop[.]com website to inject arbitrary JavaScript code
 
 {{< toc >}}
 
-## What PDF Toolkit does
+## What PDF Toolbox does
 
-The functionality of the PDF Toolkit extension is mostly simple. You click the extension icon and get your options:
+The functionality of the PDF Toolbox extension is mostly simple. You click the extension icon and get your options:
 
 {{< img src="popup.png" width="416" alt="An extension icon showing a Swiss army knife with its pop-up open. The pop-up contains the PDF Toolbox title following by four options: Convert office documents, Merge two PDF files, Append image to PDF file, Download Opened PDFs (0 PDFs opened in your tabs)" />}}
 
@@ -141,7 +141,7 @@ Effectively, the “config” file downloaded from serasearchtop[.]com can give 
 
 As I’ve never seen the code being injected, we are now entering the realm of speculations. Most likely, the goal of this code is monetizing the browser extension in ways that are prohibited by the Chrome Web Store policies. Which usually means: injecting ads into websites.
 
-One would expect users to notice however. With the latest PDF Toolkit version being published in January 2022, this has been going on for more than a year. It might have been even longer if previous versions contained this malicious code as well. Yet not one of the two million users complains in an extension review about ads. I can see a number of explanations for that:
+One would expect users to notice however. With the latest PDF Toolbox version being published in January 2022, this has been going on for more than a year. It might have been even longer if previous versions contained this malicious code as well. Yet not one of the two million users complains in an extension review about ads. I can see a number of explanations for that:
 
 * The user numbers have been artificially inflated and the real user count is far lower than two million.
 * The functionality is not active, the server gives everyone an empty config file.
