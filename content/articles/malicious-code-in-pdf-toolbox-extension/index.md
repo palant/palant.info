@@ -1,11 +1,14 @@
 ---
-title: "Malicious code in PDF Toolbox extension"
-date: 2023-05-16T16:41:44+0200
-description: "PDF Toolbox extension (used by more than 2 million users) contains obfuscated malicious code, allowing serasearchtop[.]com website to inject arbitrary JavaScript code into all websites you visit."
 categories:
 - security
 - privacy
 - add-ons
+date: 2023-05-16T16:41:44+0200
+description: PDF Toolbox extension (used by more than 2 million users) contains obfuscated
+  malicious code, allowing serasearchtop[.]com website to inject arbitrary JavaScript
+  code into all websites you visit.
+lastmod: '2023-05-25 10:18:22'
+title: Malicious code in PDF Toolbox extension
 ---
 
 The PDF Toolbox extension for Google Chrome has more than 2 million users and an average rating of 4,2 in the Chrome Web Store. So I was rather surprised to discover obfuscated code in it that has apparently gone unnoticed for at least a year.
