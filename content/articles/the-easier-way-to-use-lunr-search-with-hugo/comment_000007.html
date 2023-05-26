@@ -1,0 +1,12 @@
+{
+  "publishDate": "2023-05-26 07:23:20",
+  "author": "JP",
+  "authorUrl": "https://byjp.me",
+  "type": "comment",
+  "title": "",
+  "id": "000007"
+}
+
+<p>Thanks for writing this up! It's possibly worth noting that this approach <em>might</em> slow down the browser on search for large sites — as a .json file containing all <em>all</em> your post content has to be downloaded <em>and</em> processed into a search index all before a search can be completed.</p>
+<p>I now use Hugo (and haven't implemented search, yet) but I wrote a <a href="https://github.com/jphastings/jekyll-lunr-js-search" rel="nofollow">Jekyll plugin</a> for Lunr search a long while back, and got around this initialization cost by pre-computing the index at build time, rather than generating an indexable JSON file (here's a <a href="https://10consulting.com/js/index.json" rel="nofollow">sample of that JSON</a> from a site that uses that Jekyll plugin). It's still a large file to download, but it's slightly smaller (stop tokens have been removed and all words have ben stemmed), but it also uses almost no client-side compute time to search, even a very large index.</p>
+<p>I haven't found a hugo-recommended plugin that does the same, so I'll see what I can build — but my ideal case would be to build a sharded index (spread across multiple files), and have the client-side search only download the parts of the index it needs for your search particularly (reducing the download size too!)</p>
