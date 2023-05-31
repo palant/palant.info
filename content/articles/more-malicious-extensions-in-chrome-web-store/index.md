@@ -19,7 +19,7 @@ So now we are at 18 malicious extensions with a combined user count of 55 millio
 
 ## The extensions
 
-So far I could identify the following malicious extensions (user counts for 2023-05-30):
+So far I could identify the following 18 malicious extensions. All but two of them are listed as “Featured” in Chrome Web Store. User counts reflect the state for 2023-05-30.
 
 | Name | Weekly active users | Extension ID|
 |------|------------|-------------|
