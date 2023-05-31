@@ -3,6 +3,7 @@ categories:
 - security
 - privacy
 - add-ons
+- google
 date: 2023-05-16T16:41:44+0200
 description: PDF Toolbox extension (used by more than 2 million users) contains obfuscated
   malicious code, allowing serasearchtop[.]com website to inject arbitrary JavaScript
