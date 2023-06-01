@@ -8,7 +8,7 @@ date: 2023-05-31T13:37:16+0200
 description: 'So far I discovered 18 malicious extensions with 55 million users in
   total. Most popular ones are: Autoskip for Youtube, Crystal Ad block and Brisk VPN.
   They have been active for two years, undetected by Google.'
-lastmod: '2023-06-01 11:45:48'
+lastmod: '2023-06-01 12:34:49'
 title: More malicious extensions in Chrome Web Store
 ---
 
