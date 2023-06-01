@@ -20,6 +20,8 @@ So now we are at 18 malicious extensions with a combined user count of 55 millio
 
 **Update** (2023-06-01): With an increased sample I was able to find some more extensions. Also, Lukas Andersson did some research into manipulated extension ratings in Chrome Web Store and pointed out that other extensions exhibited similar patterns in their review. With his help I was able to identify yet another variant of this malicious code and a bunch more malicious extensions. So now we are at 34 malicious extensions and 87 million users.
 
+**Update** (2023-06-01): Good news: Google started removing these extensions. By the time I published my previous update, a bunch of the extensions mentioned there were already removed. Right now, only nine extensions from this list remain in Chrome Web Store, and these will hopefully also be gone soon.
+
 {{< toc >}}
 
 ## The extensions
