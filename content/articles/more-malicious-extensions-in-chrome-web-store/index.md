@@ -20,7 +20,7 @@ So now we are at 18 malicious extensions with a combined user count of 55 millio
 
 **Update** (2023-06-01): With an increased sample I was able to find some more extensions. Also, Lukas Andersson did some research into manipulated extension ratings in Chrome Web Store and pointed out that other extensions exhibited similar patterns in their review. With his help I was able to identify yet another variant of this malicious code and a bunch more malicious extensions. So now we are at 34 malicious extensions and 87 million users.
 
-**Update** (2023-06-01): Good news: Google started removing these extensions. By the time I published my previous update, a bunch of the extensions mentioned there were already removed. Right now, only nine extensions from this list remain in Chrome Web Store, and these will hopefully also be gone soon.
+**Update** (2023-06-01): Good news: Google started removing these extensions. By the time I published my previous update, a bunch of the extensions mentioned there were already gone. Right now, only nine extensions from this list remain in Chrome Web Store, and these will hopefully also be dealt with soon.
 
 {{< toc >}}
 
@@ -30,37 +30,37 @@ So far I could identify the following 34 malicious extensions. Most of them are 
 
 | Name | Weekly active users | Extension ID|
 |------|------------|-------------|
-| Autoskip for Youtube | 9,008,298 | lgjdgmdbfhobkdbcjnpnlmhnplnidkkp |
+| <strike>Autoskip for Youtube</strike> | 9,008,298 | lgjdgmdbfhobkdbcjnpnlmhnplnidkkp |
 | Soundboost | 6,925,522 | chmfnmjfghjpdamlofhlonnnnokkpbao |
-| Crystal Ad block | 6,869,278 | lklmhefoneonjalpjcnhaidnodopinib |
-| Brisk VPN | 5,595,420 | ciifcakemmcbbdpmljdohdmbodagmela |
-| Clipboard Helper | 3,499,233 | meljmedplehjlnnaempfdoecookjenph |
-| Maxi Refresher | 3,483,639 | lipmdblppejomolopniipdjlpfjcojob |
-| Quick Translation | 2,797,773 | lmcboojgmmaafdmgacncdpjnpnnhpmei |
-| Easyview Reader view | 2,786,137 | icnekagcncdgpdnpoecofjinkplbnocm |
-| PDF toolbox | 2,782,790 | bahogceckgcanpcoabcdgmoidngedmfo |
-| Epsilon Ad blocker | 2,571,050 | bkpdalonclochcahhipekbnedhklcdnp |
-| Craft Cursors | 2,437,224 | magnkhldhhgdlhikeighmhlhonpmlolk |
+| <strike>Crystal Ad block</strike> | 6,869,278 | lklmhefoneonjalpjcnhaidnodopinib |
+| <strike>Brisk VPN | 5,595,420</strike> | ciifcakemmcbbdpmljdohdmbodagmela |
+| <strike>Clipboard Helper</strike> | 3,499,233 | meljmedplehjlnnaempfdoecookjenph |
+| <strike>Maxi Refresher</strike> | 3,483,639 | lipmdblppejomolopniipdjlpfjcojob |
+| <strike>Quick Translation</strike> | 2,797,773 | lmcboojgmmaafdmgacncdpjnpnnhpmei |
+| <strike>Easyview Reader view</strike> | 2,786,137 | icnekagcncdgpdnpoecofjinkplbnocm |
+| <strike>PDF toolbox</strike> | 2,782,790 | bahogceckgcanpcoabcdgmoidngedmfo |
+| <strike>Epsilon Ad blocker</strike> | 2,571,050 | bkpdalonclochcahhipekbnedhklcdnp |
+| <strike>Craft Cursors</strike> | 2,437,224 | magnkhldhhgdlhikeighmhlhonpmlolk |
 | Alfablocker ad blocker | 2,430,636 | edadmcnnkkkgmofibeehgaffppadbnbi |
-| Zoom Plus | 2,370,645 | ajneghihjbebmnljfhlpdmjjpifeaokc |
-| Base Image Downloader | 2,366,136 | nadenkhojomjfdcppbhhncbfakfjiabp |
-| Clickish fun cursors | 2,353,436 | pbdpfhmbdldfoioggnphkiocpidecmbp |
-| Cursor-A custom cursor | 2,237,147 | hdgdghnfcappcodemanhafioghjhlbpb |
+| <strike>Zoom Plus</strike> | 2,370,645 | ajneghihjbebmnljfhlpdmjjpifeaokc |
+| <strike>Base Image Downloader</strike> | 2,366,136 | nadenkhojomjfdcppbhhncbfakfjiabp |
+| <strike>Clickish fun cursors</strike> | 2,353,436 | pbdpfhmbdldfoioggnphkiocpidecmbp |
+| <strike>Cursor-A custom cursor</strike> | 2,237,147 | hdgdghnfcappcodemanhafioghjhlbpb |
 | Amazing Dark Mode | 2,228,049 | fbjfihoienmhbjflbobnmimfijpngkpa |
-| Maximum Color Changer for Youtube | 2,226,293 | kjeffohcijbnlkgoaibmdcfconakaajm |
+| <strike>Maximum Color Changer for Youtube</strike> | 2,226,293 | kjeffohcijbnlkgoaibmdcfconakaajm |
 | Awesome Auto Refresh | 2,222,284 | djmpbcihmblfdlkcfncodakgopmpgpgh |
-| Venus Adblock | 1,973,783 | obeokabcpoilgegepbhlcleanmpgkhcp |
-| Adblock Dragon | 1,967,202 | mcmdolplhpeopapnlpbjceoofpgmkahc |
-| Readl Reader mode | 1,852,707 | dppnhoaonckcimpejpjodcdoenfjleme |
+| <strike>Venus Adblock</strike> | 1,973,783 | obeokabcpoilgegepbhlcleanmpgkhcp |
+| <strike>Adblock Dragon</strike> | 1,967,202 | mcmdolplhpeopapnlpbjceoofpgmkahc |
+| <strike>Readl Reader mode</strike> | 1,852,707 | dppnhoaonckcimpejpjodcdoenfjleme |
 | Volume Frenzy | 1,626,760 | idgncaddojiejegdmkofblgplkgmeipk |
-| Image download center | 1,493,741 | deebfeldnfhemlnidojiiidadkgnglpi |
-| Font Customizer | 1,471,726 | gfbgiekofllpkpaoadjhbbfnljbcimoh |
-| Easy Undo Closed Tabs | 1,460,691 | pbebadpeajadcmaoofljnnfgofehnpeo |
-| Screence screen recorder | 1,459,488 | flmihfcdcgigpfcfjpdcniidbfnffdcf |
-| OneCleaner | 1,457,548 | pinnfpbpjancnbidnnhpemakncopaega |
-| Repeat button | 1,456,013 | iicpikopjmmincpjkckdngpkmlcchold |
+| <strike>Image download center</strike> | 1,493,741 | deebfeldnfhemlnidojiiidadkgnglpi |
+| <strike>Font Customizer</strike> | 1,471,726 | gfbgiekofllpkpaoadjhbbfnljbcimoh |
+| <strike>Easy Undo Closed Tabs</strike> | 1,460,691 | pbebadpeajadcmaoofljnnfgofehnpeo |
+| <strike>Screence screen recorder</strike> | 1,459,488 | flmihfcdcgigpfcfjpdcniidbfnffdcf |
+| <strike>OneCleaner</strike> | 1,457,548 | pinnfpbpjancnbidnnhpemakncopaega |
+| <strike>Repeat button</strike> | 1,456,013 | iicpikopjmmincpjkckdngpkmlcchold |
 | Leap Video Downloader | 1,454,917 | bjlcpoknpgaoaollojjdnbdojdclidkh |
-| Tap Image Downloader | 1,451,822 | okclicinnbnfkgchommiamjnkjcibfid |
+| <strike>Tap Image Downloader</strike> | 1,451,822 | okclicinnbnfkgchommiamjnkjcibfid |
 | Qspeed Video Speed Controller | 732,250 | pcjmcnhpobkjnhajhhleejfmpeoahclc |
 | HyperVolume | 592,479 | hinhmojdkodmficpockledafoeodokmc |
 | Light picture-in-picture | 172,931 | gcnceeflimggoamelclcbhcdggcmnglm |
