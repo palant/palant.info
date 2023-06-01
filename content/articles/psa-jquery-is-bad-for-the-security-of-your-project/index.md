@@ -6,7 +6,7 @@ date: 2020-03-02 15:19:30+01:00
 description: jQuery makes it unnecessarily hard to avoid security vulnerabilities,
   not something that will be fixed any time soon. Better frameworks exist, just don't
   use it.
-lastmod: '2022-01-21 05:58:29'
+lastmod: '2023-06-01 18:53:55'
 title: 'PSA: jQuery is bad for the security of your project'
 ---
 
