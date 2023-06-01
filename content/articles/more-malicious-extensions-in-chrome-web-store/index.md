@@ -65,7 +65,7 @@ So far I could identify the following 34 malicious extensions. Most of them are 
 | HyperVolume | 592,479 | hinhmojdkodmficpockledafoeodokmc |
 | Light picture-in-picture | 172,931 | gcnceeflimggoamelclcbhcdggcmnglm |
 
-Note that this list is unlikely to be complete. It’s based on a sample of roughly a thousand extensions that I have locally, not all the Chrome Web Store contents.
+Note that this list is unlikely to be complete. It’s based on a sample of roughly 1,600 extensions that I have locally, not all the Chrome Web Store contents.
 
 ## The malicious code
 
