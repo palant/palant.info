@@ -8,7 +8,7 @@ date: 2023-05-31T13:37:16+0200
 description: 'So far I discovered 18 malicious extensions with 55 million users in
   total. Most popular ones are: Autoskip for Youtube, Crystal Ad block and Brisk VPN.
   They have been active for two years, undetected by Google.'
-lastmod: '2023-06-01 20:13:06+0200'
+lastmod: '2023-06-02 21:22:06+0200'
 title: More malicious extensions in Chrome Web Store
 ---
 
@@ -21,6 +21,8 @@ So now we are at 18 malicious extensions with a combined user count of 55 millio
 **Update** (2023-06-01): With an increased sample I was able to find some more extensions. Also, Lukas Andersson did some research into manipulated extension ratings in Chrome Web Store and pointed out that other extensions exhibited similar patterns in their review. With his help I was able to identify yet another variant of this malicious code and a bunch more malicious extensions. So now we are at 34 malicious extensions and 87 million users.
 
 **Update** (2023-06-01): Good news: Google started removing these extensions. By the time I published my previous update, a bunch of the extensions mentioned there were already gone. Right now, only nine extensions from this list remain in Chrome Web Store, and these will hopefully also be dealt with soon.
+
+**Update** (2023-06-02): Google removed one more extensions, so only eight extensions remain now. These eight extensions are considerably different from the rest, so I published a [follow-up blog post](/2023/06/02/how-malicious-extensions-hide-running-arbitrary-code/) discussing the technical aspects here.
 
 {{< toc >}}
 
@@ -41,7 +43,7 @@ So far I could identify the following 34 malicious extensions. Most of them are 
 | <strike>PDF toolbox</strike> | 2,782,790 | bahogceckgcanpcoabcdgmoidngedmfo |
 | <strike>Epsilon Ad blocker</strike> | 2,571,050 | bkpdalonclochcahhipekbnedhklcdnp |
 | <strike>Craft Cursors</strike> | 2,437,224 | magnkhldhhgdlhikeighmhlhonpmlolk |
-| Alfablocker ad blocker | 2,430,636 | edadmcnnkkkgmofibeehgaffppadbnbi |
+| <strike>Alfablocker ad blocker</strike> | 2,430,636 | edadmcnnkkkgmofibeehgaffppadbnbi |
 | <strike>Zoom Plus</strike> | 2,370,645 | ajneghihjbebmnljfhlpdmjjpifeaokc |
 | <strike>Base Image Downloader</strike> | 2,366,136 | nadenkhojomjfdcppbhhncbfakfjiabp |
 | <strike>Clickish fun cursors</strike> | 2,353,436 | pbdpfhmbdldfoioggnphkiocpidecmbp |
