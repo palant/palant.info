@@ -52,7 +52,7 @@ The approach to downloading the instructions changed considerably however. I’l
 ```js
 async function getConfig()
 {
-  let config = (await chrome.storage.local.get("reggin")).reggin;
+  let config = (await chrome.storage.local.get("<key>")).<key>;
   let options;
   if (config)
   {
@@ -75,7 +75,7 @@ async function getConfig()
   let json = await response.json();
   Object.assign(config, json);
   if (config.l)
-    chrome.storage.local.set({reggin: config});
+    chrome.storage.local.set({<key>: config});
   return config.l;
 }
 ```
