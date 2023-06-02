@@ -1,12 +1,15 @@
 ---
-title: "How malicious extensions hide running arbitrary code"
-date: 2023-06-02T12:11:33+0200
-description: "Eight malicious extensions still remain in Chrome Web Store. These use some interesting tricks to keep running arbitrary code despite restrictions of Manifest V3."
 categories:
 - security
 - privacy
 - add-ons
 - google
+date: 2023-06-02T12:11:33+0200
+description: Eight malicious extensions still remain in Chrome Web Store. These use
+  some interesting tricks to keep running arbitrary code despite restrictions of Manifest
+  V3.
+lastmod: '2023-06-02 20:17:33'
+title: How malicious extensions hide running arbitrary code
 ---
 
 Two days ago I wrote about the [malicious extensions I discovered in Chrome Web Store](/2023/05/31/more-malicious-extensions-in-chrome-web-store/). At some point this article got noticed by Avast. Once their team [confirmed my findings](https://blog.avast.com/malicious-extensions-chrome-web-store), Google finally reacted and started removing these extensions. Out of the 34 extensions I reported, only 8 extensions remain. These eight were all part of an update where I added 16 extensions to my list, an update that came too late for Avast to notice.
