@@ -22,7 +22,7 @@ So now we are at 18 malicious extensions with a combined user count of 55 millio
 
 **Update** (2023-06-01): Good news: Google started removing these extensions. By the time I published my previous update, a bunch of the extensions mentioned there were already gone. Right now, only nine extensions from this list remain in Chrome Web Store, and these will hopefully also be dealt with soon.
 
-**Update** (2023-06-02): Google removed one more extensions, so only eight extensions remain now. These eight extensions are considerably different from the rest, so I published a [follow-up blog post](/2023/06/02/how-malicious-extensions-hide-running-arbitrary-code/) discussing the technical aspects here.
+**Update** (2023-06-02): Google removed one more extension, so only eight extensions remain now. These eight extensions are considerably different from the rest, so I published a [follow-up blog post](/2023/06/02/how-malicious-extensions-hide-running-arbitrary-code/) discussing the technical aspects here.
 
 {{< toc >}}
 
