@@ -18,6 +18,8 @@ Note: Even for the removed extensions, it isn’t “mission accomplished” yet
 
 Avast ran their own search, and they found a bunch of extensions that I didn’t see. So how come they missed eight extensions? The reason seems to be: these are considerably different. They migrated to [Manifest V3](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-overview/), so they had to find new ways of running arbitrary code that wouldn’t attract unnecessary attention.
 
+**Update** (2023-06-03): These extensions have been removed from the Chrome Web Store as well.
+
 {{< toc >}}
 
 ## Which extensions is this about?
