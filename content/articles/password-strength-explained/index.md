@@ -6,7 +6,7 @@ date: 2023-01-30T17:12:14+0100
 description: I try to explain how attackers would guess your password, should they
   get their hands on your encrypted data. There are some thoughts on the strength
   of real-world passwords and suggestions for your new password.
-lastmod: '2023-02-26 12:54:49'
+lastmod: '2023-06-05 06:21:43'
 title: Password strength explained
 ---
 
