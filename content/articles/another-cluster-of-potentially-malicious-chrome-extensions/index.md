@@ -1,12 +1,15 @@
 ---
-title: "Another cluster of potentially malicious Chrome extensions"
-date: 2023-06-08T14:10:27+0200
-description: "I discovered a cluster of at least 109 extensions in Chrome Web Store. A few are committing affiliate fraud or spying, most are simply hoarding overly wide privileges before abusing them."
 categories:
 - security
 - privacy
 - add-ons
 - google
+date: 2023-06-08T14:10:27+0200
+description: I discovered a cluster of at least 109 extensions in Chrome Web Store.
+  A few are committing affiliate fraud or spying, most are simply hoarding overly
+  wide privileges before abusing them.
+lastmod: '2023-06-08 17:23:42'
+title: Another cluster of potentially malicious Chrome extensions
 ---
 
 We’ve already seen [Chrome extensions containing obfuscated malicious code](/2023/05/31/more-malicious-extensions-in-chrome-web-store/). We’ve also seen [PCVARK’s malicious ad blockers](/2023/06/05/introducing-pcvark-and-their-malicious-ad-blockers/). When looking for more PCVARK extensions, I stumbled upon an inconspicuous extension called “Translator - Select to Translate.” The only unusual thing about it were its reviews, lots of raving positive reviews mixed with usability complains. That, and the permissions: why does a translator extension need `webRequest` and `webRequestBlocking` permissions?
@@ -405,4 +408,3 @@ While allowing execution of remote code (unsafe-eval) isn’t technically a perm
 | Picture-in-Picture - floating video | 706,151 | pnanegnllonoiklmmlegcaajoicfifcm | All websites<br>tabs<br>unsafe-eval |
 | Save quickly and repost | 918,667 | pnlphjjfielecalmmjjdhjjninkbjdod | All websites<br>cookies<br>downloads<br>tabs<br>webRequest |
 | History & Cache Cleaner - Smart Clean | 277,722 | pooaemmkohlphkekccfajnbcokjlbehk | All websites<br>cookies<br>tabs<br>webRequest |
-
