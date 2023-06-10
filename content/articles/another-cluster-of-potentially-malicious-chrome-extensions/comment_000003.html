@@ -1,0 +1,15 @@
+{
+  "publishDate": "2023-06-10 14:53:35",
+  "author": "tmr",
+  "authorUrl": "https://blog.xlab.app",
+  "type": "comment",
+  "title": "",
+  "id": "000003"
+}
+
+<p>I'm curious how to find these malicious programs, is there any trick?
+I am also doing research in this area, share a malicious program I found, this is its id <code>fmlpbbognkocpajihchioognkmdeeldo</code>
+There is also a lot of fake users to improve the ranking, and there is even loaded remote code execution, even though it is <code>manifest v3</code>
+It uses <code>dom api</code> in <code>content js</code> to inject <code>self script</code> (<code>manifest v3 csp</code> allows this behavior), and in <code>self script</code> again uses <code>dom api</code> to inject remote script (depending on the current website csp)
+The detailed report is here, https://blog.xlab.app/p/1e632d6d/ Sorry this is written in Chinese, and the English version has not been written yet, you may need to read it with Google Translate
+It is worth mentioning that I basically learned all my security skills about chrome extensions from your blog, thank you very much</p>
