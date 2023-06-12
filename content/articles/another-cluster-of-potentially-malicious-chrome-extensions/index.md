@@ -297,6 +297,8 @@ Note that only the first four of these extensions are currently malicious from w
 
 While allowing execution of remote code (unsafe-eval) isn’t technically a permission, I listed it under permissions to simplify the presentation.
 
+**Update** (2023-06-12): The complete list of extension IDs from this article series can be found [here](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). This repository also contains the [check-extensions command-line utility](https://github.com/palant/malicious-extensions-list/releases) which will search local browser profiles for these extensions.
+
 | Name | Weekly active users | Extension ID| Relevant permissions |
 |----------------|-----------:|-------------|-----------|
 | Adblock all advertisments - No Ads extension | 741,224 | gbdjcgalliefpinpmggefbloehmmknca | All websites<br>declarativeNetRequest<br>tabs |

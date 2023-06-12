@@ -17,6 +17,8 @@ All these ad blockers and probably some more were developed by the company PCVAR
 
 While PCVARK originally specialized in Mac software, they apparently also discovered pushing malicious ad blockers to Chrome Web Store as a valuable business opportunity. This was encouraged by Google’s lax moderation policies as well an almost complete lack of policy enforcement. While Google eventually managed to remove some extensions, at least two remain despite being obviously related to the removed ones.
 
+**Update** (2023-06-12): The complete list of extension IDs from this article series can be found [here](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). This repository also contains the [check-extensions command-line utility](https://github.com/palant/malicious-extensions-list/releases) which will search local browser profiles for these extensions.
+
 {{< toc >}}
 
 ## Who is PCVARK?

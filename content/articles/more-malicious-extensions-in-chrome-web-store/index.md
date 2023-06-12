@@ -20,15 +20,15 @@ So now we are at 18 malicious extensions with a combined user count of 55 millio
 
 **Update** (2023-06-01): With an increased sample I was able to find some more extensions. Also, Lukas Andersson did some research into manipulated extension ratings in Chrome Web Store and pointed out that other extensions exhibited similar patterns in their review. With his help I was able to identify yet another variant of this malicious code and a bunch more malicious extensions. So now we are at 34 malicious extensions and 87 million users.
 
-**Update** (2023-06-01): Good news: Google started removing these extensions. By the time I published my previous update, a bunch of the extensions mentioned there were already gone. Right now, only nine extensions from this list remain in Chrome Web Store, and these will hopefully also be dealt with soon.
-
-**Update** (2023-06-02): Google removed one more extension, so only eight extensions remain now. These eight extensions are considerably different from the rest, so I published a [follow-up blog post](/2023/06/02/how-malicious-extensions-hide-running-arbitrary-code/) discussing the technical aspects here.
+**Update** (2023-06-02): All but eight of these extensions have been removed from Chrome Web Store. These eight extensions are considerably different from the rest, so I published a [follow-up blog post](/2023/06/02/how-malicious-extensions-hide-running-arbitrary-code/) discussing the technical aspects here.
 
 {{< toc >}}
 
 ## The extensions
 
 So far I could identify the following 34 malicious extensions. Most of them are listed as “Featured” in Chrome Web Store. User counts reflect the state for 2023-05-30.
+
+**Update** (2023-06-12): The complete list of extension IDs from this article series can be found [here](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). This repository also contains the [check-extensions command-line utility](https://github.com/palant/malicious-extensions-list/releases) which will search local browser profiles for these extensions.
 
 | Name | Weekly active users | Extension ID|
 |------|------------|-------------|

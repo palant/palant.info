@@ -18,7 +18,7 @@ The code has been made to look like a legitimate extension API wrapper, merely w
 
 This code allows serasearchtop[.]com website to inject arbitrary JavaScript code into all websites you visit. While it is impossible for me to tell what this is being used for, the most likely use is injecting ads. More nefarious uses are also possible however.
 
-*Update* (2023-05-31): As I describe in [a follow-up article](/2023/05/31/more-malicious-extensions-in-chrome-web-store/), this extension isn’t alone. So far I found 18 malicious browser extensions using similar code with a combined user count of 55 million. It’s also clear now that these extensions are at the very least being used to redirect search pages.
+**Update** (2023-06-12): The complete list of extension IDs from this article series can be found [here](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). This repository also contains the [check-extensions command-line utility](https://github.com/palant/malicious-extensions-list/releases) which will search local browser profiles for these extensions.
 
 {{< toc >}}
 

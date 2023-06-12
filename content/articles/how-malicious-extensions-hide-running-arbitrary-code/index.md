@@ -20,6 +20,8 @@ Avast ran their own search, and they found a bunch of extensions that I didn’t
 
 **Update** (2023-06-03): These extensions have been removed from the Chrome Web Store as well.
 
+**Update** (2023-06-12): The complete list of extension IDs from this article series can be found [here](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). This repository also contains the [check-extensions command-line utility](https://github.com/palant/malicious-extensions-list/releases) which will search local browser profiles for these extensions.
+
 {{< toc >}}
 
 ## Which extensions is this about?
