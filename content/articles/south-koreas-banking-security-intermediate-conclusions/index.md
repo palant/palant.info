@@ -7,7 +7,7 @@ date: 2023-02-20T07:15:01+0100
 description: South Korea’s online banking relies on a number of “security” applications.
   Here I am looking into whether these applications can potentially make things more
   secure.
-lastmod: '2023-02-23 06:01:06'
+lastmod: '2023-06-13 05:05:26'
 title: 'South Korea’s banking security: Intermediate conclusions'
 ---
 
