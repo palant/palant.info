@@ -18,7 +18,7 @@ On the other hand, people will often accept these cryptic prompts without thinki
 
 ## The affected extensions
 
-The extensions listed below belong to four independent groups. Each group is indicated in the “Issue” column and explained in more detail in a dedicated section below.
+The extensions listed below belong to three independent groups. Each group is indicated in the “Issue” column and explained in more detail in a dedicated section below.
 
 As the extension IDs are getting too many, I created a repository where I [list the IDs from all articles in this series](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). There is also a [check-releases utility available for download](https://github.com/palant/malicious-extensions-list/releases/) that will search local browser profiles for these extensions.
 
@@ -34,7 +34,6 @@ Extensions in Chrome Web Store:
 | Drift Hunters Unblocked Game | 77,812 | nlmjpeojbncdmlfkpppngdnolhfgiehn | Search hijacking |
 | Vex 4 Unblocked game | 63,164 | phjhbkdgnjaokligmkimgnlagccanodn | Search hijacking |
 | Crossy Road Game unblocked | 9,511 | fkhpfgpmejefmjaeelgoopkcglgafedm | Search hijacking |
-| Flappy Bird New Tab | 7,808 | kekdpkbijjffmohdaonbpeeaiknhbkhj | Ad injection |
 | Run 3 Unblocked | 7,299 | mcmmiinopedfbaoongoclagidncaacbd | Search hijacking |
 
 Extensions in Edge Add-ons store:
@@ -142,17 +141,3 @@ job && eval(job);
 So where does this “polyfill” code come from? The extension downloads it from `https://polyfilljs.org/browser-polyfill`.
 
 For me, this download produces only an empty object. Presumably, it will only give out the malicious script to people who have been using the extension for a while. And that script will be injected into each and every website visited then.
-
-## Ad injection
-
-Finally, there is the “Flappy Bird New Tab” extension. Its content script will inject an invisible frame pointing to `https://object.center/medium` into every web page. The code calls it `prefsFrame` but it is very obvious that this isn’t about preferences.
-
-Instead, the page loaded in the frame contains some mildly obfuscated code checking `document.referrer`. It contains a list of almost 500 websites. If one such website is recognized, the frame redirects itself to `https://shor.link/s/r/` or `https://staticxev.com/s/s/`. And then you are for example confronted with these scary warnings:
-
-{{< img src="scareware.png" width="809" alt="A red pop-up titled “Security Alert. You’ve visited illegal infected website.” The text says: “You have visited unsafe site with illegal content. Your PC is at risk of being infected by viruses. To continue browsing safely - perform an antivirus scan.” There is a green button below labeled “Scan.”" />}}
-
-The good news: after displaying a number of supposed “threats” this sends you to the real Avira website. So this is only about scaring you into getting an antivirus subscription and collecting commission, not about getting you to install malicious software.
-
-Also, with the malicious code here running inside a frame, it cannot affect the websites you are visiting. The server can still see which websites you browse however.
-
-I couldn’t find any other extension with the same code. User reports indicate that there definitely used to be some in the past however, mostly pretending to be YouTube downloaders.
