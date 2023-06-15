@@ -20,7 +20,7 @@ On the other hand, people will often accept these cryptic prompts without thinki
 
 The extensions listed below belong to three independent groups. Each group is indicated in the “Issue” column and explained in more detail in a dedicated section below.
 
-As the extension IDs are getting too many, I created a repository where I [list the IDs from all articles in this series](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). There is also a [check-releases utility available for download](https://github.com/palant/malicious-extensions-list/releases/) that will search local browser profiles for these extensions.
+As the extension IDs are getting too many, I created a repository where I [list the IDs from all articles in this series](https://github.com/palant/malicious-extensions-list/blob/main/list.txt). There is also a [check-extensions utility available for download](https://github.com/palant/malicious-extensions-list/releases/) that will search local browser profiles for these extensions.
 
 Extensions in Chrome Web Store:
 
