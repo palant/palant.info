@@ -1,0 +1,17 @@
+{
+  "publishDate": "2023-07-20 15:08:41",
+  "author": "Geoff",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000010"
+}
+
+<p>What is it you're looking at? I'm looking at extensions like fcfhplploccackoneaefokcmbjfbkenj and see obfuscated code and things like : </p>
+<p>function w(e) {
+                            if ("function" == typeof e)
+                                return null != /^function\s+\w<em>\s</em>(\s<em>)\s</em>{\s+[native code]\s+}$/i.exec(Function.prototype.toString.call(e))
+                        }</p>
+<p>or </p>
+<p>var o, s = Object.prototype.toString.call(t), a = /[object (.*)]/i.exec(s);</p>
+<p>and think to myself that's super shady.</p>
