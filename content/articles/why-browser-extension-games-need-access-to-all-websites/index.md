@@ -1,11 +1,13 @@
 ---
-title: "Why browser extension games need access to all websites"
-date: 2023-06-14T16:18:00+0200
-description: "Quite a few casual games browser extensions request access to all websites. I look into some of these extensions which you should obviously avoid."
 categories:
 - security
 - privacy
 - add-ons
+date: 2023-06-14T16:18:00+0200
+description: Quite a few casual games browser extensions request access to all websites.
+  I look into some of these extensions which you should obviously avoid.
+lastmod: '2023-08-08 04:48:27'
+title: Why browser extension games need access to all websites
 ---
 
 When installing browser extensions in Google Chrome, you are asked to confirm the extension’s permissions. In theory, this is supposed to allow assessing the risk associated with an extension. In reality however, users typically lack the knowledge to properly interpret this prompt. For example, I’ve often [seen users accusing extension developers of spying just because the prompt says they *could*](/2016/07/02/why-mozilla-shouldn-t-copy-chrome-s-permission-prompt-for-extensions/#informed-decisions).
