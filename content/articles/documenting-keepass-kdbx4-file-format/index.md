@@ -5,7 +5,7 @@ categories:
 date: 2023-03-29T14:34:06+0200
 description: KeePass password databases are widely used but not properly documented.
   This is my attempt to document the file format with all its ambiguities.
-lastmod: '2023-05-12 08:37:28'
+lastmod: '2023-08-21 15:21:00'
 title: Documenting KeePass KDBX4 file format
 ---
 
