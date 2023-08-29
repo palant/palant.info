@@ -15,6 +15,8 @@ A few days ago I wrote about [insufficient protection of locally saved passwords
 
 TL;DR: The answer is currently "no," both services have weaknesses in their protection. Some of these weaknesses are worse than others however.
 
+*Update* (2023-08-29):  As far as Chrome Sync goes, I published an [article on the current state of affairs (Chrome Sync privacy is still very bad)](/2023/08/29/chrome-sync-privacy-is-still-very-bad/).
+
 {{< toc >}}
 
 ## Chrome Sync
