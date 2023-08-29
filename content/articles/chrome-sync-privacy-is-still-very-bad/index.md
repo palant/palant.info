@@ -1,10 +1,13 @@
 ---
-title: "Chrome Sync privacy is still very bad"
-date: 2023-08-29T14:28:44+0200
-description: "Unlike five years ago, today Chrome Sync is merely bad for your privacy. There is a way to use it without sacrificing your privacy, but Google doesn’t want you to find it."
 categories:
 - privacy
 - google
+date: 2023-08-29T14:28:44+0200
+description: Unlike five years ago, today Chrome Sync is merely bad for your privacy.
+  There is a way to use it without sacrificing your privacy, but Google doesn’t want
+  you to find it.
+lastmod: '2023-08-29 18:40:06'
+title: Chrome Sync privacy is still very bad
 ---
 
 Five years ago I wrote [an article about the shortcomings of Chrome Sync](/2018/03/13/can-chrome-sync-or-firefox-sync-be-trusted-with-sensitive-data/) (as well as a minor issue with Firefox Sync). Now Chrome Sync has seen many improvements since then. So time seems right for me to revisit it and to see whether it respects your privacy now.
