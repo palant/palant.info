@@ -6,7 +6,7 @@ categories:
 date: '2018-03-13 10:45:49'
 description: When using Chrome Sync or Firefox Sync, you should always choose a long
   randomly generated passpharse. Otherwise, your passwords won't be sufficiently protected.
-lastmod: '2020-06-10T12:20:59+0200'
+lastmod: '2023-08-29 18:52:24'
 slug: can-chrome-sync-or-firefox-sync-be-trusted-with-sensitive-data
 title: Can Chrome Sync or Firefox Sync be trusted with sensitive data?
 ---
