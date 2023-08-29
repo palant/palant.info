@@ -15,6 +15,8 @@ A few days ago I wrote about [insufficient protection of locally saved passwords
 
 TL;DR: The answer is currently "no," both services have weaknesses in their protection. Some of these weaknesses are worse than others however.
 
+{{< toc >}}
+
 ## Chrome Sync
 
 I'll start with Chrome Sync first, where the answer is less surprising. After all, there are several signs that this service is built for convenience rather than privacy. For example, the passphrase meant to protect your data from Google's eyes is [optional](https://support.google.com/chrome/answer/165139#passphrase). There is no setup step where it asks you “Hey, do you mind if we can peek into your data? Then choose a passphrase.” Instead, you have to become active on your own. Another sign is that Google lets you [access your passwords via a web page](https://passwords.google.com/). The idea is probably that you could open up that webpage on a computer that doesn't belong to you, e.g. in an internet café. Is it a good idea? Hardly.
