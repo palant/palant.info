@@ -1,11 +1,13 @@
 ---
-title: "A year after the disastrous breach, LastPass has not improved"
-date: 2023-09-05T16:59:32+0200
-description: A year after the breach, LastPass still failed to deliver useful mitigation steps. The technical issues haven’t been resolved either.
 categories:
 - lastpass
 - security
 - password-managers
+date: 2023-09-05T16:59:32+0200
+description: A year after the breach, LastPass still failed to deliver useful mitigation
+  steps. The technical issues haven’t been resolved either.
+lastmod: '2023-09-05 16:06:37'
+title: A year after the disastrous breach, LastPass has not improved
 ---
 
 In September last year, a breach at LastPass’ parent company GoTo (formerly LogMeIn) culminated in attackers siphoning out all data from their servers. The criticism from the security community has been massive. This was not so much because of the breach itself, such things happen, but because of the many obvious ways in which LastPass made matters worse: taking months to notify users, failing to provide useful mitigation instructions, downplaying the severity of the attack, ignoring technical issues which have been publicized years ago and made the attackers’ job much easier. The list goes on.
