@@ -6,7 +6,7 @@ categories:
 date: 2023-09-05T16:59:32+0200
 description: A year after the breach, LastPass still failed to deliver useful mitigation
   steps. The technical issues haven’t been resolved either.
-lastmod: '2023-09-07 12:40:59'
+lastmod: '2023-09-07 12:42:55'
 title: A year after the disastrous breach, LastPass has not improved
 ---
 
@@ -32,15 +32,15 @@ The statement concluded with “There are no recommended actions that you need t
 
 It took LastPass another two months of strict radio silence to publish a more detailed advisory. That’s where we finally [learned some more about the breach](/2023/02/28/lastpass-breach-update-the-few-additional-bits-of-information/). We also learned that business customers using Federated Login are [very much affected by the breach](https://medium.com/@chaim_sanders/its-all-bad-news-an-update-on-how-the-lastpass-breach-affects-lastpass-sso-9b4fa64466f6), the previous advisory explicitly denied that.
 
-But even now, we learn that indirectly, in recommendation 9 out of 10 for LastPass’ business customers. It seems that LastPass considered generic stuff like advice on protecting against phishing attacks more important than mitigation of their breach. And then the recommendation didn’t actually say “You are in danger. Rotate K2 ASAP.” Instead, it said “If, based on your security posture or risk tolerance, you decide to rotate the K1 and K2 split knowledge components…” That’s the conclusion of a large pile of text essentially claiming that there is no risk.
+But even now, we learn that indirectly, in recommendation 9 out of 10 for LastPass’ business customers. It seems that LastPass considered generic stuff like advise on protecting against phishing attacks more important than mitigation of their breach. And then the recommendation didn’t actually say “You are in danger. Rotate K2 ASAP.” Instead, it said “If, based on your security posture or risk tolerance, you decide to rotate the K1 and K2 split knowledge components…” That’s the conclusion of a large pile of text essentially claiming that there is no risk.
 
-At least the [advisory for individual users](https://support.lastpass.com/s/document-item?language=en_US&bundleId=lastpass&topicId=LastPass/security-bulletin-recommended-actions-free-premium-families.html&_LANG=enus) got the priorities right. It was master password first, iterations count after that, and all the generic advice at the end.
+At least the [advisory for individual users](https://support.lastpass.com/s/document-item?language=en_US&bundleId=lastpass&topicId=LastPass/security-bulletin-recommended-actions-free-premium-families.html&_LANG=enus) got the priorities right. It was master password first, iterations count after that, and all the generic advise at the end.
 
-Except: they still failed to admit the scope of the breach. The advice was:
+Except: they still failed to admit the scope of the breach. The advise was:
 
 > Depending on the length and complexity of your master password and iteration count setting, you may want to reset your master password.
 
-And this is just wrong. The breach already happened. Resetting the master password will help protect against future breaches, but it won’t help with the passwords already compromised. This advice should have really been:
+And this is just wrong. The breach already happened. Resetting the master password will help protect against future breaches, but it won’t help with the passwords already compromised. This advise should have really been:
 
 > Depending on the length and complexity of your master password and iteration count setting, you may want to reset all your passwords.
 
@@ -52,9 +52,9 @@ A [blog post by the LastPass CEO Karin Toubba](https://blog.lastpass.com/2023/03
 
 > I acknowledge our customers’ frustration with our inability to communicate more immediately, more clearly, and more comprehensively throughout this event. I accept the criticism and take full responsibility. We have learned a great deal and are committed to communicating more effectively going forward.
 
-As I’ve outlined above, the detailed advisory published simultaneously with this blog post still left a lot to be desired. But this sounds like a commitment to improve. So maybe some better advice has been published in the six months which passed since then?
+As I’ve outlined above, the detailed advisory published simultaneously with this blog post still left a lot to be desired. But this sounds like a commitment to improve. So maybe some better advise has been published in the six months which passed since then?
 
-No, this doesn’t appear to be the case. Instead, the detailed advisory moved to the “Get Started – About LastPass” section of their support page. So it’s now considered generic advice for LastPass users. Any specific advice on mitigating the fallout of the breach, assuming that it isn’t too late already? There doesn’t seem to be any.
+No, this doesn’t appear to be the case. Instead, the detailed advisory moved to the “Get Started – About LastPass” section of their support page. So it’s now considered generic advise for LastPass users. Any specific advise on mitigating the fallout of the breach, assuming that it isn’t too late already? There doesn’t seem to be any.
 
 The LastPass blog has been publishing lots of articles again, often multiple per week. There doesn’t appear to be any useful information at all here however, only PR. To add insult to injury, LastPass published an article in July titled “How Zero Knowledge Keeps Passwords Safe.” It gives a generic overview of zero knowledge which largely doesn’t apply to LastPass. It concludes with:
 
