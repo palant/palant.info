@@ -6,7 +6,7 @@ categories:
 date: 2023-09-05T16:59:32+0200
 description: A year after the breach, LastPass still failed to deliver useful mitigation
   steps. The technical issues haven’t been resolved either.
-lastmod: '2023-09-07 16:30:07'
+lastmod: '2023-09-26T10:56:07+0200'
 title: A year after the disastrous breach, LastPass has not improved
 ---
 
@@ -15,6 +15,8 @@ In September last year, a breach at LastPass’ parent company GoTo (formerly Lo
 Now this has been almost a year ago. LastPass promised to improve, both as far as their communication goes and on the technical side of things. So let’s take a look at whether they managed to deliver.
 
 TL;DR: They didn’t. So far I failed to find evidence of any improvements whatsoever.
+
+**Update** (2023-09-26): It looks like at least the issues listed under “Secure settings” are finally going to be addressed.
 
 {{< img src="ship.jpg" width="600" alt="A very battered ship with torn sails in a stormy sea, on its side the ship’s name: LastPass" />}}
 
@@ -103,6 +105,20 @@ Only after clicking “Security Dashboard” will a warning message show up:
 If this is such a critical issue that I need to change my master password immediately, why won’t LastPass just tell me to do it when I log in?
 
 This alert message apparently pre-dates the breach, so there don’t seem to be any improvements in this area either.
+
+**Update** (2023-09-26): Last week LastPass sent out an email to all users:
+
+{{< img src="email.png" alt="New master password requirements. LastPass is changing master password requirements for all users: all master passwords must meet a 12-character minimum. If your master password is less than 12-characters, you will be required to update it." width="534" />}}
+
+According to this email, LastPass will start enforcing stronger master passwords at some unspecified point in future. Currently, this requirement is still not being enforced, and the email does not list a timeline for this change.
+
+More importantly, when I logged into my LastPass account after receiving this email, the iterations count finally got automatically updated to 600,000. The email does not mention any changes in this area, so it’s unclear whether this change is being applied to all LastPass accounts this time.
+
+Brian Krebs is [quoting LastPass CEO](https://infosec.exchange/@briankrebs/111111474807762193) with the statement: “We have been able to determine that a small percentage of customers have items in their vaults that are corrupt and when we previously utilized automated scripts designed to re-encrypt vaults when the master password or iteration count is changed, they did not complete.” Quite frankly, I find this explanation rather doubtful.
+
+First of all, reactions to my articles indicate that the percentage of old LastPass accounts which weren’t updated is far from small. There are lots of users finding an outdated iterations count configured in their accounts, yet only two reported their accounts being automatically updated so far.
+
+Second: my test account in particular is unlikely to contain “corrupted items” which previously prevented the update. Back in 2018 I changed the iterations count to 100,000 and back to 5,000 manually. This worked correctly, so no corruption was present at that point. The account was virtually unused after that except for occasional logins, no data changes.
 
 ## Unencrypted data
 
