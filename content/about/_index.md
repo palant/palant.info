@@ -8,7 +8,7 @@ meta: false
 
 {{< img src="me.png" alt="My \"photo\"" class="left" />}}
 
-My name is Wladimir Palant and I'm mostly blogging about security topics these days. You will often see me taking apart browser extensions because I've been developing those myself since 2003. One particularly well-known project of mine is [Adblock Plus](https://adblockplus.org/) which I developed originally. Eventually I co-founded [eyeo](https://eyeo.com/), a company to take care of this project. I'm still developing the browser extensions [PfP: Pain-free Passwords](https://pfp.works/) and Google search link fix, while my other extensions became obsolete over time.
+My name is Wladimir Palant and I'm mostly blogging about security topics these days. You will often see me taking apart browser extensions because I've been developing those myself since 2003. One particularly well-known project of mine is [Adblock Plus](https://adblockplus.org/) which I developed originally. Eventually I co-founded [eyeo](https://eyeo.com/), a company to take care of this project. I'm still developing the browser extension [PfP: Pain-free Passwords](https://pfp.works/) while my other extensions became obsolete over time.
 
 My writing is meant to help people learn. So I aim to provide information on both how vulnerabilities can be found and how these can be prevented in your own code. I won't merely discuss security issues but also try to draw generic conclusions from those and give recommendations.
 
