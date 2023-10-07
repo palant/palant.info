@@ -46,6 +46,7 @@ params:
   openGraph: true
   twitterCards: true
   autoDetectImages: true
+  enableSRI: true
 
   duration: 0.5
   primaryColorLight: "220, 90%, 56%"
