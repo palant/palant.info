@@ -1,10 +1,13 @@
 ---
-title: "A way forward for PfP: Pain-free Passwords"
-date: 2023-05-02T15:49:11+0200
-description: "PfP: Pain-free Passwords development continues after all. However, it’s a very different browser extension now, working with KeePass databases with the help of an external application."
 categories:
 - pfp
 - password-managers
+date: 2023-05-02T15:49:11+0200
+description: 'PfP: Pain-free Passwords development continues after all. However, it’s
+  a very different browser extension now, working with KeePass databases with the
+  help of an external application.'
+lastmod: '2023-10-11 20:01:32'
+title: 'A way forward for PfP: Pain-free Passwords'
 ---
 
 A month ago I [announced the end of PfP: Pain-free Passwords](/2023/03/20/the-end-of-pfp-pain-free-passwords/). But I’m allowed to change my mind, right? Yes, PfP will be developed further after all. However, it’s so different that I’m publishing it as a new browser extension, not an update to the existing extension.
