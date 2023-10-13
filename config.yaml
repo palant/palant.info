@@ -47,6 +47,18 @@ params:
   twitterCards: true
   autoDetectImages: true
   enableSRI: true
+  enablePostShare: true
+  displayPostShare: true
+  displayShareOnText: true
+  postShareItems:
+    - mastodon
+    - fediverse
+    - facebook
+    - linkedin
+    - pocket
+    - email
+
+  fetchFediverseInstances: true
 
   duration: 0.5
   primaryColorLight: "220, 90%, 56%"
