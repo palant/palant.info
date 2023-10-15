@@ -6,7 +6,7 @@ date: 2023-05-02T15:49:11+0200
 description: 'PfP: Pain-free Passwords development continues after all. However, it’s
   a very different browser extension now, working with KeePass databases with the
   help of an external application.'
-lastmod: '2023-10-11 20:01:32'
+lastmod: '2023-10-15 08:16:16'
 title: 'A way forward for PfP: Pain-free Passwords'
 ---
 
