@@ -55,6 +55,7 @@ params:
     - fediverse
     - facebook
     - linkedin
+    - hackernews
     - pocket
     - email
 
