@@ -1,10 +1,14 @@
 ---
-title: "Implementing a “Share on Mastodon” button for a blog"
-date: 2023-10-19T15:31:41+0200
-description: "Normally, adding a share button to a blog is a trivial task. In case of Mastodon, it is complicated by the fact that you need to choose your home instance. And it is further complicated if you decide to support further Fediverse applications beyond Mastodon."
 categories:
 - hugo
 - mastodon
+date: 2023-10-19T15:31:41+0200
+description: Normally, adding a share button to a blog is a trivial task. In case
+  of Mastodon, it is complicated by the fact that you need to choose your home instance.
+  And it is further complicated if you decide to support further Fediverse applications
+  beyond Mastodon.
+lastmod: '2023-10-30 20:26:45'
+title: Implementing a “Share on Mastodon” button for a blog
 ---
 
 I decided that I would make it easier for people to share my articles on social media, most importantly on Mastodon. However, my Hugo theme didn’t support showing a “Share on Mastodon” button yet. It wasn’t entirely trivial to add support either: unlike with centralized solutions like Facebook where a simple link is sufficient, here one would need to choose their home instance first.
