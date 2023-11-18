@@ -1,0 +1,25 @@
+{
+  "publishDate": "2023-11-18 18:47:03",
+  "author": "Joel",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "001016"
+}
+
+<p>About storing passwords in database. Would it be good solution to make the database password more secure in the event of a database hack? 
+We can create several columns for storing password, e.g.: columns from password_1 to password_7 (or it can be named as "email" or "username" to confuse, and then email address/username would be stored in "password" column. </p>
+<p>The real password can be stored in one of the password columns. In the remaining six we can store an hashed random string of characters. Secondly, when hashing, we can use alternately various hashing functions and use them multiple times, e.g. </p>
+<p>our password = $password, 
+Just a simple example:</p>
+<p>$password = hash('sha384', $password); 
+$password = hash('sha256', $password); 
+$password = hash('sha512', $password); 
+$password = hash('guest', $password); 
+$h1 = hash('md5', $password); 
+$h2 = hash('md5', $h1); 
+$h3 = hash('md5', $h2); 
+$h4 = hash('md5', $h3); 
+$hash_db = $h1 . $h2 . $h3 . $h4; (or last hash function would be 'sha512', and then we take substring, for example 15 characters and stored them in database).</p>
+<p>We store $hash_db in the database. The hash is 128 characters long, it looks like the sha512 algorithm is used.</p>
+<p>If the database were compromised, wouldn't such a simple solution make it significantly more difficult for hackers to guess the password?</p>

@@ -1,0 +1,11 @@
+{
+  "id": "000001",
+  "publishDate": "2023-11-18 18:55:38"
+}
+
+<p>No, this solution would make it considerably easier to retrieve the passwords.</p>
+<ol>
+<li>Never hash passwords with fast hashing functions like MD5 or SHA2, and especially never hash them without a salt. Use a slow hashing function like bcrypt, scrypt or Argon2, and use a salt that is unique for each user.</li>
+<li>Do not assume that your database will be compromised but the code used to write into the database won’t be. Typically, the hackers will take a look at your code and laugh at your silly attempts to fool them.</li>
+<li>Even if the hackers don’t get your code, all they need is the data of their own account where they know the password. They hash their own password and see immediately where/how that hash is stored.</li>
+</ol>
