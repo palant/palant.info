@@ -6,7 +6,7 @@ date: 2023-02-13T16:01:20+0100
 description: This blog post is summarizing my approach to installing Windows in a
   virtual machine. The whole process takes half an hour and doesn’t require any interaction
   whatsoever.
-lastmod: '2023-05-23 19:28:52'
+lastmod: '2023-11-19 07:11:00'
 title: Automating Windows installation in a VM
 ---
 
