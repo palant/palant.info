@@ -6,7 +6,7 @@ date: 2023-02-13T16:01:20+0100
 description: This blog post is summarizing my approach to installing Windows in a
   virtual machine. The whole process takes half an hour and doesn’t require any interaction
   whatsoever.
-lastmod: '2023-11-19 07:11:00'
+lastmod: '2023-11-30 14:55:00+0200'
 title: Automating Windows installation in a VM
 ---
 
@@ -50,7 +50,7 @@ mkisofs \
     -boot-load-size 8 \
     -eltorito-alt-boot \
     -eltorito-platform efi \
-    -b efi/microsoft/boot/efisys.bin \
+    -b efi/microsoft/boot/efisys_noprompt.bin \
     -o Win11_22H2_English_x64v1_modified.iso \
     win11_iso win11_iso_modifications
 ```
@@ -96,7 +96,7 @@ Finally, answer files support running custom commands at various points of the i
         <Order>1</Order>
         <Path>powershell.exe -noprofile -ExecutionPolicy unrestricted C:\Windows\Setup\Scripts\InstallRequirements.ps1</Path>
       </RunSynchronousCommand>
-    </RunSynchronous> 
+    </RunSynchronous>
   </component>
 </settings>
 ```
@@ -157,9 +157,9 @@ One would assume that starting the installation is merely a matter of creating a
 1. Booting from a DVD doesn’t happen automatically, it needs to be confirmed by pressing some key.
 2. The first reboot of the Windows setup process will actually shut down the VM for some reason.
 
-I solved both issues in my script. The first issue is solved by waiting ten seconds after starting the VM, then sending a key to it. The second issue is solved by waiting for the VM to shut down, then starting it again.
+*Edit* (2023-11-30): The first issue had a much simpler fix than what I listed here originally, using `efisys_noprompt.bin` instead of `efisys.bin`. Thanks to the commenter VM for pointing this out.
 
-In the end, this is the script I’ve got:
+I solved the second issue in my script by waiting for the VM to shut down, then starting it again. In the end, this is the script I’ve got:
 
 ```bash
 virt-install --name=win11 \
@@ -168,12 +168,7 @@ virt-install --name=win11 \
   --cdrom=/path/to/Win11_22H2_English_x64v1_modified.iso \
   --disk size=64 \
   --video virtio \
-  --os-variant=win11 \
-  --noautoconsole
-
-sleep 10
-virsh send-key win11 KEY_X
-virt-viewer win11
+  --os-variant=win11
 
 sleep 1
 virsh start win11
