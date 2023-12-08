@@ -13,7 +13,7 @@ This little adventure began with me being annoyed at DMARC aggregate reports. My
 
 This could have been a Thunderbird extension, processing the email attachment in order to produce some nicer output. Unfortunately, Thunderbird extensions no longer have this kind of power. So I went for another option: having the email server (OpenSMTPD) convert the email as it comes in.
 
-Since I already had [the implementation details of OpenSMTPD filters](/2020/11/09/adding-dkim-support-to-opensmtpd-with-custom-filters/) figured out, this wasn’t as complicated as it sounds. The resulting code is [on GitHub](https://github.com/palant/dmarc2html/) but I still want to document the process for future me and anyone else who might have a similar issue.
+Since I already had [the implementation details of OpenSMTPD filters](/2020/11/09/adding-dkim-support-to-opensmtpd-with-custom-filters/) figured out, this wasn’t as complicated as it sounds. The resulting code is [on GitHub](https://github.com/palant/opensmtpd-filters) but I still want to document the process for future me and anyone else who might have a similar issue.
 
 {{< toc >}}
 
@@ -143,7 +143,7 @@ return parsed.as_string().strip().split('\n')
 
 ## The result
 
-The complete code is [available on GitHub](https://github.com/palant/dmarc2html/). While not considerably more complicated than what has been presented here, it makes a few additional considerations. In particular, one wouldn’t want to drop the email in case of some exception. So the handler makes certain to log exceptions while returning the unchanged lines in that case.
+The complete code is [available on GitHub](https://github.com/palant/opensmtpd-filters). While not considerably more complicated than what has been presented here, it makes a few additional considerations. In particular, one wouldn’t want to drop the email in case of some exception. So the handler makes certain to log exceptions while returning the unchanged lines in that case.
 
 It also makes the DMARC recipient account configurable via a command line parameter. So when emails are received by this account, what I see now is no longer a blank email with an attachment but this:
 

@@ -40,7 +40,7 @@ So I went for writing custom filters. With [dkimpy](https://launchpad.net/dkimpy
 
 ## Getting the code
 
-You can see the complete code along with installation instructions [here](https://gist.github.com/palant/c6ad869a1dd2cd79506898e4e8401438). It consists of two filters: `dkimsign.py` should be applied to outgoing mail and will add a DKIM signature, `dkimverify.py` should be applied to incoming mail and will add an `Authentication-Results` header indicating whether DKIM and SPF checks were successful. SPF checks are optional and will only be performed if the `pyspf` module is installed. Both filters rely on the `opensmtpd.py` module providing a generic filter server implementation.
+You can see the complete code along with installation instructions [here](https://github.com/palant/opensmtpd-filters). It consists of two filters: `dkimsign.py` should be applied to outgoing mail and will add a DKIM signature, `dkimverify.py` should be applied to incoming mail and will add an `Authentication-Results` header indicating whether DKIM and SPF checks were successful. SPF checks are optional and will only be performed if the `pyspf` module is installed. Both filters rely on the `opensmtpd.py` module providing a generic filter server implementation.
 
 I have no time to maintain this code beyond what I need myself. This means in particular that I will not test it with any OpenSMTPD versions but the one I run myself (currently 6.6.4). So while it *should* work with OpenSMTPD 6.7.1, I haven’t actually tested it. Anybody willing to maintain this code is welcome to do so, and I will happily link to their repository.
 
