@@ -6,7 +6,7 @@ date: 2023-03-20T13:28:03+0100
 description: 'My password manager PfP: Pain-free Passwords will no longer be developed.
   I write on the lessons learned developing it, disadvantages of password generators
   and where to go from here.'
-lastmod: '2023-04-02 20:48:12'
+lastmod: '2023-12-14 13:10:11'
 title: 'The end of PfP: Pain-free Passwords'
 ---
 
