@@ -6,7 +6,7 @@ categories:
 date: 2023-09-05T16:59:32+0200
 description: A year after the breach, LastPass still failed to deliver useful mitigation
   steps. The technical issues haven’t been resolved either.
-lastmod: '2023-09-26T10:56:07+0200'
+lastmod: '2023-12-24 19:53:23'
 title: A year after the disastrous breach, LastPass has not improved
 ---
 
