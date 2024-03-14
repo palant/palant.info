@@ -1,9 +1,12 @@
 ---
-title: "Numerous vulnerabilities in Xunlei Accelerator application"
-date: 2024-03-06T14:27:53+0100
-description: "Looking into Xunlei Accelerator, I discovered a number of flaws allowing remote code execution from websites or local network. It doesn’t look like security was considered when designing this application."
 categories:
 - security
+date: 2024-03-06T14:27:53+0100
+description: Looking into Xunlei Accelerator, I discovered a number of flaws allowing
+  remote code execution from websites or local network. It doesn’t look like security
+  was considered when designing this application.
+lastmod: '2024-03-14 05:21:26'
+title: Numerous vulnerabilities in Xunlei Accelerator application
 ---
 
 Xunlei Accelerator (迅雷客户端) a.k.a. Xunlei Thunder by the China-based Xunlei Ltd. is a wildly popular application. According to the [company’s annual report](https://ir.xunlei.com/static-files/3100b981-4a23-460b-8342-a0446ffff2c4) 51.1 million active users were counted in December 2022. The company’s Google Chrome extension 迅雷下载支持, while not mandatory for using the application, had 28 million users at the time of writing.
