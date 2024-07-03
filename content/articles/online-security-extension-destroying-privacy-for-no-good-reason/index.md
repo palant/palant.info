@@ -1,11 +1,16 @@
 ---
-title: "Online Security extension: Destroying privacy for no good reason"
-date: 2023-05-10T15:44:09+0200
-description: "Most Online Security functionality is already provided by the browser, and there is little indication that it can improve on that. It does implement its functionality in a maximally privacy-unfriendly way however, sharing your browsing history and installed extensions with the vendor. There is also plenty of sloppy programming, some of which might potentially cause issues."
 categories:
 - privacy
 - security
 - add-ons
+date: 2023-05-10T15:44:09+0200
+description: Most Online Security functionality is already provided by the browser,
+  and there is little indication that it can improve on that. It does implement its
+  functionality in a maximally privacy-unfriendly way however, sharing your browsing
+  history and installed extensions with the vendor. There is also plenty of sloppy
+  programming, some of which might potentially cause issues.
+lastmod: '2024-07-03 16:29:12'
+title: 'Online Security extension: Destroying privacy for no good reason'
 ---
 
 These days it’s typical for antivirus vendors to provide you with a browser extension which is meant to improve your online security. I’ll say up front: I don’t consider any such browser extensions recommendable. At best, they are worthless. At worst, they [introduce massive security issues](/2020/02/25/mcafee-webadvisor-from-xss-in-a-sandboxed-browser-extension-to-administrator-privileges/).
