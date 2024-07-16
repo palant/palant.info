@@ -44,7 +44,7 @@ Yes, maybe this isn’t entirely fair. I’m still indecisive as to whether the 
 
 But these are quality ads and actually useful! Like that ad for a shop selling food supplements, so that you can lead a healthy life. A quick search reveals that one of the three food supplements shown in the ad is likely useless with the suspicion of being harmful. Another brings up lots of articles by interested parties claiming great scientifically proven benefits but no actual scientific research on the topic. Finally the third one could probably help a lot – if there were any way of getting it into your body in sufficient concentration, which seems completely impossible with oral intake.
 
-Now that we got “free” covered, we can focus of the security and privacy aspects in the subsequent sections.
+Now that we got “free” covered, we can focus on the security and privacy aspects in the subsequent sections.
 
 ## The pre-installed extensions
 
