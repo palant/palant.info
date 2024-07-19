@@ -1,11 +1,14 @@
 ---
-title: "How insecure is Avast Secure Browser?"
-date: 2024-07-15T14:25:04+0200
-description: "Another look into Avast Secure Browser shows a massive attack surface, with some issues mentioned five years ago only partially addressed, all while new ways to attack the browser have been added."
 categories:
 - avast
 - security
 - antivirus
+date: 2024-07-15T14:25:04+0200
+description: Another look into Avast Secure Browser shows a massive attack surface,
+  with some issues mentioned five years ago only partially addressed, all while new
+  ways to attack the browser have been added.
+lastmod: '2024-07-19 10:20:09'
+title: How insecure is Avast Secure Browser?
 ---
 
 A while ago I already looked into Avast Secure Browser. Back then it didn’t end well for Avast: I [found critical vulnerabilities allowing arbitrary websites to infect user’s computer](/2020/01/13/pwning-avast-secure-browser-for-fun-and-profit/). Worse yet: much of it was due to neglect of secure coding practices, existing security mechanisms were disabled for no good reason. I didn’t finish that investigation because I discovered that [the browser was essentially spyware](/2019/10/28/avast-online-security-and-avast-secure-browser-are-spying-on-you/), collecting your browsing history and selling it via Avast’s Jumpshot subsidiary.
