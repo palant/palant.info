@@ -7,7 +7,7 @@ timeout: 60
 params:
   enableHeader: true
   displayHeaderInHome: true
-  headerBackground: "linear-gradient(90deg, rgba(255, 160, 0, 0.2) 0%, rgba(255, 224, 0, 0.2) 100%)"
+  headerBackground: 'linear-gradient(90deg, rgb(255 160 0 / 0.2) 0%, rgb(255 224 0 / 0.2) 100%)'
   headerLayout: "flex"
   enableNavToggle: true
   navHeight: "10em"
@@ -103,7 +103,8 @@ params:
   fontFamilyCode: "'mononoki', monospace"
   fontFamilyBody: "'Lato', sans-serif"
   fontSize: 20
-  lineHeight: 1.618
+  # Make sure rgb() in headerBackground is kept verbatim and not messed up
+  lineHeight: '0;@function rgb($value) {@return #{ "rgb(" + $value + ")" };}$lineHeight: 1.618'
 
   enableRelatedPosts: true
   displayRelatedPosts: true
