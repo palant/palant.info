@@ -36,7 +36,7 @@
                     <a href="#{{$id}}" class="anchor-link u-url" itemprop="url">
                       {{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.anchorIcon "class" "anchor-icon") }}
                     </a>
-                    <span class="comment-author p-author h-card">{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Author.name }}{{ end }}</span>
+                    <span class="comment-author p-author h-card">{{ .Params.author | default .Site.Params.author.name }}</span>
                     {{ with .PublishDate }}
                       <time class="comment-time dt-published" datetime="{{.UTC.Format "2006-01-02T15:04:05Z"}}" itemprop="datePublished">{{.UTC.Format "2006-01-02 15:04"}}</time>
                     {{ end }}
