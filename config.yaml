@@ -22,6 +22,7 @@ params:
   siteCreatedTime:  "2006-07-10T00:00:00+00:00"
   author:
     name: Wladimir Palant
+    fediverse: "@WPalant@infosec.exchange"
   categoryBy: "categories"
   enableTree: false
   displayPosts: false
