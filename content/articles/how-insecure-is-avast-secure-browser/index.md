@@ -7,7 +7,7 @@ date: 2024-07-15T14:25:04+0200
 description: Another look into Avast Secure Browser shows a massive attack surface,
   with some issues mentioned five years ago only partially addressed, all while new
   ways to attack the browser have been added.
-lastmod: '2024-08-29 23:21:49'
+lastmod: '2024-09-17 13:59:12'
 title: How insecure is Avast Secure Browser?
 ---
 
