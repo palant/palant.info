@@ -1,0 +1,13 @@
+{
+  "publishDate": "2024-09-18 22:39:07",
+  "author": "peachnet",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000007"
+}
+
+<p>It makes sense to make malicious Chrome extensions, because threat actors can presumably also target Chrome OS and it goes largely undetected. Extensions that turn malicious are already trusted, and so they auto-update in the background and the malicious version gets installed. It appears that even if the extension is then removed from the Chrome store, unless it has been marked as malicious, it is not disabled and continues to function. </p>
+<p>I am either extremely unlucky, or malicious extensions are rather prevalent (or both). Extensions that I have used without issue for many years, suddenly become malicious. I was previously hit years ago by "The Great Suspender" and now I've been hit again by another extension in recent weeks. This one updated in the background, I understand it gained new permissions and redirected search results. Having had a look (I'm not a developer) I can clearly see that the malicious code is being remotely loaded from an external domain and they are able to dynamically control what they want it to do. It loads on every webpage. The remote domain was newly registered but was put into action just outside of 30 days, so as to avoid DNS security mechanisms. It is rather scary that they can do this and, presumably, have a lot of free reign as to what they can do and I was none the wiser. Furthermore, I am unable to detect these malicious Chrome extensions with AV/Malware software scans.
+I don't know what data they may have obtained in the course of their activities, and this probably cannot be easily analysed as it appears to be dynamic. I can privately send you the malicious extension if you would like to look at the code yourself.
+I would be grateful if you could provide suggestions as to how I can prevent this from happening again please? I cannot predict an extension that I have used for years, and therefore have built up trust in, from suddenly turning rogue. But when it does, I want to prevent it from doing damage. For example, I thought that perhaps I could use Noscript, but I read on their website that in Chrome, the Injection Checker XSS filter is disabled, so my understanding is that Noscript would be ineffective to prevent against malicious extensions loading remote code, as it did in this example. Thank you very much.</p>

@@ -8,7 +8,7 @@ date: 2023-06-08T14:10:27+0200
 description: I discovered a cluster of at least 109 extensions in Chrome Web Store.
   A few are committing affiliate fraud or spying, most are simply hoarding overly
   wide privileges before abusing them.
-lastmod: '2024-01-18 21:14:52'
+lastmod: '2024-09-22 07:40:39'
 title: Another cluster of potentially malicious Chrome extensions
 ---
 
