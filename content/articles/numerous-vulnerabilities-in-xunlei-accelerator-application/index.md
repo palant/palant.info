@@ -5,7 +5,7 @@ date: 2024-03-06T14:27:53+0100
 description: Looking into Xunlei Accelerator, I discovered a number of flaws allowing
   remote code execution from websites or local network. It doesn’t look like security
   was considered when designing this application.
-lastmod: '2024-08-26 14:43:35'
+lastmod: '2024-09-26 10:51:58'
 title: Numerous vulnerabilities in Xunlei Accelerator application
 ---
 
