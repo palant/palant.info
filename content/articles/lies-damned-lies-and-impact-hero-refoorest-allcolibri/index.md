@@ -139,6 +139,8 @@ Then, 80% of the profits are donated to global reforestation projects through ou
 
 While this sounds good in principle, we have no idea how high their operational expenses are. Maybe they are donating half of their revenue, maybe none. Even if this 80% rule is really followed, it’s easy to make operational expenses (like the salary of the company founders) so high that there is simply no profit left.
 
+**Edit(2024-10-01)**: It seems that I overlooked them in the [list of partners](https://www.eden-plus.org/partners?search=refoorest). So they did in fact donate at least 50 thousand US dollars. Thanks to Adrien de Malherbe of Colibri Hero for pointing this out.
+
 And other than that they link to the certificate of the number of trees planted:
 
 {{< img src="certificate.png" width="626" alt="Screenshot of the text “Check out refoorest’s impact” followed by the statement “690,121 trees planted”" />}}
