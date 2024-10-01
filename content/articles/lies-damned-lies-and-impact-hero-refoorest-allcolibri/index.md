@@ -128,6 +128,8 @@ Here is the list of extensions I found and their current Chrome Web Store stats:
 | ChatGPT to Notion | 70,000 | oojndninaelbpllebamcojkdecjjhcle |
 | Listen On Repeat YouTube Looper | 30,000 | pgjcgpbffennccofdpganblbjiglnbip |
 
+**Edit** (2024-10-01): Opera already removed refoorest from their add-on store.
+
 ## But are they actually planting trees?
 
 That’s a very interesting question, glad you asked. See, refoorest considers itself to be in direct competition with the Ecosia search engine. And Ecosia publishes [detailed financial reports](https://blog.ecosia.org/ecosia-financial-reports-tree-planting-receipts/) where they explain how much money they earn and where it went. Ecosia is also listed as a partner on the [Eden: People+Planet website](https://www.eden-plus.org/partners/ecosystem-partners), so we have independent confirmation here that they in fact donated at least a million US dollars.
