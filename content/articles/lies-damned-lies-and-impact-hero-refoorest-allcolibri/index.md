@@ -29,7 +29,7 @@ The refoorest extension also makes very clear promises to its users: planting a 
 
 What does happen is careless handling of users’ data despite the “100% Data privacy guaranteed” promise. In fact, the company didn’t even bother to produce a proper privacy policy. There are various shady practices including a general lack of transparency, with the financials never disclosed. As proof of trees being planted the company links to a “certificate” which is … surprise! … its own website.
 
-Mind you, I’m not saying that the company is just pocketing the money it receives via affiliate commissions. Maybe they are really paying Eden Reforestation (not actually called that any more) to plant trees and the numbers they publish are accurate. As a user, this is quite a leap of fate with a company that shows little commitment to facts and transparency however.
+Mind you, I’m not saying that the company is just pocketing the money it receives via affiliate commissions. Maybe they are really paying Eden Reforestation (not actually called that any more) to plant trees and the numbers they publish are accurate. As a user, this is quite a leap of faith with a company that shows little commitment to facts and transparency however.
 
 {{< toc >}}
 
