@@ -1,14 +1,16 @@
 ---
-title: "Lies, damned lies, and Impact Hero (refoorest, allcolibri)"
-date: 2024-10-01T13:59:48+0200
-lastmod: 2024-10-02T10:19:48+0200
-description: "I found 17 extensions using the Impact Hero SDK in Chrome Web Store. These mislead users about their functionality, enable it without real consent, then lie about its ecological impact. And there is more shady stuff going on."
 categories:
 - security
 - privacy
 - add-ons
+date: 2024-10-01T13:59:48+0200
+description: I found 17 extensions using the Impact Hero SDK in Chrome Web Store.
+  These mislead users about their functionality, enable it without real consent, then
+  lie about its ecological impact. And there is more shady stuff going on.
 images:
 - /2024/10/01/lies-damned-lies-and-impact-hero-refoorest-allcolibri/privacy_policy2.png
+lastmod: '2024-10-07 20:32:19'
+title: Lies, damned lies, and Impact Hero (refoorest, allcolibri)
 ---
 
 *Transparency note*: According to Colibri Hero, they attempted to establish a business relationship with eyeo, a company that I co-founded. I haven’t been in an active role at eyeo since 2018, and I left the company entirely in 2021. Colibri Hero was only founded in 2021. My investigation here was prompted by a [blog comment](/2024/07/15/how-insecure-is-avast-secure-browser/#c000004).
