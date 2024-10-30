@@ -116,7 +116,7 @@ By the way, guess who likes the Karma extension a lot and left a five-star revie
 
 I contacted Karma Shopping Ltd. via their public relations address about their relationship to these extensions and the Shilop person but didn’t hear back so far.
 
-**Update** (2024-10-30): An extension developer told me that Karma Shopping contacted them on multiple independent occasions about selling their Chrome extension, each time by C-level executives of the company, from official `karmanow.com` email addresses. The first outreach was in September 2023, where they were looking into adding extensions to their portfolio as part of their growth strategy. They offered to pay between $0.2 and $1 per weekly active user.
+**Update** (2024-10-30): An extension developer told me that they were contacted on multiple independent occasions about selling their Chrome extension to Karma Shopping, each time by C-level executives of the company, from official `karmanow.com` email addresses. The first outreach was in September 2023, where they were looking into adding extensions to their portfolio as part of their growth strategy. They offered to pay between $0.2 and $1 per weekly active user.
 
 ## What does Karma Shopping want with the data?
 
