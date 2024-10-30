@@ -1,6 +1,7 @@
 ---
 title: "The Karma connection in Chrome Web Store"
 date: 2024-10-30T14:03:06+0100
+lastmod: 2024-10-30T14:59:06+0100
 description: A bunch of malicious extensions in Chrome Web Store have hidden affiliate fraud functionality, collect users’ browsing profiles, or both. These extensions appear to be connected to the Karma shopping assistant, developed by Karma Shopping Ltd. which is not a small company.
 categories:
 - security
@@ -114,6 +115,8 @@ By the way, guess who likes the Karma extension a lot and left a five-star revie
 {{< img src="review.png" width="631" alt="Screenshot of a five-star review by Rona Shilop with a generic-looking avatar of woman with a cup of coffee. The review text says: Thanks for making this amazing free extension. There is a reply by Karma Support saying: We’re so happy to hear how much you enjoy shopping with Karma." />}}
 
 I contacted Karma Shopping Ltd. via their public relations address about their relationship to these extensions and the Shilop person but didn’t hear back so far.
+
+**Update** (2024-10-30): An extension developer told me that Karma Shopping contacted them on multiple independent occasions about selling their Chrome extension, each time by C-level executives of the company, from official `karmanow.com` email addresses. The first outreach was in September 2023: “as part of our growth strategy we are looking into new additional extensions to our portfolio.” The offer was “$0.2 - $1+ per weekly active user depending on the vertical/niche.”
 
 ## What does Karma Shopping want with the data?
 
