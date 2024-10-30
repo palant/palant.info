@@ -1,13 +1,16 @@
 ---
-title: "The Karma connection in Chrome Web Store"
-date: 2024-10-30T14:03:06+0100
-lastmod: 2024-10-30T14:59:06+0100
-description: A bunch of malicious extensions in Chrome Web Store have hidden affiliate fraud functionality, collect users’ browsing profiles, or both. These extensions appear to be connected to the Karma shopping assistant, developed by Karma Shopping Ltd. which is not a small company.
 categories:
 - security
 - privacy
 - add-ons
 - google
+date: 2024-10-30T14:03:06+0100
+description: A bunch of malicious extensions in Chrome Web Store have hidden affiliate
+  fraud functionality, collect users’ browsing profiles, or both. These extensions
+  appear to be connected to the Karma shopping assistant, developed by Karma Shopping
+  Ltd. which is not a small company.
+lastmod: '2024-10-30 18:58:32'
+title: The Karma connection in Chrome Web Store
 ---
 
 Somebody [brought to my attention](https://gist.github.com/c0m4r/45e15fc1ec13c544393feafca30e74de) that the Hide YouTube Shorts extension for Chrome changed hands and turned malicious. I looked into it and could confirm that it contained two undisclosed components: one performing [affiliate fraud](https://www.investopedia.com/terms/a/affiliate-fraud.asp) and the other sending users’ every move to some Amazon cloud server. But that wasn’t all of it: I discovered eleven more extensions written by the same people. Some contained only the affiliate fraud component, some only the user tracking, some both. A few don’t appear to be malicious yet.
