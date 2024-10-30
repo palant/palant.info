@@ -15,6 +15,7 @@ While most of these extensions were supposedly developed or bought by a person w
 
 After looking thoroughly this explanation seems unlikely. Not only does Karma share some backend infrastructure and considerable amounts of code with the malicious extensions. Not only does Karma Shopping Ltd. admit to selling users’ browsing profiles in their privacy policy. There is even more tying them together, including a mobile app developed by Karma Shopping Ltd. whereas the identical Chrome extension is supposedly developed by the mysterious evildoer.
 
+{{< img src="karma.png" width="718" alt="Screenshot of the karmanow.com website, with the Karma logo visible and a yellow button “Add to Chrome - It’s Free”" />}}
 
 {{< toc >}}
 
