@@ -9,7 +9,7 @@ description: A bunch of malicious extensions in Chrome Web Store have hidden aff
   fraud functionality, collect users’ browsing profiles, or both. These extensions
   appear to be connected to the Karma shopping assistant, developed by Karma Shopping
   Ltd. which is not a small company.
-lastmod: '2024-10-30 18:58:32'
+lastmod: '2024-10-31 13:24:34'
 title: The Karma connection in Chrome Web Store
 ---
 
