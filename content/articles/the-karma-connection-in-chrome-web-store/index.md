@@ -44,7 +44,7 @@ Some extensions from the latter group don’t have any obvious malicious functio
 | Hidden Airline Baggage Fees | 496 | kolnaamcekefalgibbpffeccknaiblpi | Affiliate fraud |
 | M3U8 Downloader | 100,000 | pibnhedpldjakfpnfkabbnifhmokakfb | Affiliate fraud |
 
-**Update** (2024-11-11): Hide YouTube Shorts, DarkPDF, Nucleus and Hidden Airline Baggage Fees have been taken down. At least two of them have been marked as malware, meaning that existing extension users will be notified. The other extensions currently remain active.
+**Update** (2024-11-11): Hide YouTube Shorts, DarkPDF, Nucleus and Hidden Airline Baggage Fees have been taken down. Two of them have been marked as malware and one as violating Chrome Web Store policies, meaning that existing extension users will be notified. I cannot see the reason for different categorization, the functionality being identical in all of these extensions. The other extensions currently remain active.
 
 ## Hiding in plain sight
 
