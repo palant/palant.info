@@ -123,6 +123,8 @@ I contacted Karma Shopping Ltd. via their public relations address about their r
 
 **Update** (2024-10-30): An extension developer told me that they were contacted on multiple independent occasions about selling their Chrome extension to Karma Shopping, each time by C-level executives of the company, from official `karmanow.com` email addresses. The first outreach was in September 2023, where Karma was supposedly looking into adding extensions to their portfolio as part of their growth strategy. They offered to pay between $0.2 and $1 per weekly active user.
 
+**Update** (2024-11-11): Another hint pointed me towards [this GitHub issue](https://github.com/ArshSB/DarkPDF/issues/11). While the content has been removed here, you can still see the original content in the edit history. It’s the author of the Hide YouTube Shorts extension asking the author of the DarkPDF extension about that Karma company interested in buying their extensions.
+
 ## What does Karma Shopping want with the data?
 
 It is obvious why Karma Shopping Ltd. would want to add their affiliate functionality to more extensions. After all, affiliate commissions are their line of business. But why collect browsing histories? Only to publish [semi-insightful articles on people’s shopping behavior](https://jonathan-65927.medium.com/far-from-being-impulsive-buyers-millennials-agonize-over-online-purchases-bc0dbbf5f2ba)?
