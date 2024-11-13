@@ -9,7 +9,7 @@ description: I found 17 extensions using the Impact Hero SDK in Chrome Web Store
   lie about its ecological impact. And there is more shady stuff going on.
 images:
 - /2024/10/01/lies-damned-lies-and-impact-hero-refoorest-allcolibri/privacy_policy2.png
-lastmod: '2024-10-07 20:32:19'
+lastmod: '2024-11-13 18:21:35'
 title: Lies, damned lies, and Impact Hero (refoorest, allcolibri)
 ---
 
