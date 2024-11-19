@@ -71,6 +71,8 @@ The affiliate fraud functionality is tied to the `kra18.com` domain. When this f
 
 {{< img src="selectors.png" width="325" alt="Screenshot of JSON data displayed in the browser. The selectors key is expanded, twenty domain names like drinkag1.com are visible in the list." />}}
 
+**Update** (2024-11-19): As of now, the owners of this server disabled the endpoints mentioned here. You can still see the original responses [on archive.today](https://archive.is/www.kra18.com) however.
+
 Whenever one of these domains is visited and the moons are aligned in the right order, another request to the server is made with the full address of the page you are on. For example, the extension could request `https://www.kra18.com/v1/extension_selectors?u=https://www.tink.de/&ex=90`:
 
 {{< img src="affiliate_link.png" width="573" alt="Screenshot of JSON data displayed in the browser. There are keys shortsNavButtonSelector, url and others. The url key contains a lengthy URL from awin1.com domain." />}}
