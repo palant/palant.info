@@ -46,6 +46,8 @@ Some extensions from the latter group don’t have any obvious malicious functio
 
 **Update** (2024-11-11): Hide YouTube Shorts, DarkPDF, Nucleus and Hidden Airline Baggage Fees have been taken down. Two of them have been marked as malware and one as violating Chrome Web Store policies, meaning that existing extension users will be notified. I cannot see the reason for different categorization, the functionality being identical in all of these extensions. The other extensions currently remain active.
 
+**Update** (2024-12-12): By now Dynamics 365 Power Pane, Israel everywhere, Quick Stickies and M3U8 Downloader are gone as well, all removed on November 17 apparently. The first one also marked as malware, so that it will be disabled for existing users. Only three extensions remain active now, which included the two most popular extensions on my list.
+
 ## Hiding in plain sight
 
 Whoever wrote the malicious code chose not to obfuscate it but to make it blend in with the legitimate functionality of the extension. Clearly, the expectation was that nobody would look at the code too closely. So there is for example this:
