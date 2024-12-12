@@ -131,7 +131,9 @@ Here is the list of extensions I found and their current Chrome Web Store stats:
 | ChatGPT to Notion | 70,000 | oojndninaelbpllebamcojkdecjjhcle |
 | Listen On Repeat YouTube Looper | 30,000 | pgjcgpbffennccofdpganblbjiglnbip |
 
-**Edit** (2024-10-01): Opera already removed refoorest from their add-on store.
+**Update** (2024-10-01): Opera already removed refoorest from their add-on store.
+
+**Update** (2024-12-12): By now, Local Video-Audio Player, GPT Chat and Online-Offline MS Paint Tool have been removed from Chrome Web Store, either by Google or their respective authors. While most other extensions removed the Impact Hero SDK, CoPilot™ Extensions For Chrome, AI Shop Buddy and Chat GPT extensions keep using it seemingly unchanged. I could not see any relevant changes in the functionality of the refoorest extension, it’s still misleading users in exactly the same way while being marked as “featured” in Chrome Web Store.
 
 ## But are they actually planting trees?
 
