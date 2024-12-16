@@ -116,11 +116,13 @@ Here is the list of extensions I found and their current Chrome Web Store stats:
 | <strike>Bittorent For Chrome</strike> | 40,000 | aahnibhpidkdaeaplfdogejgoajkjgob |
 | <strike>Pro Sender - Free Bulk Message Sender</strike> | 20,000 | acfobeeedjdiifcjlbjgieijiajmkang |
 | <strike>Memory Match Game</strike> | 7,000 | ahanamijdbohnllmkgmhaeobimflbfkg |
+| Utorrent For Chrome | 10,000 | bgplkhkpimbjejablijendjgkopapaao |
 | <strike>Turbo Lichess - Best Move Finder</strike> | 6,000 | edhicaiemcnhgoimpggnnclhpgleakno |
 | <strike>TTV Adblock Plus</strike> | 100,000 | efdkmejbldmccndljocbkmpankbjhaao |
 | CoPilot™ Extensions For Chrome | 10,000 | eodojedcgoicpkfcjkhghafoadllibab |
 | <strike>Local Video-Audio Player</strike> | 10,000 | epbbhfcjkkdbfepjgajhagoihpcfnphj |
 | AI Shop Buddy | 4,000 | epikoohpebngmakjinphfiagogjcnddm |
+| Instagram Photo Downloader | 20,000 | fhllildlikmifjkoejmohabfddmndphf |
 | Chat GPT | 700,000 | fnmihdojmnkclgjpcoonokmkhjpjechg |
 | <strike>GPT Chat</strike> | 10,000 | jncmcndmaelageckhnlapojheokockch |
 | <strike>Online-Offline MS Paint Tool</strike> | 30,000 | kadfogmkkijgifjbphojhdkojbdammnk |
@@ -136,7 +138,7 @@ Here is the list of extensions I found and their current Chrome Web Store stats:
 
 **Update** (2024-12-12): By now, Local Video-Audio Player, GPT Chat and Online-Offline MS Paint Tool have been removed from Chrome Web Store, either by Google or their respective authors. While most other extensions removed the Impact Hero SDK, CoPilot™ Extensions For Chrome, AI Shop Buddy and Chat GPT extensions keep using it seemingly unchanged. I could not see any relevant changes in the functionality of the refoorest extension, it’s still misleading users in exactly the same way while being marked as “featured” in Chrome Web Store.
 
-**Update** (2024-12-16): Added Photo Collage Maker for Chrome extension to the list, I haven’t found it earlier.
+**Update** (2024-12-16): Added Utorrent For Chrome, Instagram Photo Downloader, and Photo Collage Maker for Chrome extensions to the list, I haven’t found these earlier.
 
 ## But are they actually planting trees?
 
