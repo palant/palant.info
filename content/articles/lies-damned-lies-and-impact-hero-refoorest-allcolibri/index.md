@@ -113,27 +113,30 @@ Here is the list of extensions I found and their current Chrome Web Store stats:
 
 | Name | Weekly active users | Extension ID |
 |------|--------------------:|--------------|
-| Bittorent For Chrome | 40,000 | aahnibhpidkdaeaplfdogejgoajkjgob |
-| Pro Sender - Free Bulk Message Sender | 20,000 | acfobeeedjdiifcjlbjgieijiajmkang |
-| Memory Match Game | 7,000 | ahanamijdbohnllmkgmhaeobimflbfkg |
-| Turbo Lichess - Best Move Finder | 6,000 | edhicaiemcnhgoimpggnnclhpgleakno |
-| TTV Adblock Plus | 100,000 | efdkmejbldmccndljocbkmpankbjhaao |
+| <strike>Bittorent For Chrome</strike> | 40,000 | aahnibhpidkdaeaplfdogejgoajkjgob |
+| <strike>Pro Sender - Free Bulk Message Sender</strike> | 20,000 | acfobeeedjdiifcjlbjgieijiajmkang |
+| <strike>Memory Match Game</strike> | 7,000 | ahanamijdbohnllmkgmhaeobimflbfkg |
+| <strike>Turbo Lichess - Best Move Finder</strike> | 6,000 | edhicaiemcnhgoimpggnnclhpgleakno |
+| <strike>TTV Adblock Plus</strike> | 100,000 | efdkmejbldmccndljocbkmpankbjhaao |
 | CoPilot™ Extensions For Chrome | 10,000 | eodojedcgoicpkfcjkhghafoadllibab |
-| Local Video-Audio Player | 10,000 | epbbhfcjkkdbfepjgajhagoihpcfnphj |
+| <strike>Local Video-Audio Player</strike> | 10,000 | epbbhfcjkkdbfepjgajhagoihpcfnphj |
 | AI Shop Buddy | 4,000 | epikoohpebngmakjinphfiagogjcnddm |
 | Chat GPT | 700,000 | fnmihdojmnkclgjpcoonokmkhjpjechg |
-| GPT Chat | 10,000 | jncmcndmaelageckhnlapojheokockch |
-| Online-Offline MS Paint Tool | 30,000 | kadfogmkkijgifjbphojhdkojbdammnk |
+| <strike>GPT Chat</strike> | 10,000 | jncmcndmaelageckhnlapojheokockch |
+| <strike>Online-Offline MS Paint Tool</strike> | 30,000 | kadfogmkkijgifjbphojhdkojbdammnk |
 | refoorest: plant trees for free | 20,000 | lfngfmpnafmoeigbnpdfgfijmkdndmik |
-| Reader Mode | 300,000 | llimhhconnjiflfimocjggfjdlmlhblm |
-| ChatGPT 4 | 20,000 | njdepodpfikogbbmjdbebneajdekhiai |
-| VB Sender - Envio em massa | 1,000 | nnclkhdpkldajchoopklaidbcggaafai |
-| ChatGPT to Notion | 70,000 | oojndninaelbpllebamcojkdecjjhcle |
-| Listen On Repeat YouTube Looper | 30,000 | pgjcgpbffennccofdpganblbjiglnbip |
+| <strike>Reader Mode</strike> | 300,000 | llimhhconnjiflfimocjggfjdlmlhblm |
+| <strike>ChatGPT 4</strike> | 20,000 | njdepodpfikogbbmjdbebneajdekhiai |
+| <strike>VB Sender - Envio em massa</strike> | 1,000 | nnclkhdpkldajchoopklaidbcggaafai |
+| <strike>ChatGPT to Notion</strike> | 70,000 | oojndninaelbpllebamcojkdecjjhcle |
+| <strike>Listen On Repeat YouTube Looper</strike> | 30,000 | pgjcgpbffennccofdpganblbjiglnbip |
+| Photo Collage Maker for Chrome | 7,000 | picgbapipjaaienljdkdgmcoobhaehco |
 
 **Update** (2024-10-01): Opera already removed refoorest from their add-on store.
 
 **Update** (2024-12-12): By now, Local Video-Audio Player, GPT Chat and Online-Offline MS Paint Tool have been removed from Chrome Web Store, either by Google or their respective authors. While most other extensions removed the Impact Hero SDK, CoPilot™ Extensions For Chrome, AI Shop Buddy and Chat GPT extensions keep using it seemingly unchanged. I could not see any relevant changes in the functionality of the refoorest extension, it’s still misleading users in exactly the same way while being marked as “featured” in Chrome Web Store.
+
+**Update** (2024-12-16): Added Photo Collage Maker for Chrome extension to the list, I haven’t found it earlier.
 
 ## But are they actually planting trees?
 
