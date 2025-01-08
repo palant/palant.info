@@ -136,7 +136,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### Kodice / Karbon Project / BroCode
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | What Font - find font & color | 125 | abefllafeffhoiadldggcalfgbofohfa | [1](#1-different-extension-name), [2](#2-different-short-description), [4](#4-considerably-more-extensive-extension-description) |
 | Video downloader web | 1,000,000 | acmbnbijebmjfmihfinfipebhcmgbghi | [1](#1-different-extension-name), [2](#2-different-short-description), [4](#4-considerably-more-extensive-extension-description) |
@@ -263,7 +263,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### PDF Toolbox cluster
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Stick Ninja Game | 3,000,000 | aamepfadihoeifgmkoipamkenlfpjgcm | [4](#4-considerably-more-extensive-extension-description) |
 | Emoboard Emoji Keyboard | 3,000,000 | aapdabiebopmbpidefegdaefepkinidd | [1](#1-different-extension-name), [2](#2-different-short-description), [4](#4-considerably-more-extensive-extension-description) |
@@ -368,7 +368,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### ZingFront / ZingDeck / BigMData
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Download Telegram - TG Video Photo Download | 1,000 | aaanclnbkhoomaefcdpcoeikacfilokk | [1](#1-different-extension-name) |
 | Open AI ChatGPT for Email - GMPlus | 40,000 | abekedpmkgndeflcidpkkddapnjnocjp | [1](#1-different-extension-name), [5](#5-keywords-at-the-end-of-extension-description) |
@@ -596,7 +596,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### ExtensionsBox
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Amazon Reviews Extractor | 1,000 | aapmfnbcggnbcghjipmpcngmflbjjfnb | [1](#1-different-extension-name), [2](#2-different-short-description) |
 | Target Images Downloader | 100 | adeimcdlolcpdkaapelfnacjjnclpgpb | [2](#2-different-short-description) |
@@ -667,7 +667,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### Lazytech
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Twitter Comment Export Tool | 1,000 | ajigebgoglcjjjkleiiomgbogggihibe | [1](#1-different-extension-name), [2](#2-different-short-description) |
 | AliExpress Images Downloader | 1,000 | ajnfoalglmknolmaaipgelpbdpcopjci | [1](#1-different-extension-name), [2](#2-different-short-description) |
@@ -728,7 +728,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### Yue Apps
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Etsy Images Downloader | 115 | aakfimfbjikfkfeokmamllkomlejnpdi | [1](#1-different-extension-name), [2](#2-different-short-description) |
 | Export Twitter Follower | 1,000 | amflfbkcoeanhfcdcbebeimpjnoebakn | [1](#1-different-extension-name), [2](#2-different-short-description) |
@@ -751,7 +751,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### Chrome Extension Hub
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | TG Sender - telegram messages bulk sender | 462 | baghjmiifdlhbnfiddfkoomfkhmiamle | [1](#1-different-extension-name), [2](#2-different-short-description) |
 | IGEmail - Email Extractor and Scraper | 1,000 | cnjelbflcpdehnljcmgolcbccfhgffbn | [1](#1-different-extension-name) |
@@ -765,7 +765,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### Infwiz
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | WAAutoReply - Web Automatic Reply Assistant | 47 | bilbhjhphaepddlmheloebigdkafebmg | [1](#1-different-extension-name), [2](#2-different-short-description) |
 | Reaction Exporter - Extract Like, Love, etc. | 168 | cddgoecgoedcodpohjphbhfdhojlpfik | [1](#1-different-extension-name), [2](#2-different-short-description) |
@@ -786,7 +786,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### NioMaker
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Friend Requests Sender | 113 | bgdjlbjaemhokfkkjiplclhjjbmlhlof | [1](#1-different-extension-name), [2](#2-different-short-description) |
 | Lead Exporter for Apollo | 2,000 | fhlfdnhddefmfmmehofnbnkmcbgdlohn | [1](#1-different-extension-name) |
@@ -795,7 +795,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 ### FreeBusinessApps
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Twitch Chat for Full Screen | 4,000 | bgopmpphpeghjpififijeoaojmmaiibh | [6](#6-keywords-within-the-extension-description) |
 | Free Time Clock for Google Chrome™ | 3,000 | bhcdneenlaehgbonacefkpjddbomfpkj | [6](#6-keywords-within-the-extension-description) |
@@ -857,7 +857,7 @@ The user counts listed reflect the state on December 13, 2024.
 
 Most extensions listed below either belong to one of the clusters above but haven’t been attributed, or the cluster they belong to wasn’t important enough to be listed separately. In a few cases these could however be extensions by individual developers who went overboard with search engine optimization.
 
-| Name | Monthly active users | Extension ID| Approaches |
+| Name | Weekly active users | Extension ID| Approaches |
 |------|--------------------:|-------------|------------|
 | Simple = Select + Search | 20,000 | aagminaekdpcfimcbhknlgjmpnnnmooo | [6](#6-keywords-within-the-extension-description) |
 | AI Chat Bot | 1,000 | abagkbkmdgomndiimhnejommgphodgpl | [1](#1-different-extension-name) |
