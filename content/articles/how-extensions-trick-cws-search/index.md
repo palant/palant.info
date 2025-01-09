@@ -36,6 +36,8 @@ I’ve been maintaining a [Github repository with Chrome extension manifests](ht
 
 {{< img src="json.png" width="638" alt="Screenshot of a JSON listing. The key name is sw indicating Swahili language. The corresponding description starts with “Charm is a lightweight, privacy friendly coupon finder.” Later on it contains a sequence of newlines, followed by a wall of text along the lines of: “GMass: Powerful mail merge for GMail Wikiwand - Wikipedia, and beyond Super dark mode Desktopify”" />}}
 
+**Update** (2025-01-09): Apparently, Google has already been made aware of this issue [a year ago at the latest](https://groups.google.com/a/chromium.org/g/chromium-extensions/c/JMtfgiagcgY/m/TNMERoXWAwAJ). Your guess is as good as mine as to why it hasn’t been addressed yet.
+
 ## Who is doing it?
 
 Sifting through the suspicious descriptions and weeding out false positives brought up 920 extensions with bogus “translations” so far, and I definitely didn’t get all of them (see [the extension lists](#the-extensions-in-question)). But that doesn’t actually mean hundreds of extension developers. I’ve quickly noticed patterns, somebody applying roughly the same strategy to a large cluster of extensions. For example, European developers tended to “sacrifice” some Asian languages like Bengali whereas developers originating in Asia preferred European languages like Estonian. These strategies were distinctly different from each other and there wasn’t a whole lot of them, so there seems to be a relative low number of parties involved. Some I could even put a name on.
