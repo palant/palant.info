@@ -1,11 +1,14 @@
 ---
-title: "How extensions trick CWS search"
-date: 2025-01-08T14:41:17+0100
-description: "There are hundreds of extensions in Chrome Web Store using bogus “translation” to mess up search results. Most extensions are produced by a few extensions clusters who are flooding Chrome Web Store with spam."
 categories:
 - add-ons
 - security
 - google
+date: 2025-01-08T14:41:17+0100
+description: There are hundreds of extensions in Chrome Web Store using bogus “translation”
+  to mess up search results. Most extensions are produced by a few extensions clusters
+  who are flooding Chrome Web Store with spam.
+lastmod: '2025-01-09 05:31:36'
+title: How extensions trick CWS search
 ---
 
 A few months ago I searched for “Norton Password Manager” in Chrome Web Store and got lots of seemingly unrelated results. Not just that, the actual Norton Password Manager was listed last. These search results are still essentially the same today, only that Norton Password Manager moved to the top of the list:
@@ -1112,4 +1115,3 @@ Most extensions listed below either belong to one of the clusters above but have
 | Fortnite Wallpapers | 7,000 | pnmfgeifakoehoojepggpigbkkfolbmk | [6](#6-keywords-within-the-extension-description) |
 | Best Cursors - Bloom of Custom Cursor | 100,000 | pnpapokldhgeofbkljienpjofgjkafkm | [1](#1-different-extension-name), [2](#2-different-short-description), [4](#4-considerably-more-extensive-extension-description) |
 | Naruto Live Wallpaper | 10,000 | ppemmflajcphagebjphjfoggjcbmgpim | [6](#6-keywords-within-the-extension-description) |
-
