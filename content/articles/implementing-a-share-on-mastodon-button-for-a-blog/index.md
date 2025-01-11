@@ -7,7 +7,7 @@ description: Normally, adding a share button to a blog is a trivial task. In cas
   of Mastodon, it is complicated by the fact that you need to choose your home instance.
   And it is further complicated if you decide to support further Fediverse applications
   beyond Mastodon.
-lastmod: '2023-10-30 20:26:45'
+lastmod: '2025-01-12T00:44:45+0100'
 title: Implementing a “Share on Mastodon” button for a blog
 ---
 
@@ -16,6 +16,8 @@ I decided that I would make it easier for people to share my articles on social 
 As far as existing solutions go, the only reasonably sophisticated approach appears to be [Share₂Fedi](https://s2f.kytta.dev/). It works nicely, privacy-wise one could do better however. So I ended up [implementing my own solution](https://github.com/reuixiy/hugo-theme-meme/commit/4243546da6efc5ced2aaf05c3faa8f3e6b677cd4) while also generalizing that solution to support a variety of different Fediverse applications in addition to Mastodon.
 
 {{< img src="share.png" width="600" alt="Screenshot of a web page titled “Share on Fediverse”" />}}
+
+**Update** (2025-01-12): Added Lemmy endpoint which has been fixed by now. Also mentioned the new nodeinfo schema version 2.1.
 
 {{< toc >}}
 
@@ -56,6 +58,7 @@ And that page would choose the right endpoint based on the selected instance. He
   "hometown": "share?text={text}",
   "hubzilla": "rpost?title={title}&body={description}%0A{url}",
   "kbin": "new/link?url={url}",
+  "lemmy": "create_post?url={url}&title={title}&body={description}",
   "mastodon": "share?text={text}",
   "meisskey": "share?text={text}",
   "microdotblog": "post?text=[{title}]({url})%0A%0A{description}",
@@ -63,7 +66,7 @@ And that page would choose the right endpoint based on the selected instance. He
 }
 ```
 
-*Note*: From what I can tell, Lemmy and Pleroma don’t have an endpoint which could be used.
+*Note*: From what I can tell, Pleroma doesn’t have an endpoint which could be used.
 
 ## What to share?
 
@@ -92,7 +95,7 @@ So, in order to choose the right endpoint, one has to know what Fediverse applic
 }
 ```
 
-We need the link marked with `rel` value `http://nodeinfo.diaspora.software/ns/schema/2.0`. Next we download this one and get:
+We need the link marked with `rel` value `http://nodeinfo.diaspora.software/ns/schema/2.0` or `http://nodeinfo.diaspora.software/ns/schema/2.1`. Next we download this one and get:
 
 ```json
 {
