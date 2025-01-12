@@ -128,7 +128,7 @@ What this means: any other extension installed is allowed to send messages to th
 
 The same is true for any website under the domains `avast.com`, `securebrowser.com`, `avastbrowser.com`, `avgbrowser.com` or `ccleanerbrowser.com`. Note that the rules here don’t enforce `https://` scheme, unencrypted HTTP connections will be allowed as well. And while `avast.com` domain seems to be protected by [HTTP Strict Transport Security](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security), the other domains are not.
 
-Why this matters: when your browser requests `example.securebrowser.com` website over an unencrypted HTTP connection, it cannot be guaranteed that your browser is actually talking to an Avast web server. In fact, any response is *guaranteed* to come from a malicious web server because to such website exists.
+Why this matters: when your browser requests `example.securebrowser.com` website over an unencrypted HTTP connection, it cannot be guaranteed that your browser is actually talking to an Avast web server. In fact, any response is *guaranteed* to come from a malicious web server because no such website exists.
 
 One way you might get a response from such a malicious web server is connecting to a public WiFi. In principle, anyone connected to the same WiFi could redirect unencrypted web requests to their own malicious web server, inject an invisible request to `example.securebrowser.com` in a frame (which would also be handled by their malicious server) and gain the ability to message Privacy Guard extension. While not common, this kind of attack [did happen in the wild](https://www.bleepingcomputer.com/news/security/australian-charged-for-evil-twin-wifi-attack-on-plane/).
 
