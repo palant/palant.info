@@ -64,6 +64,7 @@ params:
     - email
 
   fetchFediverseInstances: true
+  enablePostCopyright: true
 
   duration: 0.5
   primaryColorLight: "220, 90%, 56%"
@@ -200,6 +201,8 @@ markup:
       linkify: false
     parser:
       autoHeadingIDType: blackfriday
+      attribute:
+        block: true
     renderer:
       unsafe: true
   tableOfContents:
