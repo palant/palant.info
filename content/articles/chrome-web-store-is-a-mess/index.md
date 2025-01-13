@@ -1,12 +1,16 @@
 ---
-title: "Chrome Web Store is a mess"
-date: 2025-01-13T14:12:43+0100
-description: "The post details Google’s lax enforcement of their policies in Chrome Web Store, resulting in a flood of spam submissions, add-ons “legitimately” stealing users’ data and outright malicious extensions not being addressed. At this point Chrome Web Store is a very dangerous mess for users."
 categories:
 - add-ons
 - security
 - privacy
 - google
+date: 2025-01-13T14:12:43+0100
+description: The post details Google’s lax enforcement of their policies in Chrome
+  Web Store, resulting in a flood of spam submissions, add-ons “legitimately” stealing
+  users’ data and outright malicious extensions not being addressed. At this point
+  Chrome Web Store is a very dangerous mess for users.
+lastmod: '2025-01-13 21:03:41'
+title: Chrome Web Store is a mess
 ---
 
 Let’s make one thing clear first: I’m not singling out Google’s handling of problematic and malicious browser extensions because it is worse than Microsoft’s for example. No, Microsoft is probably even worse but I never bothered finding out. That’s because Microsoft Edge doesn’t matter, its market share is too small. Google Chrome on the other hand is used by around 90% of the users world-wide, and one would expect Google to take their responsibility to protect its users very seriously, right? After all, browser extensions are one selling point of Google Chrome, so certainly Google would make sure they are safe?
