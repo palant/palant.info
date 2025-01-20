@@ -18,6 +18,8 @@ As with most things about Manifest V3, these changes are meant for well-behaving
 
 {{< img src="remote_code.png" width="649" alt="Screenshot of a Google webpage titled “Deal with remote hosted code violations.” The page text visible in the screenshot says: Remotely hosted code, or RHC, is what the Chrome Web Store calls anything that is executed by the browser that is loaded from someplace other than the extension's own files. Things like JavaScript and WASM. It does not include data or things like JSON or CSS." />}}
 
+**Update** (2025-01-20): Added two extensions to the bonus section. Also indicated in the tables which extensions are currently featured in Chrome Web Store.
+
 {{< toc >}}
 
 ## Summary of the findings
@@ -161,8 +163,8 @@ Damiko Inc. appears to be a subsidiary of the Russian TomskSoft LLC, operating i
 
 The following extensions are associated with Phoenix Invicta:
 
-| Name | Weekly active users | Extension ID |
-|------|--------------------:|--------------|
+| Name | Weekly active users | Extension ID | Featured |
+|------|--------------------:|--------------|:--------:|
 | Click & Pick | 20 | acbcnnccgmpbkoeblinmoadogmmgodoo |
 | AdBlock for Youtube: Skip-n-Watch | 3,000 | coebfgijooginjcfgmmgiibomdcjnomi |
 | Dopni - Automatic Cashback Service | 19 | ekafoahfmdgaeefeeneiijbehnbocbij |
@@ -180,11 +182,11 @@ The following extensions are associated with Phoenix Invicta:
 
 The following table also lists the extensions officially developed by Damiko Inc. With these, there is no indication of malicious intent, yet all but the last one share similarities with Phoenix Invicta extensions above and remove security headers.
 
-| Name | Weekly active users | Extension ID |
-|------|--------------------:|--------------|
+| Name | Weekly active users | Extension ID | Featured |
+|------|--------------------:|--------------|:--------:|
 | Screen Recorder | 685 | bgnpgpfjdpmgfdegmmjdbppccdhjhdpe |
 | Halloween backgrounds and stickers for video calls and chats | 31 | fklkhoeemdncdhacelfjeaajhfhoenaa |
-| AI Webcam Effects + Recorder: Google Meet, Zoom, Discord & Other Meetings | 46 | iedbphhbpflhgpihkcceocomcdnemcbj |
+| AI Webcam Effects + Recorder: Google Meet, Zoom, Discord & Other Meetings | 46 | iedbphhbpflhgpihkcceocomcdnemcbj | ✓ |
 | Beauty Filter | 136 | mleflnbfifngdmiknggikhfmjjmioofi |
 | Background Noise Remover | 363 | njmhcidcdbaannpafjdljminaigdgolj |
 | Camera Picture In Picture (PIP Overlay) | 576 | pgejmpeimhjncennkkddmdknpgfblbcl |
@@ -272,18 +274,18 @@ The Flipshope extension is being officially developed by the India-based Technos
 
 ### The affected extensions
 
-| Name | Weekly active users | Extension ID |
-|------|--------------------:|--------------|
-| Flipshope: Price Tracker and much more | 80,000 | adikhbfjdbjkhelbdnffogkobkekkkej |
-| Smart Auto Refresh | 100,000 | fkjngjgmgbfelejhbjblhjkehchifpcj |
-| Adblock all advertisement - No Ads extension | 700,000 | gbdjcgalliefpinpmggefbloehmmknca |
+| Name | Weekly active users | Extension ID | Featured |
+|------|--------------------:|--------------|:--------:|
+| Flipshope: Price Tracker and much more | 80,000 | adikhbfjdbjkhelbdnffogkobkekkkej | ✓ |
+| Smart Auto Refresh | 100,000 | fkjngjgmgbfelejhbjblhjkehchifpcj | ✓ |
+| Adblock all advertisement - No Ads extension | 700,000 | gbdjcgalliefpinpmggefbloehmmknca | ✓ |
 | AutoBuy Flash Sales, Deals, and Coupons | 20,000 | gbnahglfafmhaehbdmjedfhdmimjcbed |
 | Autoskip for Youtube™ Ads | 200,000 | hmbnhhcgiecenbbkgdoaoafjpeaboine |
-| Smart Adblocker | 50,000 | iojpcjjdfhlcbgjnpngcmaojmlokmeii |
+| Smart Adblocker | 50,000 | iojpcjjdfhlcbgjnpngcmaojmlokmeii | ✓ |
 | Adblock for Browser | 10,000 | jcbjcocinigpbgfpnhlpagidbmlngnnn |
 | Netflix Party | 500,000 | mmnbenehknklpbendgmgngeaignppnbe |
-| Free adblocker | 8,000 | njjbfkooniaeodkimaidbpginjcmhmbm |
-| Video Ad Block Youtube | 100,000 | okepkpmjhegbhmnnondmminfgfbjddpb |
+| Free adblocker | 8,000 | njjbfkooniaeodkimaidbpginjcmhmbm | ✓ |
+| Video Ad Block Youtube | 100,000 | okepkpmjhegbhmnnondmminfgfbjddpb | ✓ |
 
 ## Sweet VPN
 
@@ -335,40 +337,40 @@ There are also some `chrome.tabs.update()` calls in the code, replacing the addr
 
 ### The affected extensions
 
-| Name | Weekly active users | Extension ID |
-|------|--------------------:|--------------|
+| Name | Weekly active users | Extension ID | Featured |
+|------|--------------------:|--------------|:--------:|
 | VK UnBlock. Works fast. | 40,000 | ahdigjdpekdcpbajihncondbplelbcmo |
 | VPN Proxy Master | 120 | akkjhhdlbfibjcfnmkmcaknbmmbngkgn |
 | VPN Unblocker for Instagram | 8,000 | akmlnidakeiaipibeaidhlekfkjamgkm |
-| StoriesHub | 100,000 | angjmncdicjedpjcapomhnjeinkhdddf |
+| StoriesHub | 100,000 | angjmncdicjedpjcapomhnjeinkhdddf | ✓ |
 | Facebook and Instagram Downloader | 30,000 | baajncdfffcpahjjmhhnhflmbelpbpli |
-| Downloader for Instagram - ToolMaster | 100,000 | bgbclojjlpkimdhhdhbmbgpkaenfmkoe |
-| TikTok in USA | 20,000 | bgcmndidjhfimbbocplkapiaaokhlcac |
-| Sweet VPN | 100,000 | bojaonpikbbgeijomodbogeiebkckkoi |
+| Downloader for Instagram - ToolMaster | 100,000 | bgbclojjlpkimdhhdhbmbgpkaenfmkoe | ✓ |
+| TikTok in USA | 20,000 | bgcmndidjhfimbbocplkapiaaokhlcac | ✓ |
+| Sweet VPN | 100,000 | bojaonpikbbgeijomodbogeiebkckkoi | ✓ |
 | Access to Odnoklassniki | 4,000 | ccaieagllbdljoabpdjiafjedojoejcl |
-| Ghost - Anonymous Stories for Instagram | 20,000 | cdpeckclhmpcancbdihdfnfcncafaicp |
-| StorySpace Manager for FB and IG Stories | 10,000 | cicohiknlppcipjbfpoghjbncojncjgb |
+| Ghost - Anonymous Stories for Instagram | 20,000 | cdpeckclhmpcancbdihdfnfcncafaicp | ✓ |
+| StorySpace Manager for FB and IG Stories | 10,000 | cicohiknlppcipjbfpoghjbncojncjgb | ✓ |
 | VPN Unblocker for YouTube | 40,000 | cnodohbngpblpllnokiijcpnepdmfkgm |
-| Universal Video Downloader | 200,000 | cogmkaeijeflocngklepoknelfjpdjng |
-| Free privacy connection - VPN guru | 500,000 | dcaffjpclkkjfacgfofgpjbmgjnjlpmh |
+| Universal Video Downloader | 200,000 | cogmkaeijeflocngklepoknelfjpdjng | ✓ |
+| Free privacy connection - VPN guru | 500,000 | dcaffjpclkkjfacgfofgpjbmgjnjlpmh | ✓ |
 | Live Recorder for Instagram aka MasterReco | 10,000 | djngbdfelbifdjcoclafcdhpamhmeamj |
-| Video Downloader for Vimeo | 100,000 | dkiipfbcepndfilijijlacffnlbchigb |
-| VPN Ultimate - Best VPN by unblock | 400,000 | epeigjgefhajkiiallmfblgglmdbhfab |
+| Video Downloader for Vimeo | 100,000 | dkiipfbcepndfilijijlacffnlbchigb | ✓ |
+| VPN Ultimate - Best VPN by unblock | 400,000 | epeigjgefhajkiiallmfblgglmdbhfab | ✓ |
 | Insured Smart VPN - Best Proxy ever unblock everything | 2,000 | idoimknkimlgjadphdkmgocgpbkjfoch |
-| Ultra Downloader for Instagram | 30,000 | inekcncapjijgfjjlkadkmdgfoekcilb |
-| Parental Control. Blocks porn, malware, etc. | 3,000 | iohpehejkbkfdgpfhmlbogapmpkefdej |
+| Ultra Downloader for Instagram | 30,000 | inekcncapjijgfjjlkadkmdgfoekcilb | ✓ |
+| Parental Control. Blocks porn, malware, etc. | 3,000 | iohpehejkbkfdgpfhmlbogapmpkefdej | ✓ |
 | UlV. Ultimate downloader for Vimeo | 2,000 | jpoobmnmkchgfckdlbgboeaojhgopidn |
-| Simplify. Downloader for Instagram | 20,000 | kceofhgmmjgfmnepogjifiomgojpmhep |
+| Simplify. Downloader for Instagram | 20,000 | kceofhgmmjgfmnepogjifiomgojpmhep | ✓ |
 | Download Facebook Video | 591 | kdemfcffpjfikmpmfllaehabkgkeakak |
 | VPN Unblocker for Facebook | 3,000 | kheajjdamndeonfpjchdmkpjlemlbkma |
-| Video Downloader for FaceBook | 90,000 | kjnmedaeobfmoehceokbmpamheibpdjj |
-| TikTok Video Keeper | 40,000 | kmobjdioiclamniofdnngmafbhgcniok |
-| Mass Downloader for Instagram | 100,000 | ldoldiahbhnbfdihknppjbhgjngibdbe |
-| Stories for FaceBook - Anon view, download | 3,000 | nfimgoaflmkihgkfoplaekifpeicacdn |
-| VPN Surf - Fast VPN by unblock | 800,000 | nhnfcgpcbfclhfafjlooihdfghaeinfc |
+| Video Downloader for FaceBook | 90,000 | kjnmedaeobfmoehceokbmpamheibpdjj | ✓ |
+| TikTok Video Keeper | 40,000 | kmobjdioiclamniofdnngmafbhgcniok | ✓ |
+| Mass Downloader for Instagram | 100,000 | ldoldiahbhnbfdihknppjbhgjngibdbe | ✓ |
+| Stories for FaceBook - Anon view, download | 3,000 | nfimgoaflmkihgkfoplaekifpeicacdn | ✓ |
+| VPN Surf - Fast VPN by unblock | 800,000 | nhnfcgpcbfclhfafjlooihdfghaeinfc | ✓ |
 | TikTok Video Downloader | 20,000 | oaceepljpkcbcgccnmlepeofkhplkbih |
 | Video Downloader for FaceBook | 10,000 | ododgdnipimbpbfioijikckkgkbkginh |
-| Exta: Pro downloader for Instagram | 10,000 | ppcmpaldbkcoeiepfbkdahoaepnoacgd |
+| Exta: Pro downloader for Instagram | 10,000 | ppcmpaldbkcoeiepfbkdahoaepnoacgd | ✓ |
 
 ## Bonus section: more malicious extensions
 
@@ -386,13 +388,13 @@ Translator makes it look like its configuration is all about downloading a list 
 
 ### The affected extensions
 
-| Name | Weekly active users | Extension ID |
-|------|--------------------:|--------------|
-| Adblock for Youtube™ - Auto Skip ad | 8,000 | anceggghekdpfkjihcojnlijcocgmaoo |
+| Name | Weekly active users | Extension ID | Featured |
+|------|--------------------:|--------------|:--------:|
+| Adblock for Youtube™ - Auto Skip ad | 8,000 | anceggghekdpfkjihcojnlijcocgmaoo | ✓ |
 | EasyNav | 30,000 | aobeidoiagedbcogakfipippifjheaom |
 | Adblock Bear - stop invasive ads | 100,000 | gdiknemhndplpgnnnjjjhphhembfojec |
 | AdBlock 360 | 400,000 | ghfkgecdjkmgjkhbdpjdhimeleinmmkl |
-| Download Manager Integration Checklist | 70,000 | ghkcpcihdonjljjddkmjccibagkjohpi |
+| Download Manager Integration Checklist | 70,000 | ghkcpcihdonjljjddkmjccibagkjohpi | ✓ |
 | Translator | 100,000 | icchadngbpkcegnabnabhkjkfkfflmpj |
 
 ## But what do these “configurations” actually do?
