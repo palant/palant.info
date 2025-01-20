@@ -1,11 +1,15 @@
 ---
-title: "Malicious extensions circumvent Google’s remote code ban"
-date: 2025-01-20T14:32:07+0100
-description: This blog post looks into how 60 malicious extensions circumvent Google’s restrictions of remote code execution in extensions. One group of extensions is associated with the company Phoenix Invicta, another with Technosense Media. The largest group around Sweet VPN hasn’t been attributed yet.
 categories:
 - add-ons
 - security
 - google
+date: 2025-01-20T14:32:07+0100
+description: This blog post looks into how 60 malicious extensions circumvent Google’s
+  restrictions of remote code execution in extensions. One group of extensions is
+  associated with the company Phoenix Invicta, another with Technosense Media. The
+  largest group around Sweet VPN hasn’t been attributed yet.
+lastmod: '2025-01-20 14:37:55'
+title: Malicious extensions circumvent Google’s remote code ban
 ---
 
 As [noted last week](/2025/01/13/chrome-web-store-is-a-mess/#how-did-google-get-into-this-mess) I consider it highly problematic that Google for a long time allowed extensions to run code they downloaded from some web server, an approach that Mozilla prohibited long before Google even introduced extensions to their browser. For years this has been an easy way for malicious extensions to hide their functionality. When Google finally [changed their mind](https://developer.chrome.com/docs/extensions/develop/migrate/remote-hosted-code), it wasn’t in form of a policy but rather a technical change introduced with Manifest V3.
