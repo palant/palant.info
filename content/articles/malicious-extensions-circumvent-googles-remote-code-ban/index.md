@@ -4,7 +4,7 @@ categories:
 - security
 - google
 date: 2025-01-20T14:32:07+0100
-description: This blog post looks into how 60 malicious extensions circumvent Google’s
+description: This blog post looks into how 62 malicious extensions circumvent Google’s
   restrictions of remote code execution in extensions. One group of extensions is
   associated with the company Phoenix Invicta, another with Technosense Media. The
   largest group around Sweet VPN hasn’t been attributed yet.
@@ -372,11 +372,13 @@ There are also some `chrome.tabs.update()` calls in the code, replacing the addr
 
 ## Bonus section: more malicious extensions
 
-As is often the case with Chrome Web Store, my searches regularly turned up more malicious extensions unrelated to the ones I was looking for. Some of them also devised their mechanisms to execute remote code. I didn’t find any other extensions using the same approach, which of course doesn’t mean that there are none.
+**Update** (2025-01-20): Added Adblock Bear and AdBlock 360 after a [hint from a commenter](#c000001).
+
+As is often the case with Chrome Web Store, my searches regularly turned up more malicious extensions unrelated to the ones I was looking for. Some of them also devised their mechanisms to execute remote code. I didn’t find more extensions using the same approach, which of course doesn’t mean that there are none.
 
 Adblock for Youtube is yet another browser extension essentially bundling an interpreter for their very own minimalistic programming language. One part of the instructions it receives from its server is executed in the context of the privileged background worker, the other in the content script context.
 
-EasyNav uses an approach quite similar to Phoenix Invicta. In particular, it removes security headers and adds rules to the `declarativeNetRequest` API that it receives from its server. It doesn’t bother with HTML injection however, instead its server produces a list of scripts to be injected into web pages. There are specific scripts for some domains and a fallback for everything else.
+EasyNav, Adblock Bear and AdBlock 360 use an approach quite similar to Phoenix Invicta. In particular, they add rules to the `declarativeNetRequest` API that they receive from their respective server. EasyNav also removes security headers. These extensions don’t bother with HTML injection however, instead their server produces a list of scripts to be injected into web pages. There are specific scripts for some domains and a fallback for everything else.
 
 Download Manager Integration Checklist is merely supposed to display some instructions, it shouldn’t need any privileges at all. Yet this extension requests access to all web pages and will add rules to the `declarativeNetRequest` API that it downloads from its server.
 
@@ -388,6 +390,8 @@ Translator makes it look like its configuration is all about downloading a list 
 |------|--------------------:|--------------|
 | Adblock for Youtube™ - Auto Skip ad | 8,000 | anceggghekdpfkjihcojnlijcocgmaoo |
 | EasyNav | 30,000 | aobeidoiagedbcogakfipippifjheaom |
+| Adblock Bear - stop invasive ads | 100,000 | gdiknemhndplpgnnnjjjhphhembfojec |
+| AdBlock 360 | 400,000 | ghfkgecdjkmgjkhbdpjdhimeleinmmkl |
 | Download Manager Integration Checklist | 70,000 | ghkcpcihdonjljjddkmjccibagkjohpi |
 | Translator | 100,000 | icchadngbpkcegnabnabhkjkfkfflmpj |
 
@@ -518,7 +522,9 @@ The following domain names are used by Sweet VPN and related extensions:
 
 These domain names are used by the extensions in the bonus section:
 
+* adblock-360[.]com
 * easynav[.]net
 * internetdownloadmanager[.]top
+* privacy-bear[.]net
 * skipads-ytb[.]com
 * translatories[.]com
