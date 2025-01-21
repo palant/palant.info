@@ -536,6 +536,7 @@ The following domain names are associated with Phoenix Invicta:
 * taboptimizer[.]com
 * text-speecher[.]online
 * topodat[.]info
+* triplestat[.]online
 * true-sound-booster[.]online
 * ufind[.]site
 * video-downloader-click-save[.]online
