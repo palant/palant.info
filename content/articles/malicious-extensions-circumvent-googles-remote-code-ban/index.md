@@ -172,7 +172,7 @@ if (isGoogle() || isFrame()) {
 }
 ```
 
-The `isGoogle` function looks for a Google subdomain and a query – this is about search pages. The `isFrame` function looks for frames but excludes “our frames” which include the strings `q=`, `frmid` and `gsc.page` in the address. The `loadScript` function fetches a script from `https://shurkul[.]online/v1712/g1001.js`. This script then injects a hidden frame into the page, loaded either from `kralforum.com.tr` (Edge) or `rumorpix.com` (other browsers). There is also some tracking to an endpoint on `dev.astralink.click` but the main logic operating the frame is in the other code block.
+The `isGoogle` function looks for a Google subdomain and a query – this is about search pages. The `isFrame` function looks for frames but excludes “our frames” where the address contains all the strings `q=`, `frmid` and `gsc.page`. The `loadScript` function fetches a script from `https://shurkul[.]online/v1712/g1001.js`. This script then injects a hidden frame into the page, loaded either from `kralforum.com.tr` (Edge) or `rumorpix.com` (other browsers). There is also some tracking to an endpoint on `dev.astralink.click` but the main logic operating the frame is in the other code block.
 
 The second code block looks like this (somewhat simplified for readability):
 
