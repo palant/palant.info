@@ -512,7 +512,7 @@ The following domain names are associated with Phoenix Invicta:
 * manuals-viewer[.]info
 * megaboost[.]site
 * nocodata[.]online
-* ntdataview.online
+* ntdataview[.]online
 * picky-ext[.]pro
 * pocodata[.]pro
 * readtxt[.]pro
