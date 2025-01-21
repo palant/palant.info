@@ -202,7 +202,7 @@ if (window.top == window.self) {
 }
 ```
 
-So for top-level documents this downloads some script from `everview.info` and runs it. That script in turn injects another script from `lottingem.com`. And that script loads some ads from `gulkayak.com` or `topodat.info` as well as Google ads, makes sure these are displayed in the frame and positions the frame above the search results. The result are ads which can be barely distinguished from actual search results, here is what I get searching for “amazon” for example:
+So for top-level documents this downloads some script from `everyview.info` and runs it. That script in turn injects another script from `lottingem.com`. And that script loads some ads from `gulkayak.com` or `topodat.info` as well as Google ads, makes sure these are displayed in the frame and positions the frame above the search results. The result are ads which can be barely distinguished from actual search results, here is what I get searching for “amazon” for example:
 
 {{< img src="ad_frame.png" width="575" alt="Screenshot of what looks like Google search results, e.g. a link titled “Amazon Produkte - -5% auf alle Produkte”. The website mentioned above it is conrad.de however rather than amazon.de." />}}
 
