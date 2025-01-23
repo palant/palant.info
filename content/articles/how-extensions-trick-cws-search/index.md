@@ -7,7 +7,7 @@ date: 2025-01-08T14:41:17+0100
 description: There are hundreds of extensions in Chrome Web Store using bogus “translation”
   to mess up search results. Most extensions are produced by a few extensions clusters
   who are flooding Chrome Web Store with spam.
-lastmod: '2025-01-09 05:31:36'
+lastmod: '2025-01-23 09:50:20'
 title: How extensions trick CWS search
 ---
 
