@@ -21,6 +21,8 @@ As with most things about Manifest V3, these changes are meant for well-behaving
 
 **Update** (2025-01-21): Got a sample of the malicious configurations for Phoenix Invicta extensions. Added [a section describing it](#the-payload) and removed “But what do these configurations actually do” section. Also added a bunch more domains to the [IOCs section](#iocs).
 
+**Update** (2025-01-28): Corrected the “Netflix Party” section, Flipshope extension isn’t malicious after all. Also removed the attribution subsection here.
+
 {{< toc >}}
 
 ## Summary of the findings
