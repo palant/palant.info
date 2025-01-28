@@ -6,9 +6,8 @@ categories:
 date: 2025-01-20T14:32:07+0100
 description: This blog post looks into how 62 malicious extensions circumvent Google’s
   restrictions of remote code execution in extensions. One group of extensions is
-  associated with the company Phoenix Invicta, another with Technosense Media. The
-  largest group around Sweet VPN hasn’t been attributed yet.
-lastmod: '2025-01-24 14:05:32'
+  associated with the company Phoenix Invicta. The other groups around Netflix Party and Sweet VPN haven’t been attributed yet.
+lastmod: '2025-01-28T13:01:32+0100'
 title: Malicious extensions circumvent Google’s remote code ban
 ---
 
@@ -30,7 +29,7 @@ This article originally started as an investigation into Phoenix Invicta Inc. Co
 
 It can be assumed that these extensions are meant to inject ads into web pages, yet Phoenix Invicta clearly put some thought into plausible deniability. They can always claim their execution of remote code to be a bug in their otherwise perfectly legitimate extension functionality. So it will be interesting to see how Google will deal with these extensions, lacking (to my knowledge) any policies that apply here.
 
-The malicious intent is a bit more obvious with the extensions that seem to be associated with Technosense Media Pvt. Ltd. This shouldn’t really come as a surprise to Google: the most popular extension of the group was a topic on this blog back in 2023, and a year before that McAfee already flagged three extensions of the group as malicious. Yet here we are, and these extensions are still capable of spying, [affiliate fraud](https://www.investopedia.com/terms/a/affiliate-fraud.asp) and [cookie stuffing](https://en.wikipedia.org/wiki/Cookie_stuffing) as described by McAfee. If anything, their potential to do damage has only increased.
+The malicious intent is a bit more obvious with Netflix Party and related extensions. This shouldn’t really come as a surprise to Google: the most popular extension of the group was a topic on this blog back in 2023, and a year before that McAfee already flagged two extensions of the group as malicious. Yet here we are, and these extensions are still capable of spying, [affiliate fraud](https://www.investopedia.com/terms/a/affiliate-fraud.asp) and [cookie stuffing](https://en.wikipedia.org/wiki/Cookie_stuffing) as described by McAfee. If anything, their potential to do damage has only increased.
 
 Finally, the group of extensions around Sweet VPN is the most obviously malicious one. To be fair, what these extensions do is probably best described as obfuscation rather than remote code execution. Still, they download extensive instructions from their web servers even though these aren’t too flexible in what they can do without requiring changes to the extension code. Again there is spying on the users and likely affiliate fraud as well.
 
@@ -256,9 +255,11 @@ The following table also lists the extensions officially developed by Damiko Inc
 | Background Noise Remover | 363 | njmhcidcdbaannpafjdljminaigdgolj |
 | Camera Picture In Picture (PIP Overlay) | 576 | pgejmpeimhjncennkkddmdknpgfblbcl |
 
-## Technosense Media
+## Netflix Party
 
-Back in 2023 I pointed out that [“Adblock all advertisements” is malicious and spying on its users](/2023/06/08/another-cluster-of-potentially-malicious-chrome-extensions/#adblock-all-advertisments). A year earlier [McAfee already called out a bunch of extensions as malicious](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/malicious-cookie-stuffing-chrome-extensions-with-1-4-million-users/). For whatever reason, Google decided to let Adblock all advertisements stay, and three extensions from the McAfee article also remained in Chrome Web Store: Netflix Party, FlipShope and AutoBuy Flash Sales.
+Back in 2023 I pointed out that [“Adblock all advertisements” is malicious and spying on its users](/2023/06/08/another-cluster-of-potentially-malicious-chrome-extensions/#adblock-all-advertisments). A year earlier [McAfee already called out a bunch of extensions as malicious](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/malicious-cookie-stuffing-chrome-extensions-with-1-4-million-users/). For whatever reason, Google decided to let Adblock all advertisements stay, and three extensions from the McAfee article also remained in Chrome Web Store: Netflix Party, FlipShope and AutoBuy Flash Sales. Out of these three, Netflix Party and AutoBuy Flash Sales still (or again) contain malicious functionality.
+
+**Update** (2025-01-28): This article originally claimed that FlipShope extension was also malicious and listed this extension cluster under the name of its developing company, Technosense Media. This was incorrect, the extension merely contained some recognizable but dead code. According to Technosense Media, they bought the extension in 2023. Presumably, the problematic code was introduced by the previous extension owner and is unused.
 
 ### Spying on the users
 
@@ -331,17 +332,12 @@ So if the “scope” is anything but `"global"` the rules provided by the serve
 
 And if the “scope” is `"global"` the extension sends a message to its content script which will inject a frame with the given address into the page. Again, this makes no sense whatsoever for blocking ads, but it definitely works for [affiliate fraud](https://www.investopedia.com/terms/a/affiliate-fraud.asp) – which is what these extensions are all about according to McAfee.
 
-Depending on the extension there might be only frame injection or only adding of dynamic rules. Also, the logic in Flipshope extension is considerably different yet still recognizable. Given the purpose of the Flipshope and AutoBuy extensions, these can probably pass as legitimate by Google’s rules, others not so much.
-
-### Who is behind these extensions?
-
-The Flipshope extension is being officially developed by the India-based Technosense Media Pvt. Ltd. I don’t know how exactly the other extensions are affiliated with Technosense Media but they are clearly using their code. Given how in Smart Auto Refresh for example the malicious functionality is separate from the regular extension functionality, and the endpoint for it is on a subdomain hosted separately from the extension’s main website, this might be another case where a company provides extension authors with a “monetization solution.”
+Depending on the extension there might be only frame injection or only adding of dynamic rules. Given the purpose of the AutoBuy extension, it can probably pass as legitimate by Google’s rules, others not so much.
 
 ### The affected extensions
 
 | Name | Weekly active users | Extension ID | Featured |
 |------|--------------------:|--------------|:--------:|
-| Flipshope: Price Tracker and much more | 80,000 | adikhbfjdbjkhelbdnffogkobkekkkej | ✓ |
 | Smart Auto Refresh | 100,000 | fkjngjgmgbfelejhbjblhjkehchifpcj | ✓ |
 | Adblock all advertisement - No Ads extension | 700,000 | gbdjcgalliefpinpmggefbloehmmknca | ✓ |
 | AutoBuy Flash Sales, Deals, and Coupons | 20,000 | gbnahglfafmhaehbdmjedfhdmimjcbed |
@@ -549,11 +545,10 @@ The following domain names are associated with Phoenix Invicta:
 * youtube-ads-skip[.]site
 * ystatic[.]site
 
-The following domain names are used by extensions associated with Technosense Media:
+The following domain names are used by Netflix Party and related extensions:
 
 * abforbrowser[.]com
 * autorefresh[.]co
-* flipshope[.]com
 * getmatchingcouponsanddeals[.]info
 * smartadblocker[.]com
 * telenetflixparty[.]com
