@@ -4,10 +4,10 @@ categories:
 - security
 - google
 date: 2025-01-20T14:32:07+0100
-description: This blog post looks into how 62 malicious extensions circumvent Google’s
+description: This blog post looks into how 63 malicious extensions circumvent Google’s
   restrictions of remote code execution in extensions. One group of extensions is
   associated with the company Phoenix Invicta. The other groups around Netflix Party and Sweet VPN haven’t been attributed yet.
-lastmod: '2025-01-28T13:01:32+0100'
+lastmod: '2025-01-28T13:49:32+0100'
 title: Malicious extensions circumvent Google’s remote code ban
 ---
 
@@ -340,6 +340,7 @@ Depending on the extension there might be only frame injection or only adding of
 
 | Name | Weekly active users | Extension ID | Featured |
 |------|--------------------:|--------------|:--------:|
+| Auto Refresh Plus | 100,000 | ffejlioijcokmblckiijnjcmfidjppdn |
 | Smart Auto Refresh | 100,000 | fkjngjgmgbfelejhbjblhjkehchifpcj | ✓ |
 | Adblock all advertisement - No Ads extension | 700,000 | gbdjcgalliefpinpmggefbloehmmknca | ✓ |
 | AutoBuy Flash Sales, Deals, and Coupons | 20,000 | gbnahglfafmhaehbdmjedfhdmimjcbed |
@@ -349,6 +350,9 @@ Depending on the extension there might be only frame injection or only adding of
 | Netflix Party | 500,000 | mmnbenehknklpbendgmgngeaignppnbe |
 | Free adblocker | 8,000 | njjbfkooniaeodkimaidbpginjcmhmbm | ✓ |
 | Video Ad Block Youtube | 100,000 | okepkpmjhegbhmnnondmminfgfbjddpb | ✓ |
+| Picture in Picture for Videos | 30,000 | pmdjjeplkafhkdjebfaoaljknbmilfgo |
+
+**Update** (2025-01-28): Added Auto Refresh Plus and Picture in Picture for Videos to the list. The former only contains the spying functionality, the latter spying and frame injection.
 
 ## Sweet VPN
 
@@ -551,7 +555,9 @@ The following domain names are used by Netflix Party and related extensions:
 
 * abforbrowser[.]com
 * autorefresh[.]co
+* autorefreshplus[.]in
 * getmatchingcouponsanddeals[.]info
+* pipextension[.]com
 * smartadblocker[.]com
 * telenetflixparty[.]com
 * ytadblock[.]com
