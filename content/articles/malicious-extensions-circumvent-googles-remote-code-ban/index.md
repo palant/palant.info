@@ -8,7 +8,7 @@ description: This blog post looks into how 63 malicious extensions circumvent Go
   restrictions of remote code execution in extensions. One group of extensions is
   associated with the company Phoenix Invicta. The other groups around Netflix Party
   and Sweet VPN haven’t been attributed yet.
-lastmod: '2025-01-31 11:52:56'
+lastmod: '2025-02-02 12:49:28'
 title: Malicious extensions circumvent Google’s remote code ban
 ---
 
