@@ -1,0 +1,19 @@
+{
+  "publishDate": "2025-02-03 17:38:04",
+  "author": "Juraj",
+  "authorUrl": "https://fastaddons.com/",
+  "type": "comment",
+  "title": "",
+  "id": "000001"
+}
+
+<p>Man, I love these these articles! 
+Such an exciting reading, and unlike books "based on real events", these are the real events! (sometimes literally events/handlers :D)</p>
+<p>Unlike many others, I was actually excited about the Manifest V3, because it disables remote code execution...or does it?
+So if understand this correctly, extension will simply disable CSP on each page, then executes whatever server sent it by adding it to script tag in the HTML, and then using simple messaging with background script it gains access to the whole extensions API.</p>
+<p>I have an idea - one could create a webpage, that would detect these malicious extensions - simply by checking the CSP header presence!
+Or would there be some false-positives?
+I agree that there are legitimate reasons to remove CSP (to load page in "iframe"), but that would be "sub_frame", never in the "main_frame".
+Maybe browser vendors should disable globally removing CSP.</p>
+<p>Or even better - detect it and notify user: Your extension "Super duper downloader" has removed important security features from all pages you visit. And a big button "Disable extension".</p>
+<p>There is so much that could be done to minimize these security holes... I wish there was some big company with unlimited budget that could do it just because it's the right thing to do, not because it's happening in their software... wait what? :D</p>

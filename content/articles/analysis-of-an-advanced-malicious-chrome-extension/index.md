@@ -1,11 +1,15 @@
 ---
-title: "Analysis of an advanced malicious Chrome extension"
-date: 2025-02-03T15:05:37+0100
-description: "A follow-up to the previous article, this is a technical discussion of the malicious functionality in the Download Manager Integration Checklist extension. I was also able to identify a number of related extensions that were missing from my previous article."
 categories:
 - add-ons
 - security
 - google
+date: 2025-02-03T15:05:37+0100
+description: A follow-up to the previous article, this is a technical discussion of
+  the malicious functionality in the Download Manager Integration Checklist extension.
+  I was also able to identify a number of related extensions that were missing from
+  my previous article.
+lastmod: '2025-02-03 18:16:24'
+title: Analysis of an advanced malicious Chrome extension
 ---
 
 Two weeks ago I published [an article on 63 malicious Chrome extensions](/2025/01/20/malicious-extensions-circumvent-googles-remote-code-ban/). In most cases I could only identify the extensions as malicious. With large parts of their logic being downloaded from some web servers, it wasn’t possible to analyze their functionality in detail.
