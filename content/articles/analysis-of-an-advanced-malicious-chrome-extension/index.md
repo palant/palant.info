@@ -8,13 +8,15 @@ description: A follow-up to the previous article, this is a technical discussion
   the malicious functionality in the Download Manager Integration Checklist extension.
   I was also able to identify a number of related extensions that were missing from
   my previous article.
-lastmod: '2025-02-03 18:16:24'
+lastmod: '2025-02-04T12:41:24+0100'
 title: Analysis of an advanced malicious Chrome extension
 ---
 
 Two weeks ago I published [an article on 63 malicious Chrome extensions](/2025/01/20/malicious-extensions-circumvent-googles-remote-code-ban/). In most cases I could only identify the extensions as malicious. With large parts of their logic being downloaded from some web servers, it wasn’t possible to analyze their functionality in detail.
 
 However, for the Download Manager Integration Checklist extension I have all parts of the puzzle now. This article is a technical discussion of its functionality that somebody tried very hard to hide. I was also able to identify a number of related extensions that were missing from my previous article.
+
+**Update** (2025-02-04): An update to Download Manager Integration Checklist extension has been released a day before I published this article, clearly prompted by me asking adindex about this. The update removes the malicious functionality and clears extension storage. Luckily, I’ve saved both the previous version and its storage contents.
 
 {{< img src="popup.png" width="600" alt="Screenshot of an extension pop-up. The text in the popup says “Seamlessly integrate the renowned Internet Download Manager (IDM) with Google Chrome, all without the need for dubious third-party extensions” followed up with some instructions." />}}
 
