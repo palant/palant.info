@@ -8,7 +8,7 @@ description: A follow-up to the previous article, this is a technical discussion
   the malicious functionality in the Download Manager Integration Checklist extension.
   I was also able to identify a number of related extensions that were missing from
   my previous article.
-lastmod: '2025-02-04T12:41:24+0100'
+lastmod: '2025-02-13 23:41:26'
 title: Analysis of an advanced malicious Chrome extension
 ---
 
