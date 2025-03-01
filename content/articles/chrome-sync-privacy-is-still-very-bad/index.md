@@ -6,7 +6,7 @@ date: 2023-08-29T14:28:44+0200
 description: Unlike five years ago, today Chrome Sync is merely bad for your privacy.
   There is a way to use it without sacrificing your privacy, but Google doesn’t want
   you to find it.
-lastmod: '2025-03-01 18:05:23'
+lastmod: '2025-03-01 23:30:14'
 title: Chrome Sync privacy is still very bad
 ---
 
