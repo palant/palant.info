@@ -1,0 +1,27 @@
+{
+  "publishDate": "2025-03-06 21:37:15",
+  "author": "Anton Georgiev",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000003"
+}
+
+<p>Hello, I've discovered an RCE vulnerability.</p>
+<p>https://chromewebstore.google.com/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco</p>
+<p>Extension Manager (100k users) -  gjldcdngmdknpinoemndlidpcabkggco</p>
+<p>If JSON parsing returns an error, the text is used as JavaScript code!</p>
+<p>https://pbs.twimg.com/media/GhqGJX2XUAADdBf?format=jpg&amp;name=medium</p>
+<p>This behavior is extremely dangerous because:</p>
+<ol>
+<li>
+<p>Malicious input can trigger Remote Code Execution (RCE).</p>
+</li>
+<li>
+<p>It ignores all modern security best practices and puts users at risk.</p>
+</li>
+<li>
+<p>Any attacker could inject harmful scripts to steal data, take control of the app, or execute unauthorized actions.</p>
+</li>
+</ol>
+<p>This vulnerability makes it easy for attackers to compromise your security.</p>

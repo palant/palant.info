@@ -1,0 +1,11 @@
+{
+  "id": "000001",
+  "publishDate": "2025-03-06 21:54:47"
+}
+
+<p>This is bad code but it is not a security issue:</p>
+<ol>
+<li>The only caller of this function calls it on data loaded from extension storage. I cannot see how malicious code would get into storage.</li>
+<li>That caller appears to be dead code, I cannot see anything calling it.</li>
+<li>Most importantly, any execution of dynamic code will be prevented by Content Security Policy in this context. <code>eval()</code> and the like are generally forbidden in Manifest V3 extensions (in Manifest V2 they were forbidden by default but this restriction could be relaxed).</li>
+</ol>
