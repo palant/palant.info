@@ -7,7 +7,7 @@ date: 2023-01-25T06:57:04+0100
 description: Banking websites in South Korea can only be used with IPinside installed.
   This application collects lots of data about the user, and it makes that data accessible
   to each and every website. The protection is inadequate.
-lastmod: '2023-06-08 07:07:22'
+lastmod: '2025-03-10 12:49:15'
 title: 'IPinside: Korea’s mandatory spyware'
 ---
 
