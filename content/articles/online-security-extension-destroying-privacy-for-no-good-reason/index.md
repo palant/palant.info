@@ -9,7 +9,7 @@ description: Most Online Security functionality is already provided by the brows
   functionality in a maximally privacy-unfriendly way however, sharing your browsing
   history and installed extensions with the vendor. There is also plenty of sloppy
   programming, some of which might potentially cause issues.
-lastmod: '2024-07-03 16:29:12'
+lastmod: '2025-07-07 05:23:56'
 title: 'Online Security extension: Destroying privacy for no good reason'
 ---
 
