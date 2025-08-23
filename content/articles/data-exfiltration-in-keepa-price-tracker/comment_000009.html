@@ -1,0 +1,56 @@
+{
+  "publishDate": "2025-08-22 23:36:59",
+  "author": "avm99963",
+  "authorUrl": "https://www.avm99963.com/",
+  "type": "comment",
+  "title": "",
+  "id": "000009"
+}
+
+<p>Thanks for your write-up, it was an interesting read :))</p>
+<p>I just stumbled upon this behavior and was very surprised. I found your write-up and created a thread as well in the <a href="https://groups.google.com/a/chromium.org/g/chromium-extensions/c/il9VqQBc8So" rel="nofollow">chromium-extensions Google Group</a> to shed some light into this again, 4 years later.</p>
+<p>It seems like the scraping is still going on at full capacity (I get 4 scrapes per hour from the server). To decompress the messages received/sent by the current extension version, I used the <code>decompress</code> function from <code>keepa.js</code> (the extension's service worker) as well as library https://github.com/danguer/blog-examples/blob/master/js/base64-binary.js: <code>decompress(Base64Binary.decode("__BASE64_PAYLOAD__"), false).then(val =&gt; console.log(val))</code>.</p>
+<p>Here is a sample of the data sent to Keepa of one such scrape (with some censored bits, since e.g. it includes my location as detected by Amazon):</p>
+<p><code>{
+    "key": "o1",
+    "messageId": "__CENSORED__",
+    "sessionId": "522-1698692-4455148",
+    "payload": [" // Selector attribute null: bbImport // Regexp failed for selector: rcAlt // Selector attribute null: ddm"],
+    "status": 200,
+    "scrapedData": {
+        "buyBoxPrice": "68,72",
+        "rating": "4,4",
+        "ratingCount": "4",
+        "ratingCountTitle": "4,4 4,4 de 5 estrellas (4)",
+        "currentAsin": "B0F6DDQVJ2",
+        "currentAsinAlt": "B0F6DDQVJ2",
+        "cuAsin": "B0F6DDQVJ2",
+        "parentAsin": "B08KJ9N8HF",
+        "vAL": "{\"11:1\":\"B0F5X1CF2C\",\"20:2\":\"B08KK828JJ\",\"0:0\":\"B08KKFWC3Z\",\"0:2\":\"B08KK1NJP4\",\"1:1\":\"B0F5X3LC54\",\"17:3\":\"B0F6D67G24\",\"19:1\":\"B0F5X5TB1H\",\"18:1\":\"B0F5WYVZXZ\",\"2:2\":\"B08KKGVYDP\",\"16:2\":\"B08KKFPG37\",\"14:3\":\"B0F6DDQVJ2\",\"15:2\":\"B08KKFTXXD\",\"3:3\":\"B0F6DGDMRD\",\"4:2\":\"B08KK828JF\",\"5:1\":\"B0F5X4DKF7\",\"15:1\":\"B0F5X1H1RD\",\"13:2\":\"B08KJP5JBL\",\"6:2\":\"B08KKGM88W\",\"12:2\":\"B08KKG2QFM\",\"8:1\":\"B0F5X4G5FG\",\"10:3\":\"B0F6DFRG74\",\"7:3\":\"B0F6DFYB3H\",\"8:2\":\"B08KKFTXXN\",\"9:2\":\"B08KKG9FQS\"}",
+        "vAD": "{\"size_name\":[\"90x175\",\"90An x 175Al cm\",\"90x250\",\"90An x 250Al cm\",\"105x175\",\"105An x 175Al cm\",\"105x250\",\"105An x 250Al cm\",\"120An x 175Al cm\",\"120x250\",\"120An x 250Al cm\",\"135An x 175Al cm\",\"135x175\",\"135x250\",\"135An x 250Al cm\",\"150An x 175Al cm\",\"150x250\",\"150An x 250Al cm\",\"165An x 175Al cm\",\"180An x 175Al cm\",\"180x175\"],\"color_name\":[\"251\",\"Blanco\",\"Marfil\",\"Verde\"]}",
+        "vAK": "{\"key\":[\"size_name\",\"color_name\"]}",
+        "vAS": "{\"hiResImageUrlMap\":{\"color_name::0\":\"https://m.media-amazon.com/images/I/31am58yP-5L._SS200_.jpg\",\"color_name::2\":\"https://m.media-amazon.com/images/I/31KY1yaTAtL._SS200_.jpg\",\"color_name::1\":\"https://m.media-amazon.com/images/I/31-LsDsNdgL._SS200_.jpg\",\"color_name::3\":\"https://m.media-amazon.com/images/I/31KpW3rj5cL._SS200_.jpg\"}}",
+        "buyBoxMerchant": "/gp/aw/sp.html/ref=dp_merchant_link?ie=UTF8&amp;seller=A1LEGSVFHVBEDX&amp;asin=B0F6DDQVJ2&amp;ref_=dp_merchant_link",
+        "buyBoxMerchantAlt": "/gp/aag/details/?seller=A1LEGSVFHVBEDX&amp;sshmPath=shipping-rates",
+        "buyBoxShippingMir": "Entrega GRATIS entre el 26 - 28 de agosto. Ver detalles",
+        "dsl": "Entrega en __CENSORED (this is my hometown!!) I wonder if my Amazon address would get sent if I was logged in :O__ - Actualizar ubicación",
+        "bbsMir": "GRATIS",
+        "slateToken": "__CENSORED__",
+        "bbdMir": "entre el 26 - 28 de agosto",
+        "avail": "Sólo queda(n) 5 en stock.",
+        "fbt": "__CENSORED__",
+        "lSince": "Tipo de habitación ‎Cocina, Comedor, Dormitorio, Oficina en casa, Sala de estar Modo de funcionamiento ‎Manual Componentes incluidos ‎Manual del Usuario Número de productos ‎1 Tipo de cierre ‎Cordón Tamaño ‎135An x 250Al cm Tipo de montaje ‎Montaje interior Tipo Tejido ‎100% Poliéster Dimensiones del producto ‎5 x 135 x 250 cm; 2,1 kg Peso del producto ‎2,1 kg",
+        "lSinceAlt": "Información adicional ASIN: B0F6DDQVJ2 Valoración media de los clientes: 4,4 de 5 estrellas 4Reseñas Clasificación en los más vendidos de Amazon: nº36.037 en Hogar y cocina (Ver el Top 100 en Hogar y cocina) nº176 en Persianas enrollables y estores Producto en Amazon.es desde: 25 abril 2025",
+        "bbg": "{\"mobile_buybox_group_1\":[{\"displayPrice\":\"68,72&nbsp;€\",\"priceAmount\":68.72,\"currencySymbol\":\"€\",\"integerValue\":\"68\",\"decimalSeparator\":\",\",\"fractionalValue\":\"72\",\"symbolPosition\":\"right\",\"hasSpace\":true,\"showFractionalPartIfEmpty\":true,\"offerListingId\":\"__CENSORED__\",\"locale\":\"es-ES\",\"buyingOptionType\":\"NEW\",\"aapiBuyingOptionIndex\":0}]}",
+        "location": "Entrega en __CENSORED (again my hometown)__ - Actualizar ubicación ⌵",
+        "sr": "/gp/bestsellers/kitchen/ref=pd_zg_ts_kitchen",
+        "desc": "  &lt;span class=\"a-color-base\" dir=\"auto\"&gt;           &lt;div class=\"a-section text-direction-override\" dir=\"auto\"&gt;    &lt;p&gt;    &lt;span&gt;Este estor plegable con varillas está confeccionado con un tejido tipo loneta que ofrece una opacidad del 80%. Al recogerse, forma pliegues y ocupa aproximadamente 30 cm de espacio (a tener en cuenta en ventanas batientes), lo que lo convierte en una opción práctica y versátil. El estor se acciona mediante cordón. La tela va fijada al perfil de aluminio con velcro, esto permitirá desmontar el estor con facilidad para lavarlo siguiendo las indicaciones de la etiqueta textil. Este estor está fabricado en España siguiendo los estándares de calidad ISO 9001, ISO 14001, ISO 45001 e ISO 50001. Renueva tu espacio con este estor plegable, una combinación ideal de funcionalidad, estilo y calidad, respaldada por nuestra sólida garantía y el compromiso de ofrecer productos fabricados en España bajo estrictos estándares.&lt;/span&gt;   &lt;/p&gt;   &lt;/div&gt;       &lt;/span&gt; ",
+        "lang": "Castellano",
+        "slug": "https://www.amazon.es/KAATEN-Paqueto-Estores-Ventanas-Fabricado/dp/B0F6DDQVJ2",
+        "bsn2": "Visita la tienda de KAATEN",
+        "bsu": "/stores/Kaaten/page/B6E20261-253F-4878-A915-E8F477471FD3?lp_asin=B0F6DDQVJ2&amp;ref_=ast_bln"
+    },
+    "aplus": [],
+    "videos": []
+}</code></p>
+<p>Again, thanks! And I'm looking forward to reading more of your blog posts, I've added you to my RSS reader :)</p>
