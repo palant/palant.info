@@ -184,7 +184,7 @@ When looking at the firmware I noticed some code uploading 5 MiB data chunks to 
 
 First thing worth noting: while the cloud server uses regular HTTP rather than some exotic protocol, all connections to it are generally unencrypted. The firmware simply lacks a TLS library it could use, and so the server doesn’t bother with supporting TLS. Meaning for example: if you happen to use their cloud functionality your ISP better be very trustworthy because it can see all the data your camera sends to the LookCam cloud. In fact, your ISP could even run its own “cloud server” and the camera will happily send your recorded videos to it.
 
-Anyone dare a guess what the app developers mean by “financial-grade encryption scheme” here?
+Anyone dare a guess what the app developers mean by “financial-grade encryption scheme” here? Is it worse or better than military-grade encryption?
 
 {{< img src="cloud.png" width="385" alt="Screenshot containing two text section. The section above it titled “Safe storage” and reads: The video data is stored in the cloud, even if the device is offline or lost. Can also view previous recordings. The section below is titled “Privacy double encryption” and reads: Using financial-grade encryption scheme, data is transmitted from data to Transfer data from transfer data from transfer." >}}
 Screenshot from the LookCam app
