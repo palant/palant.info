@@ -186,7 +186,7 @@ First thing worth noting: while the cloud server uses regular HTTP rather than s
 
 Anyone dare a guess what the app developers mean by “financial-grade encryption scheme” here? Is it worse or better than military-grade encryption?
 
-{{< img src="cloud.png" width="385" alt="Screenshot containing two text section. The section above it titled “Safe storage” and reads: The video data is stored in the cloud, even if the device is offline or lost. Can also view previous recordings. The section below is titled “Privacy double encryption” and reads: Using financial-grade encryption scheme, data is transmitted from data to Transfer data from transfer data from transfer." >}}
+{{< img src="cloud.png" width="385" alt="Screenshot containing two text sections. The section above it titled “Safe storage” and reads: The video data is stored in the cloud, even if the device is offline or lost. Can also view previous recordings. The section below is titled “Privacy double encryption” and reads: Using financial-grade encryption scheme, data is transmitted from data to Transfer data from transfer data from transfer." >}}
 Screenshot from the LookCam app
 {{< /img >}}
 
