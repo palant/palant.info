@@ -1,10 +1,16 @@
 ---
-title: "A look at a P2P camera (LookCam app)"
-date: 2025-09-08T13:00:50Z
-description: "I’ve got my hands on an internet-connected camera and decided to take a closer look, having already read about security issues with similar cameras. What I found far exceeded my expectations: fake access controls, bogus protocol encryption, completely unprotected cloud uploads and firmware riddled with security flaws. One could even say that these cameras are Murphy’s Law turned solid: everything that could be done wrong has been done wrong here."
 categories:
 - security
 - IoT
+date: 2025-09-08 13:00:50+00:00
+description: 'I’ve got my hands on an internet-connected camera and decided to take
+  a closer look, having already read about security issues with similar cameras. What
+  I found far exceeded my expectations: fake access controls, bogus protocol encryption,
+  completely unprotected cloud uploads and firmware riddled with security flaws. One
+  could even say that these cameras are Murphy’s Law turned solid: everything that
+  could be done wrong has been done wrong here.'
+lastmod: '2025-09-09 08:09:01'
+title: A look at a P2P camera (LookCam app)
 ---
 
 I’ve got my hands on an internet-connected camera and decided to take a closer look, having already read about security issues with similar cameras. What I found far exceeded my expectations: fake access controls, bogus protocol encryption, completely unprotected cloud uploads and firmware riddled with security flaws. One could even say that these cameras are Murphy’s Law turned solid: everything that could be done wrong has been done wrong here. While there is considerable prior research on these and similar cameras that outlines some of the flaws, I felt that the combination of severe flaws is reason enough to publish an article of my own.
