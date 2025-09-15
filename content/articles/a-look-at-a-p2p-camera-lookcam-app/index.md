@@ -9,7 +9,7 @@ description: 'I’ve got my hands on an internet-connected camera and decided to
   completely unprotected cloud uploads and firmware riddled with security flaws. One
   could even say that these cameras are Murphy’s Law turned solid: everything that
   could be done wrong has been done wrong here.'
-lastmod: '2025-09-09 08:09:01'
+lastmod: '2025-09-15 21:14:01+0200'
 title: A look at a P2P camera (LookCam app)
 ---
 
@@ -235,6 +235,8 @@ But if you actually paid hundreds of dollars for that camera and dumping it isn�
 ## Further reading
 
 As far as I am aware, the first research on the PPPP protocol was [published by Paul Marrapese in 2019](https://hacked.camera/). He found a number of vulnerabilities, including one brand of cameras shipping their algorithm to generate verification codes with their client application. Knowing this algorithm, device IDs could be enumerated easily. Paul used this flaw to display the locations of millions of affected devices. His DEF CON talk is linked from the website and well worth watching.
+
+**Edit** (2025-09-15): I was wrong, there is at the very least [this early analysis of the protocol by Zoltán Balázs (2016)](https://www.slideshare.net/slideshow/iot-security-is-a-nightmare-but-what-is-the-real-risk/65213457) (starting at page 29) and [some research into a particular brand of PPPP-based cameras by Pierre Kim (2017)](https://pierrekim.github.io/blog/2017-03-08-camera-goahead-0day.html).
 
 A [paper from the Warwick University (2023)](https://www.dcs.warwick.ac.uk/~fenghao/files/hidden_camera.pdf) researched LookCam app specifically. In additions to some vulnerabilities I mentioned here it contains a number of details on how these cameras operate.
 
