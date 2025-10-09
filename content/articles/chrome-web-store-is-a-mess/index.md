@@ -9,7 +9,7 @@ description: The post details Google’s lax enforcement of their policies in Ch
   Web Store, resulting in a flood of spam submissions, add-ons “legitimately” stealing
   users’ data and outright malicious extensions not being addressed. At this point
   Chrome Web Store is a very dangerous mess for users.
-lastmod: '2025-09-14 07:57:21'
+lastmod: '2025-10-09 15:29:46'
 title: Chrome Web Store is a mess
 ---
 
