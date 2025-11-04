@@ -9,7 +9,7 @@ description: 'I’ve got my hands on an internet-connected camera and decided to
   completely unprotected cloud uploads and firmware riddled with security flaws. One
   could even say that these cameras are Murphy’s Law turned solid: everything that
   could be done wrong has been done wrong here.'
-lastmod: '2025-11-03 06:40:06'
+lastmod: '2025-11-04 12:54:47'
 title: A look at a P2P camera (LookCam app)
 ---
 
