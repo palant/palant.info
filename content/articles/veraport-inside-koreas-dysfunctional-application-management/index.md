@@ -7,7 +7,7 @@ date: 2023-03-06T06:54:41+0100
 description: While Wizvera Veraport is supposed to manage security applications easily,
   it suffers from a number of design flaws. In the worst case, these can lead to arbitrary
   websites installing malicious applications without the user noticing.
-lastmod: '2023-03-31 04:53:15'
+lastmod: '2025-11-05 11:21:59'
 title: 'Veraport: Inside Korea’s dysfunctional application management'
 ---
 
