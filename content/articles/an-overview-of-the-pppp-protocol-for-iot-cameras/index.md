@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-11-07T16:13:37+0100'
+lastmod: '2025-11-07T16:58:37+0100'
 description:
 categories:
 - security
@@ -17,6 +17,8 @@ There are other protocols with similar approaches being used for the same goal. 
 *Disclaimer*: Most of the information below has been acquired by analyzing public information as well as reverse engineering applications and firmware, not by observing live systems. Consequently, there can be misinterpretations.
 
 **Update** (2025-11-07): Added App2Cam Plus app to the table, representing a number of apps which all seem to be belong to ABUS Smartvest Wireless Alarm System.
+
+**Update** (2025-11-07): This article originally grouped Xiaomi Home together with Yi apps. This was wrong, Xiaomi uses a completely different protocol to communicate with their PPPP devices. A brief description of this protocol has been added.
 
 {{< toc >}}
 
@@ -251,7 +253,8 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 
 | Application | Typical device prefixes | Application-level protocol |
 |-------------|-------------------------|----------------------------|
-| [Kami Home](https://play.google.com/store/apps/details?id=com.yitechnology.kamihome)<br>[Xiaomi Home](https://play.google.com/store/apps/details?id=com.xiaomi.smarthome)<br>[Yi Home](https://play.google.com/store/apps/details?id=com.ants360.yicamera.international)<br>[Yi iot](https://play.google.com/store/apps/details?id=com.yunyi.smartcamera) | TNPCHNA TNPCHNB TNPUSAC TNPUSAM TNPXGAC | binary [^1] |
+| [Xiaomi Home](https://play.google.com/store/apps/details?id=com.xiaomi.smarthome) | *unknown* | JSON [^0] |
+| [Kami Home](https://play.google.com/store/apps/details?id=com.yitechnology.kamihome)<br>[Yi Home](https://play.google.com/store/apps/details?id=com.ants360.yicamera.international)<br>[Yi iot](https://play.google.com/store/apps/details?id=com.yunyi.smartcamera) | TNPCHNA TNPCHNB TNPUSAC TNPUSAM TNPXGAC | binary [^1] |
 | [Tuya - Smart Life,Smart Living](https://play.google.com/store/apps/details?id=com.tuya.smart) | TUYASA | binary (Tuya SDK) [^2] |
 | [365Cam](https://play.google.com/store/apps/details?id=shix.cam365.camera)<br>[CY365](https://play.google.com/store/apps/details?id=shix.cy.camera)<br>[Goodcam](https://play.google.com/store/apps/details?id=shix.good.cam)<br>[HDWifiCamPro](https://play.google.com/store/apps/details?id=com.shix.qhipc)<br>[VI365](https://play.google.com/store/apps/details?id=shix.vi.camera)<br>[X-IOT CAM](https://play.google.com/store/apps/details?id=shix.go.zoom) | DBG DGB DGO DGOA DGOC DGOE NMSA | JSON (SHIX) [^3] |
 | [Eye4](https://play.google.com/store/apps/details?id=vstc.vscam.client)<br>[O-KAM Pro](https://play.google.com/store/apps/details?id=com.okampro.oksmart)<br>[Veesky](https://play.google.com/store/apps/details?id=object.pnpcam3.client) | EEEE VSTA VSTB VSTC VSTD VSTF VSTJ | CGI calls [^4] |
@@ -265,6 +268,7 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 | [minicam](https://play.google.com/store/apps/details?id=com.rtp2p.minicam) | CAM888 | CGI calls [^12] |
 | [App2Cam Plus](https://play.google.com/store/apps/details?id=com.abus.app2camplus.gcm) | CGAG CMAG CTAI WGAG | binary (Jsw SDK) [^13] |
 
+[^0]: Each message starts with a 4 byte command ID. The initial authorization messages (command ID `0x100` and `0x101`) contain plain JSON data. Other messages contain ChaCha20-encoded data: first 8 bytes nonce, then the ciphertext. The encryption key is negotiated in the authorization phase. The decrypted plaintext again starts with a 4 byte command ID, followed by JSON data.
 [^1]: The device-side implementation of the protocol is [available on the web](https://github.com/frankzhangshcn/p2p_tnp/blob/191f2e7c4841ab6113ad6fa4b80affbd4cad556c/p2p_tnp.c#L7308). This doesn’t appear to be reverse engineered, it’s rather the source code of the real thing complete with Chinese comments. No idea who or why published this, I found it linked by the people who develop own changes to the stock camera firmware. The extensive `tnp_eventlist_msg_s` structure being sent and received here supports a large number of commands.
 [^2]: Each message is preceded by a 16 byte header: `78 56 34 12` magic bytes, request ID, command ID, payload size. This is a very basic interface exposing merely 10 commands, most of which are requesting device information while the rest control video/audio playback. As Tuya SDK also communicates with devices by means other than PPPP, more advanced functionality is probably exposed elsewhere.
 [^3]: Messages are preceded by an 8 byte binary header: `06 0A A0 80` magic bytes, four bytes payload size (there is [a JavaScript-based implementation](https://github.com/datenstau/A9_PPPP/blob/c29d1eaccd11794a4cc022cf4ca90b7352920bc1/pppp.js#L234)). The SHIX JSON format is a translation of [this web API interface](https://wiki.instar.com/dl/Developer/INSTAR_CGI_MJPEG_Chipset_English.pdf): `/check_user.cgi?user=admin&pwd=pass` becomes `{"pro": "check_user", "cmd": 100, "user": "admin", "pwd": "pass"}`. The `pro` and `cmd` fields are redundant, representing a command both as a string and as a number.
