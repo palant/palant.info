@@ -1,10 +1,11 @@
 ---
-title: "An overview of the PPPP protocol for IoT cameras"
-date: 2025-11-05T16:11:36+0100
-description:
 categories:
 - security
 - IoT
+date: 2025-11-05T16:11:36+0100
+description: null
+lastmod: '2025-11-07 03:30:43'
+title: An overview of the PPPP protocol for IoT cameras
 ---
 
 My [previous article on IoT “P2P” cameras](/2025/09/08/a-look-at-a-p2p-camera-lookcam-app/) couldn’t go into much detail on the PPPP protocol. However, there is already lots of security research on and around that protocol, and I have a feeling that there is way more to come. There are pieces of information on the protocol scattered throughout the web, yet every one approaching from a very specific narrow angle. This is my attempt at creating an overview so that other people don’t need to start from scratch.
