@@ -1,11 +1,11 @@
 ---
+title: "An overview of the PPPP protocol for IoT cameras"
+date: 2025-11-05T16:11:36+0100
+lastmod: '2025-11-07T16:13:37+0100'
+description:
 categories:
 - security
 - IoT
-date: 2025-11-05T16:11:36+0100
-description: null
-lastmod: '2025-11-07 11:14:37'
-title: An overview of the PPPP protocol for IoT cameras
 ---
 
 My [previous article on IoT “P2P” cameras](/2025/09/08/a-look-at-a-p2p-camera-lookcam-app/) couldn’t go into much detail on the PPPP protocol. However, there is already lots of security research on and around that protocol, and I have a feeling that there is way more to come. There are pieces of information on the protocol scattered throughout the web, yet every one approaching from a very specific narrow angle. This is my attempt at creating an overview so that other people don’t need to start from scratch.
@@ -15,6 +15,8 @@ While the protocol can in principle be used by any kind of device, so far I’ve
 There are other protocols with similar approaches being used for the same goal. One is used by ThroughTek’s Kalay Platform which [has the interesting string “Charlie is the designer of P2P!!” in its codebase](https://www.thirtythreeforty.net/posts/2020/05/hacking-reolink-cameras-for-fun-and-profit/#the-charlie-scrambler) (32 bytes long, seems to be used as “encryption” key for some non-critical functionality). I recognize both the name and the “handwriting,” it looks like PPPP protocol designer found a new home here. Yet PPPP seems to be still more popular than the competition, thanks to it being the protocol of choice for cheap low-end cameras.
 
 *Disclaimer*: Most of the information below has been acquired by analyzing public information as well as reverse engineering applications and firmware, not by observing live systems. Consequently, there can be misinterpretations.
+
+**Update** (2025-11-07): Added App2Cam Plus app to the table, representing a number of apps which all seem to be belong to ABUS Smartvest Wireless Alarm System.
 
 {{< toc >}}
 
@@ -261,6 +263,7 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 | [LookCam](https://play.google.com/store/apps/details?id=com.view.ppcs) | BHCC FHBB GHBB | JSON [^10] |
 | [HomeEye](https://play.google.com/store/apps/details?id=shix.homeeye.camera)<br>[LookCamPro](https://play.google.com/store/apps/details?id=com.shix.lookcam)<br>[StarEye](https://play.google.com/store/apps/details?id=shix.stareye.camera) | AYS AYSA TUT | JSON (SHIX) [^11] |
 | [minicam](https://play.google.com/store/apps/details?id=com.rtp2p.minicam) | CAM888 | CGI calls [^12] |
+| [App2Cam Plus](https://play.google.com/store/apps/details?id=com.abus.app2camplus.gcm) | CGAG CMAG CTAI WGAG | binary (Jsw SDK) [^13] |
 
 [^1]: The device-side implementation of the protocol is [available on the web](https://github.com/frankzhangshcn/p2p_tnp/blob/191f2e7c4841ab6113ad6fa4b80affbd4cad556c/p2p_tnp.c#L7308). This doesn’t appear to be reverse engineered, it’s rather the source code of the real thing complete with Chinese comments. No idea who or why published this, I found it linked by the people who develop own changes to the stock camera firmware. The extensive `tnp_eventlist_msg_s` structure being sent and received here supports a large number of commands.
 [^2]: Each message is preceded by a 16 byte header: `78 56 34 12` magic bytes, request ID, command ID, payload size. This is a very basic interface exposing merely 10 commands, most of which are requesting device information while the rest control video/audio playback. As Tuya SDK also communicates with devices by means other than PPPP, more advanced functionality is probably exposed elsewhere.
@@ -274,3 +277,4 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 [^10]: Each message is wrapped in binary data: a prefix starting with `A0 AF AF AF` before it, the bytes `F4 F3 F2 F1` after. For some reason the prefix length seems to be different depending on whether the message is sent to the device (26 bytes) or received from it (25 bytes). I don’t know what most of it is yet everything but the payload length at the end of the prefix seems irrelevant. [This Warwick University paper](https://www.dcs.warwick.ac.uk/~fenghao/files/hidden_camera.pdf) has some info on the JSON payload. It’s particularly notable that the password sent along with each command isn’t actually being checked.
 [^11]: LookCamPro & Co. share significant amounts of code with the SHIX apps like 365Cam, they implement basically the same application-level protocol. There are differences in the supported commands however. It’s difficult to say how significant these differences are because all apps contain significant amounts of dead code, defining commands that are never used and probably not even supported.
 [^12]: The minicam app seems to use almost the same protocol as VStarcam apps like O-KAM Pro. It handles other networks however. Also, a few of the commands seem different from the ones used by O-KAM Pro, though it is hard to tell how significant these incompatibilities really are.
+[^13]: Each message is preceded by a 4 bytes header: 3 bytes payload size, 1 byte I/O type (1 for AUTH, 2 for VIDEO, 3 for AUDIO, 4 for IOCTRL, 5 for FILE). The payload starts with a type-specific header. If I read the code correctly, the first 16 bytes of the payload are encrypted with AES-ECB (unpadded) while the rest is sent unchanged. There is an “xor byte” in the payload header which is changed with every request seemingly to avoid generating identical ciphertexts. Payloads smaller than 16 bytes are not encrypted. I cannot see any initialization of the encryption key beyond filling it with 32 zero bytes, which would mean that this entire mechanism is merely obfuscation.
