@@ -4,7 +4,7 @@ categories:
 - IoT
 date: 2025-11-05T16:11:36+0100
 description: null
-lastmod: '2025-11-07 03:38:45'
+lastmod: '2025-11-07 11:14:37'
 title: An overview of the PPPP protocol for IoT cameras
 ---
 
