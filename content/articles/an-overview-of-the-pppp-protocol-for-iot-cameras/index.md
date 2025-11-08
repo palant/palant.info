@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-11-07T20:42:37+0100'
+lastmod: '2025-11-08T02:03:37+0100'
 description:
 categories:
 - security
@@ -256,7 +256,7 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 | [Xiaomi Home](https://play.google.com/store/apps/details?id=com.xiaomi.smarthome) | XMSYSGB | JSON (MISS) [^0] |
 | [Kami Home](https://play.google.com/store/apps/details?id=com.yitechnology.kamihome)<br>[Yi Home](https://play.google.com/store/apps/details?id=com.ants360.yicamera.international)<br>[Yi iot](https://play.google.com/store/apps/details?id=com.yunyi.smartcamera) | TNPCHNA TNPCHNB TNPUSAC TNPUSAM TNPXGAC | binary [^1] |
 | [Tuya - Smart Life,Smart Living](https://play.google.com/store/apps/details?id=com.tuya.smart) | TUYASA | binary (Tuya SDK) [^2] |
-| [365Cam](https://play.google.com/store/apps/details?id=shix.cam365.camera)<br>[CY365](https://play.google.com/store/apps/details?id=shix.cy.camera)<br>[Goodcam](https://play.google.com/store/apps/details?id=shix.good.cam)<br>[HDWifiCamPro](https://play.google.com/store/apps/details?id=com.shix.qhipc)<br>[VI365](https://play.google.com/store/apps/details?id=shix.vi.camera)<br>[X-IOT CAM](https://play.google.com/store/apps/details?id=shix.go.zoom) | DBG DGB DGO DGOA DGOC DGOE NMSA | JSON (SHIX) [^3] |
+| [365Cam](https://play.google.com/store/apps/details?id=shix.cam365.camera)<br>[CY365](https://play.google.com/store/apps/details?id=shix.cy.camera)<br>[Goodcam](https://play.google.com/store/apps/details?id=shix.good.cam)<br>[HDWifiCamPro](https://play.google.com/store/apps/details?id=com.shix.qhipc)<br>[PIX-LINK CAM](https://play.google.com/store/apps/details?id=shix.pixlink.camera)<br>[VI365](https://play.google.com/store/apps/details?id=shix.vi.camera)<br>[X-IOT CAM](https://play.google.com/store/apps/details?id=shix.go.zoom) | DBG DGB DGO DGOA DGOC DGOE NMSA PIXA PIZ | JSON (SHIX) [^3] |
 | [Eye4](https://play.google.com/store/apps/details?id=vstc.vscam.client)<br>[O-KAM Pro](https://play.google.com/store/apps/details?id=com.okampro.oksmart)<br>[Veesky](https://play.google.com/store/apps/details?id=object.pnpcam3.client) | EEEE VSTA VSTB VSTC VSTD VSTF VSTJ | CGI calls [^4] |
 | [CamHi](https://play.google.com/store/apps/details?id=com.hichip)<br>[CamHipro](https://play.google.com/store/apps/details?id=com.hichip.campro) | AAFF EEEE MMMM NNNN PPPP SSAA SSAH SSAK SSAT SSSS TTTT | binary [^5] |
 | [CloudEdge](https://play.google.com/store/apps/details?id=com.cloudedge.smarteye)<br>[ieGeek Cam](https://play.google.com/store/apps/details?id=com.iegeekCam.cam) | ECIPCM | binary (Meari SDK) [^6] |
