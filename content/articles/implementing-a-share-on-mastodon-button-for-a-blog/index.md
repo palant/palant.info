@@ -7,7 +7,7 @@ description: Normally, adding a share button to a blog is a trivial task. In cas
   of Mastodon, it is complicated by the fact that you need to choose your home instance.
   And it is further complicated if you decide to support further Fediverse applications
   beyond Mastodon.
-lastmod: '2025-01-12T00:44:45+0100'
+lastmod: '2025-12-04 19:21:54'
 title: Implementing a “Share on Mastodon” button for a blog
 ---
 
