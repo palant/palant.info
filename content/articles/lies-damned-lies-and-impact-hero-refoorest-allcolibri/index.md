@@ -4,13 +4,14 @@ categories:
 - privacy
 - add-ons
 date: 2024-10-01T13:59:48+0200
-description: I found 17 extensions using the Impact Hero SDK in Chrome Web Store.
+description: I found 17 extensions using the Impact Bro SDK in Chrome Web Store.
   These mislead users about their functionality, enable it without real consent, then
   lie about its ecological impact. And there is more shady stuff going on.
 images:
 - /2024/10/01/lies-damned-lies-and-impact-hero-refoorest-allcolibri/privacy_policy2.png
 lastmod: '2025-10-13 12:10:29'
-title: Lies, damned lies, and Impact Hero (refoorest, allcolibri)
+slug: lies-damned-lies-and-impact-hero-refoorest-allcolibri
+title: Lies, damned lies, and Colibri Hero (refoorest, allcolibri)
 ---
 
 *Transparency note*: According to Colibri Hero, they attempted to establish a business relationship with eyeo, a company that I co-founded. I haven’t been in an active role at eyeo since 2018, and I left the company entirely in 2021. Colibri Hero was only founded in 2021. My investigation here was prompted by a [blog comment](/2024/07/15/how-insecure-is-avast-secure-browser/#c000004).
@@ -23,15 +24,17 @@ One of the company’s products is the refoorest browser extension, promising to
 
 > Plantation financed by our partners
 
-So the users merely need to have the extension installed, indicating that they want to make a positive impact. And since the concept was so successful, Colibri Hero recently turned it into an SDK called Impact Hero (also known as Impact Bro), so that it could be added to other browser extensions.
+So the users merely need to have the extension installed, indicating that they want to make a positive impact. And since the concept was so successful, Colibri Hero recently turned it into an SDK called Impact Bro, so that it could be added to other browser extensions.
 
-What the company carefully avoids mentioning: its 56,000 “partners” aren’t actually aware that they are financing tree planting. The refoorest extension and extensions using the Impact Hero SDK automatically open so-called affiliate links in the browser, making certain that the vendor pays them an affiliate commission for whatever purchases the users make. As the extensions do nothing to lead users to a vendor’s offers, this functionality likely counts as [affiliate fraud](https://www.investopedia.com/terms/a/affiliate-fraud.asp).
+What the company carefully avoids mentioning: its 56,000 “partners” aren’t actually aware that they are financing tree planting. The refoorest extension and extensions using the Impact Bro SDK automatically open so-called affiliate links in the browser, making certain that the vendor pays them an affiliate commission for whatever purchases the users make. As the extensions do nothing to lead users to a vendor’s offers, this functionality likely counts as [affiliate fraud](https://www.investopedia.com/terms/a/affiliate-fraud.asp).
 
 The refoorest extension also makes very clear promises to its users: planting a tree for each extension installation, two trees for an extension review as well as a tree for each vendor visit. Clearly, this is not actually happening according to the numbers published by Colibri Hero themselves.
 
-What does happen is careless handling of users’ data despite the “100% Data privacy guaranteed” promise. In fact, the company didn’t even bother to produce a proper privacy policy. There are various shady practices including a general lack of transparency, with the financials never disclosed. As proof of trees being planted the company links to a “certificate” which is … surprise! … its own website.
+What does happen is careless handling of users’ data despite the “100% Data privacy guaranteed” promise. In fact, the company didn’t even bother to produce a proper privacy policy. There are various shady practices including a general lack of transparency, with the finances never disclosed. As proof of trees being planted the company links to a “certificate” which is … surprise! … its own website.
 
 Mind you, I’m not saying that the company is just pocketing the money it receives via affiliate commissions. Maybe they are really paying Eden Reforestation (not actually called that any more) to plant trees and the numbers they publish are accurate. As a user, this is quite a leap of faith with a company that shows little commitment to facts and transparency however.
+
+**Edit** (2025-12-05): This article was originally referring to the Impact Bro SDK by its internal and original name Impact Hero. As it turns out, the Impact Hero trademark is owned by the unrelated German company Impact Hero GmbH, a fact that Colibri Hero must have been aware of when they set up `impacthero.co` domain while `impacthero.com` already existed. Regardless of that, according to Impact Hero GmbH they had to ask Colibri Hero to stop infringing their trademark, which prompted the rename of the SDK into Impact Bro.
 
 {{< toc >}}
 
@@ -77,9 +80,9 @@ One reason is: the extension incentivizes leaving reviews. This is what the exte
 
 Review us and we will plant two trees! Give us your email address and we will plant another two trees! Invite fifteen friends and we will plant a whole forest for you!
 
-## The newcomer: Impact Hero
+## The newcomer: Impact Bro
 
-Given the success of refoorest, it’s unsurprising that the company is looking for ways to expand this line of business. What they recently came up with is the Impact Hero SDK, or Impact Bro as its website calls it (yes, really). It adds an “eco-friendly mode” to existing extensions. To explain it with the words of the Impact Bros (highlighting of original):
+Given the success of refoorest, it’s unsurprising that the company is looking for ways to expand this line of business. What they recently came up with is the Impact Bro SDK (yes, it’s really the official name). It adds an “eco-friendly mode” to existing extensions. To explain it with the words of the Impact Bros (highlighting of original):
 
 > With our eco-friendly mode, **you can effortlessly plant trees and offset carbon emissions at no cost as you browse the web.** This allows us to improve the environmental friendliness of our extension.
 
@@ -95,7 +98,7 @@ Now this is quite unexpected functionality. Yet [Chrome Web Store program polici
 
 > All functionalities of extensions should be clearly disclosed to the user, with no surprises.
 
-Good that the Impact Hero SDK includes a consent screen, right? Here is what it looks like in the Chat GPT extension:
+Good that the Impact Bro SDK includes a consent screen, right? Here is what it looks like in the Chat GPT extension:
 
 {{< img src="consent_screen.png" width="369" alt="Screenshot of a pop-up with the title: “Update! Eco-friendly mode, Chat GPT.” The text says “Help make the world greener as you browse. Just allow additional permissions to unlock a better future.” There are buttons labeled “Allow to unlock” and “Deny.”" />}}
 
@@ -107,7 +110,7 @@ There is one more area that Colibri Hero focuses on to improve its revenue: thei
 
 ## Affected extensions
 
-In addition to refoorest I could identify two extensions bought by Colibri Hero from their original author as well as 14 extensions which apparently added Impact Hero SDK expecting their share of the revenue. That’s Chrome Web Store only, the refoorest extension at the very least also exists in various other extension stores, even though it has been removed from Firefox Add-ons just recently.
+In addition to refoorest I could identify two extensions bought by Colibri Hero from their original author as well as 14 extensions which apparently added Impact Bro SDK expecting their share of the revenue. That’s Chrome Web Store only, the refoorest extension at the very least also exists in various other extension stores, even though it has been removed from Firefox Add-ons just recently.
 
 Here is the list of extensions I found and their current Chrome Web Store stats:
 
@@ -139,11 +142,11 @@ Here is the list of extensions I found and their current Chrome Web Store stats:
 
 **Update** (2024-10-01): Opera already removed refoorest from their add-on store.
 
-**Update** (2024-12-12): By now, Local Video-Audio Player, GPT Chat and Online-Offline MS Paint Tool have been removed from Chrome Web Store, either by Google or their respective authors. While most other extensions removed the Impact Hero SDK, CoPilot™ Extensions For Chrome, AI Shop Buddy and Chat GPT extensions keep using it seemingly unchanged. I could not see any relevant changes in the functionality of the refoorest extension, it’s still misleading users in exactly the same way while being marked as “featured” in Chrome Web Store.
+**Update** (2024-12-12): By now, Local Video-Audio Player, GPT Chat and Online-Offline MS Paint Tool have been removed from Chrome Web Store, either by Google or their respective authors. While most other extensions removed the Impact Bro SDK, CoPilot™ Extensions For Chrome, AI Shop Buddy and Chat GPT extensions keep using it seemingly unchanged. I could not see any relevant changes in the functionality of the refoorest extension, it’s still misleading users in exactly the same way while being marked as “featured” in Chrome Web Store.
 
 **Update** (2024-12-16): Added Utorrent For Chrome, Instagram Photo Downloader, and Photo Collage Maker for Chrome extensions to the list, I haven’t found these earlier.
 
-**Update** (2024-12-17): I previously overlooked that while the Chat GPT still contains large parts of the Impact Hero SDK, this code no longer seems active. On the other hand, the ChatGPT 4 extension now contains different but very similar affiliate fraud functionality called Support Us Mode. There are strong indicators that this is a new version of the Impact Hero SDK with the visible ties to Colibri Hero removed. Other extensions with the same functionality are Youtube Adblocker Adblock For Youtube™ YouApp, Desktop App for WhatsApp™ WEB and ChatGPT App, I added them to the list.
+**Update** (2024-12-17): I previously overlooked that while the Chat GPT still contains large parts of the Impact Bro SDK, this code no longer seems active. On the other hand, the ChatGPT 4 extension now contains different but very similar affiliate fraud functionality called Support Us Mode. There are strong indicators that this is a new version of the Impact Bro SDK with the visible ties to Colibri Hero removed. Other extensions with the same functionality are Youtube Adblocker Adblock For Youtube™ YouApp, Desktop App for WhatsApp™ WEB and ChatGPT App, I added them to the list.
 
 ## But are they actually planting trees?
 
@@ -194,7 +197,7 @@ Refoorest website promises:
 
 > 100% Data privacy guaranteed
 
-The Impact Hero SDK explainer promises:
+The Impact Bro SDK explainer promises:
 
 > This new feature does not retain any information or data, ensuring 100% compliance with GDPR laws.
 
@@ -218,7 +221,7 @@ Or data like the email address that the extension promises two trees for. Wait, 
 
 There is plenty of tracking going on all around refoorest, with data being collected by Cloudflare, Google, Facebook and others. This should normally be explained in the privacy policy. Well, not in this one.
 
-Granted, there is *less* tracking around the Impact Hero SDK, still a far shot away from the “not retain any information or data” promise however. The “eco-friendly mode” explainer loads Google Tag Manager. The affiliate networks that extensions trigger automatically collect data, likely creating profiles of your browsing. And finally: why is each request going through a Colibri Hero website before redirecting to the affiliate network if no data is being collected there?
+Granted, there is *less* tracking around the Impact Bro SDK, still a far shot away from the “not retain any information or data” promise however. The “eco-friendly mode” explainer loads Google Tag Manager. The affiliate networks that extensions trigger automatically collect data, likely creating profiles of your browsing. And finally: why is each request going through a Colibri Hero website before redirecting to the affiliate network if no data is being collected there?
 
 ## Happy users
 
@@ -266,7 +269,7 @@ We’ve seen that Colibri Hero is systematically misleading extension users abou
 
 This is especially damning in case of the refoorest extension where users are being incentivized by a number of trees supposedly planted as a result of their actions. At no point does Colibri Hero disclose that this number is purely virtual, with the actual count of trees planted being far lower and depending on entirely different factors. Or rather no factors at all if their reported numbers are to be trusted, with the count of planted trees always increasing at a constant rate.
 
-For the Impact Hero SDK this misleading communication is paired with clearly insufficient user consent. Most extensions don’t ask for user consent at all, and those that do aren’t allowing an informed decision. The consent screen is merely a pretense to trick the users into granting extended permissions.
+For the Impact Bro SDK this misleading communication is paired with clearly insufficient user consent. Most extensions don’t ask for user consent at all, and those that do aren’t allowing an informed decision. The consent screen is merely a pretense to trick the users into granting extended permissions.
 
 This by itself is already in gross violation of the Chrome Web Store policies and warrants a takedown action. Other add-on stores have similar rules, and Mozilla in fact already removed the refoorest extension prior to my investigation.
 
