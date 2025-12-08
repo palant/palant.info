@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-11-17T14:53:37+0100'
+lastmod: '2025-12-08T22:15:37+0100'
 description:
 categories:
 - security
@@ -22,7 +22,7 @@ There are other protocols with similar approaches being used for the same goal. 
 
 **Update** (2025-11-17): Added eWeLink, Owltron, littlelf and ZUMIMALL apps to the table.
 
-**Update** (2025-12-08): Aqara Home, OMGuard HD, SmartLife - Smart Living apps to the table.
+**Update** (2025-12-08): Added Aqara Home, OMGuard HD, SmartLife - Smart Living apps to the table.
 
 {{< toc >}}
 
