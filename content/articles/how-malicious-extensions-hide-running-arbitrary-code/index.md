@@ -8,7 +8,7 @@ date: 2023-06-02T12:11:33+0200
 description: Eight malicious extensions still remain in Chrome Web Store. These use
   some interesting tricks to keep running arbitrary code despite restrictions of Manifest
   V3.
-lastmod: '2023-06-04 17:46:14'
+lastmod: '2025-12-11 15:59:25'
 title: How malicious extensions hide running arbitrary code
 ---
 
