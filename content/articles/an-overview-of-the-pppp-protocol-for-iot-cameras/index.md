@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-12-08T22:15:37+0100'
+lastmod: '2025-12-15T00:36:37+0100'
 description:
 categories:
 - security
@@ -23,6 +23,8 @@ There are other protocols with similar approaches being used for the same goal. 
 **Update** (2025-11-17): Added eWeLink, Owltron, littlelf and ZUMIMALL apps to the table.
 
 **Update** (2025-12-08): Added Aqara Home, OMGuard HD, SmartLife - Smart Living apps to the table.
+
+**Update** (2025-12-15): Added eufy-original eufy Security, LOCKLY® apps to the table.
 
 {{< toc >}}
 
@@ -259,7 +261,7 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 |-------------|-------------------------|----------------------------|
 | [Xiaomi Home](https://play.google.com/store/apps/details?id=com.xiaomi.smarthome) | XMSYSGB | JSON (MISS) [^0] |
 | [Kami Home](https://play.google.com/store/apps/details?id=com.yitechnology.kamihome)<br>[Yi Home](https://play.google.com/store/apps/details?id=com.ants360.yicamera.international)<br>[Yi iot](https://play.google.com/store/apps/details?id=com.yunyi.smartcamera) | TNPCHNA TNPCHNB TNPUSAC TNPUSAM TNPXGAC | binary [^1] |
-| [littlelf smart](https://play.google.com/store/apps/details?id=com.littlelf.smarthome)<br>[Owltron](https://play.google.com/store/apps/details?id=com.aytarr.smarthome)<br>[SmartLife - Smart Living](https://play.google.com/store/apps/details?id=com.tuya.smartlife)<br>[Tuya - Smart Life,Smart Living](https://play.google.com/store/apps/details?id=com.tuya.smart) | TUYASA | binary (Thing SDK / Tuya SDK) [^2] |
+| [eufy-original eufy Security](https://play.google.com/store/apps/details?id=com.oceanwing.battery.cam)<br>[littlelf smart](https://play.google.com/store/apps/details?id=com.littlelf.smarthome)<br>[Owltron](https://play.google.com/store/apps/details?id=com.aytarr.smarthome)<br>[SmartLife - Smart Living](https://play.google.com/store/apps/details?id=com.tuya.smartlife)<br>[Tuya - Smart Life,Smart Living](https://play.google.com/store/apps/details?id=com.tuya.smart) | TUYASA | binary (Thing SDK / Tuya SDK) [^2] |
 | [365Cam](https://play.google.com/store/apps/details?id=shix.cam365.camera)<br>[CY365](https://play.google.com/store/apps/details?id=shix.cy.camera)<br>[Goodcam](https://play.google.com/store/apps/details?id=shix.good.cam)<br>[HDWifiCamPro](https://play.google.com/store/apps/details?id=com.shix.qhipc)<br>[PIX-LINK CAM](https://play.google.com/store/apps/details?id=shix.pixlink.camera)<br>[VI365](https://play.google.com/store/apps/details?id=shix.vi.camera)<br>[X-IOT CAM](https://play.google.com/store/apps/details?id=shix.go.zoom) | DBG DGB DGO DGOA DGOC DGOE NMSA PIXA PIZ | JSON (SHIX) [^3] |
 | [eWeLink - Smart Home](https://play.google.com/store/apps/details?id=com.coolkit) | EWLK | binary (iCareP2P) [^3.5] |
 | [Eye4](https://play.google.com/store/apps/details?id=vstc.vscam.client)<br>[O-KAM Pro](https://play.google.com/store/apps/details?id=com.okampro.oksmart)<br>[Veesky](https://play.google.com/store/apps/details?id=object.pnpcam3.client) | EEEE VSTA VSTB VSTC VSTD VSTF VSTJ | CGI calls [^4] |
@@ -273,6 +275,7 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 | [minicam](https://play.google.com/store/apps/details?id=com.rtp2p.minicam) | CAM888 | CGI calls [^12] |
 | [Aqara Home](https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome.play) | *unknown* | JSON [^12.5] |
 | [App2Cam Plus](https://play.google.com/store/apps/details?id=com.abus.app2camplus.gcm)<br>[OMGuard HD](https://play.google.com/store/apps/details?id=com.p2pcamera.app02hd) | CGAG CGYU CHXX CMAG CTAI WGAG | binary (Jsw SDK) [^13] |
+| [LOCKLY®](https://play.google.com/store/apps/details?id=com.lockly.smartlock) | LOCKLYV | binary (iCareP2P) [^14] |
 
 [^0]: Each message starts with a 4 byte command ID. The initial authorization messages (command ID `0x100` and `0x101`) contain plain JSON data. Other messages contain ChaCha20-encoded data: first 8 bytes nonce, then the ciphertext. The encryption key is negotiated in the authorization phase. The decrypted plaintext again starts with a [4 byte command ID](https://github.com/MiEcosystem/miot-plugin-sdk/blob/e4883f6f58528cdae9ef632a011ab11ad4b4d023/miot-sdk/service/miotcamera.js#L17), followed by JSON data. There is even some [Chinese documentation of this interface](https://iot.mi.com/new/doc/accesses/direct-access/extension-development/extension-functions/p2p) though it is rather underwhelming.
 [^1]: The device-side implementation of the protocol is [available on the web](https://github.com/frankzhangshcn/p2p_tnp/blob/191f2e7c4841ab6113ad6fa4b80affbd4cad556c/p2p_tnp.c#L7308). This doesn’t appear to be reverse engineered, it’s rather the source code of the real thing complete with Chinese comments. No idea who or why published this, I found it linked by the people who develop own changes to the stock camera firmware. The extensive `tnp_eventlist_msg_s` structure being sent and received here supports a large number of commands.
@@ -290,3 +293,4 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 [^12]: The minicam app seems to use almost the same protocol as VStarcam apps like O-KAM Pro. It handles other networks however. Also, a few of the commands seem different from the ones used by O-KAM Pro, though it is hard to tell how significant these incompatibilities really are.
 [^12.5]: The JSON data containing command parameters is preceded by a 16 bytes header containing command ID, payload length and two other values that are ignored other than being quoted verbatim in the response. Commands sent to the device always have even IDs, for the reponse the device increases the command ID by 1. The 14 exposed commands seem to be all dealing with audio/video streams and playback controls. Camera configuration must be done by other means.
 [^13]: Each message is preceded by a 4 bytes header: 3 bytes payload size, 1 byte I/O type (1 for AUTH, 2 for VIDEO, 3 for AUDIO, 4 for IOCTRL, 5 for FILE). The payload starts with a type-specific header. If I read the code correctly, the first 16 bytes of the payload are encrypted with AES-ECB (unpadded) while the rest is sent unchanged. There is an “xor byte” in the payload header which is changed with every request seemingly to avoid generating identical ciphertexts. Payloads smaller than 16 bytes are not encrypted. I cannot see any initialization of the encryption key beyond filling it with 32 zero bytes, which would mean that this entire mechanism is merely obfuscation.
+[^14]: The overall protocol seems identical to eWeLink. However, the smart locks are only supposed to respond to six commands, and the command IDs are different from the ones eWeLink uses.
