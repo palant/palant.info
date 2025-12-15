@@ -1,6 +1,6 @@
 ---
 title: "Unpacking VStarcam firmware for fun and profit"
-date: 2025-12-15T15:19:22Z
+date: 2025-12-15T15:19:22+0100
 description: VStarcam firmware comes in lots of varieties and occasional proprietary formats that binwalk cannot handle. This article documents the formats and unpacking methods.
 categories:
 - security
