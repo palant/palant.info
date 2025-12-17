@@ -1,13 +1,17 @@
 ---
-title: "BIScience: Collecting browsing history under false pretenses"
-date: 2025-01-13T13:57:04+0100
-description: "BIScience is a long-established data broker that owns multiple extensions in the Chrome Web Store (CWS) that collect clickstream data under false pretenses. They also provide a software development kit (SDK) to partner third-party extension developers to collect and sell clickstream data from users, again under false pretenses."
+author: Anonymous Researcher
 categories:
 - add-ons
 - privacy
 - google
+date: 2025-01-13T13:57:04+0100
+description: BIScience is a long-established data broker that owns multiple extensions
+  in the Chrome Web Store (CWS) that collect clickstream data under false pretenses.
+  They also provide a software development kit (SDK) to partner third-party extension
+  developers to collect and sell clickstream data from users, again under false pretenses.
+lastmod: '2025-12-17 16:56:32'
 original: false
-author: Anonymous Researcher
+title: 'BIScience: Collecting browsing history under false pretenses'
 ---
 
 * This is a guest post by a researcher who wants to remain anonymous. You can contact the author [via email](mailto:extension.agent604@passinbox.com).
