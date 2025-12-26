@@ -1,0 +1,8 @@
+{{- $opts := dict "displayMode" (eq .Type "block") }}
+{{- with try (transform.ToMath .Inner $opts)}}
+  {{- with .Err }}
+    {{- errorf "Unable to render mathematical markup at %s: %s" $.Position . }}
+  {{- else }}
+    {{- replaceRE "<span class=\"katex\">((.|\n)*)</span>" "$1" .Value | safeHTML }}
+  {{- end -}}
+{{- end -}}
