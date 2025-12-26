@@ -19,8 +19,3 @@ socials:
     icon: "github"
     title: "GitHub"
     weight: 5
-  - id: "stack-overflow"
-    url: "http://stackoverflow.com/users/785541/wladimir-palant?tab=answers"
-    icon: "stack-overflow"
-    title: "Stack Overflow"
-    weight: 6
