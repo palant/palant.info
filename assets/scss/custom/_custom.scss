@@ -413,3 +413,13 @@ article code
     }
   }
 }
+
+/* Chromium ignores mtable[columnalign] */
+mtd
+{
+  text-align: start;
+  &:first-child
+  {
+    text-align: end;
+  }
+}
