@@ -205,6 +205,8 @@ On the network level HLP2P is an oddity here. Despite trying hard to provide the
 
 The CS2 implementation of the protocol is the only one that bothers with encrypting data, though their approach is better described as obfuscation. When encryption is enabled, the function `P2P_Proprietary_Encrypt` is applied to all outgoing and the function `P2P_Proprietary_Decrypt` to all incoming messages. These functions take the encryption key (which is visible in the application code as an unobfuscated part of the init string) and mash it into four bytes. These four bytes are then used to select values from a static table that the bytes of the message should be XOR’ed with.
 
+**Update** (2026-01-05): I’ve published an [analysis of this encryption algorithm](/2026/01/05/analysis-of-pppp-encryption/) which comes to the conclusion that there are merely 540,672 effective keys and even fewer possible ciphertexts.
+
 There is at least one [public implementation of this “encryption”](https://github.com/datenstau/A9_PPPP/blob/c29d1eaccd11794a4cc022cf4ca90b7352920bc1/crypt.js) though this one chose to skip the “key mashing” part and simply took the resulting four bytes as its key. A number of articles mention having implemented this algorithm however, it’s not really complicated.
 
 The same obfuscation is used unconditionally for TCP traffic (TCP communication on port 443 as fallback). Here each message header contains two random bytes. The hex representation of these bytes is used as key to obfuscate message contents.
