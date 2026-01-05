@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-12-15T00:36:37+0100'
+lastmod: '2025-01-05T17:20:37+0100'
 description:
 categories:
 - security
@@ -15,16 +15,6 @@ While the protocol can in principle be used by any kind of device, so far I’ve
 There are other protocols with similar approaches being used for the same goal. One is used by ThroughTek’s Kalay Platform which [has the interesting string “Charlie is the designer of P2P!!” in its codebase](https://www.thirtythreeforty.net/posts/2020/05/hacking-reolink-cameras-for-fun-and-profit/#the-charlie-scrambler) (32 bytes long, seems to be used as “encryption” key for some non-critical functionality). I recognize both the name and the “handwriting,” it looks like PPPP protocol designer found a new home here. Yet PPPP seems to be still more popular than the competition, thanks to it being the protocol of choice for cheap low-end cameras.
 
 *Disclaimer*: Most of the information below has been acquired by analyzing public information as well as reverse engineering applications and firmware, not by observing live systems. Consequently, there can be misinterpretations.
-
-**Update** (2025-11-07): Added App2Cam Plus app to the table, representing a number of apps which all seem to be belong to ABUS Smartvest Wireless Alarm System.
-
-**Update** (2025-11-07): This article originally grouped Xiaomi Home together with Yi apps. This was wrong, Xiaomi uses a completely different protocol to communicate with their PPPP devices. A brief description of this protocol has been added.
-
-**Update** (2025-11-17): Added eWeLink, Owltron, littlelf and ZUMIMALL apps to the table.
-
-**Update** (2025-12-08): Added Aqara Home, OMGuard HD, SmartLife - Smart Living apps to the table.
-
-**Update** (2025-12-15): Added eufy-original eufy Security, LOCKLY® apps to the table.
 
 {{< toc >}}
 
@@ -93,7 +83,9 @@ The part before the colon decodes into:
 127.0.0.1,192.168.1.1,10.0.0.1,
 ```
 
-This is a typical list of three server IPs. No, the trailing comma isn’t a typo but required for correct parsing. Host names are occasionally used in init strings but this is uncommon. With CS2 Network generally distrusting DNS from the looks of it, they probably recommend vendors to sidestep it. The “secret” key behind the colon is optional and activates [encryption of transferred data](/2025/09/08/a-look-at-a-p2p-camera-lookcam-app/#the-encryption) which is better described as obfuscation. Unlike the server addresses, this part isn’t obfuscated.
+This is a typical list of three server IPs. No, the trailing comma isn’t a typo but required for correct parsing. Host names are occasionally used in init strings but this is uncommon. With CS2 Network generally distrusting DNS from the looks of it, they probably recommend vendors to sidestep it. The “secret” key behind the colon is optional and activates [encryption of transferred data](/2026/01/05/analysis-of-pppp-encryption/) which is better described as obfuscation. Unlike the server addresses, this part isn’t obfuscated.
+
+**Update** (2026-01-05): Link to encryption explainer above has been replaced to point to the newer and more detailed article.
 
 ### Yi Technology
 
@@ -256,6 +248,16 @@ This allows grouping the applications by their application-level protocol. Appli
 Fun fact: it is often *very* hard to know up front which protocol your device will speak. There is a [huge thread](https://community.home-assistant.io/t/popular-a9-mini-wi-fi-camera-the-ha-challenge/230108) with many spin-offs where people are attempting to reverse engineer A9 Mini cameras so that these can be accessed without an app. This effort is being massively complicated by the fact that all these cameras look basically the same, yet depending on the camera one out of at least four extremely different protocols could be used: HDWifiCamPro variant of SHIX JSON, YsxLite variant of iLnk binary, JXLCAM variant of CGI calls, or some protocol I don’t know because it isn’t based on PPPP.
 
 The following is a list of PPPP-based applications I’ve identified so far, at least the ones with noteworthy user numbers. Mind you, these numbers aren’t necessarily indicative of the number of PPPP devices – some applications listed only use PPPP for some devices, likely using other protocols for most of their supported devices (particularly the ones that aren’t cameras). I try to provide a brief overview of the application-level protocol in the footnotes. *Disclaimer*: These applications tend to support a huge number of device prefixes in theory, so I mostly chose the “typical” ones based on which ones appear in YouTube videos or GitHub discussions.
+
+**Update** (2025-11-07): Added App2Cam Plus app to the table, representing a number of apps which all seem to be belong to ABUS Smartvest Wireless Alarm System.
+
+**Update** (2025-11-07): This article originally grouped Xiaomi Home together with Yi apps. This was wrong, Xiaomi uses a completely different protocol to communicate with their PPPP devices. A brief description of this protocol has been added.
+
+**Update** (2025-11-17): Added eWeLink, Owltron, littlelf and ZUMIMALL apps to the table.
+
+**Update** (2025-12-08): Added Aqara Home, OMGuard HD, SmartLife - Smart Living apps to the table.
+
+**Update** (2025-12-15): Added eufy-original eufy Security, LOCKLY® apps to the table.
 
 | Application | Typical device prefixes | Application-level protocol |
 |-------------|-------------------------|----------------------------|
