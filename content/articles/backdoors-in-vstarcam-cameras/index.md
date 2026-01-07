@@ -235,6 +235,14 @@ And finally, simply guessing device IDs is still possible. With only 5 million p
 
 Let’s not forget the elephant in the room however: VStarcam themselves know all the device IDs of course. Not just that, they know which devices are active and where. With a password they can access the cameras of interest to them (or their government) anytime.
 
+## Coordinated disclosure attempt
+
+Given the intentional nature of these issues, I was unsure how to deal with this. I mean, what’s the point of reporting vulnerabilities to VStarcam that they are clearly aware of? In the end I decided to give them a chance to address the issues before they become public knowledge.
+
+However, all I found was VStarcam boasting about their ISO 27001:2022 compliance. My understanding is that this requires them to have a dedicated person responsible for vulnerability management, but they are not obliged to list any security contact that can be reached from outside the company – and so they don’t. I ended up emailing all company addresses I could find, asking whether there is any way to report security issues to them.
+
+I haven’t received any response, an experience that in my understanding other people already made with VStarcam. So I went with my initial publication schedule rather than waiting 90 days as I would normally do.
+
 ## Recommendations
 
 Whatever motives VStarcam had to backdoor their cameras, the consequence for the customers is: these cameras cannot be trusted. Their access protection should be considered compromised. Even with firmware versions shown as green on my map, there is no guarantee that I haven’t missed something or that these will still be green after the next update.
