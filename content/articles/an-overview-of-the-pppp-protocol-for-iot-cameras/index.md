@@ -97,7 +97,7 @@ I’ve removed the encryption key from the init string because this fork doesn�
 
 Paul Marrapese’s [Wireshark Dissector](https://github.com/pmarrapese/iot/tree/master/p2p/dissector) appears to be woefully outdated with regards to the Yi Technology fork, the differences introduced here are actually quite extensive. The `MSG_NOTICE_TO_EX` message is particularly worth noting, it allows sending a JSON payload to the device that will trigger various commands. Judging by its [“fancy” authentication mechanism](https://luke-m.xyz/camera/p3.md#msg-notice-to-ex-message) this message is meant to be sent by Yi servers only. Before you get too excited: Yi firmware doesn’t seem to actually parse the JSON payload, it merely extracts the `command` value via substring matching and ignores the rest.
 
-This fork also introduced a V2 message header variant that starts with `F2` magic instead of `F1`. While the only message actually sent with this message header seems to be `MSG_DEV_WAKEUP_REQ`, the device will allow any message to start with it. The V2 message header adds 24 bytes to the original 4 byte message header, the message header is then:
+This fork also introduced a V2 message header variant that starts with `F2` magic byte instead of `F1`. While the only message actually sent with this message header seems to be `MSG_DEV_WAKEUP_REQ`, the device will allow any message to start with it. The V2 message header adds 24 bytes to the original 4 byte message header, the message header is then:
 
 * Magic number (1 byte, `F2`)
 * Message type (1 byte)
