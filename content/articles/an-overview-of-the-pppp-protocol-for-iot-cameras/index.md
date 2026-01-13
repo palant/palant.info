@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-01-08T19:10:37+0100'
+lastmod: '2025-01-12T21:35:37+0100'
 description:
 categories:
 - security
@@ -85,23 +85,100 @@ The part before the colon decodes into:
 
 This is a typical list of three server IPs. No, the trailing comma isn’t a typo but required for correct parsing. Host names are occasionally used in init strings but this is uncommon. With CS2 Network generally distrusting DNS from the looks of it, they probably recommend vendors to sidestep it. The “secret” key behind the colon is optional and activates [encryption of transferred data](/2026/01/05/analysis-of-pppp-encryption/) which is better described as obfuscation. Unlike the server addresses, this part isn’t obfuscated.
 
-**Update** (2026-01-05): Link to encryption explainer above has been replaced to point to the newer and more detailed article.
-
 ### Yi Technology
 
-The Xiaomi spinoff Yi Technology appears to have licensed the code of the CS2 Network implementation. They made some moderate changes to it but it is still very similar to the original. For example, they still use the same code to decode init strings, merely with a different lookup table. Consequently, same init string as above would look slightly differently here:
+The Xiaomi spinoff Yi Technology appears to have licensed the code of the CS2 Network implementation. It still uses much of the code of the original, such as the function decoding init strings. The lookup table is different here however, so that the same init string as above would look slightly differently:
 
 ```
-LZERHWKWHUEQKOFUOREPNWERHLDLDYFSGUFOJXIXJMASBXANOTHRAFMXNXBSAM:SECRETKEY
+LZERHWKWHUEQKOFUOREPNWERHLDLDYFSGUFOJXIXJMASBXANOTHRAFMXNXBSAM
 ```
 
-As can be seen from Paul Marrapese’s [Wireshark Dissector](https://github.com/pmarrapese/iot/tree/master/p2p/dissector), the Yi Technology fork added a bunch of custom protocol messages and extended two messages presumably to provide forward compatibility. The latter is a rather unusual step for the PPPP ecosystem where the dominant approach seems to be “devices and clients connecting to the same network always use the same version of the client library which is frozen for all eternity.”
+I’ve removed the encryption key from the init string because this fork doesn’t seem to support any kind of encryption on the protocol level. On the application level AES encryption is being applied to audio and video streams, all the auxiliary communication is completely unencrypted however.
 
-There is another notable difference: this PPPP implementation doesn’t contain any encryption functionality. There seems to be some AES encryption being performed at the application layer (which is the proper way to do it), I didn’t look too closely however.
+Paul Marrapese’s [Wireshark Dissector](https://github.com/pmarrapese/iot/tree/master/p2p/dissector) appears to be woefully outdated with regards to the Yi Technology fork, the differences introduced here are actually quite extensive. The `MSG_NOTICE_TO_EX` message is particularly worth noting, it allows sending a JSON payload to the device that will trigger various commands. Judging by its [“fancy” authentication mechanism](https://luke-m.xyz/camera/p3.md#msg-notice-to-ex-message) this message is meant to be sent by Yi servers only. Before you get too excited: Yi firmware doesn’t seem to actually parse the JSON payload, it merely extracts the `command` value via substring matching and ignores the rest.
+
+This fork also introduced a V2 message header variant that starts with `F2` magic instead of `F1`. While the only message actually sent with this message header seems to be `MSG_DEV_WAKEUP_REQ`, the device will allow any message to start with it. The V2 message header adds 24 bytes to the original 4 byte message header, the message header is then:
+
+* Magic number (1 byte, `F2`)
+* Message type (1 byte)
+* Payload size (2 bytes)
+* 0 (1 byte)
+* Reserved (3 bytes)
+* Device prefix (8 bytes)
+* Device serial number (4 bytes)
+* HMAC-SHA1 signature of the first 20 header bytes (truncated to 8 bytes)
+
+Unless I am totally mistaken, the HMAC-SHA1 key used to sign this header is `tnp_license` which is a six letter string calculated by `APILicenseCalculate` function in the CS2 implementation. While the Yi implementation of the library no longer seems to expose this functionality, I have to assume that the same algorithm is being used here, merely with a different table which should be possible to recover from a few known license values. Not that it really matters: at least the firmware I saw simply ignored all the “new” stuff in the header.
+
+Note: the same signing approach (and usually the same signing key) seems to be used for various messages such as `MSG_PUNCH_TO_EX`. While the signature is being verified here, it’s still possible to send the “old and busted” `MSG_PUNCH_TO` message (same message type, smaller payload size) instead and skip the signing. The approach used to sign `MSG_NOTICE_TO_EX` message is different, and this code seems to use a key which can actually be considered a secret.
+
+Altogether, the messages differing from the CS2 implementation seem to be:
+
+| Message | Message type | Payload size |
+|---------|--------------|---------|
+| MSG_HELLO | 00 | 0 or 24 |
+| MSG_P2P_SERVER_REQ | 04 | 88 |
+| MSG_SESSION_RESPONSE | 06 | 4 |
+| MSG_DEV_LGN_PROXY | 10 | 128 + n<br>n is uint8 at offset 124 |
+| MSG_DEV_LGN_PROXY_ACK | 11 | 20 |
+| MSG_DEV_LGN_SIGN | 14 | 104 |
+| MSG_DEV_LGN_SIGN_ACK | 15 | 4 |
+| MSG_DEV_ONLINE_REQ | 18 | 20 |
+| MSG_DEV_ONLINE_REQ_ACK | 19 | 8 |
+| MSG_DEV_WAKEUP_REQ | 1A | 20 |
+| MSG_P2P_TCP_SERVER | 22 | 16 |
+| MSG_LAN_SEARCH | 30 | 24 |
+| MSG_LAN_NOTIFY | 31 | 20 |
+| MSG_LAN_NOTIFY_ACK | 32 | 20 |
+| MSG_NOTICE_PING | 3A | 20 |
+| MSG_NOTICE_PING_ACK | 3B | 24 |
+| MSG_NOTICE_TO_EX | 3F | 96 + n<br>n is size of JSON payload (uint32 at offset 92) |
+| MSG_NOTICE_TO_ACK | 3F | 96 + n<br>n is size of numeric response (uint16 at offset 92) |
+| MSG_PUNCH_TO_EX | 40 | 44 |_
+| MSG_PUNCH_PKT_EX | 41 | 44 |
+| MSG_P2P_RDY_EX | 42 | 40 |
+| MSG_P2P_RDY_ACK | 43 | 0 |
+| MSG_R2PMP_REQ | 50 | 56 |
+| MSG_R2PMP_START | 51 | 40 |
+| MSG_R2PMP_PKT | 52 | 40 |
+| MSG_R2PMP_RDY | 53 | 40 |
+| MSG_RLY_PORT_EX | 74 | 84 |
+| MSG_RLY_PORT_ACK | 75 | 8 |
+| MSG_RLY_HELLO_SDEV | 76 | 0 |
+| MSG_RLY_HELLO_SDEV_ACK | 77 | 0 |
+| MSG_RLY_TO_ACK | 85 | 28 |
+| MSG_RLY_SERVER_REQ | 87 | 20 |
+| MSG_RLY_SERVER_REQ_ACK | 87 | 20 |
+| MSG_RLY_TCP_START | 88 | 84 |
+| MSG_RLY_TCP_START_ACK | 88 | 20 |
+| MSG_RLY_TCP_REQ | 89 | 52 |
+| MSG_RLY_TCP_REQ_ACK | 89 | 4 |
+| MSG_RLY_TCP_TO | 8A | 32 |
+| MSG_RLY_TCP_TO_ACK | 8A | 40 |
+| MSG_RLY_TCP_PKT | 8B | 20 |
+| MSG_RLY_TCP_RESULT | 8B | 4 |
+| MSG_RLY_EASYTCP_START | 8C | 88 |
+| MSG_SDEV_SESSIONREPORT | 93 | 68 |
+| MSG_SDEV_SESSIONREPORT_ACK | 93 | 4 |
+| MSG_SDEV_REPORT | 94 | 116 |
+| MSG_CONNECT_REPORT | A0 | 40 |
+| MSG_REPORT_REQ | A1 | 4 |
+| MSG_REPORT | A2 | 100 |
+| MSG_SENDDATA_REPORT | A4 | 28 |
+| MSG_SENDDATA_REPORT_ACK | A4 | 4 |
+| MSG_PROBE_START | AA | 20 or 1220 |
+| MSG_PROBE_ACK | AB | 24 + n · 16<br>n is probe count (uint32 at offset 20) |
+| MSG_PROBE_ACK2 | AC | 20 |
+| MSG_SERVER_CONFIG_REQ | B0 | 40 |
+| MSG_DRW_ACK | D2 | 4 |
+| MSG_ALIVE | E0 | 0 or 4 |
+| MSG_ALIVE_ACK | E1 | 0 or 4 |
+| MSG_BITRATE_INFO | E5 | 8 |
+
 
 ### iLnk
 
-The protocol fork developed by Shenzhen Yunni Technology iLnkP2P seems to have been developed from scratch. The device IDs for legacy iLnk networks are easy to recognize because their verification codes only consist of the letters A to F. The algorithm generating these verification codes is public knowledge (CVE-2019-11219) so we know that these are letters taken from an MD5 hex digest. New iLnk networks appear to have verification codes that can contain all Latin letters, some new algorithm replaced the compromised one here. Maybe they use Base64 digests now?
+The protocol fork by Shenzhen Yunni Technology iLnkP2P seems to have been developed from scratch. The device IDs for legacy iLnk networks are easy to recognize because their verification codes only consist of the letters A to F. The algorithm generating these verification codes is public knowledge (CVE-2019-11219) so we know that these are letters taken from an MD5 hex digest. New iLnk networks appear to have verification codes that can contain all Latin letters, some new algorithm replaced the compromised one here. Maybe they use Base64 digests now?
 
 An iLnk init string can be recognized by the presence of a dash:
 
@@ -117,7 +194,7 @@ The part before the dash decodes into:
 
 Yes, the first list entry has to specify how many server IPs there are. The decoding approach (function `HI_DecStr` or `XqStrDec` depending on the implementation) is much simpler here, it’s a kind of Base26 encoding. The part after the dash can encode additional parameters related to validation of device IDs but typically it will be `$$` indicating that it is omitted and network-specific device ID validation can be skipped. As far as I can tell, iLnk networks will always send all data as plain text, there is no encryption functionality of any kind.
 
-Going through the code, the network-level changes in the iLnk fork are extensive, with only the most basic messages shared with the original PPPP protocol. Some message types are clashing like for example `MSG_DEV_MAX` that uses the same type as `MSG_DEV_LGN_CRC` in the CS2 implementation. This fork also introduces new magic numbers: while PPPP messages normally start with `0xF1`, some messages here start with `0xA1` and one for some reason with `0xF2`.
+Going through the code, the network-level changes in the iLnk fork are extensive, with only the most basic messages shared with the original PPPP protocol. Some message types are clashing like for example `MSG_DEV_MAX` that uses the same type as `MSG_DEV_LGN_CRC` in the CS2 implementation. This fork also introduces new magic numbers: while PPPP messages normally start with `0xF1`, some messages here start with `0xA1` and one for some reason with `0xF2`. In the table below I list the magic number as part of the message type.
 
 Unfortunately, I haven’t seen any comprehensive analysis of this protocol variant yet, so I’ll just list the message types along with their payload sizes. For messages with 20 bytes payloads it can be assumed that the payload is a device ID. Don’t ask me why two pairs of messages share the same message type.
 
@@ -203,9 +280,9 @@ On the network level HLP2P is an oddity here. Despite trying hard to provide the
 
 ## “Encryption”
 
-The CS2 implementation of the protocol is the only one that bothers with encrypting data, though their approach is better described as obfuscation. When encryption is enabled, the function `P2P_Proprietary_Encrypt` is applied to all outgoing and the function `P2P_Proprietary_Decrypt` to all incoming messages. These functions take the encryption key (which is visible in the application code as an unobfuscated part of the init string) and mash it into four bytes. These four bytes are then used to select values from a static table that the bytes of the message should be XOR’ed with.
+The CS2 implementation of the protocol is the only one that bothers with encrypting data, though their approach is better described as obfuscation. When encryption is enabled, the function `P2P_Proprietary_Encrypt` is applied to all outgoing and the function `P2P_Proprietary_Decrypt` to all incoming messages. These functions take the encryption key (which is typically visible in the application code as an unobfuscated part of the init string) and mash it into four bytes. These four bytes are then used to select values from a static table that the bytes of the message should be XOR’ed with.
 
-**Update** (2026-01-05): I’ve published an [analysis of this encryption algorithm](/2026/01/05/analysis-of-pppp-encryption/) which comes to the conclusion that there are merely 540,672 effective keys and even fewer possible ciphertexts.
+While an effective four byte encryption key is already bad enough, the cryptography here is actually even worse. I’ve published an [analysis of this encryption algorithm](/2026/01/05/analysis-of-pppp-encryption/) which comes to the conclusion that there are at most 540,672 effective keys and still considerably fewer possible ciphertexts. These flaws allow communication even without the knowledge of the encryption key: sending all possible ciphertexts of the request and in most cases recovering the effective encryption key from a single response.
 
 There is at least one [public implementation of this “encryption”](https://github.com/datenstau/A9_PPPP/blob/c29d1eaccd11794a4cc022cf4ca90b7352920bc1/crypt.js) though this one chose to skip the “key mashing” part and simply took the resulting four bytes as its key. A number of articles mention having implemented this algorithm however, it’s not really complicated.
 
@@ -251,18 +328,6 @@ Fun fact: it is often *very* hard to know up front which protocol your device wi
 
 The following is a list of PPPP-based applications I’ve identified so far, at least the ones with noteworthy user numbers. Mind you, these numbers aren’t necessarily indicative of the number of PPPP devices – some applications listed only use PPPP for some devices, likely using other protocols for most of their supported devices (particularly the ones that aren’t cameras). I try to provide a brief overview of the application-level protocol in the footnotes. *Disclaimer*: These applications tend to support a huge number of device prefixes in theory, so I mostly chose the “typical” ones based on which ones appear in YouTube videos or GitHub discussions.
 
-**Update** (2025-11-07): Added App2Cam Plus app to the table, representing a number of apps which all seem to be belong to ABUS Smartvest Wireless Alarm System.
-
-**Update** (2025-11-07): This article originally grouped Xiaomi Home together with Yi apps. This was wrong, Xiaomi uses a completely different protocol to communicate with their PPPP devices. A brief description of this protocol has been added.
-
-**Update** (2025-11-17): Added eWeLink, Owltron, littlelf and ZUMIMALL apps to the table.
-
-**Update** (2025-12-08): Added Aqara Home, OMGuard HD, SmartLife - Smart Living apps to the table.
-
-**Update** (2025-12-15): Added eufy-original eufy Security, LOCKLY® apps to the table.
-
-**Update** (2026-01-08): Added Geeni, Arenti, InstarVision apps to the table.
-
 | Application | Typical device prefixes | Application-level protocol |
 |-------------|-------------------------|----------------------------|
 | [Xiaomi Home](https://play.google.com/store/apps/details?id=com.xiaomi.smarthome) | XMSYSGB | JSON (MISS) [^0] |
@@ -302,3 +367,15 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 [^13]: Each message is preceded by a 4 bytes header: 3 bytes payload size, 1 byte I/O type (1 for AUTH, 2 for VIDEO, 3 for AUDIO, 4 for IOCTRL, 5 for FILE). The payload starts with a type-specific header. If I read the code correctly, the first 16 bytes of the payload are encrypted with AES-ECB (unpadded) while the rest is sent unchanged. There is an “xor byte” in the payload header which is changed with every request seemingly to avoid generating identical ciphertexts. Payloads smaller than 16 bytes are not encrypted. I cannot see any initialization of the encryption key beyond filling it with 32 zero bytes, which would mean that this entire mechanism is merely obfuscation.
 [^14]: The overall protocol seems identical to eWeLink. However, the smart locks are only supposed to respond to six commands, and the command IDs are different from the ones eWeLink uses.
 [^15]: The protocol is very similar to the one used by VStarcam apps like O-KAM Pro, down to sending two sets of credentials. However, the actual CGI endpoints and their parameters are different.
+
+## Changelog
+
+* 2026-01-13: Expanded the section on the Yi Technology fork, the differences here are more extensive than explained originally.
+* 2026-01-08: Added Geeni, Arenti, InstarVision apps to the table.
+* 2026-01-05: Linked to the new detailed article on PPPP encryption.
+* 2025-12-15: Added eufy-original eufy Security, LOCKLY® apps to the table.
+* 2025-12-08: Added Aqara Home, OMGuard HD, SmartLife - Smart Living apps to the table.
+* 2025-11-17: Added eWeLink, Owltron, littlelf and ZUMIMALL apps to the table.
+* 2025-11-07: This article originally grouped Xiaomi Home together with Yi apps. This was wrong, Xiaomi uses a completely different protocol to communicate with their PPPP devices. A brief description of this protocol has been added.
+* 2025-11-07: Added App2Cam Plus app to the table, representing a number of apps which all seem to be belong to ABUS Smartvest Wireless Alarm System.
+
