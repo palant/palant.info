@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-01-15T13:13:37+0100'
+lastmod: '2025-01-15T23:30:37+0100'
 description: This article aims to provide an overview of the PPPP protocol and its variants, linking to existing information sources where possible. The goal is to make reverse engineering and security evaluation of PPPP-based solutions easier.
 categories:
 - security
@@ -201,10 +201,14 @@ Unfortunately, I haven’t seen any comprehensive analysis of this protocol vari
 | Message       | Message type  | Payload size  |
 |---------------|---------------|---------------|
 | MSG_HELLO     | F1 00         | 0             |
+| MSG_HELLO_ACK | F1 01         | IPv4: 16<br>IPv6: 128 |
+| MSG_RLY_TO    | F1 02         | 32            |
 | MSG_RLY_PKT   | F1 03         | 0             |
 | MSG_DEV_LGN   | F1 10         | IPv4: 40<br>IPv6: 152 |
+| MSG_DEV_LGN_ACK | F1 11       | 4             |
 | MSG_DEV_MAX   | F1 12         | 20            |
 | MSG_P2P_REQ   | F1 20         | IPv4: 36<br>IPv6: 152 |
+| MSG_P2P_REQ_ACK | F1 21       | 4             |
 | MSG_LAN_SEARCH| F1 30         | 0             |
 | MSG_LAN_SEARCH_EXT | F1 32    | 0             |
 | MSG_LAN_SEARCH_EXT_ACK | F1 33| 52            |
@@ -214,20 +218,25 @@ Unfortunately, I haven’t seen any comprehensive analysis of this protocol vari
 | MSG_RS_LGN    | F1 60         | 28            |
 | MSG_RS_LGN_EX | F1 62         | 44            |
 | MSG_LST_REQ   | F1 67         | 20            |
+| MSG_LST_REQ_ACK | F1 69       | 4 + n · 16<br>n is relay address count (int32 at offset 0) |
 | MSG_RLY_HELLO | F1 70         | 0             |
 | MSG_RLY_HELLO_ACK | F1 71     | 0             |
 | MSG_RLY_PORT  | F1 72         | 0             |
 | MSG_RLY_PORT_ACK | F1 73      | 8             |
-| MSG_RLY_PORT_EX_ACK | F1 76   | 264           |
+| MSG_RLY_PORTEX_ACK | F1 76    | 264           |
 | MSG_RLY_REQ_EX| F1 77         | 288           |
 | MSG_RLY_REQ   | F1 80         | IPv4: 40<br>IPv6: 160 |
+| MSG_RLY_REQ_ACK | F1 81       | 4             |
+| MSG_HELLO_TO  | F1 82         | 20            |
 | MSG_HELLO_TO_ACK | F1 83      | 28            |
 | MSG_RLY_RDY   | F1 84         | 20            |
+| MSG_SDEV_RUN  | F1 90         | 0             |
 | MSG_SDEV_LGN  | F1 91         | 20            |
+| MSG_SDEV_LGN_ACK | F1 91      | IPv4: 16<br>IPv6: 128 |
 | MSG_MGM_ADMIN | F1 A0         | 160           |
 | MSG_MGM_DEVLIST_CTRL | F1 A2  | 20            |
 | MSG_MGM_HELLO| F1 A4          | 4             |
-| MSG_MGM_MULTI_DEV_CTRL | F1 A6| *variable*    |
+| MSG_MGM_MULTI_DEV_CTRL | F1 A6| 24 + n · 4<br>n is uint32 at offset 20 |
 | MSG_MGM_DEV_DETAIL | F1 A8    | 24            |
 | MSG_MGM_DEV_VIEW | F1 AA      | 4             |
 | MSG_MGM_RLY_LIST| F1 AC       | 12            |
@@ -242,8 +251,9 @@ Unfortunately, I haven’t seen any comprehensive analysis of this protocol vari
 | MSG_VGW_REQ_ACK | F1 C4       | 4             |
 | MSG_VGW_HELLO | F1 C5         | 0             |
 | MSG_VGW_LST_REQ | F1 C6       | 20            |
-| MSG_DRW       | F1 D0         | *variable*    |
-| MSG_DRW_ACK   | F1 D1         | *variable*    |
+| MSG_VGW_LST_ACK | F1 C7       | 8 + n · 128<br>n is target address count (int32 at offset 0) |
+| MSG_DRW       | F1 D0         | 4 + n<br>n is implied payload size |
+| MSG_DRW_ACK   | F1 D1         | 4 + n · 2<br>n is sequence ID count (uint16 at offset 2) |
 | MSG_P2P_ALIVE | F1 E0         | 0             |
 | MSG_P2P_ALIVE_ACK | F1 E1     | 0             |
 | MSG_CLOSE     | F1 F0         | 0             |
@@ -251,6 +261,7 @@ Unfortunately, I haven’t seen any comprehensive analysis of this protocol vari
 | MSG_MGM_DEV_LGN_DUMP | F1 F4  | 12            |
 | MSG_MGM_LOG_CTRL | F1 F7      | 12            |
 | MSG_SVR_REQ   | F2 10         | 0             |
+| MSG_SVR_REQ_ACK | F2 11       | *variable* (NUL-terminated) |
 | MSG_DEV_LV_HB | A1 00         | 20            |
 | MSG_DEV_SLP_HB| A1 01         | 20            |
 | MSG_DEV_QUERY | A1 02         | 20            |
@@ -370,7 +381,7 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 
 ## Changelog
 
-* 2026-01-15: Added links to init string decoder, better encryption implementation, list of encryption keys, VStarcam protocol implementation, SHIX protocol implementation. Made it clear that the described TCP fallback applies to CS2 implementation only.
+* 2026-01-15: Added links to init string decoder, better encryption implementation, list of encryption keys, VStarcam protocol implementation, SHIX protocol implementation. Made it clear that the described TCP fallback applies to CS2 implementation only. Added a bunch of message types missing from the iLnk table.
 * 2026-01-14: Created a separate category for the eufy app, it has its own protocol despite using Tuya libraries.
 * 2026-01-13: Expanded the section on the Yi Technology fork, the differences here are more extensive than explained originally.
 * 2026-01-08: Added Geeni, Arenti, InstarVision apps to the table.
