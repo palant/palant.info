@@ -5,7 +5,7 @@ categories:
 date: 2021-04-13T12:41:35+0200
 description: Any website could completely compromise Print Friendly & PDF browser
   extension. The fix is not very convincing.
-lastmod: '2021-06-01 09:20:26'
+lastmod: '2026-02-09 03:42:45'
 title: 'Print Friendly & PDF: Full compromise'
 ---
 
