@@ -1,0 +1,45 @@
+{
+  "publishDate": "2026-02-12 10:30:24",
+  "author": "Ernest",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000002"
+}
+
+<p>I see in the C code that it looks like "past the colon" as well, but the only thing that is past a colon is the PSK key.  I wonder if the server shares this secret key upon initial handshake or if the camera sned it to the server or it is a another permanent?  That registration packet is always exactly 44 bytes even though the data itself is 40 bytes.  I have tried empty key, the "vstar", the "SSD@", and the "license" password which is usually a 6 character like "CCXEVS" on a MSG_DEV_LGN_CRC string like:</p>
+<p>f112002c56034410c42c14542e0040b55cac86742e1e1a44feaf8c08d4b27326993cb44d926e9ea2826e006495adcdb5</p>
+<p>The routine I have (python) is like:</p>
+<p>def crc_select4key(b2, b5, b3, b4, p5=0x43):
+    i6 = (b4 % p5 + b2) % 8 + ((b2 % b5 + b3) % 8) * 8
+    o6 = CRCTABLE[i6]</p>
+<pre><code>i7 = (p5 % b5 + b2) % 8 + ((b2 % b3 + b4) % 8) * 8
+o7 = CRCTABLE[i7]
+
+i8 = (b5 % b3 + b2) % 8 + ((b2 % b4 + p5) % 8) * 8
+o8 = CRCTABLE[i8]
+
+i9 = (b3 % b4 + b2) % 8 + ((b2 % p5 + b5) % 8) * 8
+o9 = CRCTABLE[i9]
+
+return o6, o7, o8, o9
+</code></pre>
+<p>def crcenc_decrypt(cipher44: bytes, key_string: str = "") -&gt; bytes:
+    print(len(cipher44))
+    if len(cipher44) != 44:
+        raise ValueError("Expected 44-byte CRCEnc payload")</p>
+<pre><code># Initial state
+b2, b5, b4, b3 = 7, 5, 3, 1
+# Key pre-processing (exact firmware behavior)
+for ch in key_string.encode():
+    b2, b5, b4, b3 = crc_select4key(b2, b5, b3, b4)
+plain = bytearray()
+
+# Decrypt first 40 bytes
+for i in range(40):
+    k = b2 ^ b5 ^ b3 ^ b4
+    plain.append(cipher44[i] ^ k)
+    b2, b5, b4, b3 = crc_select4key(b2, b5, b3, b4)
+
+return bytes(plain)
+</code></pre>

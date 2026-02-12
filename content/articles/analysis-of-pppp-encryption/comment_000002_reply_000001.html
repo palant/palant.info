@@ -1,0 +1,6 @@
+{
+  "id": "000001",
+  "publishDate": "2026-02-12 13:05:07"
+}
+
+<p>This decodes correctly with an empty key for me, so it’s indeed the key being used by VStarcam firmware. f112002c is the header: it’s a MSG_DEV_LGN_CRC packet, payload length 44. These 44 payload bytes go into the decryption function – yours looks correct, though I’ve implemented it somewhat differently. Decrypted result ends with CCCC, this indicates correct decryption. That’s preceded by your VSTJ device id (binary encoding is 20 bytes), four bytes that I’m unsure of and your IP address (eight bytes sockaddr_in structure, extended by eight zero bytes because sockaddr_in6 could be transmitted as well in theory).</p>
