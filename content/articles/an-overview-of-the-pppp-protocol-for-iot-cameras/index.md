@@ -1,7 +1,7 @@
 ---
 title: "An overview of the PPPP protocol for IoT cameras"
 date: 2025-11-05T16:11:36+0100
-lastmod: '2025-01-15T23:30:37+0100'
+lastmod: '2025-02-12T19:32:37+0100'
 description: This article aims to provide an overview of the PPPP protocol and its variants, linking to existing information sources where possible. The goal is to make reverse engineering and security evaluation of PPPP-based solutions easier.
 categories:
 - security
@@ -299,6 +299,8 @@ The same obfuscation is used unconditionally for TCP traffic in the CS2 implemen
 
 All `*_CRC` messages like `MSG_DEV_LGN_CRC` have an additional layer of obfuscation, performed by the functions `PPPP_CRCEnc` and `PPPP_CRCDec`. Unlike `P2P_Proprietary_Encrypt` which is applied to the entire message including the header, `PPPP_CRCEnc` is only applied to the payload. As normally only messages exchanged between the device and the server are obfuscated in this way, the corresponding key tends to be contained only in the device firmware and not in the application. Here as well the key is mashed into four bytes which are then used to generate a byte sequence that the message (extended by four `+` signs) is XOR’ed with. This is effectively an [XOR cipher](https://en.wikipedia.org/wiki/XOR_cipher) with a static key which is easy to crack even without knowing the key.
 
+I haven’t really bothered with the keys for this CRC encryption, it being mostly irrelevant for the communication. libPPCS_API expects the key in the device “license,” following a colon after a six upper-case letters license code. There seems to be a tendency however to leave the key out and use only the default mangling. It’s confirmed that VStarcam cameras do it like this at the very least. LookCam cameras on the other hand have a hardcoded CRC key that they always append to the license, probably because no other encryption mechanism is employed here.
+
 ## “Secret” messages
 
 The CS2 implementation of the protocol contains a curiosity: two messages starting with `338DB900E559` being processed in a special way. No, this isn’t a hexadecimal representation of the bytes – it’s literally the message contents. No magic bytes, no encryption, the messages are expected to be 17 bytes long and are treated as zero-terminated strings.
@@ -381,6 +383,7 @@ The following is a list of PPPP-based applications I’ve identified so far, at 
 
 ## Changelog
 
+* 2026-02-12: Added a paragraph on keys for the CRC “encryption.”
 * 2026-01-15: Added links to init string decoder, better encryption implementation, list of encryption keys, VStarcam protocol implementation, SHIX protocol implementation. Made it clear that the described TCP fallback applies to CS2 implementation only. Added a bunch of message types missing from the iLnk table.
 * 2026-01-14: Created a separate category for the eufy app, it has its own protocol despite using Tuya libraries.
 * 2026-01-13: Expanded the section on the Yi Technology fork, the differences here are more extensive than explained originally.
