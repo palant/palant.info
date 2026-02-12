@@ -1,0 +1,6 @@
+{
+  "id": "000001",
+  "publishDate": "2026-02-12 07:15:21"
+}
+
+<p>CRCEnc is only used for a few packets. Are you trying to decrypt the network registration packet? That key can only be found in the firmware. I haven’t really bothered with it so far, but assuming that you are talking about VStarcam cameras my impression is that their firmware sets the CRC key to an empty string. The CRC key is supposed to be part of the license which is stored in factory.ini at offset 0x2c2. The CRC key is the license part following a colon – and I don’t think there is a colon, so my understanding is that the code goes into the fallback scenario. Lookcam firmware has some code explicitly extending the license by a colon and a hardcoded CRC key but VStarcam doesn’t seem to have that.</p>

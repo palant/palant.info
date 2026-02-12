@@ -1,0 +1,13 @@
+{
+  "publishDate": "2026-02-12 02:59:17",
+  "author": "ERNEST",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000001"
+}
+
+<p>I like these cams are they are relatively cheap as I have the 2 lens PTZ versions and I agree about the online risks but I already have hijacked most of their cloud functions, CH0 DRW commands and CH1 DRW multi lens streaming.  All very kludgy but effective.  :)</p>
+<p>The big one that I was more trying to find was the CRCDec for my PPPP WAN to remote 32100.  I need going to hijack and redirect them to my own server because the cameras continue to blitz trying to attempt those connections even when they can't reach them, I already have the 32320 (config) and 32321 (heartbeat) up and running and my cams are mostly happy.  I already have the "decryption" with the 'vstar<strong><em>*</em></strong>*' ciphering but I cannot find the keystring for the CRCEnc for the actual decrypted payload even though many claim it is in the firmware.  I already have a python function ready for the 44 byte decrypted payload:</p>
+<p>crcenc_decrypt(cipher, key_string="NeedThis")</p>
+<p>Any ideas?  This is for the 'Group F' as I have most of those "backdoors" but my cams are offline, per se so I am not really worried and created my own mitm server to webrtc.  The cams are nice, I just want to hijack everything and the p2p is the last.   Thanks.</p>

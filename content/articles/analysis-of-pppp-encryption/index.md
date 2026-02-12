@@ -1,10 +1,12 @@
 ---
-title: "Analysis of PPPP “encryption”"
-date: 2026-01-05T16:50:53+0100
-description: The “encryption” used by PPPP protocol is even worse than I described earlier. It turns out, there are at most 157,092 ways to encrypt a particular packet.
 categories:
 - security
 - IoT
+date: 2026-01-05T16:50:53+0100
+description: The “encryption” used by PPPP protocol is even worse than I described
+  earlier. It turns out, there are at most 157,092 ways to encrypt a particular packet.
+lastmod: '2026-02-12 07:15:21'
+title: Analysis of PPPP “encryption”
 ---
 
 My first article on the PPPP protocol already [said everything there was to say about PPPP “encryption”](/2025/09/08/a-look-at-a-p2p-camera-lookcam-app/#the-encryption):
