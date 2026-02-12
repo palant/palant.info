@@ -4,43 +4,44 @@
 }
 
 <p>Yes, that’s the table. I didn’t really feel like posting the code publicly to decode your data. But you don’t seem to mind, and it doesn’t really matter whether I post my code or correct the bug in yours…</p>
-<p>```python
+<p><pre><code>
 def select_key(prev_char, prev_key):
     def mod(num, divisor):
         if divisor != 0:
             return num % divisor
         else:
-            return num</p>
-<pre><code>key = []
+            return num
 
-h = (mod(prev_char, prev_key[0]) + prev_key[1]) &amp; 7
-l = (mod(prev_key[2], prev_key[3]) + prev_char) &amp; 7
-key.append(crc_table[(h &lt;&lt; 3) + l])
+    key = []
 
-h = (mod(prev_char, prev_key[1]) + prev_key[2]) &amp; 7
-l = (mod(prev_key[3], prev_key[0]) + prev_char) &amp; 7
-key.append(crc_table[(h &lt;&lt; 3) + l])
+    h = (mod(prev_char, prev_key[0]) + prev_key[1]) & 7
+    l = (mod(prev_key[2], prev_key[3]) + prev_char) & 7
+    key.append(crc_table[(h &lt;&lt; 3) + l])
 
-h = (mod(prev_char, prev_key[2]) + prev_key[3]) &amp; 7
-l = (mod(prev_key[0], prev_key[1]) + prev_char) &amp; 7
-key.append(crc_table[(h &lt;&lt; 3) + l])
+    h = (mod(prev_char, prev_key[1]) + prev_key[2]) & 7
+    l = (mod(prev_key[3], prev_key[0]) + prev_char) & 7
+    key.append(crc_table[(h &lt;&lt; 3) + l])
 
-h = (mod(prev_char, prev_key[3]) + prev_key[0]) &amp; 7
-l = (mod(prev_key[1], prev_key[2]) + prev_char) &amp; 7
-key.append(crc_table[(h &lt;&lt; 3) + l])
+    h = (mod(prev_char, prev_key[2]) + prev_key[3]) & 7
+    l = (mod(prev_key[0], prev_key[1]) + prev_char) & 7
+    key.append(crc_table[(h &lt;&lt; 3) + l])
 
-return key
-</code></pre>
-<p>def crc_dec(input, additional_key=None):
+    h = (mod(prev_char, prev_key[3]) + prev_key[0]) & 7
+    l = (mod(prev_key[1], prev_key[2]) + prev_char) & 7
+    key.append(crc_table[(h &lt;&lt; 3) + l])
+
+    return key
+
+def crc_dec(input, additional_key=None):
     key = [1, 3, 5, 7]
     if additional_key:
         for c in additional_key:
-            key = select_key(ord(c), key)</p>
-<pre><code>result = []
-for i in range(len(input)):
-    result.append(input[i] ^ key[0] ^ key[1] ^ key[2] ^ key[3])
-    key = select_key(input[i], key)
-return result
-</code></pre>
-<p>print(bytes(crc_dec(bytes.fromhex('...'))))
-```</p>
+            key = select_key(ord(c), key)
+
+    result = []
+    for i in range(len(input)):
+        result.append(input[i] ^ key[0] ^ key[1] ^ key[2] ^ key[3])
+        key = select_key(input[i], key)
+    return result
+
+print(bytes(crc_dec(bytes.fromhex('...'))))</code></pre></p>
