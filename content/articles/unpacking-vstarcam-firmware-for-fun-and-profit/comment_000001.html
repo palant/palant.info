@@ -1,0 +1,56 @@
+{
+  "publishDate": "2026-02-13 17:14:04",
+  "author": "Ernest",
+  "authorUrl": "",
+  "type": "comment",
+  "title": "",
+  "id": "000001"
+}
+
+<p>Another interesting thing about the VS cluster F cams is that they try to hide the config params, e.g. there is no .ini or .conf files in the /system directory, only the ./www sound and the ./modules files.  This is the 10.18 series, e.g. 10.18.121.17 and 10.18.123.10, etc. they seem to write their config info directly to the mtd5 block:</p>
+<p>[root@procam2:~]# cat /proc/mtd
+dev:    size   erasesize  name
+mtd0: 00040000 00001000 "boot"
+mtd1: 000d0000 00001000 "tag"
+mtd2: 001f0000 00008000 "kernel"
+mtd3: 00460000 00008000 "rootfs"
+mtd4: 00060000 00008000 "system"
+mtd5: 00040000 00008000 "param"
+mtd6: 00800000 00008000 "all"</p>
+<p>And just like you state, they do all sorts of voodoo with their firmware files, which binwalk can't handle (my version, anyway), it only extracts 757EAC.zlib which I believe is the root fs:</p>
+<p>[root@svr1 procam_fw/10.18.121.17]# binwalk vp_ota_update.bin</p>
+<p>DECIMAL       HEXADECIMAL     DESCRIPTION</p>
+<hr>
+<p>557128        0x88048         uImage header, header size: 64 bytes, header CRC:0x1E168C3E, created: 1970-01-01 00:00:00, image size: 1988034 bytes, Data Address: 0x80010000, Entry Point: 0x80343370, data CRC: 0xC897B1D7, OS: Linux, CPU: MIPS, image type: OS Kernel Image, image name: "Linux-3.10.14-Archon"
+7645600       0x74A9A0        CRC32 polynomial table, little endian
+7700140       0x757EAC        Zlib compressed data, best compression
+7966268       0x798E3C        AES S-Box
+8136252       0x7C263C        Copyright string: "Copyright (c) 2003-2019, JouniMalinen <a href="mailto:j@w1.fi" rel="nofollow">j@w1.fi</a> and contributors"
+8155404       0x7C710C        SHA256 hash constants, little endian</p>
+<p>They also load rootfs into RAM which is not too unusual, but prevents persistent updates across reboots:</p>
+<p>[root@procam2:~]# cat /proc/cmdline
+console=ttyS1,115200n8 mem=42M@0x0 rmem=22M@0x2A00000 root=/dev/ram0 rw rdinit=/linuxrc mtdparts=jz_sfc:256K(boot),640K(tag),2048K(kernel),4608K(rootfs),384K(system),256K(param),8M@0(all) lpj=4493312 quiet senv;[HW];init_vw=2304;init_vh=1296;nrvbs=1;sub_init_vw=2304;sub_init_vh=1296;sub_nrvbs=1;mode=0;sensor_num=2;i2c_num=1;[important];bakeup=&amp;vuid=VQ065774HARF&amp;vlisence=8d9vd77caa&amp;uid=VSTK53756BCRTV&amp;lisence=WLHHC&amp;pwd=It5NoWunder_7ac9&amp;flip_mode=0&amp;adc_value=1&amp;audio_16k=0&amp;led_hide=0&amp;ir_mode=auto&amp;tagErrorTimes=0&amp;ssid=pollywanna&amp;auth=0&amp;wifikey=crackter4991&amp;};eenv; lzo_size=0 rd_start=0x80600000 rd_size=0xa66400  sensor_i2c_error=0 is_night=1 boot_adc=1 ev=117500</p>
+<p>The 'ps' command shows not alot of binary process run by the camera itself anymore.</p>
+<p>...
+   51 root      9400 S    system_call_daemon
+   56 root       964 S    vp_logread
+   58 root      414m S    {app_main} encoder
+  155 root         0 SW&lt;  [kworker/0:1H]
+  166 root         0 SW   [irq/195-jz_time]
+  172 root      1464 S    /sbin/getty -L console 115200 vt100
+  235 root         0 SW   [aicwf_bustx_thr]
+  236 root         0 SW   [aicwf_busrx_thr]
+  237 root         0 SW   [ksdioirqd/mmc1]
+  358 root         0 SW   [mmcqd/0]
+  444 root      1452 S    telnetd
+  524 root      1612 S    /media/mmc/hack/bin/dropbearmulti dropbear -E -r
+  549 root     10744 S    /opt/sbin/lighttpd -f /opt/web/logs/lighttpd.conf
+ 3228 root      1636 R    /media/mmc/hack/bin/dropbearmulti dropbear -E -r
+ 3229 root      1484 S    -sh
+ 3363 root         0 SW   [kworker/0:2]
+ 4209 root      1456 R    ps
+ 8570 root         0 SW   [kworker/u2:0]
+17656 root         0 SW   [kworker/u2:2]
+21520 root         0 SW   [kworker/0:1]
+32402 root         0 SW   [kworker/0:0]</p>
+<p>The camera gets very upset when you kill the main app 'encoder' and even if you immediatelt restart it, the watchdog will initiate a restart.</p>

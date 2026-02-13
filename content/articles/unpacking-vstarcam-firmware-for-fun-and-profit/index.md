@@ -1,10 +1,13 @@
 ---
-title: "Unpacking VStarcam firmware for fun and profit"
-date: 2025-12-15T15:19:22+0100
-description: VStarcam firmware comes in lots of varieties and occasional proprietary formats that binwalk cannot handle. This article documents the formats and unpacking methods.
 categories:
 - security
 - IoT
+date: 2025-12-15T15:19:22+0100
+description: VStarcam firmware comes in lots of varieties and occasional proprietary
+  formats that binwalk cannot handle. This article documents the formats and unpacking
+  methods.
+lastmod: '2026-02-13 17:27:39'
+title: Unpacking VStarcam firmware for fun and profit
 ---
 
 One important player in the [PPPP protocol business](/2025/11/05/an-overview-of-the-pppp-protocol-for-iot-cameras/) is VStarcam. At the very least they’ve already accumulated an impressive portfolio of security issues. Like [exposing system configuration including access password unprotected in the Web UI](https://github.com/Retr0-code/auth-traversal) (discovered by multiple people independently from the look of it). Or the [open telnet port accepting hardcoded credentials](https://brownfinesecurity.com/blog/vstarcam-cb73-hardcoded-root-password) (definitely discovered by lots of people independently). In fact, these cameras have been [seen used as part of a botnet](https://www.carson-saint.com/vstarcam-vulnerability-saint-blocks-eleven11bot-ddos-attacks/), likely thanks to some documented vulnerabilities in their user interface.
