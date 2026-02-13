@@ -5,7 +5,7 @@ categories:
 date: 2026-01-05T16:50:53+0100
 description: The “encryption” used by PPPP protocol is even worse than I described
   earlier. It turns out, there are at most 157,092 ways to encrypt a particular packet.
-lastmod: '2026-02-12 17:52:13'
+lastmod: '2026-02-13 01:31:41'
 title: Analysis of PPPP “encryption”
 ---
 
